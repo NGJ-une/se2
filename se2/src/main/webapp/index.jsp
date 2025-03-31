@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/se2/css/header-and-footer.css">
 </head>
 <body>
-
 <%@include file="../header.jsp" %>
     <section>
         <article>
@@ -67,10 +67,8 @@
                 <img src="" alt="6">
                 <img src="" alt="7">
             </fieldset>
-            </form>
         </article>
     </section>
 <%@include file="../footer.jsp" %>
-
 </body>
 </html>
