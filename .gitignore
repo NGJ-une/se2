@@ -1,0 +1,56 @@
+/.metadata/
+
+README.md
+
+# Node.js 관련
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 빌드 출력물
+dist/
+build/
+*.log
+
+# IDE 및 편집기 관련
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS별 파일
+.DS_Store
+Thumbs.db
+
+# 환경설정 파일
+.env
+.env.local
+.env.*.local
+
+# 서버 설정 관련
+Servers/
+*.iml
+
+# 캐시 및 임시 파일
+*.tmp
+*.cache
+.cache/
+logs/
+
+# 특정 언어 및 프레임워크 관련(예: Python, PHP 등)
+*.pyc
+*.pyo
+*.pyd
+venv/
+vendor/
+
+# Git이 자체적으로 사용하는 파일
+.git/
+
+#외부 도구/라이브러리 임시파일
+*.bak
+*.swp
+*.swx
