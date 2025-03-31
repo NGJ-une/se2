@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>테스트</h2>
-<h2 style = "color:purple;">박주연 멍청이</h2>
+
 </body>
 </html>
