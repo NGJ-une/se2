@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>memberJoin</title>
 <style>
+h2{
+	text-align: center;
+}
 nav {
 	text-align: left;
 }
@@ -14,6 +17,15 @@ nav {
 form {
 	text-algin: center;
 }
+fieldset{
+   width:700px;
+   margin:0px auto;
+}
+fieldset li{
+   list-style: none;
+}
+
+
 </style>
 <script>
 	function openIdCheck(){
@@ -25,7 +37,7 @@ form {
 	<section>
 		<article>
 			<nav>
-				<table border="1">
+				<table border="1" >
 					<tr>
 						<td>로그인</td>
 					</tr>
@@ -43,7 +55,7 @@ form {
 	<section>
 		<article>
 			<fieldset>
-				<form name="memberJoin" action="memberJoin_ok">
+				<form name="memberJoin" action="memberJoin_ok" method="post">
 					<h2>회원가입</h2>
 					<hr>
 					<ul>
@@ -53,33 +65,7 @@ form {
 						</li>
 						<li>
 							<label>생년월일</label>
-							<select name="year">
-							<%
-							for(int i=2025; i>=1960; i--){
-							%>
-							<option value="<%=i%>"><%=i%></option>
-							<%
-							}
-							%>
-							</select>년
-							<select name="month">
-							<%
-							for(int i=1; i<=12; i++){
-							%>
-							<option value="<%=i%>"><%=i%></option>
-							<%
-							}
-							%>
-							</select>월
-							<select name="day">
-							<%
-							for(int i=1; i<=31; i++){
-							%>
-							<option value="<%=i%>"><%=i%></option>
-							<%
-							}
-							%>
-							</select>일
+							<input type="date" name="birth">
 						</li>
 						<li>
 							<label>아이디 : </label> <input type="text" style="margin-right: 10px;" name="id"><input  type="button" value="  중복검사  " onclick="openIdCheck();">	
@@ -102,15 +88,18 @@ form {
 						<li>
 							<label>질문 : </label>
 							<select name="question"> 
-								<option value="question1">  질문 1  </option>
-								<option value="question2">  질문 2  </option>
-								<option value="question3">  질문 3  </option>
+								<option value="question1">  질문 1 : 당신이 태어난 도시의 이름은 무엇인가요? </option>
+								<option value="question2">  질문 2 : 당신의 초등학교 이름은 무엇인가요? </option>
+								<option value="question3">  질문 3 : 당신의 어렸을 적 별명은 무엇인가요? </option>
+								<option value="question4">  질문 4 : 당신의 부모님의 고향은 어디인가요? </option>
+								<option value="question5">  질문 5 : 당신의 초등학교 선생님의 성함은 무엇인가요? </option>
 							</select>
 						</li>
 						<li>
-							<label>답변 : </label><input type="text" name="answer">
+							<label>답변 : </label><input type="text" name="answer"><br><br>
 						</li>
-						<li><input type="submit" value="가입신청"></li>
+						<li><input type="reset" value="다시작성" name="su1">
+							<input type="submit" value="가입신청" name="su2"></li>
 					</ul>
 				</form>
 			</fieldset>
