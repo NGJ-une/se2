@@ -6,52 +6,51 @@
 <meta charset="UTF-8">
 <title>login</title>
 <style>
-h2{
-	text-align: center;
-	color:#332c04ab;
-}
-p{
-	text-align: center;
-}
-
-nav{
-	float: left;
-}
-form {
-	text-align: center;
-}
-fieldset{
-   width:700px;
-   margin:0px auto;
-}
- fieldset li{
-	list-style: none;
-	float: center;
-	
-}
+    h2{
+        text-align: center;
+    }
+    fieldset{
+           width:700px;
+           margin:0px auto;
+        }
+    fieldset li{
+        list-style: none;
+    }
+    .loginZone{
+        display: flex;
+    }
+    .loginmenu{
+      padding: 20px;
+      margin-right: 5px;
+      border: 2px solid black;
+      width: 200px;
+      background-color: whitesmoke;
+    }
+    .loginField{
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 800px; 
+      background-color: white;
+    }
 </style>
 </head>
 <body>
-<section>
-		<article>
-			<nav>
-				<table border="1" >
-					<tr>
-						<td>로그인</td>
-					</tr>
-					<tr>
-						<td>로그인<br> 아이디찾기<br> 비밀번호 찾기
-						</td>
-					</tr>
-					<tr>
-						<td>회원가입<br> <br> <br></td>
-					</tr>
-				</table>
-			</nav>
-		</article>
-	</section>
-	<section>
-		<fieldset>
+    <section class="loginZone">
+          <nav class="loginmenu">
+            <br>
+            <div>로그인</div><br><hr>
+            <br>
+            <div style="color: pink;">로그인</div>
+            <br>
+            <div>아이디 찾기</div>
+            <br>
+            <div>비밀번호 찾기</div>
+            <br>
+            <hr>
+            <br>
+            <div>회원가입</div>
+          </nav>
+		<fieldset class="loginField">
 			<form name="login" action="login_ok.jsp" method="post">
 			<h2>로그인</h2>
 			<hr>

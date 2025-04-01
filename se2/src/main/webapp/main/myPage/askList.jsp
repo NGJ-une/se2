@@ -42,16 +42,32 @@
         <div>회원탈퇴</div>
     </section>
     <section class="box2">
-        <h1>충전하기</h1>
+        <h1>문의하기</h1>
+
+        <label>회원님께서 문의하신 내역과 답변을 확인하실 수 있습니다.</label>
         <br>
-		<label>현재 금액 : </label>
-        <label>충전할 금액 : </label>
-        <input type="text" >
+        기간조회
+        <input type="button" value="1개월">
+        <input type="button" value="3개월">
+        <input type="button" value="6개월">
+        <input type="button" value="전체">
+        <input type="button" value="조회">
         <br>
-        <input type="button" value="충전">
-        <input type="button" value="취소">
+        total:0
+        <table>
+            <tr>
+                <th>No</th>
+                <th>구분</th>
+                <th>문의유형</th>
+                <th>제목</th>
+                <th>문의일자</th>
+                <th>답변여부</th>
+            </tr>
+            
+        </table>
     </section>
   </div>
 </body>
 </html>
+
 
