@@ -7,25 +7,32 @@
 <meta charset="UTF-8">
 <title>memberJoin</title>
 <style>
-h2{
-	text-align: center;
-}
-nav {
-	text-align: left;
-}
-
-form {
-	text-algin: center;
-}
-fieldset{
-   width:700px;
-   margin:0px auto;
-}
-fieldset li{
-   list-style: none;
-}
-
-
+    h2{
+        text-align: center;
+    }
+    fieldset{
+           width:700px;
+           margin:0px auto;
+        }
+    fieldset li{
+        list-style: none;
+    }
+    .memberJoinZone{
+        display: flex;
+    }
+    .loginmenu{
+      padding: 20px;
+      margin-right: 5px;
+      border: 2px solid black;
+      width: 200px;
+      background-color: whitesmoke;
+    }
+    .memberJoinField{
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 800px; 
+      background-color: white;
+    }
 </style>
 <script>
 	function openIdCheck(){
@@ -34,27 +41,22 @@ fieldset li{
 </script>
 </head>
 <body>
-	<section>
-		<article>
-			<nav>
-				<table border="1" >
-					<tr>
-						<td>로그인</td>
-					</tr>
-					<tr>
-						<td>로그인<br> 아이디찾기<br> 비밀번호 찾기
-						</td>
-					</tr>
-					<tr>
-						<td>회원가입<br> <br> <br></td>
-					</tr>
-				</table>
-			</nav>
-		</article>
-	</section>
-	<section>
-		<article>
-			<fieldset>
+    <section class="memberJoinZone">
+          <nav class="loginmenu">
+            <br>
+            <div>로그인</div><br><hr>
+            <br>
+            <div>로그인</div>
+            <br>
+            <div>아이디 찾기</div>
+            <br>
+            <div>비밀번호 찾기</div>
+            <br>
+            <hr>
+            <br>
+            <div >회원가입</div>
+          </nav>
+			<fieldset class="memberJoinField">
 				<form name="memberJoin" action="memberJoin_ok" method="post">
 					<h2>회원가입</h2>
 					<hr>
@@ -88,11 +90,11 @@ fieldset li{
 						<li>
 							<label>질문 : </label>
 							<select name="question"> 
-								<option value="question1">  질문 1 : 당신이 태어난 도시의 이름은 무엇인가요? </option>
-								<option value="question2">  질문 2 : 당신의 초등학교 이름은 무엇인가요? </option>
-								<option value="question3">  질문 3 : 당신의 어렸을 적 별명은 무엇인가요? </option>
-								<option value="question4">  질문 4 : 당신의 부모님의 고향은 어디인가요? </option>
-								<option value="question5">  질문 5 : 당신의 초등학교 선생님의 성함은 무엇인가요? </option>
+								<option value="question1">  질문 1 : 보물 1호는? </option>
+                            	<option value="question2">  질문 2 : 내가 다닌 초등학교 이름은? </option>
+                            	<option value="question3">  질문 3 : 짝사랑했던 이성친구 이름은? </option>
+                            	<option value="question4">  질문 4 : 어렸을 적 별명은?  </option>
+                            	<option value="question5">  질문 5 : 내가 살던 고향은? </option>
 							</select>
 						</li>
 						<li>
@@ -103,7 +105,6 @@ fieldset li{
 					</ul>
 				</form>
 			</fieldset>
-		</article>
 	</section>
 </body>
 </html>
