@@ -7,5 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
+예약확인
 </body>
 </html>
