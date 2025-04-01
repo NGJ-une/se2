@@ -53,7 +53,8 @@ fieldset{
 	<section>
 		<fieldset>
 			<form name="login" action="login_ok.jsp" method="post">
-			<h2>로그인</h2><hr>
+			<h2>로그인</h2>
+			<hr>
             <div>
                 <p>ooo호텔에 오신 것을 환영합니다.<br>
                 ※ OOO회원이 되시면 회원만을 위한<br>
