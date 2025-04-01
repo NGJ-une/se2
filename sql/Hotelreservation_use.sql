@@ -1,3 +1,17 @@
+--등급 테이블 생성  
+CREATE TABLE grade (
+    grade varchar2(50) primary key, --등급 
+    min_point number(10) not null, --최소 포인트  
+    max_point number(10) not null, -- 최대 포이트  
+    discount number(10) not null --할인율
+)
+
+--질문 테이블 생성
+CREATE TABLE question (
+    question number(2) primary key, -- 질문번호
+    content varchar(50) not null -- 질문내용 
+) 
+
 --로그인 / 회원 가입 테이블 생성 
 CREATE TABLE member( 
     id varchar2(30) primary key, --아이디 
@@ -20,18 +34,23 @@ CREATE TABLE member(
     constraint fk_question foreign key(question) references question(question)
 )
 
---등급 테이블 생성  
-CREATE TABLE grade (
-    grade varchar2(50) primary key, --등급 
-    min_point number(10) not null, --최소 포인트  
-    max_point number(10) not null, -- 최대 포이트  
-    discount number(10) not null --할인율
+--객실 테이블 생성  
+CREATE TABLE room (
+    type varchar2(50) primary key, --객실타입 (외래키) 
+    idx number(5) not null, --고유 객실번호
+    img_name varchar2(50) not null, --객실이미지파일이름 
+    price number(10) not null, --객실 가격
+    capacity number(5) not null --최대수용인원    
 )
 
---질문 테이블 생성
-CREATE TABLE question (
-    question number(2) primary key, -- 질문번호
-    content varchar(50) not null -- 질문내용 
+--호텔 테이블 생성 
+CREATE TABLE hotel ( 
+    name varchar2(30) primary key, --호텔 이름 (외래키) 
+    idx number(5) not null, --호텔 고유번호
+    standard number(10) not null, --스탠다드
+    deluxe number(10) not null, --디럭스 
+    suite number(10) not null, --스위트 
+    grand number(10) not null -- 그랜드  
 ) 
 
 --예약 테이블 생성 
@@ -52,32 +71,13 @@ CREATE TABLE reser (
     constraint fk_hotel_name foreign key(name) references hotel(name)
 )
 
---객실 테이블 생성  
-CREATE TABLE room (
-    type varchar2(50) primary key, --객실타입 (외래키) 
-    idx number(5) not null, --고유 객실번호
-    img_name varchar2(50) not null, --객실이미지파일이름 
-    price number(10) not null, --객실 가격
-    capacity number(5) not null --최대수용인원    
-)
-
---호텔 테이블 생성 
-CREATE TABLE hotel ( 
-    name varchar2(30) primary key, --호텔 이름 (외래키) 
-    idx number(5) not null, --호텔 고유번호
-    standard number(10) not null, --스탠다드
-    deluxe number(10) not null, --디럭스 
-    suite number(10) not null, --스위트 
-    grand number(10) not null -- 그랜드  
-) 
-
 --시퀀스 생성  
 CREATE SEQUENCE sq_member_idx --로그인/회원가입 테이블  회원번호 시퀀스  
 CREATE SEQUENCE sq_reser_idx -- 예약 테이블 예약번호 시퀀스 
 CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
-CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
+CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스
 
---grade 기본데이터 입력  
+ --grade 기본데이터 입력  
 INSERT INTO grade values('BRONZE',0,200000,0)
 INSERT INTO grade values('SILVER',200001,1000000,5)
 INSERT INTO grade values('GOLD',1000001,3000000,10)
