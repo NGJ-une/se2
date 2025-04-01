@@ -12,7 +12,7 @@
 	}
     header {
         background-color: antiquewhite;
-    }
+    } 
     #hotelfind{
 
     }
