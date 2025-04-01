@@ -41,20 +41,19 @@
           <div>회원탈퇴</div>
       </section>
       <section class="box2">
-          <h1>비밀번호 확인</h1>
-          <hr>
-          <fieldset>
-            <label>회원번호 :</label>
-            1
+          <h1>회원탈퇴</h1>
+            <hr>
+            <fieldset>ㅇㅇ 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 더 확인합니다.</fieldset>
             <br>
-            <br>
-            <label>비밀번호 :</label>
-            <input type = "text">
-            <br>
-            <br>
-            <input type = "submit" value ="확인">
-            <input type = "button" value = "취소">
-          </fieldset>
+          <label>회원 번호 : </label>
+          1
+          <br><br>
+          <label>비밀 번호 :</label>
+          <input type = "text">
+          <br>
+          <br>
+          <input type="button" value="탈퇴">
+          <input type="button" value="취소">
       </section>
     </div>
   </body>
