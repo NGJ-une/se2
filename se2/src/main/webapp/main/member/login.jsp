@@ -40,7 +40,7 @@
             <br>
             <div>로그인</div><br><hr>
             <br>
-            <div style="color: pink;">로그인</div>
+            <div style="color: #f3415e;" >로그인</div>
             <br>
             <div>아이디 찾기</div>
             <br>

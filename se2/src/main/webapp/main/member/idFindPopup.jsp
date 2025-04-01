@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 찾기 팝업 정보</title>
+<title>아이디 찾기 정보</title>
 </head>
 <body>
 <section>

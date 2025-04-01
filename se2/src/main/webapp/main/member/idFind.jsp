@@ -33,6 +33,11 @@
       background-color: white;
     }
 </style>
+<script>
+	function idFindPopup(){
+		window.open('idFindPopup.jsp','idFind','width=500,height=250');
+	}
+</script>
 </head>
 <body>
     <section class="idfindZone">
@@ -42,7 +47,7 @@
             <br>
             <div>로그인</div>
             <br>
-            <div style="color: pink;">아이디 찾기</div>
+            <div style="color: #f3415e;"">아이디 찾기</div>
             <br>
             <div>비밀번호 찾기</div>
             <br>
@@ -69,7 +74,7 @@
                 	<li>
                     <label>답변 : </label><input type="text" name="answer"><br><br>
                 	</li>
-               	 	<li><input type="submit" value="아이디찾기"></li>
+               	 	<li><input type="submit" value="아이디찾기" onclick="idFindPopup();"></li>
                 </ul>
             	</form>
           </fieldset>
