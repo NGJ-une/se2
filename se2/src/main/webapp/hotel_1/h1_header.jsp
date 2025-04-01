@@ -6,12 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	*{
-	    margin: 0px;
-        padding: 0px;
-	}
     header {
         background-color: antiquewhite;
+        position: fixed; top: 0; left: 0; right: 0;
     } 
     #hotelfind{
 
