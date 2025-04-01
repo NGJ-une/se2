@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>memberJoin</title>
+<title>회원가입</title>
 <style>
     h2{
         text-align: center;
@@ -54,7 +54,7 @@
             <br>
             <hr>
             <br>
-            <div >회원가입</div>
+            <div style="color: #f3415e;" >회원가입</div>
           </nav>
 			<fieldset class="memberJoinField">
 				<form name="memberJoin" action="memberJoin_ok" method="post">

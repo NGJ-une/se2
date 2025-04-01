@@ -49,7 +49,7 @@
             <br>
             <div>아이디 찾기</div>
             <br>
-            <div style="color: pink;">비밀번호 찾기</div>
+            <div style="color: #f3415e;">비밀번호 찾기</div>
             <br>
             <hr>
             <br>
