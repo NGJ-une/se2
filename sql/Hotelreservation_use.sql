@@ -14,7 +14,7 @@ CREATE TABLE question (
 
 --로그인 / 회원 가입 테이블 생성 
 CREATE TABLE member( 
-    id varchar2(30) primary key, --아이디 
+    id varchar2(30) primary key, --아이디
     idx number(5) unique not null, --회원번호
     pwd varchar2(50) not null, --비밀번호
     fname varchar2(50) not null, --이름
@@ -113,7 +113,14 @@ SELECT * FROM grade
 SELECT * FROM reser
 SELECT * FROM room
 SELECT * FROM hotel
+SELECT * FROM question 
 
+insert into member (id,idx,pwd,fname,lname,birth,email,tel,addr,join_date,point,money,question,answer)
+values ('asd123',sq_member_idx.nextval,'asd123','김','두원','1999-06-11','onlyone0622@naver.com','010-1234-5678','남외동',sysdate,0,0,'1','호찬')
+
+update member set money = money+1000 where id ='asd123'
+
+commit
 --데이터 삭제 
 DELETE member
 DELETE grade
