@@ -37,15 +37,15 @@ CREATE TABLE question (
 --예약 테이블 생성 
 CREATE TABLE reser (
     idx number(5) primary key, --예약번호  
-    id varchar2(30) unique not null, --아이디 (외래키) 
-    name varchar2(5) not null, -- 호텔 이름 (외래키) 
+    id varchar2(50) unique not null, --아이디 (외래키) 
+    name varchar2(50) not null, -- 호텔 이름 (외래키) 
     type varchar2(50) not null, -- 객실타입 (외래키) 
     checkin date not null, --체크인 시간
     checkout date not null, --체크아웃 시간
-    adult number(2) default 0, --성인
-    kid number(2) default 0, --어린이 
-    baby number(2) default 0, --유아
-    money number(10) not null, -- 결제금액  
+    adult number(3) default 0, --성인
+    kid number(3) default 0, --어린이 
+    baby number(3) default 0, --유아
+    money number(10) not null, -- 결제금액 
     
     constraint fk_member_id foreign key(id) references member(id),
     constraint fk_room_type foreign key(type) references room(type),
@@ -115,19 +115,20 @@ SELECT * FROM room
 SELECT * FROM hotel
 
 --데이터 삭제 
-DELETE member
 DELETE grade
 DELETE question
 DELETE room
 DELETE hotel
+DELETE member
+DELETE reser
 
 --테이블 삭제 
-DROP TABLE member
-DROP TABLE question
 DROP TABLE grade
-DROP TABLE reser
+DROP TABLE question
 DROP TABLE room
 DROP TABLE hotel
+DROP TABLE member
+DROP TABLE reser
 
 --시퀀스 삭제 
 DROP SEQUENCE sq_user_idx
@@ -143,3 +144,4 @@ desc grade
 desc reser
 desc room
 desc hotel
+desc question
