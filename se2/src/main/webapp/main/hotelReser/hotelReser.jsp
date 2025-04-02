@@ -1,22 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-    <h2>예약확인</h2>
+    <h1>예약하기</h1>
     <hr>
-    <ul>
-        <li>ㅇㅇ호텔에 오신것을 환영합니다.</li>
-        <li>예약번호를 입력해 주시기 바랍니다.</li>
-        <li>※ㅇㅇ호텔에 회원이 되시면 회원만을 위한 특별한 혜택을 받아보실 수 있습니다.</li>
-    </ul>
-    <fieldset>
-        <div>비회원</div>
-        <div><input type = "text">&nbsp;<input type = "submit" value = "예약확인"></div>
-    </fieldset>
+    <form action="hotelReserSearch" name="hotelReserSearch">
+        <fieldset>
+            <legend>예약하기</legend>
+            <div>
+                <label>지역</label>
+                <select name="region">
+                    <option value="s">서울</option>
+                    <option value="u">울산</option>
+                </select>
+                <label>체크인</label>
+                <input type="date" name="checkIn">
+                <label>체크아웃</label>
+                <input type="date" name="checkOut">
+                <label>성인</label>
+                <input type="number" name="adult" min="0" max="2" value="2">
+                <label>어린이</label>
+                <input type="number" name="kid" min="0" max="2" value="0">
+                <label>유아</label>
+                <input type="number" name="baby" min="0" max="2" value="0">
+                <input type="submit" value="검색">
+            </div>
+        </fieldset>
+    </form>
+    <hr>
+    
 </body>
 </html>
