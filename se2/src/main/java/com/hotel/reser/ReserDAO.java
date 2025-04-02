@@ -34,7 +34,7 @@ public class ReserDAO {
 			}
 			
 			// Get current count of rooms for selected location
-			sql = "SELECT type, COUNT(type) FROM reser WHERE type LIKE ? GROUP BY type";
+			sql = "SELECT SUBSTR(type, 3) AS room_type, COUNT(type) AS cur_count FROM reser WHERE type LIKE ? GROUP BY type";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, locaInitial + "_");
 			
@@ -42,7 +42,7 @@ public class ReserDAO {
 			
 			HashMap<String, Integer> roomCurCount = new HashMap<String, Integer>();
 			while (rs.next()) {
-				
+				roomCurCount.put(rs.getString("room_type"), rs.getInt("cur_count"));
 			}
 		} catch(Exception e){
 			e.printStackTrace();
