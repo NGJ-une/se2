@@ -42,14 +42,17 @@
         <div>회원탈퇴</div>
     </section>
     <section class="box2">
+    <form name ="deposit" action = "deposit_ok.jsp">
         <h1>충전하기</h1>
+        <label>현재 금액 : </label>
         <br>
-		<label>현재 금액 : </label>
+        <br>
         <label>충전할 금액 : </label>
-        <input type="text" >
+        <input type="text" name = "money">
         <br>
-        <input type="button" value="충전">
-        <input type="button" value="취소">
+        <input type="submit" value="충전">
+        <input type="reset" value="취소">
+    </form>
     </section>
   </div>
 </body>
