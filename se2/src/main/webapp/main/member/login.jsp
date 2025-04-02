@@ -34,7 +34,22 @@
     }
 </style>
 </head>
+<%
+String saveid=""; 
+
+
+Cookie cks[]=request.getCookies();
+if(cks!=null){
+	for(int i=0; i<cks.length; i++){
+		if(cks[i].getName().equals("saveid")){
+			saveid=cks[i].getValue();
+		}
+	}
+}
+%>
 <body>
+<%@include file="/header.jsp" %>
+
     <section class="loginZone">
           <nav class="loginmenu">
             <br>
@@ -61,13 +76,16 @@
                 </p>
             </div>
                <ul>
-                    <li><label> 아이디 : </label><input type="text" value="호텔 아이디 입력" name="id"></li>
-                    <li><label>비밀번호 : </label><input type="password" name="pwd"></li>
+                    <li><label> 아이디 : </label><input type="text" name="userid"></li>
+                    <li><label>비밀번호 : </label><input type="password" name="userpwd"></li>
                     <li><input type="submit" value=" 로그인 "></li>
-                    <li><input type="checkbox"><label>아이디 저장</label></li>    
+                    <li><input type="checkbox" name="saveid" value="on"
+                    <%=saveid.equals("")?"":"checked" %> >아이디 저장</li>    
                </ul>
 			</form>
 		</fieldset>
 	</section>
+<%@include file="/footer.jsp" %>
 </body>
 </html>
+
