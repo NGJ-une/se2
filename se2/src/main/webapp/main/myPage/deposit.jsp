@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,12 +24,16 @@
       width: 800px; 
       background-color: white;
     }
+    a {
+    	text-decoration: none;
+    	color : black;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <section class="box1">
-        <label>마이페이지</label>
+        <a href = "myPage_main.jsp"><label>마이페이지</label></a>
         <hr>
         <br>
         <div>충전하기</div>
@@ -42,14 +47,23 @@
         <div>회원탈퇴</div>
     </section>
     <section class="box2">
+    <form name ="deposit" action = "deposit_ok.jsp">
         <h1>충전하기</h1>
+
+        <%
+        String id = "asd123";
+        int money = mdao.importAmount(id);
+        %>
+        <label>현재 금액 : <%=money %></label>
+
         <br>
-		<label>현재 금액 : </label>
+        <br>
         <label>충전할 금액 : </label>
-        <input type="text" >
+        <input type="text" name = "money">
         <br>
-        <input type="button" value="충전">
-        <input type="button" value="취소">
+        <input type="submit" value="충전">
+        <input type="reset" value="취소">
+    </form>
     </section>
   </div>
 </body>
