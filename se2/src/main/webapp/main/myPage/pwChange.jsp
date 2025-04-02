@@ -42,6 +42,7 @@
         <div>회원탈퇴</div>
     </section>
     <section class="box2">
+    <form name = "pwchange" action = "pwChange_ok.jsp">
         <h1>비밀번호 변경</h1>
 
         <label>현재 비밀번호 : </label>
@@ -53,8 +54,9 @@
         <label>새 비밀번호 확인 : </label>
         <input type="text" >
         <br>
-        <input type="button" value="충전">
+        <input type="submit" value="변경">
         <input type="button" value="취소">
+    </form>
     </section>
   </div>
 </body>

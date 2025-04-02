@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
+<%
+String id = "asd123";
+String grade = "BRONZE";
+int money = mdao.importAmount(id);
+if(money > 3000000) {
+	grade = "DIAMOND";
+}else if (money > 1000000) {
+	grade = "GOLD";
+}else if (money > 200000) {
+	grade = "SILVER";
+}
+mdao.grade(grade, id);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +25,7 @@
         <article>
             <div class="container">
                 <div class="sidebar">
-                    <p>마이페이지지</p>
+                    <p>마이페이지</p>
                 </div>
                 <ul>
                     <li>충전하기</li>
@@ -23,7 +37,7 @@
             </div>
             <div>
                 <p>suhan lee 님은 <br> 
-                   SILVER 회원입니다</p>
+                   <%=grade %> 회원입니다</p>
                     <fieldset>
                         <p>회원번호 12 | 포인트 239p </p>
                     </fieldset>
