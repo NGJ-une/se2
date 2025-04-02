@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class DepositDAO {
 
+
 	Connection conn;
 	PreparedStatement ps;
 	ResultSet rs;
@@ -84,4 +85,5 @@ public class DepositDAO {
 			}
 		}
 	}
+
 }

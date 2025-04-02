@@ -49,11 +49,13 @@
     <section class="box2">
     <form name ="deposit" action = "deposit_ok.jsp">
         <h1>충전하기</h1>
+
         <%
         String id = "asd123";
         int money = mdao.importAmount(id);
         %>
         <label>현재 금액 : <%=money %></label>
+
         <br>
         <br>
         <label>충전할 금액 : </label>
