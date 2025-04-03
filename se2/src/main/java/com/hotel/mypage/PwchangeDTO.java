@@ -26,6 +26,19 @@ public class PwchangeDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public PwchangeDTO(String fname, String lname, String email, String tel, String addr) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.tel = tel;
+		this.addr = addr;
+	}
+
+
+
 	public PwchangeDTO(String id, int idx, String pwd, String fname, String lname, String birth, String email,
 			String tel, String addr, String grade, Date join_date, int point, int money, int question, String answer) {
 		super();
