@@ -54,6 +54,7 @@ public class MemberDAO {
 	
 
 	/** 아이디 중복검사 관련 메서드 */
+	// member테이블에서 ID컬럼만 파라미터 받아서 중복검사
 	public boolean idCheck(String userid) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
@@ -76,67 +77,76 @@ public class MemberDAO {
 		}
 	}
 	
-	/** 로그인 관련 메서드*/
-
-	public int loginCheck(String userid,String userpwd) {
+	
+	/**  로그인 메소드   */   //id 검색 시 비밀번호 알려줌
+	
+	public String login(String userid) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
 			String sql="SELECT PWD FROM MEMBER WHERE ID=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
+			String userpwd="";
 			if(rs.next()) {
-				String dbpwd =rs.getString("pwd");
-				
-				if(dbpwd.equals(userpwd)){
-					return LOGIN_OK;
-				}
-				
-				else {
-					return NOT_PWD;
-					}
-				
-			}else{
-				return NOT_ID;
-			}
-				
-		}catch (Exception e) {
+				userpwd= rs.getString("pwd");
+			} 
+			return userpwd;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
-			return ERROR;
+			return null;
 
 		}finally {
 			try {
-				if (rs != null)rs.close();
-				if (ps != null)ps.close();
-				if (conn != null)conn.close();
-			}catch (Exception e2) {}
-		}
-	}
-	
-	/**로그인 후 이름 찾는 메서드*/
-	public String getName(String userid) {
-		try {
-			conn=com.hotel.db.HotelDB.getConn();
-			String sql="SELECT FNAME, LNAME FROM MEMBER WHERE ID=?";
-			ps=conn.prepareStatement(sql);
-			ps.setString(1, userid);
-			rs=ps.executeQuery();
-			rs.next();
-			return rs.getString(1);
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}finally {
-			try {
-				
+				if (rs != null) rs.close(); 
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
 			}catch (Exception e2) {
-				
+				}
 			}
 		}
-		
-	}
+}
+//	/** 아이디 찾기 */
+//	public int ldFind(String userpwd) {
+//		try {
+//			conn=com.hotel.db.HotelDB.getConn();
+//			String sql="SELECT ";
+//		}catch (Exception e) {
+//			
+//		}finally {
+//			try {
+//				
+//			}catch (Exception e2) {
+//				 		
+//			}
+//		}
+//	}
+//	
+//	
+//	}
 	
-}                        
+	
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/** 비밀번호 찾는 메소드 */    // 내가 입력한 pwd의 id가 누군지 묻는 메서드
+
+	
+	/**로그인 후 이름 찾는 메서드*/ //로그인 시 상단에 이름 보이도록
+
+	
+              
+
+	
+	
+	
+	/** 비밀번호 찾는 메소드 */    //id 검색 시 비밀번호 알려줌
+	
+
+	
+	
 
 
 

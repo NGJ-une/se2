@@ -5,14 +5,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/se2/css/header-and-footer.css">
+
+<style>
+/* 섹션 1 이미지 */
+.section1 img {
+ 
+    margin-top: 50px; 
+    
+}
+body{
+		margin: 0 auto;
+		overflow-x:auto;
+}
+@media (min-width: 1500px) {
+    body {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1499px) {
+    body {
+        width: 1500px; /* 최소 너비로 설정 */
+        overflow-x: auto; 
+    }
+}
+
+	
+
+</style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-    <section>
+    <section class="section1">
         <article>
             <fieldset>
-                <img src="" alt="h1">
+                <img src="main/img/1.jpg" alt="h1">
                 <input type="button" value="바로가기">
                 <img src="" alt="h2">
                 <input type="button" value="바로가기">

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+footer table {
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+
+.cell-border {
+	border: 1px solid black;
+}
+
+.cell-bottom-border {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}

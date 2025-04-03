@@ -28,9 +28,9 @@ mdao.grade(grade, id);
                     <p>마이페이지</p>
                 </div>
                 <ul>
-                    <li>충전하기</li>
-                    <li>프로필수정</li>
-                    <li>비빌번호변경</li>
+                    <li><a href = "deposit.jsp">충전하기</a></li>
+                    <li><a href = "profileEditCheck.jsp">프로필수정</a></li>
+                    <li><a href = "pwChange.jsp">비빌번호변경</a></li>
                     <li>문의내역</li>
                     <li>회원탈퇴</li>
                 </ul>
