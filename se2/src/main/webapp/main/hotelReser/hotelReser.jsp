@@ -79,7 +79,12 @@
     		<td><%= arr.get(i).getCapacity() %></td>
     	</tr>
     	<%			
-    			}	
+    			}
+    	%>
+    	<tr>
+    		<td colspan="4"><input type="submit" value="예약하기">
+    	</tr>
+    	<%
     		}
     	}
     	%>
