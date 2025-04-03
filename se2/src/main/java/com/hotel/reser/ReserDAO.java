@@ -12,30 +12,28 @@ public class ReserDAO {
 		
 	}
 	
-	public ArrayList<RoomDTO> searchRooms(String location, int headCount){
+	public ArrayList<RoomDTO> searchRooms(String region, int headCount){
 		try {
-			char locaInitial = location.charAt(0);
+			char regionInitial = region.charAt(0);
 			
 			conn = com.hotel.db.HotelDB.getConn();
 			
 			String sql = "SELECT * FROM hotel WHERE name = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, location);
-			
+			ps.setString(1, region);
 			rs = ps.executeQuery();
 			
 			HashMap<String, Integer> roomMaxCount = new HashMap<String, Integer>();
 			if (rs.next()) {
-				roomMaxCount.put("standard", rs.getInt("standard"));
-				roomMaxCount.put("deluxe", rs.getInt("deluxe"));
-				roomMaxCount.put("suite", rs.getInt("suite"));
-				roomMaxCount.put("grand", rs.getInt("grand"));
+				roomMaxCount.put("standard", rs.getInt("standard")); 
+				roomMaxCount.put("deluxe", rs.getInt("deluxe")); 
+				roomMaxCount.put("suite", rs.getInt("suite")); 
+				roomMaxCount.put("grand", rs.getInt("grand")); 
 			}
 			
 			sql = "SELECT SUBSTR(type, 3) AS room_type, COUNT(type) AS cur_count FROM reser WHERE type LIKE ? GROUP BY type";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, locaInitial + "_");
-			
+			ps.setString(1, regionInitial + "_%");
 			rs = ps.executeQuery();
 			
 			HashMap<String, Integer> roomCurCount = new HashMap<String, Integer>();
@@ -45,9 +43,8 @@ public class ReserDAO {
 			
 			sql = "SELECT * FROM room WHERE type LIKE ? AND capacity >= ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, locaInitial + "_");
+			ps.setString(1, regionInitial + "_%");
 			ps.setInt(2, headCount);
-			
 			rs = ps.executeQuery();
 			
 			ArrayList<RoomDTO> res = new ArrayList<RoomDTO>();
