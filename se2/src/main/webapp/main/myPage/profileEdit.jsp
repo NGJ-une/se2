@@ -1,10 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "com.hotel.mypage.*" %>
+<jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
+
+<%
+String id = "asd123";
+ArrayList<PwchangeDTO> arr = mdao.memberInfo(id); //가져오기 db로 
+int fmailLocation = arr.get(0).getEmail().indexOf("@"); // @ 까지의 위치 가져오기
+int total = arr.get(0).getEmail().length(); // 전체길이 가져오기
+String fmail = arr.get(0).getEmail().substring(0, fmailLocation); //0번쨰 부터 @위치까지 가져오기
+String lmail = arr.get(0).getEmail().substring(fmailLocation+1, total); // @의 다음부터 전체 길이 까지 가져오기
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function show() {
+    var setlmail = document.getElementById("lmail");<!-- lmail 가져오기-->
+    var getemail = document.getElementById("emailSel").value;<!-- 옵션태그의 값 가져오기-->
+    if (getemail != "type") {<!-- 직접입력이 아닐 경우 lmail에 옵션태그 에 값 넣기-->
+        setlmail.value = getemail;
+    } else {
+        setlmail.value = ""; <!-- 직접입력일 경우 입력칸 비운것 처럼 보이게 하기-->
+    }
+}
+
+</script>
 <style>
         .container {
           display: flex;
@@ -41,23 +65,24 @@
           <div>회원탈퇴</div>
       </section>
       <section class="box2">
+      <form name = "profileEdit" action = "profileEdit_ok.jsp">
           <h1>프로필 수정
           </h1>
           <hr>
           <fieldset>
-            <label>이름 :</label>
-            <input type = "text"> 
             <label>성 :</label>
-            <input type = "text">
+            <input type = "text" name = "fname" value = "<%=arr.get(0).getFname()%>"> 
+            <label>이름 :</label>
+            <input type = "text" name = "lname" value = "<%=arr.get(0).getLname()%>">
             <br>
             <br>
             <label>아이디 :</label>
-            챠니♥쥬니(db 에 있는 아이디 가져오면 됨.)
+            <%=id %>(session 에 있는 아이디 가져오면 됨.)
             <br>
             <br>
             <label>이메일 :</label>
-            <input type = "text"> @ <input type = "text">
-            <select>
+            <input type = "text" name = "fmail" value = "<%=fmail%>"> @ <input type = "text" id = "lmail" name = "lmail" value = "<%=lmail%>">
+            <select id = "emailSel" onchange="show()">
                 <option value = "type">직접입력</option>
                 <option value = "naver.com">naver.com</option>
                 <option value = "google.com">google.com</option>
@@ -67,16 +92,17 @@
             <br>
             <br>
             <label>전화번호 :</label>
-            <input type = "text">
+            <input type = "text" name = "tel" value = "<%=arr.get(0).getTel()%>">
             <br>
             <br>
             <label>주소 :</label>
-            <input type = "text">
+            <input type = "text" name = "addr" value = "<%=arr.get(0).getAddr()%>">
             <br>
             <br>
             <input type ="submit" value = "변경">
             <input type = "button" value = "취소">
           </fieldset>
+      </form>
       </section>
     </div>
   </body>
