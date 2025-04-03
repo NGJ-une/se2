@@ -44,15 +44,14 @@
     <section class="box2">
     <form name = "pwchange" action = "pwChange_ok.jsp">
         <h1>비밀번호 변경</h1>
-
         <label>현재 비밀번호 : </label>
-        <input type="text" >
+        <input type="text" name = "nowpwd">
         <br>
         <label>새 비밀번호 : </label>
-        <input type="text" >
+        <input type="text" name = "newpwd">
         <br>
         <label>새 비밀번호 확인 : </label>
-        <input type="text" >
+        <input type="text" name = "newpwdCheck">
         <br>
         <input type="submit" value="변경">
         <input type="button" value="취소">

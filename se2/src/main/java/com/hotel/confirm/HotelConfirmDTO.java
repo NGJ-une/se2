@@ -5,162 +5,170 @@ import java.sql.Date;
 public class HotelConfirmDTO {
 	
 	//기본 예약 테이블 컬럼 
-	private int number; // 예약번호 
-	private String id; //아이디 
-	private String name; //호텔 이름
-	private String type; //객실 타입
-	private java.sql.Date checkin; //체크인 날짜
-	private java.sql.Date checkout; //체크인 날짜 
-	private int adult; //성인
-	private int kid; //어린이
-	private int baby; //유아
-	private int money; //결제금액
+	private int ridx; // 예약번호 
+	private String rid; //아이디 
+	private String rname; //호텔 이름
+	private String rtype; //객실 타입
+	private java.sql.Date rcheckin; //체크인 날짜
+	private java.sql.Date rcheckout; //체크인 날짜 
+	private int radult; //성인
+	private int rkid; //어린이
+	private int rbaby; //유아
+	private int rmoney; //결제금액
 
 	// 회원가입에서 테이블에서 가져올 컬럼
-	private String u_id; //회원아이디
-	private String u_fname; //회원이름
-	private String u_lname; //회원 성  
-	private String u_tel; //회원 연락처
-	private String u_email; //회원 이메일 
+	private String mid; //회원아이디
+	private String mfname; //회원이름
+	private String mlname; //회원 성  
+	private String mtel; //회원 연락처
+	private String memail; //회원 이메일 
+	
+	//예약 확인 출력용 가상 컬럼
+	private int persons;
+	private int day;
 	
 	public HotelConfirmDTO() {
 		// TODO Auto-generated constructor stub
 	}
 	//예약 테이블 전체 필드 
-	public HotelConfirmDTO(int number, String id, String name, String type, Date checkin, Date checkout, int adult,
-			int kid, int baby, int money) {
+	public HotelConfirmDTO(int ridx, String rid, String rname, String rtype, Date rcheckin, Date rcheckout, int radult,
+			int rkid, int rbaby, int rmoney) {
 		super();
-		this.number = number;
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.checkin = checkin;
-		this.checkout = checkout;
-		this.adult = adult;
-		this.kid = kid;
-		this.baby = baby;
-		this.money = money;
+		this.ridx = ridx;
+		this.rid = rid;
+		this.rname = rname;
+		this.rtype = rtype;
+		this.rcheckin = rcheckin;
+		this.rcheckout = rcheckout;
+		this.radult = radult;
+		this.rkid = rkid;
+		this.rbaby = rbaby;
+		this.rmoney = rmoney;
 	}
+	
+	//예약확인 출력 필드 persons 가상컬럼 추가 버전  
+	public HotelConfirmDTO(int ridx, Date rcheckin, Date rcheckout, String mfname, String mlname, String mtel, String memail,String rtype,int persons, int day) {
+		super();
+		this.ridx = ridx;
+		this.rcheckin = rcheckin;
+		this.rcheckout = rcheckout;
+		this.mfname = mfname;
+		this.mlname = mlname;
+		this.mtel = mtel;
+		this.memail = memail;
+		this.rtype = rtype;
+		this.persons = persons;
+		this.day = day;
+	}
+	
 	//예약 테이블 getter setter
-	public int getNumber() {
-		return number;
+	public int getRidx() {
+		return ridx;
 	}
-
-	public void setNumber(int number) {
-		this.number = number;
+	public void setRidx(int ridx) {
+		this.ridx = ridx;
 	}
-
-	public String getId() {
-		return id;
+	public String getRid() {
+		return rid;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setRid(String rid) {
+		this.rid = rid;
 	}
-
-	public String getName() {
-		return name;
+	public String getRname() {
+		return rname;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setRname(String rname) {
+		this.rname = rname;
 	}
-
-	public String getType() {
-		return type;
+	public String getRtype() {
+		return rtype;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	public void setRtype(String rtype) {
+		this.rtype = rtype;
 	}
-
-	public java.sql.Date getCheckin() {
-		return checkin;
+	public java.sql.Date getRcheckin() {
+		return rcheckin;
 	}
-
-	public void setCheckin(java.sql.Date checkin) {
-		this.checkin = checkin;
+	public void setRcheckin(java.sql.Date rcheckin) {
+		this.rcheckin = rcheckin;
 	}
-
-	public java.sql.Date getCheckout() {
-		return checkout;
+	public java.sql.Date getRcheckout() {
+		return rcheckout;
 	}
-
-	public void setCheckout(java.sql.Date checkout) {
-		this.checkout = checkout;
+	public void setRcheckout(java.sql.Date rcheckout) {
+		this.rcheckout = rcheckout;
 	}
-
-	public int getAdult() {
-		return adult;
+	public int getRadult() {
+		return radult;
 	}
-
-	public void setAdult(int adult) {
-		this.adult = adult;
+	public void setRadult(int radult) {
+		this.radult = radult;
 	}
-
-	public int getKid() {
-		return kid;
+	public int getRkid() {
+		return rkid;
 	}
-
-	public void setKid(int kid) {
-		this.kid = kid;
+	public void setRkid(int rkid) {
+		this.rkid = rkid;
 	}
-
-	public int getBaby() {
-		return baby;
+	public int getRbaby() {
+		return rbaby;
 	}
-
-	public void setBaby(int baby) {
-		this.baby = baby;
+	public void setRbaby(int rbaby) {
+		this.rbaby = rbaby;
 	}
-
-	public int getMoney() {
-		return money;
+	public int getRmoney() {
+		return rmoney;
 	}
-
-	public void setMoney(int money) {
-		this.money = money;
+	public void setRmoney(int rmoney) {
+		this.rmoney = rmoney;
 	}
 	
 	//회원 테이블 getter setter
-	public String getU_id() {
-		return u_id;
+	public String getMid() {
+		return mid;
 	}
-
-	public void setU_id(String u_id) {
-		this.u_id = u_id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
-
-	public String getU_fname() {
-		return u_fname;
+	public String getMfname() {
+		return mfname;
 	}
-
-	public void setU_fname(String u_fname) {
-		this.u_fname = u_fname;
+	public void setMfname(String mfname) {
+		this.mfname = mfname;
 	}
-
-	public String getU_lname() {
-		return u_lname;
+	public String getMlname() {
+		return mlname;
 	}
-
-	public void setU_lname(String u_lname) {
-		this.u_lname = u_lname;
+	public void setMlname(String mlname) {
+		this.mlname = mlname;
 	}
-
-	public String getU_tel() {
-		return u_tel;
+	public String getMtel() {
+		return mtel;
 	}
-
-	public void setU_tel(String u_tel) {
-		this.u_tel = u_tel;
+	public void setMtel(String mtel) {
+		this.mtel = mtel;
 	}
-
-	public String getU_email() {
-		return u_email;
+	public String getMemail() {
+		return memail;
 	}
-
-	public void setU_email(String u_email) {
-		this.u_email = u_email;
+	public void setMemail(String memail) {
+		this.memail = memail;
 	}
+	
+	//가상 컬럼전용 getter setter
+	public int getPersons() {
+		return persons;
+	}
+	public void setPersons(int persons) {
+		this.persons = persons;
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
+	
+	
 	
 }
