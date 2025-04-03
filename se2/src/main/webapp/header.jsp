@@ -8,7 +8,7 @@
 <header>
   <nav>
     <div>
-      <a id="login">로그인</a> | <a id="memberJoin">회원가입</a>
+      <a id="login">로그인</a> | <a href="main/member/memberJoin.jsp">회원가입</a>
     </div>
     <ul>
       <li><a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()" href="#">호텔찾기</a></li>

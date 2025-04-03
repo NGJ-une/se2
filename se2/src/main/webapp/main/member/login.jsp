@@ -48,22 +48,20 @@ if(cks!=null){
 }
 %>
 <body>
-<%@include file="/header.jsp" %>
-
     <section class="loginZone">
           <nav class="loginmenu">
             <br>
-            <div>로그인</div><br><hr>
+            <h4>로그인</h4><br><hr>
             <br>
-            <div style="color: #f3415e;" >로그인</div>
+            <div style="color: #f3415e;" ><a href="login.jsp">로그인</a></div>
             <br>
-            <div>아이디 찾기</div>
+            <div><a href="idFind.jsp">아이디 찾기</a></div>
             <br>
-            <div>비밀번호 찾기</div>
+            <div><a href="pwdFind.jsp">비밀번호 찾기</a></div>
             <br>
             <hr>
             <br>
-            <div>회원가입</div>
+            <div><a href="memberJoin.jsp">회원가입</a></div>
           </nav>
 		<fieldset class="loginField">
 			<form name="login" action="login_ok.jsp" method="post">
@@ -78,14 +76,15 @@ if(cks!=null){
                <ul>
                     <li><label> 아이디 : </label><input type="text" name="userid"></li>
                     <li><label>비밀번호 : </label><input type="password" name="userpwd"></li>
-                    <li><input type="submit" value=" 로그인 "></li>
+                    
                     <li><input type="checkbox" name="saveid" value="on"
-                    <%=saveid.equals("")?"":"checked" %> >아이디 저장</li>    
+                    <%=saveid.equals("")?"":"checked" %> >아이디 저장</li>  
+                    <li><input type="submit" value="  로그인  "></li>  
                </ul>
 			</form>
 		</fieldset>
 	</section>
-<%@include file="/footer.jsp" %>
+
 </body>
 </html>
 

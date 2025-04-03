@@ -4,9 +4,9 @@
 
 <%
 String userid=request.getParameter("userid");
-boolean result=mdao.idCheck(userid);
+boolean result=mdao.idCheck(userid); //userid의 값을 dao idcheck메소드로 넘김
 
-if(result){
+if(result){ //userid 입력한 값과 db의 userid와 같을때
  %>
  
  
@@ -17,7 +17,7 @@ location.href='idCheck.jsp';
     
     
 <%
- }else{
+ }else{ //DBid 입력한 값과 db의 userid와 같을때
 %>
 
 <script>

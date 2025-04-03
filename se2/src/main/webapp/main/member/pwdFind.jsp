@@ -43,17 +43,17 @@
     <section class="pwdfindZone">
           <nav class="loginmenu">
             <br>
-            <div>로그인</div><br><hr>
+            <h4>로그인</h4><br><hr>
             <br>
-            <div>로그인</div>
+            <div><a href="login.jsp">로그인</a></div>
             <br>
-            <div>아이디 찾기</div>
+             <div><a href="idFind.jsp">아이디 찾기</a></div>
             <br>
-            <div style="color: #f3415e;">비밀번호 찾기</div>
+            <div style="color: #f3415e;"><a href="pwdFind.jsp">비밀번호 찾기</a></div>
             <br>
             <hr>
             <br>
-            <div>회원가입</div>
+            <div><a href="memberJoin.jsp">회원가입</a></div>
           </nav>
         <fieldset class="pwdFindField">
             <form name="idFind" action="idFind_ok.jsp" method="post">
