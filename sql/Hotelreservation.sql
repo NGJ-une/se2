@@ -1,23 +1,23 @@
 --로그인 / 회원 가입 테이블 생성 
 CREATE TABLE member( 
-    id varchar2(30) primary key, --아이디 
-    idx number(5) unique not null, --회원번호
-    pwd varchar2(50) not null, --비밀번호
-    fname varchar2(50) not null, --이름
-    lname varchar2(50) not null, --성
-    birth date not null, --생년월일
-    email varchar2(100) not null, --이메일
-    tel varchar2(50) not null, --전화번호
-    addr varchar2(150) not null, -- 주소
-    grade varchar2(50) default 'BRONZE', --등급 (외래키) 
-    join_date date not null, -- 가입날짜
-    point number(10) default 0, --누적포인트 
-    money number(10) default 0, --사용가능금액  
-    question number(2) not null, --질문번호 (외래키) 
-    answer varchar2(50) not null, --답변 
+    mid varchar2(30) primary key, --아이디 
+    midx number(5) unique not null, --회원번호
+    mpwd varchar2(50) not null, --비밀번호
+    mfname varchar2(50) not null, --이름
+    mlname varchar2(50) not null, --성
+    mbirth date not null, --생년월일
+    memail varchar2(100) not null, --이메일
+    mtel varchar2(50) not null, --전화번호
+    maddr varchar2(150) not null, -- 주소
+    mgrade varchar2(50) default 'BRONZE', --등급 (외래키) 
+    mjoin_date date not null, -- 가입날짜
+    mpoint number(10) default 0, --누적포인트 
+    mmoney number(10) default 0, --사용가능금액  
+    mquestion number(2) not null, --질문번호 (외래키) 
+    manswer varchar2(50) not null, --답변 
     
-    constraint fk_grade foreign key(grade) references grade(grade),
-    constraint fk_question foreign key(question) references question(question)
+    constraint fk_grade foreign key(mgrade) references grade(grade),
+    constraint fk_question foreign key(mquestion) references question(question)
 )
 
 --등급 테이블 생성  
@@ -36,20 +36,20 @@ CREATE TABLE question (
 
 --예약 테이블 생성 
 CREATE TABLE reser (
-    idx number(5) primary key, --예약번호  
-    id varchar2(50) unique not null, --아이디 (외래키) 
-    name varchar2(50) not null, -- 호텔 이름 (외래키) 
-    type varchar2(50) not null, -- 객실타입 (외래키) 
-    checkin date not null, --체크인 시간
-    checkout date not null, --체크아웃 시간
-    adult number(3) default 0, --성인
-    kid number(3) default 0, --어린이 
-    baby number(3) default 0, --유아
-    money number(10) not null, -- 결제금액 
+    ridx number(5) primary key, --예약번호  
+    rid varchar2(50) not null, --아이디 (외래키) 
+    rname varchar2(50) not null, -- 호텔 이름 (외래키) 
+    rtype varchar2(50) not null, -- 객실타입 (외래키) 
+    rcheckin date not null, --체크인 시간
+    rcheckout date not null, --체크아웃 시간
+    radult number(3) default 0, --성인
+    rkid number(3) default 0, --어린이 
+    rbaby number(3) default 0, --유아
+    rmoney number(10) not null, -- 결제금액 
     
-    constraint fk_member_id foreign key(id) references member(id),
-    constraint fk_room_type foreign key(type) references room(type),
-    constraint fk_hotel_name foreign key(name) references hotel(name)
+    constraint fk_member_id foreign key(rid) references member(mid),
+    constraint fk_room_type foreign key(rtype) references room(type),
+    constraint fk_hotel_name foreign key(rname) references hotel(hname)
 )
 
 --객실 테이블 생성  
@@ -63,8 +63,8 @@ CREATE TABLE room (
 
 --호텔 테이블 생성 
 CREATE TABLE hotel ( 
-    name varchar2(30) primary key, --호텔 이름 (외래키) 
-    idx number(5) not null, --호텔 고유번호
+    hname varchar2(30) primary key, --호텔 이름 (외래키) 
+    hidx number(5) not null, --호텔 고유번호
     standard number(10) not null, --스탠다드
     deluxe number(10) not null, --디럭스 
     suite number(10) not null, --스위트 
@@ -115,21 +115,19 @@ SELECT * FROM room
 SELECT * FROM hotel
 
 --데이터 삭제 
-DELETE grade
-DELETE question
-DELETE room
-DELETE hotel
-DELETE member
 DELETE reser
-
+DELETE member
+DELETE hotel
+DELETE room
+DELETE question
+DELETE grade
 --테이블 삭제 
-DROP TABLE grade
-DROP TABLE question
-DROP TABLE room
-DROP TABLE hotel
-DROP TABLE member
 DROP TABLE reser
-
+DROP TABLE member
+DROP TABLE hotel
+DROP TABLE room
+DROP TABLE question
+DROP TABLE grade
 --시퀀스 삭제 
 DROP SEQUENCE sq_user_idx
 DROP SEQUENCE sq_reser_idx
