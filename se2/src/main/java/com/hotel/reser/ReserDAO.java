@@ -12,7 +12,7 @@ public class ReserDAO {
 		
 	}
 	
-	public ArrayList<RoomDTO> searchRooms(String region, int headCount){
+	public ArrayList<RoomDTO> searchRooms(String region, int headCount, java.sql.Date checkIn){
 		try {
 			char regionInitial = region.charAt(0);
 			
@@ -31,9 +31,10 @@ public class ReserDAO {
 				roomMaxCount.put("grand", rs.getInt("grand")); 
 			}
 			
-			sql = "SELECT SUBSTR(type, 3) AS room_type, COUNT(type) AS cur_count FROM reser WHERE type LIKE ? GROUP BY type";
+			sql = "SELECT SUBSTR(type, 3) AS room_type, COUNT(type) AS cur_count FROM reser WHERE type LIKE ? AND checkout < ? GROUP BY type";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, regionInitial + "_%");
+			ps.setDate(2, checkIn);
 			rs = ps.executeQuery();
 			
 			HashMap<String, Integer> roomCurCount = new HashMap<String, Integer>();
@@ -66,6 +67,34 @@ public class ReserDAO {
 		} finally {
 			try {
 				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {}
+		}
+	}
+	
+	public int reserveRoom(ReserDTO dto) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			
+			String sql = "INSERT INTO reser VALUES (sq_reser_idx, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getName());
+			ps.setString(3, dto.getType());
+			ps.setDate(4, dto.getCheckIn());
+			ps.setDate(5, dto.getCheckOut());
+			ps.setInt(6, dto.getAdult());
+			ps.setInt(7, dto.getKid());
+			ps.setInt(8, dto.getBaby());
+			ps.setInt(9, dto.getMoney());
+			
+			return ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
 				if (ps != null) ps.close();
 				if (conn != null) conn.close();
 			} catch(Exception e) {}
