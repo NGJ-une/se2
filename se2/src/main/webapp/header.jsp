@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<style>
-	header{
-		position: fixed; top: 0; left: 0; right: 0;
-	}
-
-</style>
+<link rel="stylesheet" type="text/css" href="/se2/css/header.css">
 <header>
   <nav>
     <div>
@@ -20,3 +15,11 @@
   </nav>
   <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 -->
 </header>
+
+if(rs.get()).equals(매개변수)){
+	if(){
+	}
+} else{
+
+}
+
