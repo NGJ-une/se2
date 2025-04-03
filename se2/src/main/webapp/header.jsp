@@ -13,7 +13,7 @@
       <li><a class="top-menu-text" href="#">예약확인</a></li>
     </ul>
   </nav>
-  <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 -->
+  <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 --> 
 </header>
 
 if(rs.get()).equals(매개변수)){
