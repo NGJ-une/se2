@@ -16,13 +16,13 @@ public class PwchangeDAO {
 	public String nowPwdBring(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select pwd from member where id = ?";
+			String sql = "select mpwd from member where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			String pwd = "";
 			if(rs.next()) {
-				pwd = rs.getString("pwd");
+				pwd = rs.getString("mpwd");
 			}
 			return pwd;
 		} catch (Exception e) {
@@ -44,7 +44,7 @@ public class PwchangeDAO {
 	public int pwChange(String id, String pwd) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "update member set pwd = ? where id = ?";
+			String sql = "update member set mpwd = ? where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, pwd);
 			ps.setString(2, id);
@@ -66,17 +66,17 @@ public class PwchangeDAO {
 	public ArrayList<PwchangeDTO> memberInfo(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql ="select fname,lname,email,tel,addr from member where id = ?";
+			String sql ="select mfname,mlname,memail,mtel,maddr from member where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			ArrayList<PwchangeDTO> arr = new ArrayList<PwchangeDTO>();
 			while(rs.next()) {
-				String fname = rs.getString("fname");
-				String lname = rs.getString("lname");
-				String email = rs.getString("email");
-				String tel = rs.getString("tel");
-				String addr = rs.getString("addr");
+				String fname = rs.getString("mfname");
+				String lname = rs.getString("mlname");
+				String email = rs.getString("memail");
+				String tel = rs.getString("mtel");
+				String addr = rs.getString("maddr");
 				PwchangeDTO dto2 = new PwchangeDTO(fname, lname, email, tel, addr);
 				arr.add(dto2);
 			}
@@ -97,17 +97,25 @@ public class PwchangeDAO {
 	
 	
 	//회원 정보 수정 메서드
-	public int memberEdit(String id,PwchangeDTO dto) {
+	public int memberEdit(String id, PwchangeDTO dto) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "update member set fname = ?, lname = ?, email = ?, tel = ?, addr = ? where id = ?";
+			String sql = "update member set mfname = ?, mlname = ?, memail = ?, mtel = ?, maddr = ? where mid = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, dto.getFname());
-			ps.setString(2, dto.getLname());
-			ps.setString(3, dto.getEmail());
-			ps.setString(4, dto.getTel());
-			ps.setString(5, dto.getAddr());
+			ps.setString(1, dto.getMfname());
+			ps.setString(2, dto.getMlname());
+			ps.setString(3, dto.getMemail());
+			ps.setString(4, dto.getMtel());
+			ps.setString(5, dto.getMaddr());
 			ps.setString(6, id);
+			
+			System.out.println("------------");
+			System.out.println(dto.getMfname());
+			System.out.println(dto.getMlname());
+			System.out.println(dto.getMemail());
+			System.out.println(dto.getMtel());
+			System.out.println(dto.getMaddr());
+			System.out.println(dto.getMid());
 			int count = ps.executeUpdate();
 			return count;
 		} catch (Exception e) {
@@ -117,6 +125,26 @@ public class PwchangeDAO {
 			try {
 				if(ps!= null) ps.close();
 				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	//회원탈퇴 메서드
+	public int memberDel(String id) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String slq = "delete member where id = ? and mmoney = 0";
+			ps = conn.prepareStatement(slq);
+			ps.setString(1, id);
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
