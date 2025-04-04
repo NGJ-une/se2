@@ -4,10 +4,19 @@
 <%@ page import="com.hotel.confirm.*" %>
 <jsp:useBean id="hcdao" class="com.hotel.confirm.HotelConfirmDAO"></jsp:useBean>
 <%
-//response 로 넘겨진 값 가져오기 
-String rid=request.getParameter("rid");
-//넘겨진 값 저장 
-
+//비로그인일시 response 로 넘겨진 값 가져오기 
+String ridx_s=request.getParameter("ridx");
+String mid=request.getParameter("mid");
+//값이 넘어오지않거나 없을경우를 대비 
+if(ridx_s==null||ridx_s.equals("")){
+	ridx_s="0";
+}
+if(mid==null||mid.equals("")){
+	mid="";
+}
+// 넘겨진 값 파씽 
+int ridx=Integer.parseInt(ridx_s);
+System.out.println(ridx_s+"/"+mid);
 %>
 <!DOCTYPE html>
 <html>
@@ -27,45 +36,60 @@ function show(){
     <h2>예약확인</h2>
     <hr>
 <section>
-    <article>
-        <fieldset>
-            <label>예약번호 : <%=request.getParameter("confirmNumber") %></label>
-            <hr>
-            <label>체크인 :</label> 
-            <hr>
-            <label>체크아웃 :</label>
-            <hr>
-            <label>예약자 명 :</label>
-            <hr>
-            <label>연락처 :</label>
-            <br>
-            <label>E-mail:</label>
-            <hr>
-            <label>예약 객실 :</label>
-            <br>
-            <label>예약 인원 :</label>
-        </fieldset>
-        <br>
-        <input type = "button" value = "확인" onclick="show();">
-    </article>
-</section>
-<section>
 	<article>
-		<form name="hotelConfirmMdata" action="#">
-			<table>
+		<form name="hotelConfirmM" action="#">
+		<table>
 			<%
-			ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmresult(rid);
-			if(arr==null||arr.size()==0){
+			ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmresult(ridx);
+			ArrayList<HotelConfirmDTO> arr2 = hcdao.hotelConfirmInUse(mid);
+			System.out.println(arr2==null?"YES":"NO");
+			if(((arr==null||arr.size()==0 || arr.get(0).getRidx()==0))&&(arr2==null||arr2.size()==0)){
 				%>
 				<tr>
 					<td colspan="2">
-					이미 지난 예약 번호 이거나 <br>
-					예약 내역이 없습니다.
+					체크아웃된 예약 내역이거나 <br>
+					최근 예약 내역이 없습니다.
 					</td>
 				</tr>
 				<%
 			}else{
 				for(int i=0;i<arr.size();i++){
+					if(arr2.size()>=0){
+						for(int z=0;z<arr2.size();z++){
+							System.out.println(arr2.get(z).getRidx());
+						%>
+						<table>
+						<h2>이용 중</h2> 
+						<tr>
+							<th>예약번호 :<%=arr2.get(z).getRidx() %></th>
+						</tr>
+						<tr>
+							<th>체크인 :<%=arr2.get(z).getRcheckin() %></th>						
+						</tr>
+						<tr>
+							<th>체크아웃 :<%=arr2.get(z).getRcheckout() %></th>
+							<th><%=arr2.get(z).getDay() %>박<%=arr2.get(z).getDay()+1 %>일</th>
+						</tr>
+						<tr>
+							<th>연락처 정보</th>
+						</tr>
+						<tr>
+							<th>Email :<%=arr2.get(z).getMemail() %></th>
+							<th>Tel :<%=arr2.get(z).getMtel() %></th>
+						</tr>
+						<tr>
+							<th>예약자 성함 :<%=arr2.get(z).getMlname() %><%=arr2.get(z).getMfname() %></th>
+							<td><input type="button" value="회원 정보 수정"></td>
+						</tr>
+						<tr>
+						<!-- 객실 = DB의 내용을 그대로 불러 오는 과정에서 필요없는 문자열 제외 후 출력  -->
+							<th>예약한 객실 :<%=arr2.get(z).getRtype().substring(2, arr2.get(z).getRtype().length()) %></th>
+							<th>예약 인원 수 :<%=arr2.get(z).getPersons() %>명</th>
+						</tr>
+						</table>
+						<%
+						}
+					}
 					%>
 					<tr>
 						<th>예약번호 :<%=arr.get(i).getRidx()%></th>
@@ -76,6 +100,7 @@ function show(){
 					</tr>
 					<tr>
 						<th>체크아웃 :<%=arr.get(i).getRcheckout() %></th>
+						<!-- sql 쿼리를 이용해서 Date끼리의 날짜를 뺀 값 으로 #박을 대입 -->
 						<th><%=arr.get(i).getDay() %>박<%=arr.get(i).getDay()+1 %>일</th>
 					</tr>
 					<tr>
@@ -83,15 +108,16 @@ function show(){
 					</tr>
 					<tr>
 						<th>Email :<%=arr.get(i).getMemail() %></th>
-						<th>tel :<%=arr.get(i).getMtel() %></th>
+						<th>Tel :<%=arr.get(i).getMtel() %></th>
 					</tr>
 					<tr>
 						<th>예약자 성함 :<%=arr.get(i).getMlname() %><%=arr.get(i).getMfname() %></th>
 						<td><input type="button" value="회원 정보 수정"></td>
 					</tr>
 					<tr>
-						<th>예약한 객실 :<%=arr.get(i).getRtype() %></th>
-						<th>예약 인원 수 :<%=arr.get(i).getPersons() %></th>
+						<!-- 객실 = DB의 내용을 그대로 불러 오는 과정에서 필요없는 문자열 제외 후 출력  -->
+						<th>예약한 객실 :<%=arr.get(i).getRtype().substring(2, arr.get(i).getRtype().length()) %></th>
+						<th>예약 인원 수 :<%=arr.get(i).getPersons() %>명</th>
 					</tr>
 					<%
 				}
