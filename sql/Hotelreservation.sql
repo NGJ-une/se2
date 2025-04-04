@@ -91,18 +91,18 @@ INSERT INTO question values(4,'어렸을 적 별명은?')
 INSERT INTO question values(5,'내가 살던 고향은?') 
 
 --room 기본 데이터 입력 
-INSERT INTO room values('S_STANDARD',sq_room_idx.nextval,'S_ST.jpg',250000,4) 
-INSERT INTO room values('S_DELUXE',sq_room_idx.nextval,'S_SD.jpg',400000,4)
-INSERT INTO room values('S_SUITE',sq_room_idx.nextval,'S_S.jpg',200000,2)
-INSERT INTO room values('S_GRAND',sq_room_idx.nextval,'S_G.jpg',600000,6)
-INSERT INTO room values('U_STANDARD',sq_room_idx.nextval,'U_ST.jpg',150000,4)
-INSERT INTO room values('U_DELUXE',sq_room_idx.nextval,'U_D.jpg',300000,4)
-INSERT INTO room values('U_SUITE',sq_room_idx.nextval,'U_S.jpg',100000,2)
-INSERT INTO room values('U_GRAND',sq_room_idx.nextval,'U_G.jpg',500000,6)
+INSERT INTO room values('s_standard',sq_room_idx.nextval,'s_st.jpg',250000,4) 
+INSERT INTO room values('s_deluxe',sq_room_idx.nextval,'s_sd.jpg',400000,4)
+INSERT INTO room values('s_suite',sq_room_idx.nextval,'s_s.jpg',200000,2)
+INSERT INTO room values('s_grand',sq_room_idx.nextval,'s_g.jpg',600000,6)
+INSERT INTO room values('u_standard',sq_room_idx.nextval,'u_st.jpg',150000,4)
+INSERT INTO room values('u_deluxe',sq_room_idx.nextval,'u_d.jpg',300000,4)
+INSERT INTO room values('u_suite',sq_room_idx.nextval,'u_s.jpg',100000,2)
+INSERT INTO room values('u_grand',sq_room_idx.nextval,'u_g.jpg',500000,6)
 
 --hotel 기본 데이터 입력  
-INSERT INTO hotel values('H_SEOUL',sq_hotel_idx.nextval,20,15,10,10)
-INSERT INTO hotel values('H_ULSAN',sq_hotel_idx.nextval,25,10,10,15)
+INSERT INTO hotel values('h_seoul',sq_hotel_idx.nextval,20,15,10,10)
+INSERT INTO hotel values('h_ulsan',sq_hotel_idx.nextval,25,10,10,15)
 
 -- 전체 테이블 조회 
 SELECT * FROM TAB 
