@@ -14,7 +14,7 @@ public class ReserDAO {
 	
 	public ArrayList<RoomDTO> searchRooms(String region, int headCount, java.sql.Date checkIn){
 		try {
-			char regionInitial = region.charAt(0);
+			char regionInitial = region.charAt(3);
 			
 			conn = com.hotel.db.HotelDB.getConn();
 			
