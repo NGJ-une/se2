@@ -77,7 +77,7 @@ public class ReserDAO {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			
-			String sql = "INSERT INTO reser VALUES (sq_reser_idx, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO reser VALUES (sq_reser_idx.NEXTVAL, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dto.getId());
 			ps.setString(2, dto.getName());
