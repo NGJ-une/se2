@@ -68,7 +68,7 @@
   	text-align:center;
   }
   .seoul-bt,.ulsan-bt{
-   width:250px;
+   width:280px;
    height:200px;
    color: #d5d5d5;
    background: #e8e8e8;
@@ -77,6 +77,7 @@
    text-align: center;
    font-size: 50px;
    border:none;
+   margin-left: 10px;
   }
   .close-bt {
     margin-top: 10px;

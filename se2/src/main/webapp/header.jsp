@@ -16,10 +16,3 @@
   <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 --> 
 </header>
 
-if(rs.get()).equals(매개변수)){
-	if(){
-	}
-} else{
-
-}
-
