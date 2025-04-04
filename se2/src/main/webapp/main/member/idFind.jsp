@@ -33,11 +33,6 @@
       background-color: white;
     }
 </style>
-<script>
-	function idFindPopup(){
-		window.open('idFindPopup.jsp','idFind','width=500,height=250');
-	}
-</script>
 </head>
 <body>
     <section class="idfindZone">
@@ -60,21 +55,22 @@
                	 <h2>아이디찾기</h2>
                	 <hr>
                	 <ul>
-                   	 <li><label>전화번호 : </label><input type="text"><br></li>
+                   	 <li><label>전화번호 : </label><input type="text" name="tel"><br></li>
+                   	 <li><label>(000-0000-000 형식으로 입력해주세요.)</label>
                  	 <li>
                      	<label>질문 : </label>
                         <select name="question"> 
-							<option value="question1">  질문 1 : 보물 1호는? </option>
-                            <option value="question2">  질문 2 : 내가 다닌 초등학교 이름은? </option>
-                            <option value="question3">  질문 3 : 짝사랑했던 이성친구 이름은? </option>
-                            <option value="question4">  질문 4 : 어렸을 적 별명은?  </option>
-                            <option value="question5">  질문 5 : 내가 살던 고향은? </option>
+							<option value="1">  질문 1 : 보물 1호는? </option>
+                            <option value="2">  질문 2 : 내가 다닌 초등학교 이름은? </option>
+                            <option value="3">  질문 3 : 짝사랑했던 이성친구 이름은? </option>
+                            <option value="4">  질문 4 : 어렸을 적 별명은?  </option>
+                            <option value="5">  질문 5 : 내가 살던 고향은? </option>
                         </select><br>      
                 	</li>
                 	<li>
                     <label>답변 : </label><input type="text" name="answer"><br><br>
                 	</li>
-               	 	<li><input type="submit" value="아이디찾기" onclick="idFindPopup();"></li>
+               	 	<li><input type="submit" value="아이디찾기"></li>
                 </ul>
             	</form>
           </fieldset>
