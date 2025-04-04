@@ -1,28 +1,55 @@
 @charset "UTF-8";
 
+header{
+		margin: 0 auto;
+		padding:0;
+		overflow-x:auto;
+		
+}
+@media (min-width: 1500px) {
+    header {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1499px) {
+    header {
+        width: 1500px; /* 최소 너비로 설정 */
+        overflow-x: auto;
+    }
+}
 
 header nav div {
 	text-align: right; 
 	font-size: 13px;
+	color: #9AA39A;
+    background: #e8e8e8;
+	text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+	font-weight: bold;
+	text-decoration: none;
 }
 header nav {
-	background-color: pink;
+	background-color: #e8e8e8;
 }
 header nav li {
 	list-style-type: none;
 	display: inline;
-	margin: 74px;
+	margin: 50px;
 }
 #title {
-	font-size: 50px;
-	font-weight: bold;
-	text-decoration: none;
-	color: black;
+   color: #d9d9d9;
+   background: #e8e8e8;
+   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+   font-size: 90px;
+   font-weight: bold;
 }
 .top-menu-text{
+	color: #9AA39A;
+    background: #e8e8e8;
 	font-size:18px;
+	text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 	font-weight: bold;
 	text-decoration: none;
-	color: black;
+
 }
 
