@@ -4,12 +4,27 @@
 <jsp:setProperty property="*" name="mdto"/>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
 <%
-String fname = request.getParameter("fname");
-String lname = request.getParameter("lname");
+String id = "asd123";
 String fmail = request.getParameter("fmail");
 String lmail = request.getParameter("lmail");
-String tel = request.getParameter("tel");
-String addr = request.getParameter("addr");
 String email = fmail+"@"+lmail;
-System.out.println(email);
+mdto.setMemail(email);
+int result = mdao.memberEdit(id, mdto);
+String msg = result > 0 ? "수정성공!" : "수정실패!";
+if(result > 0 ) {
+	%>
+	<script>
+window.alert('<%=msg%>');
+location.href='myPage_main.jsp';
+</script>
+	<%
+}else {
+	%>
+	<script>
+window.alert('<%=msg%>');
+location.href='profileEdit.jsp';
+</script>
+	<%
+}
 %>
+

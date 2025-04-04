@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
 String id = "asd123";
@@ -13,6 +15,7 @@ if(money > 3000000) {
 	grade = "SILVER";
 }
 mdao.grade(grade, id);
+ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
 %>
 <!DOCTYPE html>
 <html>
@@ -31,16 +34,28 @@ mdao.grade(grade, id);
                     <li><a href = "deposit.jsp">충전하기</a></li>
                     <li><a href = "profileEditCheck.jsp">프로필수정</a></li>
                     <li><a href = "pwChange.jsp">비빌번호변경</a></li>
-                    <li>문의내역</li>
-                    <li>회원탈퇴</li>
+                    <li><a>문의내역</a></li>
+                    <li><a href = "cancleCheck.jsp">회원탈퇴</a></li>
                 </ul>
             </div>
             <div>
-                <p>suhan lee 님은 <br> 
+            <%if(arr == null || arr.size() == 0) {
+            	%>
+            	<script>
+            	window.alert('로그인을 확인해주세요.');
+            	location.href = '../member/login.jsp';
+            	</script>
+            	<%
+            }else {
+            	%>
+                <p><%=arr.get(0).getMfname()%><%=arr.get(0).getMlname() %> 님은 <br> 
                    <%=grade %> 회원입니다</p>
                     <fieldset>
-                        <p>회원번호 12 | 포인트 239p </p>
+                        <p>회원번호 <%=arr.get(0).getMidx() %> | 포인트 <%=arr.get(0).getMpoint() %>p </p>
                     </fieldset>
+                <%
+            }
+             %>
             </div>
             <div>
                 최근 6개월 예약 내역

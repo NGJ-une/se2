@@ -129,7 +129,7 @@ DROP TABLE room
 DROP TABLE question
 DROP TABLE grade
 --시퀀스 삭제 
-DROP SEQUENCE sq_user_idx
+DROP SEQUENCE sq_member_idx
 DROP SEQUENCE sq_reser_idx
 DROP SEQUENCE sq_room_idx
 DROP SEQUENCE sq_hotel_idx
