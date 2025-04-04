@@ -61,8 +61,8 @@ String babyStr = request.getParameter("baby");
 		            <div>
 		                <label>지역</label>
 		                <select name="name" onload="keepSelected()">
-		                    <option value="seoul">서울</option>
-		                    <option value="ulsan">울산</option>
+		                    <option value="h_seoul">서울</option>
+		                    <option value="h_ulsan">울산</option>
 		                </select>
 		                <label>체크인</label>
 		                <input type="date" name="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
