@@ -25,7 +25,7 @@
     	}
     </style>
     <script type="text/javascript">
-	    function searchRooms(){
+    	function searchRooms(){
 	        let headCount = parseInt(document.hotelReserSearch.adult.value) + parseInt(document.hotelReserSearch.kid.value)
 	             + parseInt(document.hotelReserSearch.baby.value);
 	        
@@ -34,6 +34,10 @@
 	            event.preventDefalult();
 	        }
 	    }
+    	function keepSelected(){
+    		window.alert(document.hotelReserSearch.name.options[0].value);
+    		window.alert(document.hotelReserSearch.name.options[1].value);
+    	}
     </script>
 </head>
 <jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
@@ -46,6 +50,7 @@ String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
 %>
 <body>
+<%@ include file="/header.jsp" %>
     <section>
 	   	<article>
 		   	<h1>예약하기</h1>
@@ -55,7 +60,7 @@ String babyStr = request.getParameter("baby");
 		            <legend>예약하기</legend>
 		            <div>
 		                <label>지역</label>
-		                <select name="name">
+		                <select name="name" onload="keepSelected()">
 		                    <option value="seoul">서울</option>
 		                    <option value="ulsan">울산</option>
 		                </select>
@@ -127,8 +132,8 @@ String babyStr = request.getParameter("baby");
 					<tr>
 						<td colspan="5">
 							<input type="hidden" name="name" value="<%= name %>">
-		    				<input type="hidden" name="checkIn" value="<%= checkInStr %>">
-		    				<input type="hidden" name="checkOut" value="<%= checkOutStr %>">
+		    				<input type="hidden" name="checkInStr" value="<%= checkInStr %>">
+		    				<input type="hidden" name="checkOutStr" value="<%= checkOutStr %>">
 		    				<input type="hidden" name="adult" value="<%= adultStr %>">
 		    				<input type="hidden" name="kid" value="<%= kidStr %>">
 		    				<input type="hidden" name="baby" value="<%= babyStr %>">
@@ -143,5 +148,6 @@ String babyStr = request.getParameter("baby");
 			</form>
 		</article>
 	</section> 
+<%@ include file="/footer.jsp" %>
 </body>
 </html>
