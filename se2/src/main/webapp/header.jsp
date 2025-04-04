@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="/se2/css/header.css">
+
+<%
+String sid=(String)session.getAttribute("sessionid");
+%>
 <header>
   <nav>
+  <%
+  if(sid==null){
+  %>
     <div>
-      <a id="login">로그인</a> | <a href="main/member/memberJoin.jsp">회원가입</a>
+      <a href="main/member/login.jsp" id="login">로그인</a> | <a href="main/member/memberJoin.jsp">회원가입</a>
     </div>
+    <%
+  	}else {
+    %>
+    	<div><a>마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
+    <%	
+    }
+    %>
     <ul>
       <li><a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()" href="#">호텔찾기</a></li>
       <li><a class="top-menu-text" href="#">호텔소개</a></li>

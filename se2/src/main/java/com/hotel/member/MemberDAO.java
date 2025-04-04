@@ -8,12 +8,7 @@ public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	
-	public static final int NOT_ID = 1;
-	public static final int NOT_PWD = 2;
-	public static final int LOGIN_OK = 3;
-	public static final int ERROR = -1;
-	
+
 	public MemberDAO() {
 		
 	}
@@ -22,7 +17,7 @@ public class MemberDAO {
 	public int memberJoin(MemberDTO mdto) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
-			String sql="INSERT INTO MEMBER(ID,IDX,PWD,FNAME,LNAME,BIRTH,EMAIL,TEL,ADDR,JOIN_DATE,QUESTION,ANSWER)\r\n"
+			String sql="INSERT INTO MEMBER(MID,MIDX,MPWD,MFNAME,MLNAME,MBIRTH,MEMAIL,MTEL,MADDR,MJOIN_DATE,MQUESTION,MANSWER)\r\n"
 					+ "VALUES(?,sq_member_idx.NEXTVAL,?,?,?,?,?,?,?,sysdate,?,?)";
 
 			ps = conn.prepareStatement(sql);
@@ -58,7 +53,7 @@ public class MemberDAO {
 	public boolean idCheck(String userid) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = " select * from member where id=?"; 
+			String sql = " select * from member where mid=?"; 
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
@@ -78,18 +73,18 @@ public class MemberDAO {
 	}
 	
 	
-	/**  로그인 메소드   */   //id 검색 시 비밀번호 알려줌
+	/**  로그인 메소드1   */  //id 입력시 비밀번호 찾는 메소드
 	
-	public String login(String userid) {
+	public String loginCheckPwd(String userid) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
-			String sql="SELECT PWD FROM MEMBER WHERE ID=?";
+			String sql="SELECT MPWD FROM MEMBER WHERE MID=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
-			String userpwd="";
+			String userpwd=null;
 			if(rs.next()) {
-				userpwd= rs.getString("pwd");
+				userpwd= rs.getString("mpwd");
 			} 
 			return userpwd;
 		}
@@ -106,32 +101,116 @@ public class MemberDAO {
 				}
 			}
 		}
+	
+////	
+/**  로그인 메소드2   */  //pwd 입력시 아이디 찾는 메소드
+	
+	public String loginCheckId(String userpwd) {
+		try {
+			conn=com.hotel.db.HotelDB.getConn();
+			String sql="SELECT MID FROM MEMBER WHERE MPWD=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userpwd);
+			rs=ps.executeQuery();
+			String userid=null;
+			if(rs.next()) {
+				userid= rs.getString("mid");
+			} 
+			return userid;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+
+		}finally {
+			try {
+				if (rs != null) rs.close(); 
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+			}catch (Exception e2) {
+				}
+			}
+		}
+	
+	
+
+	/** 아이디 찾기 */ 
+	public String idFind(String usertel, int userquestion, String useranswer) {
+		try {
+			conn=com.hotel.db.HotelDB.getConn();
+			String sql="SELECT MID FROM MEMBER WHERE MTEL=? AND MQUESTION=? AND MANSWER=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, usertel);
+			ps.setInt(2, userquestion);
+			ps.setString(3, useranswer);
+			rs=ps.executeQuery();
+			
+			String userid=null;
+			
+			if(rs.next()) { //컬럼의 데이터있니?
+				userid= rs.getString("mid");
+			}
+			return userid;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			
+		}finally {
+			try {
+				if (rs != null) rs.close(); 
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+				
+			}catch (Exception e2) {
+				 		
+			}
+		}
+	}
+	
+	
+	
+	/** 비밀번호 찾는 메소드 */ 
+	
+	public String pwdFind(String userid,String usertel) {
+		try {
+			conn=com.hotel.db.HotelDB.getConn();
+			String sql="SELECT MPWD FROM MEMBER WHERE MID=? AND MTEL=? ";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			ps.setString(2, usertel);
+			rs=ps.executeQuery();
+			
+			String userpwd=null;
+			
+			if(rs.next()) {
+				userid=rs.getString("MID");
+				usertel=rs.getString("MTEL");
+			}
+			return userpwd;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			
+		}finally {
+			try {
+				if (rs != null) rs.close(); 
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+			}catch (Exception e2) {
+				
+			}
+		}
+	}
+	
 }
-//	/** 아이디 찾기 */
-//	public int ldFind(String userpwd) {
-//		try {
-//			conn=com.hotel.db.HotelDB.getConn();
-//			String sql="SELECT ";
-//		}catch (Exception e) {
-//			
-//		}finally {
-//			try {
-//				
-//			}catch (Exception e2) {
-//				 		
-//			}
-//		}
-//	}
-//	
-//	
-//	}
+
 	
 	
 	
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/** 비밀번호 찾는 메소드 */    // 내가 입력한 pwd의 id가 누군지 묻는 메서드
 
 	
 	/**로그인 후 이름 찾는 메서드*/ //로그인 시 상단에 이름 보이도록
