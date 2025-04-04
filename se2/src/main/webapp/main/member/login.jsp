@@ -74,7 +74,7 @@ if(cks!=null){
                 </p>
             </div>
                <ul>
-                    <li><label> 아이디 : </label><input type="text" name="userid"></li>
+                    <li><label> 아이디 : </label><input type="text" name="userid" value="<%=saveid%>" ></li>
                     <li><label>비밀번호 : </label><input type="password" name="userpwd"></li>
                     
                     <li><input type="checkbox" name="saveid" value="on"

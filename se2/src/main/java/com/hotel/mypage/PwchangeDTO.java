@@ -6,178 +6,177 @@ import java.util.*;
 
 public class PwchangeDTO {
 
-	private String id;
-	private int idx;
-	private String pwd;
-	private String fname;
-	private String lname;
-	private String birth;
-	private String email;
-	private String tel;
-	private String addr;
-	private String grade;
-	private Date join_date;
-	private int point;
-	private int money;
-	private int question;
-	private String answer;
+	private String mid;
+	private int midx;
+	private String mpwd;
+	private String mfname;
+	private String mlname;
+	private String mbirth;
+	private String memail;
+	private String mtel;
+	private String maddr;
+	private String mgrade;
+	private Date mjoin_date;
+	private int mpoint;
+	private int mmoney;
+	private int mquestion;
+	private String manswer;
 	
 	public PwchangeDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	public PwchangeDTO(String fname, String lname, String email, String tel, String addr) {
+	public PwchangeDTO(String mfname, String mlname, String memail, String mtel, String maddr) {
 		super();
-		this.fname = fname;
-		this.lname = lname;
-		this.email = email;
-		this.tel = tel;
-		this.addr = addr;
+		this.mfname = mfname;
+		this.mlname = mlname;
+		this.memail = memail;
+		this.mtel = mtel;
+		this.maddr = maddr;
 	}
 
-
-
-	public PwchangeDTO(String id, int idx, String pwd, String fname, String lname, String birth, String email,
-			String tel, String addr, String grade, Date join_date, int point, int money, int question, String answer) {
+	
+	public PwchangeDTO(String mid, int midx, String mpwd, String mfname, String mlname, String mbirth, String memail,
+			String mtel, String maddr, String mgrade, Date mjoin_date, int mpoint, int mmoney, int mquestion,
+			String manswer) {
 		super();
-		this.id = id;
-		this.idx = idx;
-		this.pwd = pwd;
-		this.fname = fname;
-		this.lname = lname;
-		this.birth = birth;
-		this.email = email;
-		this.tel = tel;
-		this.addr = addr;
-		this.grade = grade;
-		this.join_date = join_date;
-		this.point = point;
-		this.money = money;
-		this.question = question;
-		this.answer = answer;
+		this.mid = mid;
+		this.midx = midx;
+		this.mpwd = mpwd;
+		this.mfname = mfname;
+		this.mlname = mlname;
+		this.mbirth = mbirth;
+		this.memail = memail;
+		this.mtel = mtel;
+		this.maddr = maddr;
+		this.mgrade = mgrade;
+		this.mjoin_date = mjoin_date;
+		this.mpoint = mpoint;
+		this.mmoney = mmoney;
+		this.mquestion = mquestion;
+		this.manswer = manswer;
 	}
 
-	public String getId() {
-		return id;
+	public String getMid() {
+		return mid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
-	public int getIdx() {
-		return idx;
+	public int getMidx() {
+		return midx;
 	}
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setMidx(int midx) {
+		this.midx = midx;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getMpwd() {
+		return mpwd;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setMpwd(String mpwd) {
+		this.mpwd = mpwd;
 	}
 
-	public String getFname() {
-		return fname;
+	public String getMfname() {
+		return mfname;
 	}
 
-	public void setFname(String fname) {
-		this.fname = fname;
+	public void setMfname(String mfname) {
+		this.mfname = mfname;
 	}
 
-	public String getLname() {
-		return lname;
+	public String getMlname() {
+		return mlname;
 	}
 
-	public void setLname(String lname) {
-		this.lname = lname;
+	public void setMlname(String mlname) {
+		this.mlname = mlname;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getMbirth() {
+		return mbirth;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setMbirth(String mbirth) {
+		this.mbirth = mbirth;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMemail() {
+		return memail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMemail(String memail) {
+		this.memail = memail;
 	}
 
-	public String getTel() {
-		return tel;
+	public String getMtel() {
+		return mtel;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setMtel(String mtel) {
+		this.mtel = mtel;
 	}
 
-	public String getAddr() {
-		return addr;
+	public String getMaddr() {
+		return maddr;
 	}
 
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setMaddr(String maddr) {
+		this.maddr = maddr;
 	}
 
-	public String getGrade() {
-		return grade;
+	public String getMgrade() {
+		return mgrade;
 	}
 
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setMgrade(String mgrade) {
+		this.mgrade = mgrade;
 	}
 
-	public Date getJoin_date() {
-		return join_date;
+	public Date getMjoin_date() {
+		return mjoin_date;
 	}
 
-	public void setJoin_date(Date join_date) {
-		this.join_date = join_date;
+	public void setMjoin_date(Date mjoin_date) {
+		this.mjoin_date = mjoin_date;
 	}
 
-	public int getPoint() {
-		return point;
+	public int getMpoint() {
+		return mpoint;
 	}
 
-	public void setPoint(int point) {
-		this.point = point;
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
 	}
 
-	public int getMoney() {
-		return money;
+	public int getMmoney() {
+		return mmoney;
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMmoney(int mmoney) {
+		this.mmoney = mmoney;
 	}
 
-	public int getQuestion() {
-		return question;
+	public int getMquestion() {
+		return mquestion;
 	}
 
-	public void setQuestion(int question) {
-		this.question = question;
+	public void setMquestion(int mquestion) {
+		this.mquestion = mquestion;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public String getManswer() {
+		return manswer;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setManswer(String manswer) {
+		this.manswer = manswer;
 	}
+
 	
 	
 }

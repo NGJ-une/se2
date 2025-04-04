@@ -7,15 +7,11 @@
 <title>비밀번호 찾기 팝업 정보</title>
 </head>
 <body>
-<section>
-	<fieldset>
-		<form>
-			<ul>
-				<li><label>아이디 정보 : </label></li>
-				<li></li>
-			</ul>
-		</form>
-	</fieldset>
-</section>
+<form>
+<fieldset>
+	<h4 style="color: #f3415e;">비밀번호 확인</h4><hr>
+	<label>비밀번호 : </label><br>
+</fieldset>
+</form>
 </body>
 </html>

@@ -12,14 +12,39 @@ String userid = request.getParameter("userid");
 String userpwd = request.getParameter("userpwd");
 String saveid = request.getParameter("saveid"); //아이디 체크
 
-String dbpwd= mdao.login(userid); //내가 입력한 id의 비밀번호를 불러와서 그 결과가 result라는 변수에 들어감
+// //내가 입력한 id의 비밀번호를 불러와서 그 결과가 result라는 변수에 들어감
+String getpwd= mdao.loginCheckPwd(userid); //아이디 입력
+
+////내가 입력한 pwd의 아이디가 동일한지 비교
+String getid= mdao.loginCheckId(userpwd); //비밀번호 입력으로 아이디 가져오기
 
 
-if (dbpwd.equals(userpwd)) {
+
+if (getpwd.equals(userpwd)) {
+
+
+	if (getid.equals(userid)){
+	session.setAttribute("sessionid", userid);
+
+	
+	 if(saveid!=null){
+		  Cookie ck=new Cookie("saveid",userid);
+		  ck.setMaxAge(60*60*24*30);
+		  
+		  response.addCookie(ck);
+
+	   }else{
+		   Cookie ck=new Cookie("saveid",userid);
+			  ck.setMaxAge(0);
+			  response.addCookie(ck);
+	  
+	   }
+	}
+
 %>
 <script>
 	alert("로그인 성공!");
-	location.href = "login.jsp";
+    location.href = "../../header.jsp";
 </script>
 <%
 } else{

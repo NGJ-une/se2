@@ -17,13 +17,11 @@ public class DepositDAO {
 	public int chargeAmount(int money, String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "update member set money = money+? where id = ?";
+			String sql = "update member set mmoney = mmoney+? where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, money);
 			ps.setString(2, id);
-			System.out.println(money);
 			int count = ps.executeUpdate();
-			System.out.println(count);
 			return count;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,13 +39,13 @@ public class DepositDAO {
 	public int importAmount(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select money from member where id = ?";
+			String sql = "select mmoney from member where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			int money = 0;
 			while(rs.next()) {
-				money = rs.getInt("money");
+				money = rs.getInt("mmoney");
 			}
 			return money;
 		} catch (Exception e) {
@@ -67,7 +65,7 @@ public class DepositDAO {
 	public int grade(String grade,String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "update member set grade = ? where id = ?";
+			String sql = "update member set mgrade = ? where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, grade);
 			ps.setString(2, id);
@@ -85,5 +83,36 @@ public class DepositDAO {
 			}
 		}
 	}
-
+	//회원 정보 가져오기 메서드
+	public ArrayList<DepositDTO> mypageMemberInfo(String id) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select mfname, mlname, midx, mpoint from member where mid = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			ArrayList<DepositDTO> arr = new ArrayList<DepositDTO>();
+			while(rs.next()) {
+				String mfname = rs.getString("mfname");
+				String mlname = rs.getString("mlname");
+				int midx = rs.getInt("midx");
+				int mpoint = rs.getInt("mpoint");
+				
+				DepositDTO dto = new DepositDTO(midx, mfname, mlname, mpoint);
+				arr.add(dto);
+			}
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }

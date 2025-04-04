@@ -7,10 +7,10 @@
 <%
 String id = "asd123";
 ArrayList<PwchangeDTO> arr = mdao.memberInfo(id); //가져오기 db로 
-int fmailLocation = arr.get(0).getEmail().indexOf("@"); // @ 까지의 위치 가져오기
-int total = arr.get(0).getEmail().length(); // 전체길이 가져오기
-String fmail = arr.get(0).getEmail().substring(0, fmailLocation); //0번쨰 부터 @위치까지 가져오기
-String lmail = arr.get(0).getEmail().substring(fmailLocation+1, total); // @의 다음부터 전체 길이 까지 가져오기
+int fmailLocation = arr.get(0).getMemail().indexOf("@"); // @ 까지의 위치 가져오기
+int total = arr.get(0).getMemail().length(); // 전체길이 가져오기
+String fmail = arr.get(0).getMemail().substring(0, fmailLocation); //0번쨰 부터 @위치까지 가져오기
+String lmail = arr.get(0).getMemail().substring(fmailLocation+1, total); // @의 다음부터 전체 길이 까지 가져오기
 %>
 <!DOCTYPE html>
 <html>
@@ -71,9 +71,9 @@ function show() {
           <hr>
           <fieldset>
             <label>성 :</label>
-            <input type = "text" name = "fname" value = "<%=arr.get(0).getFname()%>"> 
+            <input type = "text" name = "mfname" value = "<%=arr.get(0).getMfname()%>"> 
             <label>이름 :</label>
-            <input type = "text" name = "lname" value = "<%=arr.get(0).getLname()%>">
+            <input type = "text" name = "mlname" value = "<%=arr.get(0).getMlname()%>">
             <br>
             <br>
             <label>아이디 :</label>
@@ -92,11 +92,11 @@ function show() {
             <br>
             <br>
             <label>전화번호 :</label>
-            <input type = "text" name = "tel" value = "<%=arr.get(0).getTel()%>">
+            <input type = "text" name = "mtel" value = "<%=arr.get(0).getMtel()%>">
             <br>
             <br>
             <label>주소 :</label>
-            <input type = "text" name = "addr" value = "<%=arr.get(0).getAddr()%>">
+            <input type = "text" name = "maddr" value = "<%=arr.get(0).getMaddr()%>">
             <br>
             <br>
             <input type ="submit" value = "변경">
