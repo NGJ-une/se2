@@ -16,7 +16,6 @@ if(mid==null||mid.equals("")){
 }
 // 넘겨진 값 파씽 
 int ridx=Integer.parseInt(ridx_s);
-System.out.println(ridx_s+"/"+mid);
 %>
 <!DOCTYPE html>
 <html>
@@ -37,13 +36,11 @@ function show(){
     <hr>
 <section>
 	<article>
-		<form name="hotelConfirmM" action="#">
+		<form name="hotelConfirm" action="#">
 		<table>
 			<%
-			ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmresult(ridx);
-			ArrayList<HotelConfirmDTO> arr2 = hcdao.hotelConfirmInUse(mid);
-			System.out.println(arr2==null?"YES":"NO");
-			if(((arr==null||arr.size()==0 || arr.get(0).getRidx()==0))&&(arr2==null||arr2.size()==0)){
+			ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmresultNL(ridx);
+			if(((arr==null||arr.size()==0 || arr.get(0).getRidx()==0))){
 				%>
 				<tr>
 					<td colspan="2">
@@ -54,42 +51,6 @@ function show(){
 				<%
 			}else{
 				for(int i=0;i<arr.size();i++){
-					if(arr2.size()>=0){
-						for(int z=0;z<arr2.size();z++){
-							System.out.println(arr2.get(z).getRidx());
-						%>
-						<table>
-						<h2>이용 중</h2> 
-						<tr>
-							<th>예약번호 :<%=arr2.get(z).getRidx() %></th>
-						</tr>
-						<tr>
-							<th>체크인 :<%=arr2.get(z).getRcheckin() %></th>						
-						</tr>
-						<tr>
-							<th>체크아웃 :<%=arr2.get(z).getRcheckout() %></th>
-							<th><%=arr2.get(z).getDay() %>박<%=arr2.get(z).getDay()+1 %>일</th>
-						</tr>
-						<tr>
-							<th>연락처 정보</th>
-						</tr>
-						<tr>
-							<th>Email :<%=arr2.get(z).getMemail() %></th>
-							<th>Tel :<%=arr2.get(z).getMtel() %></th>
-						</tr>
-						<tr>
-							<th>예약자 성함 :<%=arr2.get(z).getMlname() %><%=arr2.get(z).getMfname() %></th>
-							<td><input type="button" value="회원 정보 수정"></td>
-						</tr>
-						<tr>
-						<!-- 객실 = DB의 내용을 그대로 불러 오는 과정에서 필요없는 문자열 제외 후 출력  -->
-							<th>예약한 객실 :<%=arr2.get(z).getRtype().substring(2, arr2.get(z).getRtype().length()) %></th>
-							<th>예약 인원 수 :<%=arr2.get(z).getPersons() %>명</th>
-						</tr>
-						</table>
-						<%
-						}
-					}
 					%>
 					<tr>
 						<th>예약번호 :<%=arr.get(i).getRidx()%></th>

@@ -25,7 +25,17 @@ String sid=(String)session.getAttribute("sessionid");
       <li><a id="title" href="#">Hotel SHILLA</a></li>
       <li><a class="top-menu-text" href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a></li>
       <!-- 우선 비로그인시 만 이동링크 걸어둠 -->
-      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmNM.jsp">예약확인</a></li>
+      <%
+      if(sid==null){
+    	  %>
+      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmNLC.jsp">예약확인</a></li>
+    	  <%
+      }else{
+    	  %>
+      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmL.jsp">예약확인</a></li>
+    	  <%
+      }
+      %>
     </ul>
   </nav>
   <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 --> 
