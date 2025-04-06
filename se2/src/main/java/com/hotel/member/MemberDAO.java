@@ -53,7 +53,7 @@ public class MemberDAO {
 	public boolean idCheck(String userid) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = " select * from member where mid=?"; 
+			String sql = "SELECT * FROM MEMBER WHERE MID=?"; 
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
@@ -84,7 +84,7 @@ public class MemberDAO {
 			rs=ps.executeQuery();
 			String userpwd=null;
 			if(rs.next()) {
-				userpwd= rs.getString("mpwd");
+				userpwd= rs.getString("MPWD");
 			} 
 			return userpwd;
 		}
@@ -114,7 +114,7 @@ public class MemberDAO {
 			rs=ps.executeQuery();
 			String userid=null;
 			if(rs.next()) {
-				userid= rs.getString("mid");
+				userid= rs.getString("MID");
 			} 
 			return userid;
 		}
@@ -148,7 +148,7 @@ public class MemberDAO {
 			String userid=null;
 			
 			if(rs.next()) { //컬럼의 데이터있니?
-				userid= rs.getString("mid");
+				userid= rs.getString("MID");
 			}
 			return userid;
 			
@@ -183,9 +183,8 @@ public class MemberDAO {
 			
 			String userpwd=null;
 			
-			if(rs.next()) {
-				userid=rs.getString("MID");
-				usertel=rs.getString("MTEL");
+			if(rs.next()) { //컬럼의 데이터있니?
+				userpwd= rs.getString("MPWD");
 			}
 			return userpwd;
 			
