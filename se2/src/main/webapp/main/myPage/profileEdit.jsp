@@ -33,13 +33,7 @@ function show() {
         .container {
           display: flex;
         }
-        .box1 {
-          padding: 20px;
-          margin-right: 5px;
-          border: 2px solid black;
-          width: 200px;
-          background-color: whitesmoke;
-        }
+        
         .box2 {
           padding: 20px;
           border: 1px solid #ccc;
@@ -49,21 +43,9 @@ function show() {
 </style>
 </head>
 <body>
+  <%@include file="/header.jsp" %>
     <div class="container">
-      <section class="box1">
-          <label>마이페이지</label>
-          <hr>
-          <br>
-          <div>충전하기</div>
-          <br>
-          <div>프로필 수정</div>
-          <br>
-          <div>비밀번호 변경</div>
-          <br>
-          <div>문의내역</div>
-          <br>
-          <div>회원탈퇴</div>
-      </section>
+      <%@include file="sideBar.jsp" %>
       <section class="box2">
       <form name = "profileEdit" action = "profileEdit_ok.jsp">
           <h1>프로필 수정
@@ -106,4 +88,5 @@ function show() {
       </section>
     </div>
   </body>
+  <%@include file="/footer.jsp" %>
 </html>

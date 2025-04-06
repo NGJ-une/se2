@@ -236,4 +236,3 @@ button.prev:hover, button.next:hover {
 
 </script>
 </html>
-
