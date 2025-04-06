@@ -56,5 +56,3 @@ if (getpwd.equals(userpwd)) {
 <%
 }
 %>
-
-

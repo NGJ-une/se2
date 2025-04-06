@@ -5,8 +5,8 @@
 <jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
 
 <%
-String id = "asd123";
-ArrayList<PwchangeDTO> arr = mdao.memberInfo(id); //가져오기 db로 
+String sid = (String)session.getAttribute("sessionid");
+ArrayList<PwchangeDTO> arr = mdao.memberInfo(sid); //가져오기 db로 
 int fmailLocation = arr.get(0).getMemail().indexOf("@"); // @ 까지의 위치 가져오기
 int total = arr.get(0).getMemail().length(); // 전체길이 가져오기
 String fmail = arr.get(0).getMemail().substring(0, fmailLocation); //0번쨰 부터 @위치까지 가져오기
@@ -71,7 +71,7 @@ function show() {
             <br>
             <br>
             <label>아이디 :</label>
-            <%=id %>(session 에 있는 아이디 가져오면 됨.)
+            <%=sid %>(session 에 있는 아이디 가져오면 됨.)
             <br>
             <br>
             <label>이메일 :</label>

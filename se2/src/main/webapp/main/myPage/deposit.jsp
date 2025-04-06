@@ -44,8 +44,8 @@
         <h1>충전하기</h1>
 
         <%
-        String id = "asd123";
-        int money = mdao.importAmount(id);
+        String sid = (String)session.getAttribute("sessionid");
+        int money = mdao.importAmount(sid);
         %>
         <label>현재 금액 : <%=money %></label>
 
