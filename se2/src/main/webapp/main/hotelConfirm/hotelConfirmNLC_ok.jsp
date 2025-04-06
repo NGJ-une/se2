@@ -31,6 +31,6 @@ if(result==false){
 	<%
 }else{
 	//받았던 confirmM 으로 예약번호/id 값 넘기기 
-	response.sendRedirect("hotelConfirmM.jsp?ridx="+confirmNumber+"&mid="+id);
+	response.sendRedirect("hotelConfirmNL.jsp?ridx="+confirmNumber+"&mid="+id);
 }
 %>

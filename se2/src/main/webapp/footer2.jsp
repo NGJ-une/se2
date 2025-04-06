@@ -6,10 +6,128 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-a{text-decoration: none; color: #555;}
+<!--a{text-decoration: none; color: #555;}
 ul,ol,li,dl,dt,dd{list-style: none; margin: 0px; padding: 0px;}
 body,div,td,th,p,textarea{margin: 0; padding: 0; font-size: 12px; color:#101010;}
+-->
+footer {
+  background-color: #fef8f3;
+  color: #5b4c42;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-top: 40px;
+  border-top: 1px solid #e2dcd2;
+  font-size: 14px;
+}
+
+footer a {
+  color: #7b6d62;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #b58143; /* 부드러운 골드/브라운 */
+}
+
+.footHub {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+}
+
+.compInfo h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #6b4c2f;
+}
+
+.brandWrap {
+  display: flex;
+  gap: 30px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.brandWrap .brand,
+.brandMono,
+.brandStay {
+  font-size: 14px;
+}
+
+.linkInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.linkInfo dl {
+  margin: 0;
+}
+
+.linkInfo dt {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #3f3027;
+}
+
+.linkInfo dd {
+  margin: 4px 0;
+}
+
+.footer {
+  background-color: #f5f0eb;
+  padding: 30px 20px;
+  border-top: 1px solid #e4ded8;
+}
+
+.linkBox ul,
+.selectLang ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  margin: 0 0 15px;
+  list-style: none;
+}
+
+.adressBox p {
+  color: #6e5e52;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.footLinkbtn {
+  display: inline-block;
+  background-color: #e8d5c4;
+  color: #5b4c42;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.footLinkbtn:hover {
+  background-color: #d4a373;
+  color: #fff;
+}
+
+.copyright,
+.certiMark {
+  font-size: 12px;
+  color: #998e85;
+  margin-top: 15px;
+}
+
+
+<!---->
+
 </style>
+
 </head>
 <body>
 <footer>
