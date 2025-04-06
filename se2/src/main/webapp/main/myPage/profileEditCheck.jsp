@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
 <%
-String id = "asd123";
+String sid = (String)session.getAttribute("sessionid");
 %>
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@ String id = "asd123";
           <hr>
           <fieldset>
             <label>회원ID :</label>
-            <%=id %>
+            <%=sid %>
             <!-- session에 저장된id 가져올 예정-->
             <br>
             <br>

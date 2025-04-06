@@ -44,7 +44,7 @@ if (getpwd.equals(userpwd)) {
 %>
 <script>
 	alert("로그인 성공!");
-    location.href = "../../header.jsp";
+    location.href = "../../index.jsp";
 </script>
 <%
 } else{

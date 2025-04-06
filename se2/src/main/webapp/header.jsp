@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/se2/css/header.css">
 
 <%
-String sid=(String)session.getAttribute("sessionid");
+String sid = (String)session.getAttribute("sessionid");
 %>
 <header>
   <nav>
@@ -15,7 +15,7 @@ String sid=(String)session.getAttribute("sessionid");
     <%
   	}else {
     %>
-    	<div><a>마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
+    	<div><a href = "main/myPage/myPage_main.jsp">마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
     <%	
     }
     %>

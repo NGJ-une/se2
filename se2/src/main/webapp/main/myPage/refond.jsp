@@ -48,7 +48,7 @@
     </section>
     <section class="box2">
     <form name ="deposit" action = "deposit_ok.jsp">
-        <h1>충전하기</h1>
+        <h1>환불하기</h1>
 
         <%
         String sid = (String)session.getAttribute("sessionid");
@@ -58,11 +58,22 @@
 
         <br>
         <br>
-        <label>충전할 금액 : </label>
+        <label>환불할 금액 : </label>
         <input type="text" name = "money">
         <br>
-        <input type="submit" value="충전">
+        <label>환불 받을 은행 :</label>
+        <select name = "bank">
+        <option value = "0">은행 선택</option>
+        <option value = "1">농협</option>
+        <option value = "2">국민</option>
+        <option value = "3">신한</option>
+        <option value = "4">카카오</option>
+        </select>
+        <br>
+        <input type="submit" value="환불">
         <input type="reset" value="취소">
+        <!-- 환불하기 했을때 환불내역의 테이블만들지? 환불 신청이 들어오면 환불일 기준 3~5일 에서 환불 진행 예정입니다. 라는 alert와 함께
+        환불 내역 테이블에 기록되면 경리가 환불 해주고 테이블에 내역 삭제 할 수 있도록-->
     </form>
     </section>
   </div>

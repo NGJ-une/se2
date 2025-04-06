@@ -4,8 +4,8 @@
 <%@ page import = "com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
-String id = "asd1234";
-ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
+String sid = (String)session.getAttribute("sessionid");
+ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
 %>
 <!DOCTYPE html>
 <html>
@@ -48,7 +48,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
           <div>회원탈퇴</div>
       </section>
       <section class="box2">
-      <form name = "cancleCheck" action = "cancleCheck_ok.jsp">
+      <form name = "cancle" action = "cancle_ok.jsp">
           <h1>회원탈퇴</h1>
             <hr>
             <fieldset><%=arr.get(0).getMfname() %><%=arr.get(0).getMlname() %> 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 더 확인합니다.</fieldset>

@@ -4,9 +4,9 @@
 <%@ page import = "com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
-String id = "asd123";
+String sid = (String)session.getAttribute("sessionid");
 String grade = "BRONZE";
-int money = mdao.importAmount(id);
+int money = mdao.importAmount(sid);
 if(money > 3000000) {
 	grade = "DIAMOND";
 }else if (money > 1000000) {
@@ -14,8 +14,8 @@ if(money > 3000000) {
 }else if (money > 200000) {
 	grade = "SILVER";
 }
-mdao.grade(grade, id);
-ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
+mdao.grade(grade, sid);
+ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
                     <li><a href = "profileEditCheck.jsp">프로필수정</a></li>
                     <li><a href = "pwChange.jsp">비빌번호변경</a></li>
                     <li><a>문의내역</a></li>
-                    <li><a href = "cancleCheck.jsp">회원탈퇴</a></li>
+                    <li><a href = "cancle.jsp">회원탈퇴</a></li>
                 </ul>
             </div>
             <div>

@@ -131,12 +131,12 @@ public class PwchangeDAO {
 		}
 	}
 	//회원탈퇴 메서드
-	public int memberDel(String id) {
+	public int memberDelete(String sid) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String slq = "delete member where id = ? and mmoney = 0";
-			ps = conn.prepareStatement(slq);
-			ps.setString(1, id);
+			String sql = "delete member where mid = ? and mmoney = 0";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, sid);
 			int count = ps.executeUpdate();
 			return count;
 		} catch (Exception e) {
@@ -144,7 +144,33 @@ public class PwchangeDAO {
 			return -1;
 		}finally {
 			try {
-				
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	public int memeberMmoney(String sid) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select mmoney from member where mid = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, sid);
+			rs = ps.executeQuery();
+			int mmoney = 0;
+			if(rs.next()) {
+				mmoney = rs.getInt("mmoney");
+			}
+			return mmoney;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
