@@ -30,16 +30,28 @@ function show() {
 
 </script>
 <style>
-        .container {
-          display: flex;
-        }
-        
-        .box2 {
-          padding: 20px;
-          border: 1px solid #ccc;
-          width: 800px; 
-          background-color: white;
-        }
+	* {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	}
+	
+	body {
+	    text-align: center; /* 화면 중앙 배치 효과 */
+	    margin:0 auto;
+	    padding:0;
+		/*background: #e8e8e8;*/
+	}
+    .container {
+      display: flex;
+    }
+    
+    .box2 {
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 800px; 
+      background-color: white;
+    }
 </style>
 </head>
 <body>
