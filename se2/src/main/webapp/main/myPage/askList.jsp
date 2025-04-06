@@ -10,7 +10,7 @@
     * {
 	   margin: 0;
 	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
 	}
 	
 	body {

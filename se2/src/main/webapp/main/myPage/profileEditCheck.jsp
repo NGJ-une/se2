@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
 <%
-String sid = (String)session.getAttribute("sessionid");
+String id = (String)session.getAttribute("sessionid");
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ String sid = (String)session.getAttribute("sessionid");
   </style>
 </head>
 <body>
-  <%@include file="/header.jsp" %>
+  <%@include file="/header.jsp" %> 
     <div class="container">
       <%@include file="sideBar.jsp" %>
       <section class="box2">

@@ -4,8 +4,8 @@
 <%@ page import = "com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
-String sid = (String)session.getAttribute("sessionid");
-ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
+String id = (String)session.getAttribute("sessionid");
+ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
 %>
 <!DOCTYPE html>
 <html>
@@ -16,13 +16,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
         .container {
           display: flex;
         }
-        .box1 {
-          padding: 20px;
-          margin-right: 5px;
-          border: 2px solid black;
-          width: 200px;
-          background-color: whitesmoke;
-        }
+        
         .box2 {
           padding: 20px;
           border: 1px solid #ccc;
@@ -32,23 +26,11 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
       </style>
 </head>
 <body>
+  <%@include file="/header.jsp" %>
     <div class="container">
-      <section class="box1">
-          <label>마이페이지</label>
-          <hr>
-          <br>
-          <div>충전하기</div>
-          <br>
-          <div>프로필 수정</div>
-          <br>
-          <div>비밀번호 변경</div>
-          <br>
-          <div>문의내역</div>
-          <br>
-          <div>회원탈퇴</div>
-      </section>
+      <%@include file="sideBar.jsp" %>
       <section class="box2">
-      <form name = "cancle" action = "cancle_ok.jsp">
+      <form name = "cancleCheck" action = "cancleCheck_ok.jsp">
           <h1>회원탈퇴</h1>
             <hr>
             <fieldset><%=arr.get(0).getMfname() %><%=arr.get(0).getMlname() %> 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 더 확인합니다.</fieldset>
@@ -67,4 +49,5 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(sid);
       </section>
     </div>
   </body>
+  <%@include file="/footer.jsp" %>
 </html>

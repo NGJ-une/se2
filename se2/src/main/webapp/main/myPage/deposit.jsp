@@ -9,7 +9,7 @@
   <title>가로로 두 공간 만들기</title>
   <style>
     * {
-	   margin: 0;
+	   margin: 0; 
 	   padding: 0;
 	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
 	}
@@ -44,7 +44,7 @@
         <h1>충전하기</h1>
 
         <%
-        String sid = (String)session.getAttribute("sessionid");
+        String id = (String)session.getAttribute("sessionid");
         int money = mdao.importAmount(sid);
         %>
         <label>현재 금액 : <%=money %></label>
