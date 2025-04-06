@@ -4,7 +4,7 @@
 <%@ page import = "com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
-String id = "asd123";
+String id = (String)session.getAttribute("sessionid");
 String grade = "BRONZE";
 int money = mdao.importAmount(id);
 if(money > 3000000) {
