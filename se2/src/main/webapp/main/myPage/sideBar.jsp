@@ -37,8 +37,8 @@
     font-size: 18px;
     display: block;
     padding: 10px 15px;
-    border-radius: 5px;
-    transition: all 0.3s ease; /* 부드러운 애니메이션 효과 추가 */
+    border-radius: 5px; 
+    transition: all 0.3s ease; /* 부드러운 애니메이션 효과 추가, transition: [속성] [시간] [타이밍 함수] [지연 시간] */
   }
 
   .box1 ul li a:hover {
