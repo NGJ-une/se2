@@ -121,7 +121,7 @@ button.prev:hover, button.next:hover {
 }
 
 .section4 hr {
-    border: none;
+    border: none;https://devjhs.tistory.com/580
     height: 2px;
     background-color: #ddd; 
     margin: 20px auto;
@@ -131,7 +131,7 @@ button.prev:hover, button.next:hover {
 
 </head>
 <body>
-<%@include file="../header.jsp" %>
+<%@include file="../header2.jsp" %>
     <section class="section1">
         <article>
             <div class="slider">
@@ -197,7 +197,7 @@ button.prev:hover, button.next:hover {
             <img src="main/img/10.jpg" alt="g10">
         </div>
     </section>
-<%@include file="../footer.jsp" %>
+<%@include file="../footer2.jsp" %>
 </body>
 <script>
     var slideIndex = 0;
@@ -236,4 +236,3 @@ button.prev:hover, button.next:hover {
 
 </script>
 </html>
-

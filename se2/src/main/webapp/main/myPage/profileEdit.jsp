@@ -5,7 +5,7 @@
 <jsp:useBean id="mdao" class = "com.hotel.mypage.PwchangeDAO"></jsp:useBean>
 
 <%
-String id = "asd123";
+String id = (String)session.getAttribute("sessionid");
 ArrayList<PwchangeDTO> arr = mdao.memberInfo(id); //가져오기 db로 
 int fmailLocation = arr.get(0).getMemail().indexOf("@"); // @ 까지의 위치 가져오기
 int total = arr.get(0).getMemail().length(); // 전체길이 가져오기
@@ -30,40 +30,34 @@ function show() {
 
 </script>
 <style>
-        .container {
-          display: flex;
-        }
-        .box1 {
-          padding: 20px;
-          margin-right: 5px;
-          border: 2px solid black;
-          width: 200px;
-          background-color: whitesmoke;
-        }
-        .box2 {
-          padding: 20px;
-          border: 1px solid #ccc;
-          width: 800px; 
-          background-color: white;
-        }
+	* {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	}
+	
+	body {
+	    text-align: center; /* 화면 중앙 배치 효과 */
+	    margin:0 auto;
+	    padding:0;
+		/*background: #e8e8e8;*/
+	}
+    .container {
+      display: flex;
+    }
+    
+    .box2 {
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 800px; 
+      background-color: white;
+    }
 </style>
 </head>
 <body>
+  <%@include file="/header.jsp" %> 
     <div class="container">
-      <section class="box1">
-          <label>마이페이지</label>
-          <hr>
-          <br>
-          <div>충전하기</div>
-          <br>
-          <div>프로필 수정</div>
-          <br>
-          <div>비밀번호 변경</div>
-          <br>
-          <div>문의내역</div>
-          <br>
-          <div>회원탈퇴</div>
-      </section>
+      <%@include file="sideBar.jsp" %>
       <section class="box2">
       <form name = "profileEdit" action = "profileEdit_ok.jsp">
           <h1>프로필 수정
@@ -77,7 +71,7 @@ function show() {
             <br>
             <br>
             <label>아이디 :</label>
-            <%=id %>(session 에 있는 아이디 가져오면 됨.)
+            <%=sid %>(session 에 있는 아이디 가져오면 됨.)
             <br>
             <br>
             <label>이메일 :</label>
@@ -106,4 +100,5 @@ function show() {
       </section>
     </div>
   </body>
+  <%@include file="/footer.jsp" %>
 </html>

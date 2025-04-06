@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="hotelConfirmMPage.jsp"></jsp:include>
+<jsp:include page="hotelConfirmLPage.jsp"></jsp:include>
 </body>
 </html>

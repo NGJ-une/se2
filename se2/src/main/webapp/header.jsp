@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/se2/css/header.css">
 
 <%
-String sid=(String)session.getAttribute("sessionid");
+String sid = (String)session.getAttribute("sessionid");
 %>
 <header>
   <nav>
@@ -15,17 +15,27 @@ String sid=(String)session.getAttribute("sessionid");
     <%
   	}else {
     %>
-    	<div><a>마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
+    	<div><a href = "main/myPage/myPage_main.jsp">마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
     <%	
     }
     %>
     <ul>
       <li><a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()" href="#">호텔찾기</a></li>
       <li><a class="top-menu-text" href="#">호텔소개</a></li>
-      <li><a id="title" href="#">Hotel SHILLA</a></li>
+      <li><a id="title" href="/se2/index.jsp">Hotel SHILLA</a></li>
       <li><a class="top-menu-text" href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a></li>
       <!-- 우선 비로그인시 만 이동링크 걸어둠 -->
-      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmNM.jsp">예약확인</a></li>
+      <%
+      if(sid==null){
+    	  %>
+      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmNLC.jsp">예약확인</a></li>
+    	  <%
+      }else{
+    	  %>
+      <li><a class="top-menu-text" href="/se2/main/hotelConfirm/hotelConfirmL.jsp">예약확인</a></li>
+    	  <%
+      }
+      %>
     </ul>
   </nav>
   <%@ include file="/main/hotelSearch/hotelSearch.jsp" %> <!-- 호텔 찾기 --> 
