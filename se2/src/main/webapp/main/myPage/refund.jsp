@@ -7,62 +7,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>가로로 두 공간 만들기</title>
-  <style>
+ <style>
+    * {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
+	}
+	
+	body {
+	    text-align: center; /* 화면 중앙 배치 효과 */
+	    margin:0 auto;
+	    padding:0;
+		/*background: #e8e8e8;*/
+	}
     .container {
       display: flex;
+      width:1500px;
+      margin:0 auto;
     }
-    .box1 {
-      padding: 20px;
-      margin-right: 5px;
-      border: 2px solid black;
-      width: 200px;
-      background-color: whitesmoke;
-    }
+
     .box2 {
       padding: 20px;
       border: 1px solid #ccc;
-      width: 800px; 
+      width: 1200px; 
       background-color: white;
-    }
-    a {
-    	text-decoration: none;
-    	color : black;
     }
   </style>
 </head>
 <body>
+<%@include file = "/header.jsp" %>
   <div class="container">
-    <section class="box1">
-        <a href = "myPage_main.jsp"><label>마이페이지</label></a>
-        <hr>
-        <br>
-        <div>충전하기</div>
-        <br>
-        <div>프로필 수정</div>
-        <br>
-        <div>비밀번호 변경</div>
-        <br>
-        <div>문의내역</div>
-        <br>
-        <div>회원탈퇴</div>
-    </section>
+  <%@include file="sideBar.jsp" %>
     <section class="box2">
-    <form name ="deposit" action = "deposit_ok.jsp">
+    <form name ="refund" action = "refund_ok.jsp">
         <h1>환불하기</h1>
 
         <%
-        String sid = (String)session.getAttribute("sessionid");
-        int money = mdao.importAmount(sid);
+        String id = (String)session.getAttribute("sessionid");
+        int money = mdao.importAmount(id);
         %>
         <label>현재 금액 : <%=money %></label>
 
         <br>
         <br>
         <label>환불할 금액 : </label>
-        <input type="text" name = "money">
+        <input type="text" name = "mmoney" required="required">
         <br>
         <label>환불 받을 은행 :</label>
-        <select name = "bank">
+        <select name = "bbank">
         <option value = "0">은행 선택</option>
         <option value = "1">농협</option>
         <option value = "2">국민</option>
@@ -70,13 +62,16 @@
         <option value = "4">카카오</option>
         </select>
         <br>
+         <label>계좌 번호 : </label>
+         <input type = "text" name = "bacount" required="required">
+        <br>
+        <br>
         <input type="submit" value="환불">
         <input type="reset" value="취소">
-        <!-- 환불하기 했을때 환불내역의 테이블만들지? 환불 신청이 들어오면 환불일 기준 3~5일 에서 환불 진행 예정입니다. 라는 alert와 함께
-        환불 내역 테이블에 기록되면 경리가 환불 해주고 테이블에 내역 삭제 할 수 있도록-->
     </form>
     </section>
   </div>
+<%@include file = "/footer.jsp" %>
 </body>
 </html>
 

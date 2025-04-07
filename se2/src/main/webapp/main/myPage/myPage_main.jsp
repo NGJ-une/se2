@@ -1,103 +1,169 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*" %>
-<%@ page import = "com.hotel.mypage.*" %>
-<jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.hotel.mypage.*" %>
+<jsp:useBean id="mdao" class="com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
 String id = (String)session.getAttribute("sessionid");
 String grade = "BRONZE";
 int money = mdao.importAmount(id);
 if(money > 3000000) {
-	grade = "DIAMOND";
-}else if (money > 1000000) {
-	grade = "GOLD";
-}else if (money > 200000) {
-	grade = "SILVER";
+    grade = "DIAMOND";
+} else if(money > 1000000) {
+    grade = "GOLD";
+} else if(money > 200000) {
+    grade = "SILVER";
 }
 mdao.grade(grade, id);
 ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
 %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>마이페이지</title>
   <style>
     * {
-	   margin: 0;
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
-	}
-	
-	body {
-	    text-align: center; /* 화면 중앙 배치 효과 */
-	    margin:0 auto;
-	    padding:0;
-		/*background: #e8e8e8;*/
-	}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+    }
+
     .container {
       display: flex;
-      width:1500px;
-      margin:0 auto;
+      width: 1200px;
+      margin: 40px auto;
+      gap: 20px;
     }
 
     .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 1200px; 
+      flex: 1;
       background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
+
+    .member-card {
+      background-color: #eef3ff;
+      border-left: 6px solid #4a75ff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .member-card h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .member-card p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    fieldset {
+      border: none;
+      margin-top: 10px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 40px 0 20px;
+      border-bottom: 2px solid #4a75ff;
+      padding-bottom: 8px;
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #f9fafc;
+      color: #333;
+      font-weight: 600;
+    }
+
+    td {
+      color: #555;
+    }
+
+    /* 등급 색상 강조용 클래스 (선택사항) */
+    .grade-diamond { color: #8e44ad; font-weight: bold; }
+    .grade-gold { color: #f39c12; font-weight: bold; }
+    .grade-silver { color: #3498db; font-weight: bold; }
+    .grade-bronze { color: #795548; font-weight: bold; }
   </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+  <%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
     <section class="box2">
-         <div>
-         <%if(arr == null || arr.size() == 0) {
-         	%>
-         	<script>
-         	window.alert('로그인을 확인해주세요.');
-         	location.href = '../member/login.jsp';
-         	</script>
-         	<%
-         }else {
-         	%>
-             <p><%=arr.get(0).getMfname()%><%=arr.get(0).getMlname() %> 님은 <br> 
-                <%=grade %> 회원입니다</p>
-                 <fieldset>
-                     <p>회원번호 <%=arr.get(0).getMidx() %> | 포인트 <%=arr.get(0).getMpoint() %>p </p>
-                 </fieldset>
-             <%
-         }
-          %>
-         </div>
-         <div>
-             최근 6개월 예약 내역
-         </div>
-         <div>
-             <fieldset>
-                 <table>
-                     <tr>
-                         <th>예약 번호</th>
-                         <th>예약한 방 등급</th>
-                         <th>예약한 날짜</th>
-                         <th>가격</th>
-                         <th>인원</th>
-                     </tr>
-                     <tr>
-                         <th>3</th>
-                         <th>grand</th>
-                         <th>2025-04-02</th>
-                         <th>250,000</th>
-                         <th>5명</th>
-                     </tr>
-                 </table>
-             </fieldset>
-         </div>
+      <%
+        if (arr == null || arr.size() == 0) {
+      %>
+        <script>
+          alert("로그인을 확인해주세요.");
+          location.href = "../member/login.jsp";
+        </script>
+      <%
+        } else {
+      %>
+        <div class="member-card">
+          <h2>👋 <%=arr.get(0).getMfname()%><%=arr.get(0).getMlname()%> 님</h2>
+          <p>
+            현재 등급: 
+            <span class="grade-<%=grade.toLowerCase()%>"><%=grade %></span><br>
+            회원 번호: <%=arr.get(0).getMidx() %><br>
+            포인트: <%=arr.get(0).getMpoint() %>p
+          </p>
+        </div>
+
+        <div class="section-title">📅 최근 6개월 예약 내역</div>
+        <fieldset>
+          <table>
+            <tr>
+              <th>예약 번호</th>
+              <th>방 등급</th>
+              <th>예약 날짜</th>
+              <th>가격</th>
+              <th>인원</th>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Grand</td>
+              <td>2025-04-02</td>
+              <td>250,000원</td>
+              <td>5명</td>
+            </tr>
+            <!-- 예약 내역 반복 출력 가능 -->
+          </table>
+        </fieldset>
+      <%
+        }
+      %>
     </section>
-   </div>
-   <%@include file="/footer.jsp" %>
+  </div>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>

@@ -13,19 +13,19 @@ if(pwd.equals(dbpwd)) {
 		%>
 		<script>
 		window.alert('남은 금액 환불 후 회원탈퇴 해주세요.');
-		location.href = 'myPage_main.jsp';
+		location.href = 'refund.jsp';
 		</script>
 		<%
 	}else {
 		result = mdao.memberDelete(sid);
 		if(result > 0) {
-			session.removeAttribute("sessionid");
 			%>
 			<script>
 			window.alert('회원 탈퇴 되셧습니다.');
 			location.href = '/se2/index.jsp';
 			</script>
 			<%
+			session.removeAttribute("sessionid");
 		}else {
 			%>
 			<script>
