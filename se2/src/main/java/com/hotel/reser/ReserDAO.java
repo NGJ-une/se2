@@ -14,11 +14,11 @@ public class ReserDAO {
 	
 	public ArrayList<RoomDTO> searchRooms(String region, int headCount, java.sql.Date checkIn){
 		try {
-			char regionInitial = region.charAt(3);
+			char regionInitial = region.charAt(2);
 			
 			conn = com.hotel.db.HotelDB.getConn();
 			
-			String sql = "SELECT * FROM hotel WHERE name = ?";
+			String sql = "SELECT * FROM hotel WHERE hname = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, region);
 			rs = ps.executeQuery();
@@ -29,17 +29,19 @@ public class ReserDAO {
 				roomMaxCount.put("deluxe", rs.getInt("deluxe")); 
 				roomMaxCount.put("suite", rs.getInt("suite")); 
 				roomMaxCount.put("grand", rs.getInt("grand")); 
+				System.out.println("room max count 1 row");
 			}
 			
-			sql = "SELECT SUBSTR(type, 3) AS room_type, COUNT(type) AS cur_count FROM reser WHERE type LIKE ? AND checkout < ? GROUP BY type";
+			sql = "SELECT SUBSTR(rtype, 3) AS room_type, COUNT(rtype) AS reserved_count FROM reser WHERE rtype LIKE ? AND rcheckout < ? GROUP BY rtype";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, regionInitial + "_%");
 			ps.setDate(2, checkIn);
 			rs = ps.executeQuery();
 			
-			HashMap<String, Integer> roomCurCount = new HashMap<String, Integer>();
+			HashMap<String, Integer> reservedCount = new HashMap<String, Integer>();
 			while (rs.next()) {
-				roomCurCount.put(rs.getString("room_type"), rs.getInt("cur_count"));
+				reservedCount.put(rs.getString("room_type"), rs.getInt("reserved_count"));
+				System.out.println("reserved count 1 row");
 			}
 			
 			sql = "SELECT * FROM room WHERE type LIKE ? AND capacity >= ?";
@@ -52,12 +54,13 @@ public class ReserDAO {
 			while (rs.next()) {
 				String roomType = rs.getString("type").substring(2);
 				int maxCount = roomMaxCount.get(roomType);
-				int curCount = roomCurCount.getOrDefault(roomType, 0);
+				int curCount = reservedCount.getOrDefault(roomType, 0);
 				
 				if (curCount < maxCount) {
 					RoomDTO dto = new RoomDTO(rs.getString("type"), rs.getInt("idx"), rs.getString("img_name"), rs.getInt("price"),
 							rs.getInt("capacity"));
 					res.add(dto);
+					System.out.println("result 1row");
 				}
 			}
 			return res;

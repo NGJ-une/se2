@@ -25,19 +25,33 @@
     	}
     </style>
     <script type="text/javascript">
-    	function searchRooms(){
-	        let headCount = parseInt(document.hotelReserSearch.adult.value) + parseInt(document.hotelReserSearch.kid.value)
-	             + parseInt(document.hotelReserSearch.baby.value);
-	        
-	        if (headCount < 1 || headCount > 6){
-	            alert('인원은 1명에서 6명까지 가능합니다');
-	            event.preventDefalult();
-	        }
-	    }
-    	function keepSelected(){
-    		window.alert(document.hotelReserSearch.name.options[0].value);
-    		window.alert(document.hotelReserSearch.name.options[1].value);
-    	}
+	document.addEventListener("DOMContentLoaded", () => {
+		const today = new Date().toISOString().split('T')[0];
+		
+		const checkInInput = document.getElementById('checkIn');
+		const checkOutInput = document.getElementById('checkOut');
+
+		checkInInput.setAttribute('min', today);
+		checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
+
+		checkOutInput.addEventListener('change', () => {
+			if (!checkInInput.value){
+			alert('체크인 날짜를 먼저 입력하세요');
+			checkOutInput.value = '';
+			checkInInput.focus();
+		}
+		});
+
+		checkInInput.addEventListener('change', () => {
+			checkOutInput.setAttribute('min', checkInInput.value);
+		});
+		
+		document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
+			element.addEventListener('keydown', (event) => {
+				event.preventDefault();
+			});
+		});
+	});
     </script>
 </head>
 <jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
@@ -60,21 +74,24 @@ String babyStr = request.getParameter("baby");
 		            <legend>예약하기</legend>
 		            <div>
 		                <label>지역</label>
-		                <select name="name" onload="keepSelected()">
-		                    <option value="h_seoul">서울</option>
-		                    <option value="h_ulsan">울산</option>
+		                <select name="name">
+		                    <option value="h_seoul" <%= "h_seoul".equals(name) ? "selected" : "" %>>서울</option>
+		                    <option value="h_ulsan" <%= "h_ulsan".equals(name) ? "selected" : "" %>>울산</option>
 		                </select>
 		                <label>체크인</label>
-		                <input type="date" name="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
+		                <input type="date" name="checkIn" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
 		                <label>체크아웃</label>
-		                <input type="date" name="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
+		                <input type="date" name="checkOut" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
 		                <label>성인</label>
-		                <input type="number" name="adult" min="0" max="2" value="<%= adultStr != null ? adultStr : "2" %>" required>
+		                <input type="number" name="adult" min="1" max="6" 
+		                	value="<%= adultStr != null ? adultStr : "2" %>" onkeydown="return false;" required>
 		                <label>어린이</label>
-		                <input type="number" name="kid" min="0" max="2" value="<%= kidStr != null ? kidStr : "0" %>" required>
+		                <input type="number" name="kid" min="0" max="5" 
+		                	value="<%= kidStr != null ? kidStr : "0" %>" onkeydown="return false;" required>
 		                <label>유아</label>
-		                <input type="number" name="baby" min="0" max="2" value="<%= babyStr != null ? babyStr : "0" %>" required>
-		                <input type="submit" value="검색" onsubmit="searchRooms()">
+		                <input type="number" name="baby" min="0" max="5" 
+		                	value="<%= babyStr != null ? babyStr : "0" %>" onkeydown="return false;" required>
+		                <input type="submit" value="검색">
 		            </div>
 		        </fieldset>
 		   	</form>
