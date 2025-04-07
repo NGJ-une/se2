@@ -96,7 +96,6 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
                  </table>
              </fieldset>
          </div>
-
     </section>
    </div>
    <%@include file="/footer.jsp" %>
