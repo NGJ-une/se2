@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>가로로 두 공간 만들기</title>
   <style>
-  * {
+    * {
 	   margin: 0;
 	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
 	}
 	
 	body {
@@ -21,12 +21,14 @@
 	}
     .container {
       display: flex;
+      width:1500px;
+      margin:0 auto;
     }
-    
+
     .box2 {
       padding: 20px;
       border: 1px solid #ccc;
-      width: 800px; 
+      width: 1200px; 
       background-color: white;
     }
   </style>
