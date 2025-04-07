@@ -5,75 +5,62 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
-<style>
-    h2{
-        text-align: center;
+ <style>
+    * {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	}
+	
+	body {
+	    text-align: center; /* 화면 중앙 배치 효과 */
+	    margin:0 auto;
+	    padding:0;
+		/*background: #e8e8e8;*/
+	}
+    .container {
+      display: flex;
+      width:1500px;
+      margin:0 auto;
     }
-    fieldset{
-           width:700px;
-           margin:0px auto;
-        }
-    fieldset li{
-        list-style: none;
-    }
-    .idfindZone{
-        display: flex;
-    }
-    .loginmenu{
-      padding: 20px;
-      margin-right: 5px;
-      border: 2px solid black;
-      width: 200px;
-      background-color: whitesmoke;
-    }
-    .idFindField{
+
+    .box2 {
       padding: 20px;
       border: 1px solid #ccc;
-      width: 800px; 
+      width: 1200px; 
       background-color: white;
     }
-</style>
+  </style>
 </head>
 <body>
-    <section class="idfindZone">
-          <nav class="loginmenu">
-            <br>
-            <h4>로그인</h4><br><hr>
-            <br>
-            <div><a href="login.jsp">로그인</a></div>
-            <br>
-            <div style="color: #f3415e;"><a href="idFind.jsp">아이디 찾기</a></div>
-            <br>
-            <div><a href="pwdFind.jsp">비밀번호 찾기</a></div>
-            <br>
-            <hr>
-            <br>
-            <div><a href="memberJoin.jsp">회원가입</a></div>
-          </nav>
-          <fieldset class="idFindField">
+<%@include file="/header.jsp" %>
+    <div class="container">
+    	<%@include file="sideBar.jsp" %> 
+         	<section class="box2">
             	<form name="idFind" action="idFind_ok.jsp" method="post">
-               	 <h2>아이디찾기</h2>
+               	 <h1>아이디찾기</h1>
                	 <hr>
-               	 <ul>
-                   	 <li><label>전화번호 : </label><input type="text" name="tel"><br></li>
-                   	 <li><label>(000-0000-000 형식으로 입력해주세요.)</label>
-                 	 <li>
-                     	<label>질문 : </label>
-                        <select name="question"> 
+               	 <fieldset>
+                   	 <label>전화번호 : </label><input type="text" name="tel">
+                   	 <br>
+                   	 <label>(000-0000-000 형식으로 입력해주세요.)</label>
+                   	 <br>
+                     <label>질문 : </label>
+                     <select name="question"> 
 							<option value="1">  질문 1 : 보물 1호는? </option>
                             <option value="2">  질문 2 : 내가 다닌 초등학교 이름은? </option>
                             <option value="3">  질문 3 : 짝사랑했던 이성친구 이름은? </option>
                             <option value="4">  질문 4 : 어렸을 적 별명은?  </option>
                             <option value="5">  질문 5 : 내가 살던 고향은? </option>
-                        </select><br>      
-                	</li>
-                	<li>
-                    <label>답변 : </label><input type="text" name="answer"><br><br>
-                	</li>
-               	 	<li><input type="submit" value="아이디찾기"></li>
-                </ul>
+                     </select>
+                     <br>      
+                     <label>답변 : </label><input type="text" name="answer">
+                     <br><br>
+               	 	 <input type="submit" value="아이디찾기">
+            	 </fieldset>
             	</form>
-          </fieldset>
-    </section>     
+  		  </section>     
+    </div>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>
