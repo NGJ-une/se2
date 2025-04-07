@@ -131,7 +131,7 @@ button.prev:hover, button.next:hover {
 
 </head>
 <body>
-<%@include file="../header2.jsp" %>
+<%@include file="/header.jsp" %>
     <section class="section1">
         <article>
             <div class="slider">
@@ -197,7 +197,7 @@ button.prev:hover, button.next:hover {
             <img src="main/img/10.jpg" alt="g10">
         </div>
     </section>
-<%@include file="../footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 <script>
     var slideIndex = 0;
