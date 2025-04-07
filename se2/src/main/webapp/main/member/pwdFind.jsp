@@ -33,11 +33,7 @@
       background-color: white;
     }
 </style>
-<script>
-	function pwdFindPopup(){
-		window.open('pwdFindPopup.jsp','pwdFind','width=500,height=250');
-	}
-</script>
+
 </head>
 <body>
     <section class="pwdfindZone">
@@ -56,13 +52,13 @@
             <div><a href="memberJoin.jsp">회원가입</a></div>
           </nav>
         <fieldset class="pwdFindField">
-            <form name="idFind" action="idFind_ok.jsp" method="post">
+            <form name="pwdFind" action="pwdFind_ok.jsp" method="post">
                 <h2>비밀번호 찾기</h2>
                 <hr>
                 <ul>
-                     <li><label>아이디 : </label><input type="text"></li><br>
-                    <li><label>전화번호 : </label><input type="text"></li><br>
-                <li><input type="submit" value="비밀번호 찾기" onclick="pwdFindPopup();"></li>
+                     <li><label>아이디 : </label><input type="text" name="id"><br></li>
+                    <li><label>전화번호 : </label><input type="text" name="tel"><br><br></li>
+                	<li><input type="submit" value="비밀번호 찾기"></li>
                 </ul>
             </form>
         </fieldset>
