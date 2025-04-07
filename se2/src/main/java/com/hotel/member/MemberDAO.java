@@ -73,7 +73,7 @@ public class MemberDAO {
 	}
 	
 	
-	/**  로그인 메소드1   */  //id 입력시 비밀번호 찾는 메소드
+	/**  로그인 메소드1   */  //ID 입력 시 비밀번호 찾는 메소드
 	
 	public String loginCheckPwd(String userid) {
 		try {
