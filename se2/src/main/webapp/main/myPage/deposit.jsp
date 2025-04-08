@@ -1,37 +1,119 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<jsp:useBean id="mdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<jsp:useBean id="mdao" class="com.hotel.mypage.DepositDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>가로로 두 공간 만들기</title>
+  <title>충전하기</title>
   <style>
     * {
-	   margin: 0; 
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
-	}
-	
-	body {
-	    text-align: center; /* 화면 중앙 배치 효과 */
-	    margin:0 auto;
-	    padding:0;
-		/*background: #e8e8e8;*/
-	}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+    }
+
     .container {
       display: flex;
+      width: 1200px;
+      margin: 50px auto;
+      gap: 20px;
     }
+
     .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 800px; 
-      background-color: white;
+      flex: 2;
+      padding: 40px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
-    a {
-    	text-decoration: none;
-    	color : black;
+
+    .info-box {
+      flex: 1;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      color: #444;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .current-money {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="reset"] {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #bdbdbd;
+    }
+
+    .info-box h3 {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .info-box p {
+      font-size: 15px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 22px;
+      margin-right: 6px;
     }
   </style>
 </head>
@@ -39,27 +121,33 @@
   <%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
+
     <section class="box2">
-    <form name ="deposit" action = "deposit_ok.jsp">
-        <h1>충전하기</h1>
-
+      <form name="deposit" action="deposit_ok.jsp">
+        <h1>💳 포인트 충전</h1>
         <%
-        String id = (String)session.getAttribute("sessionid");
-        int money = mdao.importAmount(sid);
+          String id = (String)session.getAttribute("sessionid");
+          int money = mdao.importAmount(id);
         %>
-        <label>현재 금액 : <%=money %></label>
+        <label class="current-money">현재 보유 금액: <%=money %> 원</label>
+
+        <label for="money">충전할 금액 입력</label>
+        <input type="text" id="money" name="money" placeholder="예: 10000" required>
 
         <br>
-        <br>
-        <label>충전할 금액 : </label>
-        <input type="text" name = "money">
-        <br>
-        <input type="submit" value="충전">
-        <input type="reset" value="취소">
-    </form>
+        <input type="submit" value="충전하기">
+        <input type="reset" value="초기화">
+      </form>
     </section>
+
+    <aside class="info-box">
+      <h3>⚠️ 충전 유의사항</h3>
+      <p><span class="emoji">✔️</span> 최소 충전 금액은 1,000원입니다.</p>
+      <p><span class="emoji">✔️</span> 충전 후 환불은 고객센터를 통해 가능합니다.</p>
+      <p><span class="emoji">✔️</span> 충전 내역은 마이페이지에서 확인할 수 있습니다.</p>
+      <p><span class="emoji">📞</span> 문의: 1234-5678</p>
+    </aside>
   </div>
   <%@include file="/footer.jsp" %>
 </body>
 </html>
-

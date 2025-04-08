@@ -40,7 +40,7 @@ body {
 }
 
 .soft-top-links a:hover {
-  color: #b58143; /* 부드러운 골드브라운 포인트 */
+  color: #b58143; /* 부드러운 골드브라운 포인트 */  
 }
 
 .soft-main-header {
@@ -93,7 +93,6 @@ body {
   flex: 0 0 auto;
   text-shadow: 0 1px 2px rgba(210, 180, 140, 0.2);
 }
-
 </style>
 </head>
 <body>
@@ -118,5 +117,4 @@ body {
       </nav>
     </div>
   </header>
-  
 </html>

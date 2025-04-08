@@ -9,11 +9,11 @@ String id = (String)session.getAttribute("sessionid");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <style>
+  <style>
     * {
 	   margin: 0;
 	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
 	}
 	
 	body {
@@ -24,12 +24,14 @@ String id = (String)session.getAttribute("sessionid");
 	}
     .container {
       display: flex;
+      width:1500px;
+      margin:0 auto;
     }
-    
+
     .box2 {
       padding: 20px;
       border: 1px solid #ccc;
-      width: 800px; 
+      width: 1200px; 
       background-color: white;
     }
   </style>
@@ -41,8 +43,6 @@ String id = (String)session.getAttribute("sessionid");
       <section class="box2">
       <form name = "profileEditCheck" action = "profileEditCheck_ok.jsp">
           <h1>비밀번호 확인</h1>
-          <hr>
-          <fieldset>
             <label>회원ID :</label>
             <%=sid %>
             <!-- session에 저장된id 가져올 예정-->
@@ -54,7 +54,6 @@ String id = (String)session.getAttribute("sessionid");
             <br>
             <input type = "submit" value ="확인">
             <input type = "button" value = "취소">
-          </fieldset>
       </form>
       </section>
     </div>
