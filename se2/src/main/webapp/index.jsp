@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
+
 
 </head>
 <body class="main-page">
