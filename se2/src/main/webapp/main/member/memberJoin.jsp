@@ -32,6 +32,7 @@
             border-radius: 4px; 
         }
         
+        
         input[type="submit"], input[type="reset"] { 
             background-color: #eee; 
             border: none; 
@@ -50,7 +51,27 @@
         .email-group input { width: 48%; }
         
         hr { border: none; border-top: 1px solid #eee; margin: 15px 0; }
-    </style>
+
+		.idCheck {
+   			width: 500px; /* 원하는 너비 */
+			padding: 10px; 
+            margin-bottom: 15px; 
+            font-size: 14px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+	
+		}
+
+		input[type="button"]{ 
+         	width: 17%; 
+            background-color: #eeeeeec0; 
+            border: none; 
+            cursor: pointer; 
+        }
+
+
+
+   </style>
 
     <script>
         // 아이디 중복체크
@@ -87,7 +108,7 @@
         <input type="date" name="birth" required>
 
         <label>아이디</label>
-        <input type="text" name="id" placeholder="아이디" readonly required>
+        <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required>
         <input type="button" value="중복검사" onclick="openIdCheck();">
 
         <label>비밀번호</label>
