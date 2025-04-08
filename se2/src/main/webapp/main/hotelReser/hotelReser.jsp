@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Reservation</title>
     <style>
     	table{
     		margin: 0px auto;
@@ -18,14 +18,14 @@
     	}
     	th{
     		border: 1px solid black;
-    		background-color: skyblue;
+    		background-color: #E4D9C7;
     	}
     	td{
     		border: 1px solid black;
     	}
     </style>
     <script type="text/javascript">
-	document.addEventListener("DOMContentLoaded", () => {
+	document.addEventListener("DOMContentLoaded", function(){
 		const today = new Date().toISOString().split('T')[0];
 		
 		const checkInInput = document.getElementById('checkIn');
@@ -34,7 +34,7 @@
 		checkInInput.setAttribute('min', today);
 		checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
 
-		checkOutInput.addEventListener('change', () => {
+		checkOutInput.addEventListener('change', function(){
 			if (!checkInInput.value){
 			alert('체크인 날짜를 먼저 입력하세요');
 			checkOutInput.value = '';
@@ -42,7 +42,7 @@
 		}
 		});
 
-		checkInInput.addEventListener('change', () => {
+		checkInInput.addEventListener('change', function(){
 			checkOutInput.setAttribute('min', checkInInput.value);
 		});
 		
@@ -50,6 +50,25 @@
 			element.addEventListener('keydown', (event) => {
 				event.preventDefault();
 			});
+		});
+		
+		const numberInputs = document.querySelectorAll('input[type="number"]');
+
+		function limitHeadCount(event){
+			const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
+
+			if (headCount > 6){
+				alert('총 인원은 6명까지 가능합니다');
+				event.target.value = event.target.getAttribute('prev-value') || 0;
+			}
+			else{
+				event.target.setAttribute('prev-value', event.target.value);
+			}
+		}
+
+		numberInputs.forEach(numberInput => {
+			numberInput.setAttribute('prev-value', numberInput.value);
+			numberInput.addEventListener('change', limitHeadCount);
 		});
 	});
     </script>
@@ -64,7 +83,7 @@ String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
 %>
 <body>
-<%@ include file="/header.jsp" %>
+<%@ include file="/header2.jsp" %>
     <section>
 	   	<article>
 		   	<h1>예약하기</h1>
@@ -84,13 +103,13 @@ String babyStr = request.getParameter("baby");
 		                <input type="date" name="checkOut" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
 		                <label>성인</label>
 		                <input type="number" name="adult" min="1" max="6" 
-		                	value="<%= adultStr != null ? adultStr : "2" %>" onkeydown="return false;" required>
+		                	value="<%= adultStr != null ? adultStr : "2" %>" required>
 		                <label>어린이</label>
 		                <input type="number" name="kid" min="0" max="5" 
-		                	value="<%= kidStr != null ? kidStr : "0" %>" onkeydown="return false;" required>
+		                	value="<%= kidStr != null ? kidStr : "0" %>" required>
 		                <label>유아</label>
 		                <input type="number" name="baby" min="0" max="5" 
-		                	value="<%= babyStr != null ? babyStr : "0" %>" onkeydown="return false;" required>
+		                	value="<%= babyStr != null ? babyStr : "0" %>" required>
 		                <input type="submit" value="검색">
 		            </div>
 		        </fieldset>
@@ -100,6 +119,7 @@ String babyStr = request.getParameter("baby");
 		<article>
 			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" method="post">
 				<table>
+				<caption>검색 결과</caption>
 					<tr>
 						<th>방 종류</th>
 						<th>이미지</th>
@@ -140,7 +160,7 @@ String babyStr = request.getParameter("baby");
 							<%= arr.get(i).getCapacity() %>
 						</td>
 						<td>
-							<input type="radio" name="selectedRow" value="row<%= i %>">
+							<input type="radio" name="selectedRow" value="row<%= i %>" required>
 						</td>
 					</tr>
 					<%			
@@ -154,7 +174,7 @@ String babyStr = request.getParameter("baby");
 		    				<input type="hidden" name="adult" value="<%= adultStr %>">
 		    				<input type="hidden" name="kid" value="<%= kidStr %>">
 		    				<input type="hidden" name="baby" value="<%= babyStr %>">
-							<input type="submit" value="예약하기" onclick="reserve()">
+							<input type="submit" value="예약하기">
 						</td>
 					</tr>
 					<%
@@ -165,6 +185,6 @@ String babyStr = request.getParameter("baby");
 			</form>
 		</article>
 	</section> 
-<%@ include file="/footer.jsp" %>
+<%@ include file="/footer2.jsp" %>
 </body>
 </html>

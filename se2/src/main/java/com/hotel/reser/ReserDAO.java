@@ -29,7 +29,6 @@ public class ReserDAO {
 				roomMaxCount.put("deluxe", rs.getInt("deluxe")); 
 				roomMaxCount.put("suite", rs.getInt("suite")); 
 				roomMaxCount.put("grand", rs.getInt("grand")); 
-				System.out.println("room max count 1 row");
 			}
 			
 			sql = "SELECT SUBSTR(rtype, 3) AS room_type, COUNT(rtype) AS reserved_count FROM reser WHERE rtype LIKE ? AND rcheckout < ? GROUP BY rtype";
@@ -41,7 +40,6 @@ public class ReserDAO {
 			HashMap<String, Integer> reservedCount = new HashMap<String, Integer>();
 			while (rs.next()) {
 				reservedCount.put(rs.getString("room_type"), rs.getInt("reserved_count"));
-				System.out.println("reserved count 1 row");
 			}
 			
 			sql = "SELECT * FROM room WHERE type LIKE ? AND capacity >= ?";
@@ -60,7 +58,6 @@ public class ReserDAO {
 					RoomDTO dto = new RoomDTO(rs.getString("type"), rs.getInt("idx"), rs.getString("img_name"), rs.getInt("price"),
 							rs.getInt("capacity"));
 					res.add(dto);
-					System.out.println("result 1row");
 				}
 			}
 			return res;
