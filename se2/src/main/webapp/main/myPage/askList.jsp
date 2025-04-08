@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "com.hotel.mypage.*" %>
+<jsp:useBean id="adao" class = "com.hotel.mypage.AsklistDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,13 +56,34 @@
         <table>
             <tr>
                 <th>No</th>
-                <th>구분</th>
-                <th>문의유형</th>
                 <th>제목</th>
                 <th>문의일자</th>
-                <th>답변여부</th>
             </tr>
-            
+            		<tbody>
+		<%
+		String id = (String)session.getAttribute("sessionid");
+		ArrayList<AsklistDTO> arr = adao.askList(id); 
+		if(arr==null || arr.size()==0) {
+			%>
+			<tr>
+				<td colspan="3" align = "center">
+				등록된 게시글이 없습니다.
+				</td>
+			</tr>
+			<%
+		} else {
+			for(int i = 0; i<arr.size(); i++) {
+				%>
+				<tr>
+					<td><%=arr.get(i).getRownum() %></td>
+					<td><%=arr.get(i).getItitle() %></td>
+					<td><%=arr.get(i).getIdate()%></td>
+				</tr>
+				<%
+			}
+		}
+		%>
+		</tbody>
         </table>
     </section>
   </div>

@@ -121,7 +121,7 @@ button.prev:hover, button.next:hover {
 }
 
 .section4 hr {
-    border: none;https://devjhs.tistory.com/580
+    border: none;
     height: 2px;
     background-color: #ddd; 
     margin: 20px auto;
