@@ -10,8 +10,7 @@
 <form name="idCheck" action="idCheck_ok.jsp">
 <fieldset>
 
-	<div style="color: #f3415e;">로그인 중복확인</div><hr>
-	<label>아이디를 입력해주세요</label><br>
+	<div>로그인 중복확인</div><hr>
    <label>ID</label>
    <input type="text" name="userid">
    <input type="submit" value="중복검사">

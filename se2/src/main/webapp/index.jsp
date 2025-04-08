@@ -5,16 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
-<style>
-.section4 hr {
-    border: none;https://devjhs.tistory.com/580
-    height: 2px;
-    background-color: #ddd; 
-    margin: 20px auto;
-    width: 80%; 
-}
-</style>
+
+
 </head>
 <body class="main-page">
 <%@include file="/header2.jsp" %>
@@ -30,7 +24,6 @@
                 <img src="main/img/7.jpg" alt="h7" class="slide">
                 <img src="main/img/8.jpg" alt="h8" class="slide">
                 <img src="main/img/9.jpg" alt="h9" class="slide">
-                <img src="main/img/10.jpg" alt="h10" class="slide">
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     			<button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
@@ -94,30 +87,40 @@
         
         // 모든 슬라이드 숨기기
         for (var i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
+        slides[i].classList.remove("active");
+    }
 
         // 인덱스에 해당하는 슬라이드 표시
         slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
 
-        slides[slideIndex-1].style.display = "block";  
+        slides[slideIndex - 1].classList.add("active");
 
-        //기존 타이머 취소하고 새로 시작, 내장 함수
         clearTimeout(slideTimer);
-
-        // 3초마다 슬라이드 변경, 내장 함수
-        slideTimer=setTimeout(showSlides, 3000);
+        slideTimer = setTimeout(showSlides, 3000);
     }
- 	// 슬라이드 자동 변경
     showSlides();
 
     function changeSlide(n) {
-        slideIndex += n - 1; // 현재 슬라이드 인덱스 조정
-        if (slideIndex < 0) {
-            slideIndex = document.getElementsByClassName("slide").length - 1;
+    	var slides = document.getElementsByClassName("slide");
+
+        slideIndex += n;
+        if (slideIndex < 1) {
+            slideIndex = slides.length;
+        } else if (slideIndex > slides.length) {
+            slideIndex = 1;
         }
-        showSlides();
+
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+
+        slides[slideIndex - 1].classList.add("active");
+
+        clearTimeout(slideTimer);
+        slideTimer = setTimeout(showSlides, 3000);
     }
 
 </script>

@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>충전하기</title>
   <style>
     * {
@@ -14,7 +13,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       background-color: #f0f2f5;
     }
 
@@ -31,6 +30,7 @@
       border-radius: 12px;
       background-color: #ffffff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
     }
 
     .info-box {
@@ -46,6 +46,7 @@
       font-size: 28px;
       color: #333;
       margin-bottom: 30px;
+      border-bottom: 3px solid #eee;
     }
 
     label {
@@ -118,7 +119,7 @@
   </style>
 </head>
 <body>
-  <%@include file="/header.jsp" %>
+  <%@include file="/header2.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
 
@@ -143,11 +144,11 @@
     <aside class="info-box">
       <h3>⚠️ 충전 유의사항</h3>
       <p><span class="emoji">✔️</span> 최소 충전 금액은 1,000원입니다.</p>
-      <p><span class="emoji">✔️</span> 충전 후 환불은 고객센터를 통해 가능합니다.</p>
-      <p><span class="emoji">✔️</span> 충전 내역은 마이페이지에서 확인할 수 있습니다.</p>
+      <p><span class="emoji">✔️</span> 충전 후 환불은 환불하기를 통해 가능합니다.</p>
+      <p><span class="emoji">✔️</span> 환불 후 환불이 완료되기 전까지 영업일 기준 2~3 일 정도 소요 됩니다.</p>
       <p><span class="emoji">📞</span> 문의: 1234-5678</p>
     </aside>
   </div>
-  <%@include file="/footer.jsp" %>
+  <%@include file="/footer2.jsp" %>
 </body>
 </html>
