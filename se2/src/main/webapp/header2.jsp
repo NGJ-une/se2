@@ -11,13 +11,13 @@
 	    <%
 	    if(sid==null){
 	    	%>
-	      <a href="main/member/login.jsp" id="login"><strong>로그인</strong></a>
-	      <a href="main/member/memberJoin.jsp">회원가입</a>
+	      <a href="/se2/main/member/login.jsp" id="login"><strong>로그인</strong></a>
+	      <a href="/se2/main/member/memberJoin.jsp">회원가입</a>
 	    	<%
 	    }else{
 	    	%>
-	      <a href = "main/myPage/myPage_main.jsp"><strong>마이페이지</strong></a>
-	      <a href="main/member/logout.jsp">회원가입</a>
+	      <a href = "/se2/main/myPage/myPage_main.jsp"><strong>마이페이지</strong></a>
+	      <a href="/se2/main/member/logout.jsp">회원가입</a>
 	    	<%
 	    }
 	    %>
@@ -32,7 +32,7 @@
 	    <div class="soft-logo"><a href="/se2/index.jsp">HELIA HOTEL</a></div>
 	  
 	      <nav class="soft-nav right">
-	      <a href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a>
+	      <a href="se2/main/hotelReser/hotelReser.jsp">예약하기</a>
 	        <%
 	        if(sid==null){
 	        	%>
