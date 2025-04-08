@@ -35,10 +35,26 @@
     }
 </style>
 <script>
+
+// 아이디 중복체크
 	function openIdCheck(){
 		window.open('idCheck.jsp','idCheck','width=500,height=250');
 	}
+
+//비밀번호 중복체크
+	function pwdCheck() {
+		let pwd = document.memberJoin.pwd.value;
+		let pwdcheck = document.memberJoin.pwdcheck.value;
+
+		if (pwd !== pwdcheck) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.memberJoin.pwd.focus();
+			return false;
+		}
+		return true;
+	}
 </script>
+
 </head>
 <body>
     <section class="memberJoinZone">
@@ -57,7 +73,7 @@
             <div style="color: #f3415e;" ><a href="memberJoin.jsp">회원가입</a></div>
           </nav>
 			<fieldset class="memberJoinField">
-				<form name="memberJoin" action="memberJoin_ok.jsp" method="post">
+				<form name="memberJoin" action="memberJoin_ok.jsp" method="post" onsubmit="return pwdCheck();">
 					<h2>회원가입</h2>
 					<hr>
 					<ul>

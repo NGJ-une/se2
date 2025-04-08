@@ -28,8 +28,8 @@ CREATE TABLE grade (
     discount number(10) not null --할인율
 )
 
---질문 테이블 생성
-CREATE TABLE question (
+--질문 테이블 생question성
+CREATE TABLE  (
     question number(2) primary key, -- 질문번호
     content varchar(50) not null -- 질문내용 
 ) 
@@ -70,12 +70,38 @@ CREATE TABLE hotel (
     suite number(10) not null, --스위트 
     grand number(10) not null -- 그랜드  
 ) 
+--환불 테이블 생성
+CREATE TABLE refund (
+    bidx number (5) primary key, --환불 번호 
+    bid varchar2 (30) not null, -- 회원 아이디 (외래키) 
+    bbank varchar2 (20) not null, -- 은행 
+    bacount varchar2 (30) not null, -- 계좌번호 
+    brefund number (10) not null, -- 환불금액 
+    bdate DATE not null, --환불 날짜 
+    
+    constraint fk_member_mid foreign key(bid) references member(mid)
+)
+--문의 테이블 생성 
+CREATE TABLE inquiry (
+    iidx number(5) primary key, --문의 회원번호 (기본키)  
+    iid varchar2(50) not null, --문의 아이디 (외래키) 
+    ititle varchar2(100) not null, --문의 제목 
+    icontent varchar2(3000) not null, -- 문의 내용 
+    idate date not null, --문의 날짜 
+    iref number(4) default 0,
+    ilev number(4) default 0,
+    isunbun number(4) default 0,
+
+constraint fk_member_id2 foreign key(iid) references member(mid)
+)   
 
 --시퀀스 생성  
 CREATE SEQUENCE sq_member_idx --로그인/회원가입 테이블  회원번호 시퀀스  
 CREATE SEQUENCE sq_reser_idx -- 예약 테이블 예약번호 시퀀스 
 CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
 CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
+CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
+CREATE SEQUENCE sq_inquiry_idx --문의 테이블 문의 번호 시퀀스 
 
 --grade 기본데이터 입력  
 INSERT INTO grade values('BRONZE',0,200000,0)
@@ -113,6 +139,8 @@ SELECT * FROM grade
 SELECT * FROM reser
 SELECT * FROM room
 SELECT * FROM hotel
+SELECT * FROM refund
+SELECT * FROM inquiry
 
 --데이터 삭제 
 DELETE reser
@@ -121,6 +149,8 @@ DELETE hotel
 DELETE room
 DELETE question
 DELETE grade
+DELETE refund
+DELETE inquiry
 --테이블 삭제 
 DROP TABLE reser
 DROP TABLE member
@@ -128,11 +158,15 @@ DROP TABLE hotel
 DROP TABLE room
 DROP TABLE question
 DROP TABLE grade
+DROP TABLE refund
+DROP TABLE inquiry
 --시퀀스 삭제 
 DROP SEQUENCE sq_member_idx
 DROP SEQUENCE sq_reser_idx
 DROP SEQUENCE sq_room_idx
 DROP SEQUENCE sq_hotel_idx
+DROP SEQUENCE sq_refund_idx
+DROP SEQUENCE sq_inquiry_idx
  
 --
 COMMIT
@@ -143,3 +177,5 @@ desc reser
 desc room
 desc hotel
 desc question
+desc refund
+desc inquiry
