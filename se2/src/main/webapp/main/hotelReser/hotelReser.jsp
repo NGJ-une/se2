@@ -10,48 +10,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
     <style>
-    	h1{
+    	#reser-title{
     		font-size: 45px;
     		margin-left: 10%;
     		color: #6b4c2f;
     	}
-    	fieldset{
+    	#reser-fieldset{
     		text-align: center;
     		border: 0px;
     	}
-    	.label-input-margin{
+    	.input-components{
     		margin-left: 20px;
     		margin-right: 20px;
     		margin-top: 10px;
     		margin-bottom: 10px;
+    		border-radius: 5px;
     	}
-    	label{
+    	#reser-fieldset label{
     		font-weight: 100%;
     		font-size: 15px;
     	}
-    	input, select{
-    		border-radius: 5px;
+    	#reser-fieldset input, #reser-fieldset select{
     		border: 1px solid #E4D9C7;
     	}
-    	table{
+    	#reser-search-result{
     		margin: 0px auto;
     		text-align: center;
     		width: 90%;
     		border-collapse: collapse;
     		border: 1px solid #E4D9C7;
-    		font-size: 100px;
+    		font-size: 15px;
     	}
-    	th{
+    	#reser-search-result th{
     		background-color: #E4D9C7;
-    		padding: 40px;
+    		padding: 10px;
     	}
-    	td{
+    	#reser-search-result td{
     		border-top: 1px solid #E4D9C7;
-    		padding: 40px;
+    		padding: 10px;
     	}
-    	img{
+    	#reser-search-result img{
     		width: 160px;
     		height: 90px;
+    	}
+    	#reser-search-result input{
+    		border: 1px solid #E4D9C7;
     	}
     	.img-cell{
     		width: 160px;
@@ -119,30 +122,30 @@ String babyStr = request.getParameter("baby");
 <%@ include file="/header2.jsp" %>
     <section>
 	   	<article>
-		   	<h1>예약하기</h1>
+		   	<h1 id="reser-title">예약하기</h1>
 		    <hr>
 		    <form action="/se2/main/hotelReser/hotelReser.jsp" name="hotelReserSearch" method="get">
-		        <fieldset>
+		        <fieldset id="reser-fieldset">
 		            <div>
 		                <label>지역</label>
-		                <select name="name" class="label-input-margin">
+		                <select name="name" class="input-components">
 		                    <option value="h_seoul" <%= "h_seoul".equals(name) ? "selected" : "" %>>서울</option>
 		                    <option value="h_ulsan" <%= "h_ulsan".equals(name) ? "selected" : "" %>>울산</option>
 		                </select>
-		                <label class="label-input-margin">체크인</label>
-		                <input type="date" name="checkIn" class="label-input-margin" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
-		                <label class="label-input-margin">체크아웃</label>
-		                <input type="date" name="checkOut" class="label-input-margin" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
-		                <label class="label-input-margin">성인</label>
-		                <input type="number" name="adult" class="label-input-margin" min="1" max="6" 
+		                <label class="input-components">체크인</label>
+		                <input type="date" name="checkIn" class="input-components" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
+		                <label class="input-components">체크아웃</label>
+		                <input type="date" name="checkOut" class="input-components" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
+		                <label class="input-components">성인</label>
+		                <input type="number" name="adult" class="input-components" min="1" max="6" 
 		                	value="<%= adultStr != null ? adultStr : "2" %>" required>
-		                <label class="label-input-margin">어린이</label>
-		                <input type="number" name="kid" class="label-input-margin" min="0" max="5" 
+		                <label class="input-components">어린이</label>
+		                <input type="number" name="kid" class="input-components" min="0" max="5" 
 		                	value="<%= kidStr != null ? kidStr : "0" %>" required>
-		                <label class="label-input-margin">유아</label>
-		                <input type="number" name="baby" class="label-input-margin" min="0" max="5" 
+		                <label class="input-components">유아</label>
+		                <input type="number" name="baby" class="input-components" min="0" max="5" 
 		                	value="<%= babyStr != null ? babyStr : "0" %>" required>
-		                <input type="submit" class="label-input-margin" value="검색">
+		                <input type="submit" class="input-components" value="검색">
 		            </div>
 		        </fieldset>
 		   	</form>
@@ -150,14 +153,7 @@ String babyStr = request.getParameter("baby");
 		<hr>
 		<article>
 			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" method="post">
-				<table>
-					<tr>
-						<th>방 종류</th>
-						<th>이미지</th>
-						<th>가격</th>
-						<th>인원수</th>
-						<th>선택</th>
-					</tr>
+				<table id="reser-search-result">
 				<%
 		    	if (name != null && adultStr != null
 		    		&& kidStr != null && babyStr != null){
@@ -167,7 +163,15 @@ String babyStr = request.getParameter("baby");
 		    		int baby = Integer.parseInt(babyStr);
 		    		
 		    		ArrayList<RoomDTO> arr = reserDAO.searchRooms(name, adult + kid + baby, Date.valueOf(checkInStr));
-		    		
+		    	%>
+		    		<tr>
+						<th>방 종류</th>
+						<th>이미지</th>
+						<th>가격</th>
+						<th>인원수</th>
+						<th>선택</th>
+					</tr>
+		    	<%	
 		    		if (arr == null || arr.size() == 0){
 		    	%>
 					<tr>
@@ -205,7 +209,7 @@ String babyStr = request.getParameter("baby");
 		    				<input type="hidden" name="adult" value="<%= adultStr %>">
 		    				<input type="hidden" name="kid" value="<%= kidStr %>">
 		    				<input type="hidden" name="baby" value="<%= babyStr %>">
-							<input type="submit" class="label-input-margin" value="예약하기">
+							<input type="submit" class="input-components" value="예약하기">
 						</td>
 					</tr>
 					<%
