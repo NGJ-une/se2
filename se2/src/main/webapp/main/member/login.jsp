@@ -5,31 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
-  <style>
+
+ <style>
+ 
     * {
-	   margin: 0;
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	   	margin: 0;
+	    padding: 0;
+	    box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
 	}
-	
 	body {
 	    text-align: center; /* 화면 중앙 배치 효과 */
 	    margin:0 auto;
 	    padding:0;
-		/*background: #e8e8e8;*/
 	}
     .container {
-      display: flex;
-      width:1500px;
-      margin:0 auto;
+        display: flex;
+        width:1200px;
+        margin:0 auto;
     }
 
-    .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 1200px; 
-      background-color: white;
+    
+    form {
+    	width:500px;
+    	text-align: center;
+    	margin: 100px auto;  
     }
+    
+    input {
+         width: 100%;
+         padding: 10px;
+         margin: 10px 0;
+         font-size: 14px;
+         box-sizing: border-box;
+         border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+         border: none;
+         cursor: pointer;
+	}
+    hr {
+         width: 100%;
+         border: none;
+         border-top: 2px solid #eee;
+         margin: 10px 0 20px;
+    }
+    
+    
   </style>
 </head>
 <%
@@ -46,34 +67,36 @@ if(cks!=null){
 }
 %>
 <body>
-<%@include file="/header.jsp" %>
-    <div class="container">
-        <%@include file="sideBar.jsp" %>   
-          <section class="box2">
+<%@include file="/header2.jsp" %>
+    <section class="container">   
 			<form name="login" action="login_ok.jsp" method="post">
 			<h1>로그인</h1>
 			<hr>
-            <fieldset>
-            <br>
                 <p>
                 ooo호텔에 오신 것을 환영합니다.<br>
                 ※ OOO회원이 되시면 회원만을 위한<br>
                 다양한 서비스와 혜택을 받으실 수 있습니다.
                 </p>
              <br>
-                 <label> 아이디 : </label><input type="text" name="userid" value="<%=saveid%>" >
+   			<hr>
              <br>
-                 <label>비밀번호 : </label><input type="password" name="userpwd">
+			<input type="text" name="userid" placeholder="아이디" value="<%=saveid%>" >
+             <br>
+            <input type="password" name="userpwd" placeholder="비밀번호">
              <br>
                  <input type="checkbox" name="saveid" value="on"
                     <%=saveid.equals("")?"":"checked" %> >아이디 저장   
                   <input type="submit" value="  로그인  ">
               <br>
-             </fieldset>  
+                <p> 
+                <a href="idFind.jsp"> 아이디 찾기 </a> |
+                <a href="pwdFind.jsp"> 비밀번호 찾기 </a>	|
+                <a href="memberJoin.jsp">	회원가입	</a>
+                </p>
+              
 			</form>
 		</section>
-	</div>
 </body>
- <%@include file="/footer.jsp" %>
+ <%@include file="/footer2.jsp" %>
 </html>
 
