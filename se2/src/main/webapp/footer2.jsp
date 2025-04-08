@@ -11,7 +11,7 @@ ul,ol,li,dl,dt,dd{list-style: none; margin: 0px; padding: 0px;}
 body,div,td,th,p,textarea{margin: 0; padding: 0; font-size: 12px; color:#101010;}
 -->
 footer {
-  background-color: #fef8f3;
+  background-color: #E4D9C7;
   color: #5b4c42;
   font-family: 'Noto Sans KR', sans-serif;
   padding-top: 40px;
