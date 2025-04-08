@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.hotel.mypage.*" %>
 <jsp:useBean id="mdao" class="com.hotel.mypage.DepositDAO"></jsp:useBean>
+<jsp:useBean id="pdao" class = "com.hotel.mypage.MainPageDAO"></jsp:useBean>
 <%
 String id = (String)session.getAttribute("sessionid");
 String grade = "BRONZE";
@@ -15,6 +16,8 @@ if(money > 3000000) {
 }
 mdao.grade(grade, id);
 ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
+ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,10 +50,10 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-
+/*border-left: 6px solid #4a75ff;	background-color: #eef3ff;*/
     .member-card {
-      background-color: #eef3ff;
-      border-left: 6px solid #4a75ff;
+      background-color: #fafaf0;
+      border-left: 6px solid #f6f6c4;
       padding: 20px 30px;
       border-radius: 8px;
       margin-bottom: 30px;
@@ -76,7 +79,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
       font-size: 20px;
       font-weight: bold;
       margin: 40px 0 20px;
-      border-bottom: 2px solid #4a75ff;
+      border-bottom: 2px solid #f6f6c4;
       padding-bottom: 8px;
       text-align: left;
     }
@@ -107,7 +110,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
       color: #555;
     }
 
-    /* 등급 색상 강조용 클래스 (선택사항) */
+    /*등급별 색상 차별화*/
     .grade-diamond { color: #8e44ad; font-weight: bold; }
     .grade-gold { color: #f39c12; font-weight: bold; }
     .grade-silver { color: #3498db; font-weight: bold; }
@@ -115,7 +118,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
   </style>
 </head>
 <body>
-  <%@include file="/header.jsp" %>
+  <%@include file="/header2.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
     <section class="box2">
@@ -149,14 +152,27 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
               <th>가격</th>
               <th>인원</th>
             </tr>
-            <tr>
-              <td>3</td>
-              <td>Grand</td>
-              <td>2025-04-02</td>
-              <td>250,000원</td>
-              <td>5명</td>
-            </tr>
-            <!-- 예약 내역 반복 출력 가능 -->
+			<%
+			if(arr2 == null || arr2.size() == 0) {
+				%>
+				<tr>
+					<td colspan="5">최근 6개월 이내에 예약한 방이 없습니다.</td>
+				</tr>
+				<%
+			}else {
+				for(int i = 0; i < arr2.size(); i++) {
+					%>
+					<tr>
+					<td><%=arr2.get(i).getRidx() %></td>
+					<td><%=arr2.get(i).getRtype() %></td>
+					<td><%=arr2.get(i).getRcheckin() %>~<%=arr2.get(i).getRcheckout() %></td>
+					<td><%=arr2.get(i).getRmoney() %></td>
+					<td><%=arr2.get(i).getRadult() + arr2.get(i).getRkid() %></td>
+					</tr>
+					<%
+				}
+			}
+			%>
           </table>
         </fieldset>
       <%
@@ -164,6 +180,6 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
       %>
     </section>
   </div>
-  <%@include file="/footer.jsp" %>
+  <%@include file="/footer2.jsp" %>
 </body>
 </html>
