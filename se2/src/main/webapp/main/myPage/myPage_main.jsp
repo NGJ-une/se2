@@ -32,25 +32,25 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       background-color: #f0f2f5;
     }
 
     .container {
       display: flex;
       width: 1200px;
-      margin: 40px auto;
+      margin: 50px auto;
       gap: 20px;
     }
 
     .box2 {
       flex: 1;
       background-color: white;
-      padding: 40px;
+      padding: 40px; /*상하 간격*/
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-/*border-left: 6px solid #4a75ff;	background-color: #eef3ff;*/
+    
     .member-card {
       background-color: #fafaf0;
       border-left: 6px solid #f6f6c4;
@@ -89,7 +89,7 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
       border-collapse: collapse;
       margin-top: 10px;
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 8px; /*둥글게 만들기*/
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
