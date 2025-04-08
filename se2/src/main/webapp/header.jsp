@@ -10,12 +10,12 @@ String sid = (String)session.getAttribute("sessionid");
   if(sid==null){
   %>
     <div>
-      <a href="main/member/login.jsp" id="login">로그인</a> | <a href="main/member/memberJoin.jsp">회원가입</a>
+      <a href="/se2/main/member/login.jsp" id="login">로그인</a> | <a href="/se2/main/member/memberJoin.jsp">회원가입</a>
     </div>
     <%
   	}else {
     %>
-    	<div><a href = "main/myPage/myPage_main.jsp">마이페이지</a> | <a href="main/member/logout.jsp">로그아웃</a> </div>
+    	<div><a href = "/se2/main/myPage/myPage_main.jsp">마이페이지</a> | <a href="/se2/main/member/logout.jsp">로그아웃</a> </div>
     <%	
     }
     %>
