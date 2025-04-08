@@ -6,61 +6,79 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
  <style>
+ 
     * {
-	   margin: 0;
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+	   	margin: 0;
+	    padding: 0;
+	    box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
 	}
-	
 	body {
 	    text-align: center; /* 화면 중앙 배치 효과 */
 	    margin:0 auto;
 	    padding:0;
-		/*background: #e8e8e8;*/
 	}
     .container {
-      display: flex;
-      width:1500px;
-      margin:0 auto;
+        display: flex;
+        width:1200px;
+        margin:0 auto;
     }
 
-    .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 1200px; 
-      background-color: white;
+    
+    form {
+    	width:500px;
+    	text-align: center;
+    	margin: 100px auto;  
     }
+    
+    input,select {
+         width: 100%;
+         padding: 10px;
+         margin: 10px 0;
+         font-size: 14px;
+         box-sizing: border-box;
+         border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+         border: none;
+         cursor: pointer;
+	}
+    hr {
+         width: 100%;
+         border: none;
+         border-top: 2px solid #eee;
+         margin: 10px 0 20px;
+    }
+    
+
+    
   </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
-    <div class="container">
-    	<%@include file="sideBar.jsp" %> 
-         	<section class="box2">
+<%@include file="/header2.jsp" %>
+    <section class="container"> 
             	<form name="idFind" action="idFind_ok.jsp" method="post">
                	 <h1>아이디찾기</h1>
                	 <hr>
-               	 <fieldset>
-                   	 <label>전화번호 : </label><input type="text" name="tel">
-                   	 <br>
+                   	 <input type="text" name="tel" placeholder="전화번호">
                    	 <label>(000-0000-000 형식으로 입력해주세요.)</label>
-                   	 <br>
-                     <label>질문 : </label>
-                     <select name="question"> 
+            
+                     <select name="question"  required > 
 							<option value="1">  질문 1 : 보물 1호는? </option>
                             <option value="2">  질문 2 : 내가 다닌 초등학교 이름은? </option>
                             <option value="3">  질문 3 : 짝사랑했던 이성친구 이름은? </option>
                             <option value="4">  질문 4 : 어렸을 적 별명은?  </option>
                             <option value="5">  질문 5 : 내가 살던 고향은? </option>
-                     </select>
-                     <br>      
-                     <label>답변 : </label><input type="text" name="answer">
-                     <br><br>
+                     </select>   
+                     <input type="text" name="answer" placeholder="답변" required>
                	 	 <input type="submit" value="아이디찾기">
-            	 </fieldset>
+               	 	 
+               	<p> 
+               		 <a href="pwdFind.jsp"> 비밀번호 찾기</a> |
+                	<a href="login.jsp">로그인</a>	|
+                	<a href="memberJoin.jsp">	회원가입	</a>
+                </p>
             	</form>
   		  </section>     
-    </div>
-  <%@include file="/footer.jsp" %>
+  <%@include file="/footer2.jsp" %>
 </body>
 </html>

@@ -19,19 +19,13 @@
 	}
     .container {
         display: flex;
-        width:1500px;
+        width:1200px;
         margin:0 auto;
     }
 
-    .box2 {
-        padding: 20px;
-        border: 1px solid #ccc;
-        width: 1200px; 
-        background-color: white;
-    }
     
     form {
-    	width:300px;
+    	width:500px;
     	text-align: center;
     	margin: 100px auto;  
     }
@@ -59,19 +53,22 @@
   </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@include file="/header2.jsp" %>
     <div class="container">
-       <%@include file="sideBar.jsp" %> 
-          <section class="box2">
              <form name="pwdFind" action="pwdFind_ok.jsp" method="post">
                 <h2>비밀번호 찾기</h2>
                 <hr>
                <input type="text" name="id" placeholder="아이디">
                 <input type="text" name="tel" placeholder="전화번호">
                 <input type="submit" value="비밀번호 찾기">
-            </form>
-    	</section>    
+               
+               <p> 
+                <a href="idFind.jsp"> 아이디 찾기</a> |
+                <a href="login.jsp">로그인</a>	|
+                <a href="memberJoin.jsp">	회원가입	</a>
+                </p>
+            </form> 
     </div>  
- <%@include file="/footer.jsp" %>
+ <%@include file="/footer2.jsp" %>
 </body>
 </html>
