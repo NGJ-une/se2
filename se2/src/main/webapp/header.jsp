@@ -22,7 +22,7 @@ String sid = (String)session.getAttribute("sessionid");
     <ul>
       <li><a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()" href="#">호텔찾기</a></li>
       <li><a class="top-menu-text" href="#">호텔소개</a></li>
-      <li><a id="title" href="/se2/index.jsp">Hotel SHILLA</a></li>
+      <li><a id="title" href="/se2/index.jsp">AORDD HOTEL</a></li>
       <li><a class="top-menu-text" href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a></li>
       <!-- 우선 비로그인시 만 이동링크 걸어둠 -->
       <%
