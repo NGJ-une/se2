@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>충전하기</title>
   <style>
     * {
@@ -14,7 +13,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       background-color: #f0f2f5;
     }
 
@@ -31,6 +30,7 @@
       border-radius: 12px;
       background-color: #ffffff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
     }
 
     .info-box {
@@ -46,6 +46,7 @@
       font-size: 28px;
       color: #333;
       margin-bottom: 30px;
+      border-bottom: 3px solid #eee;
     }
 
     label {
