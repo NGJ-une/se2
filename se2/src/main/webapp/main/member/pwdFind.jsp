@@ -48,7 +48,7 @@
     
     a {
         text-decoration: none;
-        color: #f79e66dd;
+        color: #b58143;
         margin: 0 10px;
     }
     
@@ -58,7 +58,7 @@
 	}
 
     input[type="submit"]:hover {
-    	background-color: #f79e66dd;
+    	background-color: #f0b675;
     }    
        
 
