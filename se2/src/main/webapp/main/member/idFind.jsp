@@ -38,16 +38,28 @@
          box-sizing: border-box;
          border: 1px solid #ccc;
     }
-    input[type="submit"] {
-         border: none;
-         cursor: pointer;
-	}
+
     hr {
          width: 100%;
          border: none;
          border-top: 2px solid #eee;
          margin: 10px 0 20px;
     }
+    a {
+        text-decoration: none;
+        color: #f79e66dd;
+        margin: 0 10px;
+    }
+    
+    input[type="submit"] {
+         border: none;
+         cursor: pointer;
+	}
+
+    input[type="submit"]:hover {
+    	background-color: #f79e66dd;
+    }    
+   
     
 
     

@@ -3,5 +3,5 @@
 
 <%
 session.invalidate();
-response.sendRedirect("/se2/header.jsp");
+response.sendRedirect("/se2/index.jsp");
 %>
