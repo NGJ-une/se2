@@ -62,7 +62,7 @@
             		<tbody>
 		<%
 		String id = (String)session.getAttribute("sessionid");
-		ArrayList<AsklistDTO> arr = adao.askList(id); 
+		ArrayList<AsklistDTO> arr = adao.askList(id);
 		if(arr==null || arr.size()==0) {
 			%>
 			<tr>

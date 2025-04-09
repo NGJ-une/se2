@@ -56,14 +56,14 @@
       color: #555;
     }
 
-    .current-money {
+    .currentMoney {
       font-size: 18px;
       margin-bottom: 25px;
       color: #007BFF;
       font-weight: bold;
     }
 
-    input[type="text"] {
+    input[type="number"] {
       width: 300px;
       padding: 12px;
       font-size: 16px;
@@ -130,10 +130,10 @@
           String id = (String)session.getAttribute("sessionid");
           int money = mdao.importAmount(id);
         %>
-        <label class="current-money">현재 보유 금액: <%=money %> 원</label>
+        <label class="currentMoney">현재 보유 금액: <%=money %> 원</label>
 
         <label for="money">충전할 금액 입력</label>
-        <input type="text" id="money" name="money" placeholder="예: 10000" required>
+        <input type="number" id="money" name="money" placeholder="예: 10000" required>
 
         <br>
         <input type="submit" value="충전하기">
