@@ -15,6 +15,7 @@ public class MemberDTO {
 	private Date join_date;
 	private int point;
 	private int money;
+	private int discount;
 	private int question;
 	private String answer;
 	
@@ -144,6 +145,14 @@ public class MemberDTO {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
 	public int getQuestion() {

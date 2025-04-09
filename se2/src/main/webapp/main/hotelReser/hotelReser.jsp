@@ -1,8 +1,11 @@
+<%@page import="org.apache.coyote.http11.upgrade.UpgradeServletInputStream"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.Date" %>
 <%@ page import="com.hotel.reser.RoomDTO" %>
+<jsp:useBean id="userInfo" class="com.hotel.member.MemberDTO" scope="session"></jsp:useBean>
+<jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +65,7 @@
     </style>
     <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(){
+		// 날짜 선택 예외 처리
 		const today = new Date().toISOString().split('T')[0];
 		
 		const checkInInput = document.getElementById('checkIn');
@@ -82,12 +86,14 @@
 			checkOutInput.setAttribute('min', checkInInput.value);
 		});
 		
+		// 날짜, 숫자 키보드 입력 방지
 		document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
 			element.addEventListener('keydown', (event) => {
 				event.preventDefault();
 			});
 		});
 		
+		// 총 인원수 제한
 		const numberInputs = document.querySelectorAll('input[type="number"]');
 
 		function limitHeadCount(event){
@@ -106,10 +112,20 @@
 			numberInput.setAttribute('prev-value', numberInput.value);
 			numberInput.addEventListener('change', limitHeadCount);
 		});
+		
+		document.getElementById('hotelReser').addEventListener('submit', function(){
+			const checkedRadio = document.querySelector('input[name="selectedRow"]:checked');
+			
+			const checkedPrice = document.querySelector('input[name="money_' + checkedRadio.value + '"]').value;
+			
+			if (Number(checkedPrice) > <%= userInfo.getMoney() %>){
+				alert('잔액이 부족합니다')
+				event.preventDefault();
+			}
+		});
 	});
     </script>
 </head>
-<jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
 <%
 String name = request.getParameter("name");
 String checkInStr = request.getParameter("checkIn");
@@ -152,7 +168,7 @@ String babyStr = request.getParameter("baby");
 	   	</article>
 		<hr>
 		<article>
-			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" method="post">
+			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" id="hotelReser" method="post">
 				<table id="reser-search-result">
 				<%
 		    	if (name != null && adultStr != null

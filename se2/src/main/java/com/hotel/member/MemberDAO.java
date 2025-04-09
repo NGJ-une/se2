@@ -75,18 +75,20 @@ public class MemberDAO {
 	
 	/**  로그인 메소드1   */  //ID 입력 시 비밀번호 찾는 메소드
 	
-	public String loginCheckPwd(String userid) {
+	public MemberDTO loginCheckPwd(String userid) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
-			String sql="SELECT MPWD FROM MEMBER WHERE MID=?";
+			String sql="SELECT mpwd, mgrade, mpoint, mmoney, discount FROM member, grade "
+					+ "WHERE member.mgrade = grade.grade AND mid = ?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
-			String userpwd=null;
+
 			if(rs.next()) {
-				userpwd= rs.getString("MPWD");
+				return new MemberDTO(userid, 0, rs.getString("mpwd"), null, null, null, null, null, null,
+						rs.getString("mgrade"), null, rs.getInt("mpoint"), rs.getInt("mmoney"), 0, null);
 			} 
-			return userpwd;
+			return null;
 		}
 		catch (Exception e) {
 			e.printStackTrace();

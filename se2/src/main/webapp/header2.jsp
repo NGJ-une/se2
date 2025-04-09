@@ -32,7 +32,7 @@
 	    <div class="soft-logo"><a href="/se2/index.jsp">HELIA HOTEL</a></div>
 	  
 	      <nav class="soft-nav right">
-	      <a href="se2/main/hotelReser/hotelReser.jsp">예약하기</a>
+	      <a href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a>
 	        <%
 	        if(sid==null){
 	        	%>
