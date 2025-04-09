@@ -26,7 +26,7 @@
 	    <div class="soft-main-header">
 	      <nav class="soft-nav left">
 	        <a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()">호텔찾기</a>
-	        <a class="top-menu-text" href="#">호텔소개</a>
+	        <a class="top-menu-text" href="/se2/main/hotelInfo/hotelInfo.jsp">호텔소개</a>
 	      </nav>
 	  
 	    <div class="soft-logo"><a href="/se2/index.jsp">HELIA HOTEL</a></div>

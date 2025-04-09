@@ -13,7 +13,7 @@
 	}
 
     input[type="submit"]:hover {
-    	background-color: #f79e66dd;
+    	background-color: #f0b675;
     }
 
 

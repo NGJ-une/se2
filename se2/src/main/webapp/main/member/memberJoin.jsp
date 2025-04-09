@@ -48,7 +48,7 @@
         }
 
 		input[type="reset"]:hover {
-    		background-color: #f79e66dd;
+    		background-color: #f0b675;
     	} 
         
         .email-group { 
@@ -58,7 +58,12 @@
         
         .email-group input { width: 48%; }
         
-        hr { border: none; border-top: 1px solid #eee; margin: 15px 0; }
+       hr {
+        width: 100%;
+        border: none;
+        border-top: 2px solid #eeeeeec0;
+        margin: 10px 0 20px;
+        }
 
 		.idCheck {
    			width: 500px; /* 원하는 너비 */
@@ -78,12 +83,12 @@
         }
 
 		input[type="button"]:hover {
-    		background-color: #f79e66dd;
+    		background-color: #f0b675;
     	} 
 
 		a {
         text-decoration: none;
-        color: #f79e66dd;
+        color: #b58143;
         margin: 0 10px;
     	}
     
@@ -93,7 +98,7 @@
 		}
 
     	input[type="submit"]:hover {
-    		background-color: #f79e66dd;
+    		background-color: #f0b675;
     	}    
     	
     	

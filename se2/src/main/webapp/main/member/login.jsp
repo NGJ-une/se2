@@ -46,7 +46,7 @@
     }
     
     input[type="submit"]:hover {
-    	background-color: #f79e66dd;
+    	background-color: #f0b675;
     }
 
     hr {
@@ -65,7 +65,7 @@
     padding-left: 2px; 
 }
 
-input[type="checkbox"] {
+	input[type="checkbox"] {
     width: auto;  
     margin: 0 8px 0 0;
 }
@@ -82,7 +82,7 @@ input[type="checkbox"] {
 
     a {
         text-decoration: none;
-        color: #f79e66dd;
+        color: #b58143;
         margin: 0 10px;
     }
     
