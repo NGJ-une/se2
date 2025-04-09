@@ -24,7 +24,7 @@ String id = (String)session.getAttribute("sessionid");
 	}
     .container {
       display: flex;
-      width:1500px;
+      width:1200px;
       margin:0 auto;
     }
 
@@ -45,7 +45,6 @@ String id = (String)session.getAttribute("sessionid");
           <h1>비밀번호 확인</h1>
             <label>회원ID :</label>
             <%=sid %>
-            <!-- session에 저장된id 가져올 예정-->
             <br>
             <br>
             <label>비밀번호 :</label>

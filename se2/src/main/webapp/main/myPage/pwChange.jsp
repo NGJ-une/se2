@@ -19,7 +19,7 @@
 	}
     .container {
       display: flex;
-      width:1500px;
+      width:1200px;
       margin: 50px auto;
       gap: 20px;
     }
@@ -45,7 +45,7 @@
     }
     input[type="password"] {
     	width: 300px;
-    	padding: 12px;
+    	padding: 10px;
     	font-size: 16px;
     	border: 1px solid #ccc;
     	border-radius: 8px;
@@ -71,6 +71,17 @@
      input[type="button"]:hover {
       background-color: #bdbdbd;
     }
+    .pwdGroup {
+    	display: flex;
+    	align-items: center;
+    	margin-bottom: 20px;
+    }
+    .pwdGroup label {
+    	width: 140px;
+    	font-size: 16px;
+    	color:#333;
+    	text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -80,17 +91,17 @@
     <section class="box2">
     <form name = "pwchange" action = "pwChange_ok.jsp">
         <h1>🔒비밀번호 변경</h1>
-        <div>
+        <div class = "pwdGroup">
         <label>현재 비밀번호 : </label>
         <input type="password" name = "nowpwd">
         </div>
         <br>
-        <div>
+        <div class = "pwdGroup">
         <label>새 비밀번호 : </label>
         <input type="password" name = "newpwd">
         </div>
         <br>
-        <div>
+        <div class = "pwdGroup">
         <label>새 비밀번호 확인 : </label>
         <input type="password" name = "newpwdCheck">
         </div>
