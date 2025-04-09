@@ -44,6 +44,10 @@
         border: none;
         cursor: pointer;
     }
+    
+    input[type="submit"]:hover {
+    	background-color: #f79e66dd;
+    }
 
     hr {
         width: 100%;
@@ -57,12 +61,12 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 왼쪽 정렬 */
-    padding-left: 2px; /* 살짝 여유 */
+    justify-content: flex-start; 
+    padding-left: 2px; 
 }
 
 input[type="checkbox"] {
-    width: auto;  /* 이게 포인트! */
+    width: auto;  
     margin: 0 8px 0 0;
 }
 
@@ -78,9 +82,12 @@ input[type="checkbox"] {
 
     a {
         text-decoration: none;
-        color: #007BFF;
+        color: #f79e66dd;
         margin: 0 10px;
     }
+    
+     
+    
 </style>
 </head>
 
@@ -115,7 +122,7 @@ if (cks != null) {
         <input type="password" name="userpwd" placeholder="비밀번호">
         <br>
 
-        <!-- 아이디 저장 체크박스 왼쪽 정렬 -->
+
         <div class="checkbox-container">
             <label>
                 <input type="checkbox" name="saveid" value="on" <%= saveid.equals("") ? "" : "checked" %>>

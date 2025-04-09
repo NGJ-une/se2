@@ -38,10 +38,7 @@
          box-sizing: border-box;
          border: 1px solid #ccc;
     }
-    input[type="submit"] {
-         border: none;
-         cursor: pointer;
-	}
+    
     hr {
          width: 100%;
          border: none;
@@ -49,7 +46,23 @@
          margin: 10px 0 20px;
     }
     
+    a {
+        text-decoration: none;
+        color: #f79e66dd;
+        margin: 0 10px;
+    }
     
+    input[type="submit"] {
+         border: none;
+         cursor: pointer;
+	}
+
+    input[type="submit"]:hover {
+    	background-color: #f79e66dd;
+    }    
+       
+
+
   </style>
 </head>
 <body>
@@ -58,8 +71,8 @@
              <form name="pwdFind" action="pwdFind_ok.jsp" method="post">
                 <h2>비밀번호 찾기</h2>
                 <hr>
-               <input type="text" name="id" placeholder="아이디">
-                <input type="text" name="tel" placeholder="전화번호">
+               <input type="text" name="id" placeholder="아이디" required>
+                <input type="text" name="tel" placeholder="전화번호" required>
                 <input type="submit" value="비밀번호 찾기">
                
                <p> 
