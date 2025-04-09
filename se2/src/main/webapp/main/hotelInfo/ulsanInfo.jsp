@@ -45,13 +45,15 @@
 <div class="container">
   	<%@include file = "hotelInfoSideBar.jsp" %>
   <section class="box2">
-      <h1>개요</h1>
-        <img src = "/se2/main/hotelInfo/img/1.jpg" alt="h1" class = "hotelimg">
- <label><h3>Welcome to HELIA Hotel, where luxury meets comfort.</h3></label>
+      <h1>HELIA Ulsan</h1>
+        <img src = "/se2/main/hotelInfo/img/ulsan.jpg" alt="h1" class = "hotelimg">
+<label><h3>HELIA 호텔 울산 지점</h3></label>
   <br>
-  <p>HELIA 호텔은 우아한 디자인과 세심한 서비스로 고객에게 최상의 경험을 제공합니다. 
-     고객님께 최고의 안락함과 품격을 제공하기 위해 노력하는 HELIA는, 현대적이고 편리한 시설과 
-     고급스러운 인테리어로 고객을 맞이합니다.</p>
+  <label><h3>Welcome to HELIA Hotel Ulsan, where luxury meets comfort.</h3></label>
+  <br>
+  <p>HELIA 호텔 울산 지점은 울산의 중심에서 최상의 서비스와 편안함을 제공합니다. 
+     현대적이고 고급스러운 디자인, 세심한 서비스, 그리고 편리한 위치로 고객님을 맞이합니다. 
+     울산의 아름다운 경관을 배경으로 한 HELIA 호텔은 비즈니스와 여가 모두를 위한 이상적인 장소입니다.</p>
   <br>
   <label><h3>Core Values of HELIA</h3></label>
   <ul>
@@ -62,9 +64,10 @@
   </ul>
   <br>
   <label><h3>호텔 비전</h3></label>
-  <p>HELIA 호텔은 전 세계 고객에게 품격 높은 서비스를 제공하며, 지속 가능한 성장을 목표로 
-     다가오는 시대에 맞춘 최고의 호텔 서비스를 제공하겠습니다. 우리는 고객의 여행과 비즈니스가 
-     더욱 특별하고 기억에 남을 수 있도록 항상 노력합니다.</p>
+  <p>HELIA 호텔 울산 지점은 울산을 찾는 여행객들에게 품격 있는 서비스를 제공하며, 
+     지역사회와 함께 성장하는 지속 가능한 호텔이 되겠습니다. 
+     우리는 고객님의 여행과 비즈니스가 특별하고 기억에 남을 수 있도록, 울산에서만 경험할 수 있는 
+     최고의 서비스와 편의를 제공합니다.</p>
   </section>
 </div>
 <%@include file = "/footer2.jsp" %>
