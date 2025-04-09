@@ -83,7 +83,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
     }
     
     input[type="submit"] {
-    	background-color: #007BFF;
+    	background-color: #b58143;
     	color:white;
     }
     

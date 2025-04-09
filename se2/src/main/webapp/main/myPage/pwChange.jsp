@@ -62,11 +62,11 @@
     	transition: 0.3s ease; /*속성이 바뀔때 자연스럽게 바뀜 0.3 초 동안*/
     }
     input[type="submit"] {
-    	background-color: #007BFF;
+    	background-color: #b58143;
     	color:white;
     }
     input[type="submit"]:hover {
-    	background-color: #0056b3;
+    	background-color: #f0b675;
     }
      input[type="button"]:hover {
       background-color: #bdbdbd;
