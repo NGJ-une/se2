@@ -4,9 +4,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-
 <jsp:useBean id="mdao" class="com.hotel.member.MemberDAO"></jsp:useBean>
-
 <%
 
 
@@ -33,14 +31,11 @@ System.out.println();
 System.out.println(getpwd);
 
 if (userpwd.equals(getpwd)) { // DB의 PWD 와 내가 입력한  동일한지 확인
-%>
-<jsp:useBean id="userInfo" class="com.hotel.member.MemberDTO" scope="session"></jsp:useBean>
-<%
-	userInfo.setId(userid);
-	userInfo.setGrade(mdto.getGrade());
-	userInfo.setPoint(mdto.getPoint());
-	userInfo.setMoney(mdto.getMoney());
-	userInfo.setDiscount(mdto.getDiscount());
+	session.setAttribute("sessionid", userid);
+	session.setAttribute("grade", mdto.getGrade());
+	session.setAttribute("point", mdto.getPoint());
+	session.setAttribute("balance", mdto.getMoney());
+	session.setAttribute("dcRate", mdto.getDiscount());
 
 	 	if(saveid!=null){
 		  Cookie ck=new Cookie("saveid",userid);

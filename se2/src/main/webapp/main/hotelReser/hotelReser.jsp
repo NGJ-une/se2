@@ -112,17 +112,6 @@
 			numberInput.setAttribute('prev-value', numberInput.value);
 			numberInput.addEventListener('change', limitHeadCount);
 		});
-		
-		document.getElementById('hotelReser').addEventListener('submit', function(){
-			const checkedRadio = document.querySelector('input[name="selectedRow"]:checked');
-			
-			const checkedPrice = document.querySelector('input[name="money_' + checkedRadio.value + '"]').value;
-			
-			if (Number(checkedPrice) > <%= userInfo.getMoney() %>){
-				alert('잔액이 부족합니다')
-				event.preventDefault();
-			}
-		});
 	});
     </script>
 </head>
@@ -135,7 +124,7 @@ String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
 %>
 <body>
-<%@ include file="/header2.jsp" %>
+<%@ include file="/header.jsp" %>
     <section>
 	   	<article>
 		   	<h1 id="reser-title">예약하기</h1>
@@ -168,7 +157,7 @@ String babyStr = request.getParameter("baby");
 	   	</article>
 		<hr>
 		<article>
-			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" id="hotelReser" method="post">
+			<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" id="hotelReser" method="post">
 				<table id="reser-search-result">
 				<%
 		    	if (name != null && adultStr != null
@@ -200,6 +189,7 @@ String babyStr = request.getParameter("baby");
 					<tr>
 						<td class="img-cell">
 							<img alt="<%= arr.get(i).getImgName() %>" src="/se2/room_img/<%= arr.get(i).getImgName() %>">
+							<input type="hidden" name="img" value="<%= arr.get(i).getImgName() %>">
 						</td>
 						<td>
 							<%= arr.get(i).getType() %><input type="hidden" name="type_row<%= i %>" value="<%= arr.get(i).getType() %>">
@@ -236,6 +226,6 @@ String babyStr = request.getParameter("baby");
 			</form>
 		</article>
 	</section> 
-<%@ include file="/footer2.jsp" %>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

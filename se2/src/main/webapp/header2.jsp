@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
 <link rel="stylesheet" type="text/css" href="/se2/css/header2.css">
-<% String sid=(String)session.getAttribute("sessionid");%>
+<% String sid = (String)session.getAttribute("sessionid");%>
 <!-- header.jsp -->
 <header class="soft-header">
 	<div class="header-inner">
