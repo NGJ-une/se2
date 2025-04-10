@@ -6,8 +6,8 @@
   <h2 class="hs">호텔 찾기</h2>
   <table class="table-bt">
 	  <tr>
-	  <td><a href="index.jsp"><input type="button" class="seoul-bt" value="h-seoul"></a></td>
-	  <td><a href="index.jsp"><input type="button" class="ulsan-bt" value="h-ulsan"></a></td>
+	  <td><a href="/se2/index.jsp"><input type="button" class="seoul-bt" value="h-seoul"></a></td>
+	  <td><a href="/se2/hotel_1/hotelUlsan.jsp"><input type="button" class="ulsan-bt" value="h-ulsan"></a></td>
 	  </tr>
   </table>
   <button class="close-bt" onclick="hidePopup()">X</button>
@@ -78,6 +78,17 @@
    font-size: 50px;
    border:none;
    margin-left: 10px;
+   
+
+  }
+ .ulsan-bt {
+    background-image: url('/se2/main/hotelSearch/img/ulsan.jpg'); /* 배경 이미지 경로 */
+    background-size: cover; /* 이미지를 버튼 크기에 맞게 조정 */
+    background-position: center; /* 배경 이미지를 중앙에 배치 */
+ }
+  .seoul-bt:hover, .ulsan-bt:hover {
+    opacity: 0.8; /* 마우스를 올렸을 때 버튼이 살짝 투명해짐 */
+  }
   }
   .close-bt {
     margin-top: 10px;
@@ -89,4 +100,5 @@
     /*커서를 올리면 손모양으로 바뀌게*/
     float: right;
   }
+  
 </style>

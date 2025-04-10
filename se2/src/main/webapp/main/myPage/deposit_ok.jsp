@@ -4,8 +4,7 @@
 <jsp:useBean id="hdao" class = "com.hotel.mypage.DepositDAO"></jsp:useBean>
 <%
 int money = Integer.parseInt(request.getParameter("money"));
-
-String id = "asd123";
+String id = (String)session.getAttribute("sessionid");
 if(money < 1000) {
 	%>
 	<script>
