@@ -10,6 +10,7 @@ public class AsklistDTO {
 	private int rownum;
 	private int iidx;
 	private String iid;
+	private String icategory;
 	private String ititle;
 	private String icontent;
 	private Date idate;
@@ -20,13 +21,28 @@ public class AsklistDTO {
 	public AsklistDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public AsklistDTO(int rownum, String ititle, Date idate) {
+	
+	public String getIcategory() {
+		return icategory;
+	}
+
+	public void setIcategory(String icategory) {
+		this.icategory = icategory;
+	}
+
+	public AsklistDTO(int rownum, String ititle, Date idate, int iidx) {
 		super();
+		this.iidx = iidx;
 		this.rownum = rownum;
 		this.ititle = ititle;
 		this.idate = idate;
 	}
-	
+	public AsklistDTO(String ititle, String icontent,Date idate) {
+		super();
+		this.ititle = ititle;
+		this.idate = idate;
+		this.icontent=icontent;
+	}
 	public int getRownum() {
 		return rownum;
 	}
