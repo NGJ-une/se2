@@ -94,6 +94,42 @@ CREATE TABLE inquiry (
 
 constraint fk_member_id2 foreign key(iid) references member(mid)
 )   
+--후기 테이블 생성
+CREATE TABLE review (
+    vidx number(5) primary key, --후기 번호 
+    vid varchar2(50) NOT NULL, -- 후기 아이디 
+    vtitle varchar2(100) NOT NULL, -- 후기 제목 
+    vcontent varchar2(3000) NOT NULL, -- 후기 내용 
+    vdate DATE NOT NULL, --작성날짜 
+    vreadnum number(5) default 0, --조회수 
+    vrecommend number(5) default 0, --추천수 
+    vcomment number(5) default 0, --댓글 달린 수
+    
+    constraint fk_member_id3 foreign key(vid) references member(mid)
+)
+-- 댓글 테이블 생성
+CREATE TABLE reply (
+    cidx number(5) primary key, --댓글 번호
+    cid  varchar2(50) NOT NULL, --댓글 아이디
+    ccontent varchar2(1000) NOT NULL, --댓글 내용
+    cdate DATE NOT NULL, -- 댓글 날짜
+    crecommend number(5) default 0, --추천수 
+    cnotrecommend number(5) default 0, --비 추천수 
+    cref number(5) default 0, 
+    clev number(5) default 0,
+    csunbun number(5) default 0,
+    constraint fk_member_id4 foreign key(cid) references member(mid),
+    constraint fk_review_vidx foreign key(cidx) references review(vidx)
+) 
+--사진 테이블 생성 
+CREATE TABLE photo (
+    pidx number(5) default 0, --사진 번호
+    pnum number(5) not null, --후기 번호
+    pname varchar2(100) NOT NULL,
+    
+    constraint fk_review_vidx2 foreign key(pidx) references review(vidx) 
+)
+
 
 --시퀀스 생성  
 CREATE SEQUENCE sq_member_idx --로그인/회원가입 테이블  회원번호 시퀀스  
@@ -102,6 +138,9 @@ CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스
 CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
 CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
 CREATE SEQUENCE sq_inquiry_idx --문의 테이블 문의 번호 시퀀스 
+CREATE SEQUENCE sq_review_idx --후기 테이블 후기 번호 시퀀스
+CREATE SEQUENCE sq_commet_idx -- 댓글 테이블 댓글 번호 시퀀스
+CREATE SEQUENCE sq_photo_idx -- 사진 테이블 사진 번호 시퀀스 
 
 --grade 기본데이터 입력  
 INSERT INTO grade values('BRONZE',0,200000,0)
