@@ -140,7 +140,7 @@ CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스
 CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
 CREATE SEQUENCE sq_inquiry_idx --문의 테이블 문의 번호 시퀀스 
 CREATE SEQUENCE sq_review_idx --후기 테이블 후기 번호 시퀀스
-CREATE SEQUENCE sq_commet_idx -- 댓글 테이블 댓글 번호 시퀀스
+CREATE SEQUENCE sq_reply_idx -- 댓글 테이블 댓글 번호 시퀀스
 CREATE SEQUENCE sq_photo_idx -- 사진 테이블 사진 번호 시퀀스 
 
 --grade 기본데이터 입력  
@@ -181,7 +181,9 @@ SELECT * FROM room
 SELECT * FROM hotel
 SELECT * FROM refund
 SELECT * FROM inquiry
-
+SELECT * FROM reviw
+SELECT * FROM reply
+SELECT * FROM photo
 --데이터 삭제 
 DELETE reser
 DELETE member
@@ -191,6 +193,9 @@ DELETE question
 DELETE grade
 DELETE refund
 DELETE inquiry
+DELETE reviw
+DELETE reply
+DELETE photo
 --테이블 삭제 
 DROP TABLE reser
 DROP TABLE member
@@ -210,7 +215,9 @@ DROP SEQUENCE sq_room_idx
 DROP SEQUENCE sq_hotel_idx
 DROP SEQUENCE sq_refund_idx
 DROP SEQUENCE sq_inquiry_idx
- 
+DROP SEQUENCE sq_review_idx
+DROP SEQUENCE sq_reply_idx
+DROP SEQUENCE sq_photo_idx 
 --
 COMMIT
 
@@ -222,3 +229,6 @@ desc hotel
 desc question
 desc refund
 desc inquiry
+desc review
+desc reply
+desc photo
