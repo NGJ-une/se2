@@ -36,7 +36,7 @@ public class HotelReviewDAO {
 			}
 		}
 	}
-	public ArrayList<HotelReviewDTO> replyList(int vidx) {
+	/*public ArrayList<HotelReviewDTO> replyList(int vidx) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			String sql = "select *";
@@ -49,5 +49,5 @@ public class HotelReviewDAO {
 				// TODO: handle exception
 			}
 		}
-	}
+	}*/
 }

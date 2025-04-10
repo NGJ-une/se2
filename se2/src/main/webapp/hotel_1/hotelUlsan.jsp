@@ -68,7 +68,7 @@
         </div>
     </section>
 
-<%@include file = "/footer2.jsp" %>
+<%@include file = "/footer.jsp" %>
 </body>
 <script>
     var slideIndex = 0;

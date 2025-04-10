@@ -158,7 +158,7 @@ int userGroup=cp/pageSize;
 if(cp%pageSize==0)userGroup--;
 %>
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
     <section class="box2">
@@ -254,7 +254,7 @@ if(cp%pageSize==0)userGroup--;
         </table>
     </section>
   </div>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>
 
