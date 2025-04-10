@@ -11,6 +11,7 @@ input::-webkit-inner-spin-button{-webkit-appearance: none; }
 </style>
 </head>
 <body>
+<%@ include file="/header2.jsp" %>
 <section>
 	<article>
 		<form name="ConfirmNumberCheck" action="hotelConfirmNLC_ok.jsp" method="post">
@@ -42,5 +43,6 @@ input::-webkit-inner-spin-button{-webkit-appearance: none; }
 		</form>
 	</article>
 </section>
+<%@ include file="/footer2.jsp" %>
 </body>
 </html>

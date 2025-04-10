@@ -36,11 +36,11 @@
 	        <%
 	        if(sid==null){
 	        	%>
-	        <a href="#">예약확인</a>
+	        <a href="/se2/main/hotelConfirm/hotelConfirmNLC.jsp">예약확인</a>
 	        	<%
 	        }else{
 	        	%>
-	        <a href="#">예약확인</a>
+	        <a href="/se2/main/hotelConfirm/hotelConfirmL.jsp">예약확인</a>
 	        	<%
 	        }
 	        %>
