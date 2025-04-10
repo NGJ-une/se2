@@ -161,16 +161,16 @@ window.onload = function () {
     <form action="submit.jsp" method="post" enctype="multipart/form-data">
         <table>
             <tr>
-                <th>아이디</th>
-                <td><input type="text" name="ID" placeholder="아이디 가져옴"></td>
+                <th>작성자</th>
+                <td><input type="text" name="vid" placeholder="작성자 아이디 가져옴"></td>
             </tr>
             <tr>
                 <th>제목</th>
-                <td><input type="text" name="title"></td>
+                <td><input type="text" name="vtitle"></td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea rows="12" name="content"></textarea></td>
+                <td><textarea rows="12" name="vcontent"></textarea></td>
             </tr>
 
             <tr>
