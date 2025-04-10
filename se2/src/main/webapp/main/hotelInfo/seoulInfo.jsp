@@ -80,7 +80,7 @@
 <div class="container">
   	<%@include file = "hotelInfoSideBar.jsp" %>
     <section class="box2">
-      <h1> 서울신라호텔 </h1>
+      <h1> 서울 호텔 </h1>
    
         <table>
           <tr>
