@@ -30,30 +30,145 @@ function show() {
 
 </script>
  <style>
-    * {
-	   margin: 0;
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
-	}
-	
+
+	* {
+  		margin: 0;
+  		padding: 0;
+  		box-sizing: border-box;
+  		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 	body {
-	    text-align: center; /* 화면 중앙 배치 효과 */
-	    margin:0 auto;
-	    padding:0;
-		/*background: #e8e8e8;*/
+  		background-color: #f5f5f5;
+  		color: #333;
+}
+
+	.container {
+ 		 display: flex;
+  		max-width: 1200px;
+  		width: 100%;
+ 		 margin: 50px auto;
+ 		 gap: 40px;
+}
+
+	.box2 {
+  		width: 100%;
+  		padding: 40px;
+ 		 background-color: #fff;
+ 		 border-radius: 12px;
+  		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+	form {
+ 		 max-width: 700px;
+		  margin: 0 auto;
+}
+
+	h1 {
+  		font-size: 28px;
+  		margin-bottom: 30px;
+  		text-align: center;
+  		color: #444;
+}
+	
+	fieldset {
+  		border: none;
+}
+
+	label {
+ 		 display: block;
+  		margin: 20px 0 8px;
+  		font-size: 15px;
+  		font-weight: 500;
+}
+
+	input[type="text"],
+	input[type="password"],
+	select {
+ 		width: 100%;
+  		padding: 12px 14px;
+  		border: 1px solid #ccc;
+ 		border-radius: 8px;
+  		font-size: 15px;
+  		transition: border-color 0.3s ease;
+}
+
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	select:focus {
+  		border-color: #f79e66;
+  		outline: none;
+}
+
+	/* 이메일 그룹 (한 줄 정렬) */
+	.email-group {
+  		display: flex;
+  		gap: 8px;
+  		align-items: center;
+}
+
+	.email-group input[type="text"],
+	.email-group select {
+  		height: 40px;
+  		font-size: 14px;
+  		padding: 0 10px;
+  		border: 1px solid #ccc;
+  		border-radius: 6px;
+}
+
+	.email-group input[type="text"] {
+ 		width: 35%;
+}
+
+	.email-group select {
+  		width: 35%;
+}	
+
+	.email-group .at {
+  		font-size: 16px;
+  		line-height: 40px;
+}
+
+	/* 버튼 그룹 */
+	.button-group {
+  		margin-top: 40px;
+  		display: flex;
+  		gap: 20px;
+  		justify-content: flex-start;
+}
+
+	input[type="submit"],
+	input[type="button"] {
+  		flex: 1;
+  		padding: 12px;
+  		font-size: 15px;
+  		font-weight: 500;
+  		border: none;
+  		border-radius: 8px;
+  		cursor: pointer;
+  		transition: background-color 0.3s ease;
+}
+
+	input[type="submit"] {
+  		background-color: #f0b675;
+  		color: white;
 	}
-    .container {
-      display: flex;
-      width:1500px;
-      margin:0 auto;
+
+   input[type="submit"]:hover {
+      	background-color: #d89e5e;
     }
 
-    .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 1200px; 
-      background-color: white;
-    }
+	input[type="button"] {
+  		background-color: #e0e0e0;
+  		color: #333;
+}
+
+	input[type="button"]:hover {
+  		background-color: #ccc;
+}
+	 
+  
+  
   </style>
 </head>
 <body>
@@ -66,37 +181,40 @@ function show() {
           </h1>
           <hr>
           <fieldset>
-            <label>성 :</label>
+          
+            <label>아이디 : <%=sid %> </label>
+          
+            <label>성</label>
             <input type = "text" name = "mfname" value = "<%=arr.get(0).getMfname()%>"> 
-            <label>이름 :</label>
+            <label>이름 </label>
             <input type = "text" name = "mlname" value = "<%=arr.get(0).getMlname()%>">
-            <br>
-            <br>
-            <label>아이디 :</label>
-            <%=sid %>(session 에 있는 아이디 가져오면 됨.)
-            <br>
-            <br>
-            <label>이메일 :</label>
-            <input type = "text" name = "fmail" value = "<%=fmail%>"> @ <input type = "text" id = "lmail" name = "lmail" value = "<%=lmail%>">
-            <select id = "emailSel" onchange="show()">
-                <option value = "type">직접입력</option>
-                <option value = "naver.com">naver.com</option>
-                <option value = "google.com">google.com</option>
-                <option value = "nate.com">nate.com</option>
-                <option value = "daum.net">daum.net</option>
-            </select>
-            <br>
-            <br>
-            <label>전화번호 :</label>
+
+            
+             <label> 이메일 </label>
+        <div class="email-group">
+          <input type="text" name="fmail" value="<%=fmail%>">
+          <span class="at">@</span>
+          <input type="text" id="lmail" name="lmail" value="<%=lmail%>">
+          <select id="emailSel" onchange="show()">
+            <option value="type">직접입력</option>
+            <option value="naver.com">naver.com</option>
+            <option value="google.com">google.com</option>
+            <option value="nate.com">nate.com</option>
+            <option value="daum.net">daum.net</option>
+          </select>
+        </div>
+        
+            <label>전화번호 </label>
             <input type = "text" name = "mtel" value = "<%=arr.get(0).getMtel()%>">
-            <br>
-            <br>
-            <label>주소 :</label>
+            
+            <label>주소 </label>
             <input type = "text" name = "maddr" value = "<%=arr.get(0).getMaddr()%>">
-            <br>
-            <br>
-            <input type ="submit" value = "변경">
-            <input type = "button" value = "취소">
+            
+            <div class="button-group">
+  				<input type="submit" value="변경">
+ 	 			<input type="button" value="취소">
+			</div>
+			
           </fieldset>
       </form>
       </section>

@@ -19,7 +19,7 @@
 	}
     .container {
       display: flex;
-      width:1500px;
+      width:1200px;
       margin: 50px auto;
       gap: 20px;
     }
@@ -45,7 +45,7 @@
     }
     input[type="password"] {
     	width: 300px;
-    	padding: 12px;
+    	padding: 10px;
     	font-size: 16px;
     	border: 1px solid #ccc;
     	border-radius: 8px;
@@ -62,35 +62,46 @@
     	transition: 0.3s ease; /*속성이 바뀔때 자연스럽게 바뀜 0.3 초 동안*/
     }
     input[type="submit"] {
-    	background-color: #007BFF;
+    	background-color: #b58143;
     	color:white;
     }
     input[type="submit"]:hover {
-    	background-color: #0056b3;
+    	background-color: #f0b675;
     }
      input[type="button"]:hover {
       background-color: #bdbdbd;
     }
+    .pwdGroup {
+    	display: flex;
+    	align-items: center;
+    	margin-bottom: 20px;
+    }
+    .pwdGroup label {
+    	width: 140px;
+    	font-size: 16px;
+    	color:#333;
+    	text-align: left;
+    }
   </style>
 </head>
 <body>
-  <%@include file="/header2.jsp" %>
+  <%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
     <section class="box2">
     <form name = "pwchange" action = "pwChange_ok.jsp">
         <h1>🔒비밀번호 변경</h1>
-        <div>
+        <div class = "pwdGroup">
         <label>현재 비밀번호 : </label>
         <input type="password" name = "nowpwd">
         </div>
         <br>
-        <div>
+        <div class = "pwdGroup">
         <label>새 비밀번호 : </label>
         <input type="password" name = "newpwd">
         </div>
         <br>
-        <div>
+        <div class = "pwdGroup">
         <label>새 비밀번호 확인 : </label>
         <input type="password" name = "newpwdCheck">
         </div>
@@ -100,7 +111,7 @@
     </form>
     </section>
   </div>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>
 

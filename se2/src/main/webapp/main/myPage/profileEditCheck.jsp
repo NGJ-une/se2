@@ -8,52 +8,114 @@ String id = (String)session.getAttribute("sessionid");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로필 수정 전 비밀번호 확인</title>
+  
   <style>
-    * {
-	   margin: 0;
-	   padding: 0;
-	   box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */ 
-	}
-	
-	body {
-	    text-align: center; /* 화면 중앙 배치 효과 */
-	    margin:0 auto;
-	    padding:0;
-		/*background: #e8e8e8;*/
-	}
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f0f2f5;
+    }
+
     .container {
       display: flex;
-      width:1500px;
-      margin:0 auto;
+      width: 1200px;
+      margin: 50px auto;
+      gap: 20px;
     }
 
     .box2 {
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 1200px; 
-      background-color: white;
+      flex: 2;
+      padding: 40px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
     }
-  </style>
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .user-id {
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #f0b675;
+    }
+
+    input[type="password"] {
+      width: 300px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"],
+    input[type="button"] {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    input[type="submit"] {
+      background-color: #f0b675;
+      color: white;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #d89e5e;
+    }
+
+    input[type="button"] {
+      background-color: #ddd;
+      color: #333;
+    }
+
+    input[type="button"]:hover {
+      background-color: #bbb;
+    }
+    
+    
+</style>
 </head>
 <body>
   <%@include file="/header.jsp" %> 
     <div class="container">
       <%@include file="sideBar.jsp" %>
       <section class="box2">
-      <form name = "profileEditCheck" action = "profileEditCheck_ok.jsp">
-          <h1>비밀번호 확인</h1>
-            <label>회원ID :</label>
-            <%=sid %>
-            <!-- session에 저장된id 가져올 예정-->
-            <br>
-            <br>
-            <label>비밀번호 :</label>
-            <input type = "text" name = "pwd">
-            <br>
-            <br>
-            <input type = "submit" value ="확인">
-            <input type = "button" value = "취소">
+      <form name="profileEditCheck" action="profileEditCheck_ok.jsp">
+        <h1> 프로필 수정 </h1>
+
+        <label class="user-id">회원 ID: <%= sid %></label>
+
+        <label for="pwd">비밀번호</label>
+        <input type="password" id="pwd" name="pwd" required>
+
+        <br>
+        <input type="submit" value="확인">
+        <input type="button" value="취소" onclick="history.back()">
       </form>
       </section>
     </div>

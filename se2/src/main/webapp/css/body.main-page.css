@@ -1,8 +1,23 @@
 @charset "UTF-8";
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+  	padding: 0;
     box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+}
+
+html, body {
+  min-width: 1500px;     /* ✅ 최소 너비 고정 */
+  overflow-x: hidden;     /* ✅ 가로 스크롤 방지 */
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fffdfb;
+  color: #333;
+}
+
+/* 전체 콘텐츠 공통 wrapper */
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 body.main-page {
@@ -16,7 +31,8 @@ body.main-page {
 section{
 	width: 2000px; /*고정너비 설정*/
     margin: 0 auto;
-    overflow-x: hidden;
+/*     overflow-x: hidden; */
+margin: 0 auto;
 }
 /* 섹션1 이미지 */
 .slider {

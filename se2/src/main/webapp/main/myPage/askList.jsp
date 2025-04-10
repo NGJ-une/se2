@@ -167,6 +167,7 @@ if(cp%pageSize==0)userGroup--;
         <label>회원님께서 문의하신 내역과 답변을 확인하실 수 있습니다.</label>
         <br>
 		<%
+
 		    java.time.LocalDate today = java.time.LocalDate.now();	
 		    java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
 		    String formattedDate = today.format(formatter);
@@ -224,6 +225,7 @@ if(cp%pageSize==0)userGroup--;
 				</tr>
 			</tfoot>
 	       	<tbody>
+
 			<%
 			
 			ArrayList<AsklistDTO> arr = adao.askList(id, cp, listSize); 

@@ -41,7 +41,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
     
     h1 {
     	font-size: 28px;
-    	color: red;
+    	color: #EB1A1A;
     	margin-bottom:30px;
     	border-bottom: 3px solid #eee;
     }
@@ -83,12 +83,12 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
     }
     
     input[type="submit"] {
-    	background-color: #007BFF;
+    	background-color: #b58143;
     	color:white;
     }
     
     input[type="submit"]:hover {
-    	background-color: red;
+    	background-color: #EB1A1A;
     }
      input[type="button"]:hover {
       background-color: #bdbdbd;
@@ -101,12 +101,12 @@ function cancleConfirm() {
 }
 </script>
 <body>
-  <%@include file="/header2.jsp" %>
+  <%@include file="/header.jsp" %>
     <div class="container">
       <%@include file="sideBar.jsp" %>
       <section class="box2">
       <form name = "cancle" action = "cancle_ok.jsp" onsubmit ="return cancleConfirm();">
-          <h1>😢회원탈퇴</h1>
+          <h1>회원탈퇴</h1>
             <fieldset><%=arr.get(0).getMfname() %><%=arr.get(0).getMlname() %> 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 더 확인합니다.</fieldset>
             <br>
           <label>회원 번호 : </label>
@@ -123,5 +123,5 @@ function cancleConfirm() {
       </section>
     </div>
   </body>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </html>
