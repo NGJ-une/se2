@@ -66,7 +66,7 @@
   </style>
 </head>
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
     <div class="container">
              <form name="pwdFind" action="pwdFind_ok.jsp" method="post">
                 <h2>비밀번호 찾기</h2>
@@ -82,6 +82,6 @@
                 </p>
             </form> 
     </div>  
- <%@include file="/footer2.jsp" %>
+ <%@include file="/footer.jsp" %>
 </body>
 </html>

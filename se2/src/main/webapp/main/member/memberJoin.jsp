@@ -168,7 +168,7 @@
     
 </head>
 <body>
-    <%@ include file="/header2.jsp" %>
+    <%@ include file="/header.jsp" %>
     <form name="memberJoin" action="memberJoin_ok.jsp" method="post" onsubmit="return pwdCheck();">
         <h2>회원가입</h2>
         <hr>
@@ -225,6 +225,6 @@
              <a href="pwdFind.jsp">	비밀번호 찾기	</a>
         </p>
     </form>
-    <%@ include file="/footer2.jsp" %>
+    <%@ include file="/footer.jsp" %>
 </body>
 </html>

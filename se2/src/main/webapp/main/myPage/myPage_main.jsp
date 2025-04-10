@@ -118,7 +118,7 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
   </style>
 </head>
 <body>
-  <%@include file="/header2.jsp" %>
+  <%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
     <section class="box2">
@@ -180,6 +180,6 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
       %>
     </section>
   </div>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>

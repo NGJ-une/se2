@@ -119,7 +119,7 @@ String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
 %>
 <body>
-<%@ include file="/header2.jsp" %>
+<%@ include file="/header.jsp" %>
     <section>
 	   	<article>
 		   	<h1 id="reser-title">예약하기</h1>
@@ -220,6 +220,6 @@ String babyStr = request.getParameter("baby");
 			</form>
 		</article>
 	</section> 
-<%@ include file="/footer2.jsp" %>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

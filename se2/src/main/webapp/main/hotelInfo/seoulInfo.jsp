@@ -76,7 +76,7 @@
   
 </head>
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
 <div class="container">
   	<%@include file = "hotelInfoSideBar.jsp" %>
     <section class="box2">
@@ -124,6 +124,6 @@
 
   </section>
 </div>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>

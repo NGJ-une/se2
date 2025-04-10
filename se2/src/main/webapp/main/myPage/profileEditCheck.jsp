@@ -101,7 +101,7 @@ String id = (String)session.getAttribute("sessionid");
 </style>
 </head>
 <body>
-  <%@include file="/header2.jsp" %> 
+  <%@include file="/header.jsp" %> 
     <div class="container">
       <%@include file="sideBar.jsp" %>
       <section class="box2">
@@ -120,5 +120,5 @@ String id = (String)session.getAttribute("sessionid");
       </section>
     </div>
   </body>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </html>

@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
-
+<link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
 
 </head>
 <body class="main-page">
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
     <section class="section1">
         <article>
+        <div class="wrapper">
             <div class="slider">
                 <img src="main/img/1.jpg" alt="h1" class="slide">
                 <img src="main/img/2.jpg" alt="h2" class="slide">
@@ -27,18 +27,22 @@
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     			<button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
+        </div>
         </article>
     </section>
     <section class="section2">
+    	<div class="wrapper">
         <article>          
             <label>
             새로워진 온라인 예약으로 빠르고 간편하게 예약 및 조회 해보세요.
             </label>
             <input type="button" value="호텔예약 바로가기 →">          
         </article>
+    	</div>
     </section>
     <section class="section3">
         <article>
+        <div class="wrapper">
             <fieldset>
             <h2>등급</h2>
             <table class="table-grade">
@@ -59,11 +63,11 @@
                 </tr>
             </table> 
             </fieldset>
-            
+           </div> 
         </article>
     </section>
     <section class="section4">
-        <div>
+        <div class="wrapper">
             <label>갤러리</label>
             <hr>
             <img src="main/img/3.jpg" alt="g3">
@@ -76,7 +80,7 @@
             <img src="main/img/10.jpg" alt="g10">
         </div>
     </section>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footerTest.jsp" %>
 </body>
 <script>
     var slideIndex = 0;

@@ -41,7 +41,7 @@
   </style>
 </head>
 <body>
-<%@include file = "/header2.jsp" %>
+<%@include file = "/header.jsp" %>
 <div class="container">
   	<%@include file = "hotelInfoSideBar.jsp" %>
   <section class="box2">
@@ -70,6 +70,6 @@
      최고의 서비스와 편의를 제공합니다.</p>
   </section>
 </div>
-<%@include file = "/footer2.jsp" %>
+<%@include file = "/footer.jsp" %>
 </body>
 </html>

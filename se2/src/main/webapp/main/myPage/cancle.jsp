@@ -101,7 +101,7 @@ function cancleConfirm() {
 }
 </script>
 <body>
-  <%@include file="/header2.jsp" %>
+  <%@include file="/header.jsp" %>
     <div class="container">
       <%@include file="sideBar.jsp" %>
       <section class="box2">
@@ -123,5 +123,5 @@ function cancleConfirm() {
       </section>
     </div>
   </body>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </html>
