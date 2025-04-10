@@ -104,7 +104,7 @@ if (cks != null) {
 %>
 
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
 <section class="container">
     <form name="login" action="login_ok.jsp" method="post">
         <h1>로그인</h1>
@@ -140,5 +140,5 @@ if (cks != null) {
     </form>
 </section>
 </body>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </html>

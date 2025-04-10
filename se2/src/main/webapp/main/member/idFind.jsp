@@ -66,7 +66,7 @@
   </style>
 </head>
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
     <section class="container"> 
             	<form name="idFind" action="idFind_ok.jsp" method="post">
                	 <h1>아이디찾기</h1>
@@ -91,6 +91,6 @@
                 </p>
             	</form>
   		  </section>     
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>

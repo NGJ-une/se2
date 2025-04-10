@@ -119,7 +119,7 @@
   </style>
 </head>
 <body>
-  <%@include file="/header2.jsp" %>
+  <%@include file="/header.jsp" %>
   <div class="container">
     <%@include file="sideBar.jsp" %>
 
@@ -149,6 +149,6 @@
       <p><span class="emoji">☎</span> 문의: 1234-5678</p>
     </aside>
   </div>
-  <%@include file="/footer2.jsp" %>
+  <%@include file="/footer.jsp" %>
 </body>
 </html>
