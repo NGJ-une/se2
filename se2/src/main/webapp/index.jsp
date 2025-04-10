@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
-
 </head>
 <body class="main-page">
 <%@include file="/header.jsp" %>
     <section class="section1">
         <article>
-        <div class="wrapper">
             <div class="slider">
                 <img src="main/img/1.jpg" alt="h1" class="slide">
                 <img src="main/img/2.jpg" alt="h2" class="slide">
@@ -27,60 +25,61 @@
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     			<button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
-        </div>
         </article>
     </section>
     <section class="section2">
-    	<div class="wrapper">
         <article>          
-            <label>
-            새로워진 온라인 예약으로 빠르고 간편하게 예약 및 조회 해보세요.
-            </label>
-            <input type="button" value="호텔예약 바로가기 →">          
+    		<div class="wrapper">
+	            <label>새로워진 온라인 예약으로 빠르고 간편하게 예약 및 조회 해보세요.</label>
+	            <input type="button" value="호텔예약 바로가기 →">          
+    		</div>
         </article>
-    	</div>
     </section>
+    <% if(sid==null){%>
+    
+    <% } else { %>
     <section class="section3">
         <article>
-        <div class="wrapper">
-            <fieldset>
-            <h2>등급</h2>
-            <table class="table-grade">
-                <tr>
-                    <td>bronze</td>
-                    <td>silver</td>
-                    <td>gold</td>
-                    <td>diamond</td>
-                </tr>
-                <tr>
-                    <td>~%</td>
-                    <td>~%</td>
-                    <td>~%</td>
-                    <td>~%</td>
-                </tr>
-                <tr>
-                    <td colspan="4">조건 : ~~~~~~~~~~</td>
-                </tr>
-            </table> 
-            </fieldset>
-           </div> 
+	        <div class="wrapper">
+	            <h2>등급</h2>
+	            <table class="table-grade">
+	                <tr>
+	                    <td>bronze</td>
+	                    <td>silver</td>
+	                    <td>gold</td>
+	                    <td>diamond</td>
+	                </tr>
+	                <tr>
+	                    <td>~%</td>
+	                    <td>~%</td>
+	                    <td>~%</td>
+	                    <td>~%</td>
+	                </tr>
+	                <tr>
+	                    <td colspan="4">조건 : ~~~~~~~~~~</td>
+	                </tr>
+	            </table> 
+	         </div> 
         </article>
     </section>
+    <% } %>
     <section class="section4">
-        <div class="wrapper">
-            <label>갤러리</label>
-            <hr>
-            <img src="main/img/3.jpg" alt="g3">
-            <img src="main/img/4.jpg" alt="g4">
-            <img src="main/img/5.jpg" alt="g5">
-            <img src="main/img/6.jpg" alt="g6">
-            <img src="main/img/7.jpg" alt="g7">
-            <img src="main/img/8.jpg" alt="g8">
-            <img src="main/img/9.jpg" alt="g9">
-            <img src="main/img/10.jpg" alt="g10">
-        </div>
+    	<article>
+	        <div class="wrapper">
+	            <label>갤러리</label>
+	            <hr>
+		            <img src="main/img/3.jpg" alt="g3">
+		            <img src="main/img/4.jpg" alt="g4">
+		            <img src="main/img/5.jpg" alt="g5">
+		            <img src="main/img/6.jpg" alt="g6">
+		            <img src="main/img/7.jpg" alt="g7">
+		            <img src="main/img/8.jpg" alt="g8">
+		            <img src="main/img/9.jpg" alt="g9">
+		            <img src="main/img/10.jpg" alt="g10">
+	        </div>
+    	</article>
     </section>
-<%@include file="/footerTest.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 <script>
     var slideIndex = 0;
