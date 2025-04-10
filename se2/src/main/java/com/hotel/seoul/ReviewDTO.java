@@ -9,11 +9,11 @@ public class ReviewDTO {
 	private String vtitle;
 	private String vcontent;
 	private Date vdate;
-	private int 
+	
 	
 	
 	public ReviewDTO() {
-
+ 
 	}
 
 }

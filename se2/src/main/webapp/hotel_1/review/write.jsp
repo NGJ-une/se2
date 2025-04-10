@@ -156,7 +156,7 @@ window.onload = function () {
 </head>
 
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
 <section>
     <form action="submit.jsp" method="post" enctype="multipart/form-data">
         <table>
@@ -225,6 +225,6 @@ window.onload = function () {
         </table>
     </form>
 </section>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>
