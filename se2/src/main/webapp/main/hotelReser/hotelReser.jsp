@@ -1,8 +1,11 @@
+<%@page import="org.apache.coyote.http11.upgrade.UpgradeServletInputStream"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.Date" %>
 <%@ page import="com.hotel.reser.RoomDTO" %>
+<jsp:useBean id="userInfo" class="com.hotel.member.MemberDTO" scope="session"></jsp:useBean>
+<jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +65,7 @@
     </style>
     <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(){
+		// 날짜 선택 예외 처리
 		const today = new Date().toISOString().split('T')[0];
 		
 		const checkInInput = document.getElementById('checkIn');
@@ -82,12 +86,14 @@
 			checkOutInput.setAttribute('min', checkInInput.value);
 		});
 		
+		// 날짜, 숫자 키보드 입력 방지
 		document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
 			element.addEventListener('keydown', (event) => {
 				event.preventDefault();
 			});
 		});
 		
+		// 총 인원수 제한
 		const numberInputs = document.querySelectorAll('input[type="number"]');
 
 		function limitHeadCount(event){
@@ -109,7 +115,6 @@
 	});
     </script>
 </head>
-<jsp:useBean id="reserDAO" class="com.hotel.reser.ReserDAO"></jsp:useBean>
 <%
 String name = request.getParameter("name");
 String checkInStr = request.getParameter("checkIn");
@@ -152,7 +157,7 @@ String babyStr = request.getParameter("baby");
 	   	</article>
 		<hr>
 		<article>
-			<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="hotelReser" method="post">
+			<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" id="hotelReser" method="post">
 				<table id="reser-search-result">
 				<%
 		    	if (name != null && adultStr != null
@@ -184,6 +189,7 @@ String babyStr = request.getParameter("baby");
 					<tr>
 						<td class="img-cell">
 							<img alt="<%= arr.get(i).getImgName() %>" src="/se2/room_img/<%= arr.get(i).getImgName() %>">
+							<input type="hidden" name="img" value="<%= arr.get(i).getImgName() %>">
 						</td>
 						<td>
 							<%= arr.get(i).getType() %><input type="hidden" name="type_row<%= i %>" value="<%= arr.get(i).getType() %>">

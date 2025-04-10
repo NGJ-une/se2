@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page import="com.hotel.member.*" %>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-
 <jsp:useBean id="mdao" class="com.hotel.member.MemberDAO"></jsp:useBean>
-
 <%
 
 
@@ -21,7 +19,8 @@ if(userpwd==null){
 String saveid = request.getParameter("saveid"); //아이디 체크
 
 // //내가 입력한 id의 비밀번호를 불러와서 그 결과가 result라는 변수에 들어감
-String getpwd= mdao.loginCheckPwd(userid); //아이디 입력으로 비밀번호 가져오기
+MemberDTO mdto = mdao.loginCheckPwd(userid);
+String getpwd= mdto != null ? mdto.getPwd() : null; //아이디 입력으로 비밀번호 가져오기
 
 ////내가 입력한 pwd의 아이디가 동일한지 비교
 String getid= mdao.loginCheckId(userpwd); //비밀번호 입력으로 아이디 가져오기
@@ -32,8 +31,11 @@ System.out.println();
 System.out.println(getpwd);
 
 if (userpwd.equals(getpwd)) { // DB의 PWD 와 내가 입력한  동일한지 확인
-	
 	session.setAttribute("sessionid", userid);
+	session.setAttribute("grade", mdto.getGrade());
+	session.setAttribute("point", mdto.getPoint());
+	session.setAttribute("balance", mdto.getMoney());
+	session.setAttribute("dcRate", mdto.getDiscount());
 
 	 	if(saveid!=null){
 		  Cookie ck=new Cookie("saveid",userid);
