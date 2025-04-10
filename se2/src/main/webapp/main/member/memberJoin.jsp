@@ -7,8 +7,12 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 30px; }
+         * {
+	   	margin: 0;
+	    padding: 0;
+	    box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+        }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
         
         form { 
     
@@ -42,6 +46,10 @@
         input[type="submit"]:hover, input[type="reset"]:hover { 
             background-color: #eee; 
         }
+
+		input[type="reset"]:hover {
+    		background-color: #f0b675;
+    	} 
         
         .email-group { 
             display: flex; 
@@ -50,7 +58,12 @@
         
         .email-group input { width: 48%; }
         
-        hr { border: none; border-top: 1px solid #eee; margin: 15px 0; }
+       hr {
+        width: 100%;
+        border: none;
+        border-top: 2px solid #eeeeeec0;
+        margin: 10px 0 20px;
+        }
 
 		.idCheck {
    			width: 500px; /* 원하는 너비 */
@@ -69,14 +82,59 @@
             cursor: pointer; 
         }
 
+		input[type="button"]:hover {
+    		background-color: #f0b675;
+    	} 
 
+		a {
+        text-decoration: none;
+        color: #b58143;
+        margin: 0 10px;
+    	}
+    
+    	input[type="submit"] {
+         	border: none;
+        	 cursor: pointer;
+		}
 
+    	input[type="submit"]:hover {
+    		background-color: #f0b675;
+    	}    
+    	
+    	
+    	/** 비밀번호 눈 확인 */
+    	.password-wrapper {
+   			position: relative;
+   			width: 100%;
+		}
+
+		.password-wrapper input {
+    		width: 100%;
+    		padding-right: 40px; /* 아이콘 공간 확보 */
+		}
+
+		.toggle-password {
+    		position: absolute;
+    		right: 10px;
+    		top: 50%;
+    		transform: translateY(-50%);
+   			cursor: pointer;
+    		font-size: 18px;
+		}
+    	
+    	
    </style>
 
     <script>
         // 아이디 중복체크
         function openIdCheck() {
-            window.open('idCheck.jsp','idCheck','width=500,height=250');
+           // window.open('idCheck.jsp','idCheck','width=500,height=250');
+         	var popupWidth = 600;
+			var popupHeight = 300;
+			var popupX = Math.ceil(( window.screen.width - popupWidth )/2);
+			var popupY = Math.ceil(( window.screen.height - popupHeight )/2); 
+
+			window.open('idCheck.jsp','idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left='+ popupX + ', top='+ popupY)
         }
 
         // 비밀번호 확인
@@ -91,6 +149,21 @@
             }
             return true;
         }
+
+        
+        /** !! 비밀번호 입력 확인하는 코드 !!! */
+        function togglePwd(id, icon) {
+    		const input = document.getElementById(id);
+   				if (input.type === "password") {
+        			input.type = "text";
+       				 icon.textContent = "🙈"; // 눈 감은 아이콘
+    			} else {
+        			input.type = "password";
+        			icon.textContent = "👁️"; // 눈 아이콘
+    }
+}
+        
+        
     </script>    
     
 </head>
@@ -113,9 +186,11 @@
 
         <label>비밀번호</label>
         <input type="password" name="pwd" placeholder="비밀번호" required>
+        <span class="toggle-password" onclick="togglePwd('pwd', this)">👁️</span>
 
         <label>비밀번호 확인</label>
         <input type="password" name="pwdcheck" placeholder="비밀번호 확인" required>
+        <span class="toggle-password" onclick="togglePwd('pwdcheck', this)">👁️</span>
         
         <label>E-mail</label>
         <div class="email-group">
@@ -123,7 +198,7 @@
             <input type="text" name="email2" placeholder="Domain" required>
         </div>
 
-        <label>전화번호</label>
+        <label>전화번호 (000 - 0000 - 0000)</label>
         <input type="text" name="tel" placeholder="전화번호" required>
 
         <label>주소</label>
@@ -146,9 +221,9 @@
         
         <p> 
         	 <a href="login.jsp">  로그인  </a>	|	
-             <a href="idFind.jsp"> 아이디 찾기</a> |
+             <a href="idFind.jsp"> 아이디 찾기  </a> |
              <a href="pwdFind.jsp">	비밀번호 찾기	</a>
-                </p>
+        </p>
     </form>
     <%@ include file="/footer2.jsp" %>
 </body>

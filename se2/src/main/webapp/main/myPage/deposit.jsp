@@ -56,14 +56,14 @@
       color: #555;
     }
 
-    .current-money {
+    .currentMoney {
       font-size: 18px;
       margin-bottom: 25px;
-      color: #007BFF;
+      color: #b58143;
       font-weight: bold;
     }
 
-    input[type="text"] {
+    input[type="number"] {
       width: 300px;
       padding: 12px;
       font-size: 16px;
@@ -84,12 +84,12 @@
     }
 
     input[type="submit"] {
-      background-color: #007BFF;
+      background-color: #b58143;
       color: white;
     }
 
     input[type="submit"]:hover {
-      background-color: #0056b3;
+      background-color: #f0b675;
     }
 
     input[type="reset"] {
@@ -125,15 +125,15 @@
 
     <section class="box2">
       <form name="deposit" action="deposit_ok.jsp">
-        <h1>💳 포인트 충전</h1>
+        <h1>포인트 충전</h1>
         <%
           String id = (String)session.getAttribute("sessionid");
           int money = mdao.importAmount(id);
         %>
-        <label class="current-money">현재 보유 금액: <%=money %> 원</label>
+        <label class="currentMoney">현재 보유 금액 : <%=money %> 원</label>
 
         <label for="money">충전할 금액 입력</label>
-        <input type="text" id="money" name="money" placeholder="예: 10000" required>
+        <input type="number" id="money" name="money" placeholder="예: 10000" required>
 
         <br>
         <input type="submit" value="충전하기">
@@ -142,11 +142,11 @@
     </section>
 
     <aside class="info-box">
-      <h3>⚠️ 충전 유의사항</h3>
-      <p><span class="emoji">✔️</span> 최소 충전 금액은 1,000원입니다.</p>
-      <p><span class="emoji">✔️</span> 충전 후 환불은 환불하기를 통해 가능합니다.</p>
-      <p><span class="emoji">✔️</span> 환불 후 환불이 완료되기 전까지 영업일 기준 2~3 일 정도 소요 됩니다.</p>
-      <p><span class="emoji">📞</span> 문의: 1234-5678</p>
+      <h3>충전 유의사항</h3>
+      <p><span class="emoji">1.</span> 최소 충전 금액은 1,000원입니다.</p>
+      <p><span class="emoji">2.</span> 충전 후 환불은 환불하기를 통해 가능합니다.</p>
+      <p><span class="emoji">3.</span> 환불 후 환불이 완료되기 전까지 영업일 기준 2~3 일 정도 소요 됩니다.</p>
+      <p><span class="emoji">☎</span> 문의: 1234-5678</p>
     </aside>
   </div>
   <%@include file="/footer2.jsp" %>

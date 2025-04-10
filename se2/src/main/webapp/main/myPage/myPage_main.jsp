@@ -133,7 +133,7 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
         } else {
       %>
         <div class="member-card">
-          <h2>👋 <%=arr.get(0).getMfname()%><%=arr.get(0).getMlname()%> 님</h2>
+          <h2><%=arr.get(0).getMfname()%><%=arr.get(0).getMlname()%> 님</h2>
           <p>
             현재 등급: 
             <span class="grade-<%=grade.toLowerCase()%>"><%=grade %></span><br>

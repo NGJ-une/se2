@@ -17,7 +17,7 @@
 	    }else{
 	    	%>
 	      <a href = "/se2/main/myPage/myPage_main.jsp"><strong>마이페이지</strong></a>
-	      <a href="/se2/main/member/logout.jsp">회원가입</a>
+	      <a href="/se2/main/member/logout.jsp">로그아웃</a>  
 	    	<%
 	    }
 	    %>
@@ -26,7 +26,7 @@
 	    <div class="soft-main-header">
 	      <nav class="soft-nav left">
 	        <a class="top-menu-text" id="hotelSearchLink" onclick="showPopup()">호텔찾기</a>
-	        <a class="top-menu-text" href="#">호텔소개</a>
+	        <a class="top-menu-text" href="/se2/main/hotelInfo/hotelInfo.jsp">호텔소개</a>
 	      </nav>
 	  
 	    <div class="soft-logo"><a href="/se2/index.jsp">HELIA HOTEL</a></div>
@@ -36,11 +36,11 @@
 	        <%
 	        if(sid==null){
 	        	%>
-	        <a href="#">예약확인</a>
+	        <a href="/se2/main/hotelConfirm/hotelConfirmNLC.jsp">예약확인</a>
 	        	<%
 	        }else{
 	        	%>
-	        <a href="#">예약확인</a>
+	        <a href="/se2/main/hotelConfirm/hotelConfirmL.jsp">예약확인</a>
 	        	<%
 	        }
 	        %>
