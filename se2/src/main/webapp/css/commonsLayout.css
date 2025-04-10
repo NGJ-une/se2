@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  min-width: 1500px; /* 💡 고정 넓이 기준, 가로스크롤 방지 */
+  overflow-x: auto;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fffdfb;
+  color: #333;
+}
+.wrapper {
+  width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
