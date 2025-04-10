@@ -104,6 +104,7 @@ CREATE TABLE review (
     vreadnum number(5) default 0, --조회수 
     vrecommend number(5) default 0, --추천수 
     vcomment number(5) default 0, --댓글 달린 수
+    vtotal number(1) default 0, -- 평점
     
     constraint fk_member_id3 foreign key(vid) references member(mid)
 )
@@ -199,6 +200,9 @@ DROP TABLE question
 DROP TABLE grade
 DROP TABLE refund
 DROP TABLE inquiry
+DROP TABLE review
+DROP TABLE reply
+DROP TABLE photo
 --시퀀스 삭제 
 DROP SEQUENCE sq_member_idx
 DROP SEQUENCE sq_reser_idx
