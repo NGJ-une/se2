@@ -102,7 +102,7 @@
 %>
  
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
 <section>
     <h2>REVIEW 게시판</h2>
     <div>
@@ -145,6 +145,6 @@
         </div>
     </div>
 </section>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>

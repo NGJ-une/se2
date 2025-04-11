@@ -73,20 +73,19 @@ button.next:hover {
 
 /* 섹션2: 예약 안내 */
 .section2 {
-  background-color: #FAFAFA;
+  background-color: #F2F2F2 !important;
   padding: 60px 0;
   text-align: center;
 }
 
 .section2 label {
   font-size: 24px;
-  color: #9AA39A;
+  color: #6b4c2f;
   font-weight: bold;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .section2 input[type="button"] {
-  margin-top: 20px;
   font-size: 18px;
   padding: 12px 24px;
   background-color: #6b4c2f;
@@ -94,14 +93,23 @@ button.next:hover {
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  margin-left: 320px; /*  글씨와 버튼 사이 간격 */
+  vertical-align: middle;
 }
 
 /* 섹션3: 테이블 */
-.section3 fieldset {
-  border: 1px solid #ccc;
-  padding: 20px;
+.section3 h2{
+	color: #6b4c2f;
 }
-
+.section3 img{
+  width: 38px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.section3 img:hover {
+  transform: scale(1.1);
+}
 .table-grade {
   width: 100%;
   border-collapse: collapse;
@@ -110,8 +118,7 @@ button.next:hover {
 }
 
 .table-grade td {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 3px;
 }
 
 /* 섹션4: 갤러리 */
@@ -124,7 +131,7 @@ button.next:hover {
 .section4 label {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: #6b4c2f;
   margin-bottom: 20px;
   display: block;
 }
@@ -150,4 +157,139 @@ button.next:hover {
 .section4 img:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+
+/*section5*/
+.reservation-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/*reservation 전체 */
+.reservation-form {
+  display: flex;
+  flex-wrap: nowrap; /* 버튼이 줄바꿈되지 않게 */
+  gap: 16px;
+  padding: 20px;
+  align-items: flex-end;
+  padding-left: 30px;  /*왼쪽에 빈칸 넣어서 오른쪽으로 밀기 */
+}
+/*호텔찾기 */
+.reservation-item.hotel-city {
+  flex: 0 0 220px;
+}
+/*체크인 체크아웃 */
+.reservation-item.date-item {
+  flex: 0 0 180px;
+}
+.reservation-item img {
+  width: 22px;
+  height: 22px;
+}
+
+/*객실 성인 어린이 유아 */
+.reservation-item {
+  flex: 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservation-item label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.reservation-item .value {
+  font-size: 13px;
+  font-weight: bold;
+  color: #222;
+}
+/*체크인 체크아웃 value*/ 
+.date-item .value {
+  font-size: 13px; /* 글씨 크기 */
+  color: #444;     
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-wrapper input[type="text"] {
+  width: 100%;
+  padding-right: 25px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+/*검색버튼*/
+.btn-search {
+  padding: 10px 40px;
+  background-color: #3b2b29;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  height: 56px;
+  white-space: nowrap;
+}
+/*검색버튼 자체 */
+.btn-search-wrapper {
+  margin-left: auto; /*오른쪽으로 정렬 */
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 20px;
+}
+.btn-search:hover {
+  background-color: #5a423f;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 8px;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.full-width {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }

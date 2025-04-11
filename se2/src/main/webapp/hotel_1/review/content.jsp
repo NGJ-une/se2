@@ -101,7 +101,7 @@
 </style>
 </head>
 <body>
-<%@include file="/header2.jsp" %>
+<%@include file="/header.jsp" %>
 <section>
     <article class="center-part">
         <h2>본문 내용</h2>
@@ -187,6 +187,6 @@
 
     <br><br>
 </section>
-<%@include file="/footer2.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>
