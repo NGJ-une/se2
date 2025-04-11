@@ -1,13 +1,12 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
 .soft-header {
-  background-color: #E4D9C7;
+  background-color: #E4D9C7 ;
   border-bottom: 1px solid #d8cfc1;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   padding: 5px 0;
+  height: 100px;
 }
-
 /* 상단 로그인/회원가입 */
 .soft-top-links {
   text-align: right;
@@ -72,7 +71,7 @@
 .soft-nav a {
   color: #6b4c2f;
   text-decoration: none;
-  font-weight: 1000;
+  font-weight: 700;
   transition: all 0.3s;
 }
 

@@ -25,6 +25,7 @@ function show(){
 </script>
 </head>
 <body>
+<%@ include file="/header.jsp" %>
     <h2>예약확인</h2>
     <hr>
 <section>
@@ -131,5 +132,6 @@ function show(){
 		</form>
 	</article>
 </section>
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

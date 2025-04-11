@@ -7,13 +7,13 @@
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  padding: 40px 0;
+  padding: 5px 0;
 }
 
 .footer .wrapper {
-  max-width: 1200px;
+  width: 100%;  /*가로 고정값*/
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 /* 타이틀 */
@@ -29,8 +29,9 @@
 .footer-brands {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 30px;
+  gap: 80px;
+  margin-bottom: 12px;
+  font-size:14px;
 }
 
 .footer-brands a {
@@ -47,17 +48,20 @@
 /* 연락처 + SNS */
 .footer-middle {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.footer-contact-sns-horizontal  {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* 연락처와 SNS 간격 조절 */
 }
 
 .footer-contact {
-  display: flex;         /* 가로 배치 */
-  justify-content: center; /* 가운데 정렬 (선택) */
-  align-items: center;
-  gap: 60px;             /* 요소 간 간격 */
+  display: flex;
+  gap: 60px;
+  justify-content: center;
 }
 
 .footer-contact p {
@@ -66,7 +70,7 @@
 }
 
 .footer-sns a {
-  margin-left: 12px;
+  margin: 0 6px;
   display: inline-block;
 }
 
@@ -86,8 +90,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .footer-links a {

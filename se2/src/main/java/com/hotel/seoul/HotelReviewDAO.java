@@ -3,17 +3,24 @@ package com.hotel.seoul;
 import java.util.*;
 
 
+
 import com.hotel.seoul.HotelReviewDTO;
+
 
 import java.sql.*;
 import java.sql.Date;
 
 public class HotelReviewDAO {
-	
+
 	Connection conn;
 	PreparedStatement ps;
 	ResultSet rs;
+
+	public HotelReviewDAO() {
+
+	}
 	
+
 	public HotelReviewDAO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -126,3 +133,5 @@ public class HotelReviewDAO {
 		}
 	}
 }
+	
+	

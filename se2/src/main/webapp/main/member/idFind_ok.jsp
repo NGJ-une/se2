@@ -12,10 +12,6 @@ int userquestion=Integer.parseInt(question);
 //int userquestion= Integer.ParseInt((question.substring(3, 4)));
 String useranswer=request.getParameter("answer");
 
-System.out.println(usertel);
-System.out.println(userquestion);
-System.out.println(useranswer);
-
 String dbid=(mdao.idFind(usertel, userquestion, useranswer));
 
 if(dbid==null){
