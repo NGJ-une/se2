@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "com.hotel.seoul.HotelReviewDTO" %>
 <!DOCTYPE html>
+<jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -100,14 +103,26 @@
 
 </style>
 </head>
+<%
+String id = (String)session.getAttribute("sessionid");
+String title = request.getParameter("vtitle");
+ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
+%>
 <body>
 <%@include file="/header.jsp" %>
 <section>
     <article class="center-part">
         <h2>본문 내용</h2>
         <ul>
-            <li>박주연 (작성자 이름 불러옴)</li>
-            <li>2025-04-10</li>
+            <li><%=id %></li>
+            <%
+            if(arr == null || arr.size() == 0) {
+            	%>
+            	<li>내용이 없습니다.</li>
+            	<%
+            }else {
+            %>
+            <li><%=arr.get(0).getVdate() %></li>
             <li>평점 
                 <div class="totalStar">
                     <input type="radio" class="star" id="star1" value="1">
@@ -117,11 +132,14 @@
                     <input type="radio" class="star" id="star5" value="5">
                 </div>
             </li>
-            <li>호텔 넘 좋아요 (제목)</li>
-            <li>(내용) 이러이러한 점이 너무 좋더라구요</li>
+            <li><%=arr.get(0).getVtitle() %></li>
+            <li><%=arr.get(0).getVcontent() %></li>
             
-            <li>(사진)</li>
+            <li><img src = "" alt = "사용자 업로드 이미지"></li>
         </ul>
+        <%
+            }
+        %>
         
     </article>
 
