@@ -1,10 +1,8 @@
-package com.hotel.review;
+package com.hotel.seoul;
 
-import java.sql.*;
 import java.sql.Date;
-import java.util.*;
 
-public class HotelReviewDTO {
+public class SeoulWriteDTO {
 
 	private int vidx;
 	private String vid;
@@ -15,13 +13,13 @@ public class HotelReviewDTO {
 	private int vrecommend;
 	private int vcomment;
 	private int vtotal;
-	
-	public HotelReviewDTO() {
-		// TODO Auto-generated constructor stub
+
+	public SeoulWriteDTO() {
+
 	}
 
-	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
-			int vrecommend, int vcomment, int vtotal) {
+	public SeoulWriteDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum, int vrecommend,
+			int vcomment, int vtotal) {
 		super();
 		this.vidx = vidx;
 		this.vid = vid;
@@ -105,7 +103,6 @@ public class HotelReviewDTO {
 	public void setVtotal(int vtotal) {
 		this.vtotal = vtotal;
 	}
-
 	
 	
 }

@@ -4,17 +4,22 @@ public class HotelPhotoDTO {
 
 	private int pidx;
 	private int pnum;
-	private String pname;
+	private String pname1;
+	private String pname2;
+	private String pname3;
 	
 	public HotelPhotoDTO() {
 		
 	}
 
-	public HotelPhotoDTO(int pidx, int pnum, String pname) {
+	public HotelPhotoDTO(int pidx, int pnum, String pname1, String pname2, String pname3) {
 		super();
 		this.pidx = pidx;
 		this.pnum = pnum;
-		this.pname = pname;
+		this.pname1 = pname1;
+		this.pname2 = pname2;
+		this.pname3 = pname3;
+		
 	}
 
 	public int getPidx() {
@@ -33,11 +38,28 @@ public class HotelPhotoDTO {
 		this.pnum = pnum;
 	}
 
-	public String getPname() {
-		return pname;
+	public String getPname1() {
+		return pname1;
 	}
 
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setPname1(String pname1) {
+		this.pname1 = pname1;
 	}
+
+	public String getPname2() {
+		return pname2;
+	}
+
+	public void setPname2(String pname2) {
+		this.pname2 = pname2;
+	}
+
+	public String getPname3() {
+		return pname3;
+	}
+
+	public void setPname3(String pname3) {
+		this.pname3 = pname3;
+	}
+
 }
