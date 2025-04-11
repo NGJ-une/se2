@@ -31,7 +31,7 @@
 	    </div>
 	  
 	      <nav class="soft-nav right">
-	      <a href="se2/main/hotelReser/hotelReser.jsp">예약하기</a>
+	      <a href="/se2/main/hotelReser/hotelReser.jsp">예약하기</a>
 	        <% if(sid==null) { %>
 	        <a href="/se2/main/hotelConfirm/hotelConfirmNLC.jsp">예약확인</a>
 	        <% } else { %>
