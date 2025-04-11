@@ -5,43 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- number type인 input태그 스크롤 없애는 CSS ( 비표준 임) -->
-<style>
-input::-webkit-inner-spin-button{-webkit-appearance: none; }
-</style>
+<link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
+<link rel="stylesheet" type="text/css" href="/se2/main/hotelConfirm/css/nlc.css">
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<section>
-	<article>
-		<form name="ConfirmNumberCheck" action="hotelConfirmNLC_ok.jsp" method="post">
-			<h2>예약번호로 예약내역 확인</h2>
-			<hr>
-			<ul>
-				<li>저희 호텔에 오신것을 환영합니다.</li>
-				<li>예약번호를 입력해 주시기 바랍니다.</li>
-				<li>저희 호텔에 회원이 되시면 회원만을 위한 특별한 혜택을 받아보실 수 있습니다.</li>
-				<li><a href="/se2/main/member/login.jsp">로그인</a>을 하시면 바로 예약 내역을 바로 확인 하실 수 있습니다.</li>
-			</ul>
-			<fieldset>
-				<legend>예약번호로 예약확인</legend>
-				<table>
-					<tr>
-						<th>아이디</th>
-						<td><input type="text" name="id" required></td>
-					</tr>
-					<tr>
-						<th>예약번호</th>
-						<td><input type="number" name="confirmNumber" required>
-					</tr>
-					<tr>
-						<td><input type="reset" value="비우기"></td>
-						<td><input type="submit" value="예약 확인"></td>
-					</tr>
-				</table>
-			</fieldset>
-		</form>
-	</article>
+<section class="confirmNLC">
+  <article>
+    <div class="confirm-box wrapper">
+      <form name="ConfirmNumberCheck" action="hotelConfirmNLC_ok.jsp" method="post">
+        <h2>예약번호로 예약내역 확인</h2>
+        <p class="subtext">예약번호만 알고있어도 간편하게 확인할 수 있습니다.</p>
+        <ul class="info-list">
+          <li>저희 호텔에 오신 것을 환영합니다.</li>
+          <li>예약번호를 입력해 주시기 바랍니다.</li>
+          <li>회원 가입 시, 다양한 혜택을 누릴 수 있습니다.</li>
+          <li><a href="/se2/main/member/login.jsp">로그인</a>하시면 더 빠른 조회가 가능합니다.</li>
+        </ul>
+
+        <fieldset>
+          <legend>예약번호로 확인</legend>
+          <div class="form-row">
+            <label for="id">아이디</label>
+            <input type="text" name="id" id="id" required>
+          </div>
+          <div class="form-row">
+            <label for="confirmNumber">예약번호</label>
+            <input type="number" name="confirmNumber" id="confirmNumber" required>
+          </div>
+          <div class="form-buttons">
+            <input type="reset" value="비우기">
+            <input type="submit" value="예약 확인">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </article>
 </section>
 <%@ include file="/footer.jsp" %>
 </body>

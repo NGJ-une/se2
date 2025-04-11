@@ -26,7 +26,7 @@ if(result==false){
 	%>
 	<script>
 		window.alert('예약 번호로 예약된 내역이 없습니다 \n 다시 입력해 주시길 바랍니다');
-		location.href='hotelConfirmNM.jsp';
+		location.href='hotelConfirmNLC.jsp';
 	</script>
 	<%
 }else{
