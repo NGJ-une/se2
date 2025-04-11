@@ -1,0 +1,110 @@
+@charset "UTF-8";
+/*number type인 input태그 스크롤 없애는 CSS ( 비표준 임)*/
+input::-webkit-inner-spin-button{-webkit-appearance: none; }
+.confirmNLC {
+  background-color: #FAFAFA;
+  padding: 60px 0;
+}
+
+.confirm-box {
+  background-color: #fff;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.confirm-box h2 {
+  font-size: 24px;
+  color: #6b4c2f;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.confirm-box .subtext {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirm-box .info-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.confirm-box .info-list li {
+  margin-bottom: 5px;
+}
+
+.confirm-box a {
+  color: #3b2b29;
+  text-decoration: underline;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+legend {
+  font-size: 16px;
+  font-weight: bold;
+  color: #6b4c2f;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-row label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.form-row input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.form-buttons input {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-buttons input[type="submit"] {
+  background-color: #6b4c2f;
+  color: #fff;
+}
+
+.form-buttons input[type="submit"]:hover {
+  background-color: #8c6742;
+}
+
+.form-buttons input[type="reset"] {
+  background-color: #ddd;
+  color: #333;
+}
+
+.form-buttons input[type="reset"]:hover {
+  background-color: #bbb;
+}

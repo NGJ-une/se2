@@ -5,11 +5,11 @@
 request.setCharacterEncoding("utf-8");
 
 String iid = (String)session.getAttribute("sessionid");
-String icategory = request.getParameter("icategory");
-String ititle = icategory+"  |  "+request.getParameter("ititle");
+String itype = request.getParameter("itype");
+String ititle = request.getParameter("ititle");
 String icontent = request.getParameter("icontent");
 
-int result = adao.askWrite(iid, ititle, icontent);
+int result = adao.askWrite(iid, itype,ititle, icontent);
 
 String msg = result > 0 ? "고객님의 문의가 접수되었습니다." : "접수 실패!";
 %>

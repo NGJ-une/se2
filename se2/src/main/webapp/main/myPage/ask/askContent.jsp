@@ -132,7 +132,7 @@ if(dto == null) {
             <tr>
                 <th>문의 분류</th>
                 <td colspan="3">
-                    <input type="text" name="ititle" value="<%=dto.getItitle()%>">
+                    <input type="text" name="itype" value="<%=dto.getItype()%>">
                 </td>
             </tr>
             <tr>

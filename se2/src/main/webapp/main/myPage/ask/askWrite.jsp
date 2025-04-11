@@ -117,7 +117,7 @@
             <tr>
                 <th>문의 분류</th>
                 <td colspan="3">
-                    <select name="icategory">
+                    <select name="itype">
                         <option value="">선택</option>
                         <option value="예약">예약</option>
                         <option value="결제">결제/환불</option>

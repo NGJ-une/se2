@@ -1,6 +1,8 @@
 package com.hotel.seoul;
 
 import java.sql.*;
+import java.sql.Date;
+import java.util.*;
 
 //후기 게시판 테이블
 public class HotelReviewDTO {
@@ -14,12 +16,30 @@ public class HotelReviewDTO {
 	private int vrecommend;
 	private int vcomment;
 	private int vtotal;
-	
+	private int rnum;
 
 	public HotelReviewDTO() {
 
 		
 	}
+	
+	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
+			int vrecommend, int vcomment, int vtotal, int rnum) {
+		super();
+		this.vidx = vidx;
+		this.vid = vid;
+		this.vtitle = vtitle;
+		this.vcontent = vcontent;
+		this.vdate = vdate;
+		this.vreadnum = vreadnum;
+		this.vrecommend = vrecommend;
+		this.vcomment = vcomment;
+		this.vtotal = vtotal;
+		this.rnum = rnum;
+	}
+
+
+
 	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
 			int vrecommend, int vcomment, int vtotal) {
 		super();
@@ -124,5 +144,14 @@ public class HotelReviewDTO {
 	public void setVtotal(int vtotal) {
 		this.vtotal = vtotal;
 	}
+
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	
 	
 }

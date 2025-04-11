@@ -1,11 +1,14 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "com.hotel.seoul.HotelReviewDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>전체 목록 리스트</title>
-
+<jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -98,52 +101,98 @@
 
 </head>
  <%
-
+String id = (String)session.getAttribute("sessionid");
+int totalCount = rdao.getTotalCount();
+int maxList = 10;
+int maxPage = 5;
+String cp_s = request.getParameter("cp");
+if(cp_s==null || cp_s.equals("")) {
+	cp_s="1";
+}
+int cp = Integer.parseInt(cp_s);
+int totalPage = (totalCount/maxList)+1;
+int userGroup = cp/maxPage;
+if(totalCount%maxList==0) totalPage--;
+if(cp%maxPage==0) userGroup--;
 %>
  
 <body>
 <%@include file="/header.jsp" %>
 <section>
-    <h2>REVIEW 게시판</h2>
-    <div>
-        <table>
-           <thead>
-              <tr>
-                  <th>NO.</th>
-                  <th>제목</th>
-                  <th>ID</th>
-                  <th>작성날짜</th>
-                  <th>추천</th>
-                  <th>비추</th>
-                  <th>조회수</th>
-               </tr>
-           </thead>
-           <tbody>
-             <tr>
-                 <td>1</td>
-                 <td>서울 호텔 최고!!!</td>
-                 <td>박주연</td>
-                 <td>2025-04-10</td>
-                 <td>7</td>
-                 <td>1</td>
-                 <td>53</td>
-              </tr>
-            </tbody>
-        </table>
-        
-        <!--  페이징  -->
-        <div class="paging">
-           <a href="#">이전</a>
-           <a href="#">1</a>
-           <a href="#">2</a>
-            <a href="#">다음</a>
-        </div>
-        
-        <!-- 글쓰기 오른쪽 졍랼함 -->
-        <div style="text-align: right;">
+	<h1>REVIEW</h1>
+	<div>
+	<table>
+		<thead>
+			<tr>
+				<th>NO.</th>
+				<th>ID</th>
+				<th>제목</th>
+				<th>추천수</th>
+				<th>평점</th>
+				<th>조회수</th>
+				<th>작성날짜</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan = "4" align = "center">
+				<%
+		if(userGroup != 0) {
+			%>
+			<a href="list.jsp?cp=<%=(userGroup-1)*maxPage+maxPage %>">&lt;</a>
+			<%
+		}
+				%>
+				<%
+				for(int i = (userGroup*maxPage+1); i <= (userGroup*maxPage+maxPage); i++) {
+					%>
+					&nbsp;&nbsp;<a href = "list.jsp?cp=<%=i%>"><%=i %></a>
+					<%
+					if(i == totalPage) {
+						 break;
+					}
+				}
+				%>
+				<%
+				if(((totalPage/maxPage)-(totalPage%maxPage==0? 1 : 0))!= userGroup) {
+					%>
+					&nbsp;&nbsp;<a href = "list.jsp?cp=<%=(userGroup+1)*maxPage+1%>">&gt;</a>
+					<%
+				}
+				%>
+					        <td>
            <a href="write.jsp" class="write-button"> 글쓰기</a>
-        </div>
-    </div>
+           </td>
+			</tr>
+		</tfoot>
+		<tbody>
+		<%
+		ArrayList<HotelReviewDTO> arr = rdao.getInfoReviewList(cp, maxList);
+		if(arr == null || arr.size() == 0) {
+			%>
+			<tr>
+			<td colspan = "7" align = "center">등록된 후기가 없습니다.</td>
+			</tr>
+			<%
+		}else {
+			for(int i = 0; i<arr.size(); i++) {
+				%>
+				<tr>
+				<td><%=arr.get(i).getRnum() %></td>
+				<td><%=arr.get(i).getVid() %></td>
+				<td><a href = "content.jsp?vtitle =<%=arr.get(i).getVtitle()%>"><%=arr.get(i).getVtitle() %></a></td>
+				<td><%=arr.get(i).getVrecommend() %></td>
+				<td><%=arr.get(i).getVtotal() %></td>
+				<td><%=arr.get(i).getVreadnum() %></td>
+				<td><%=arr.get(i).getVdate() %></td>
+				</tr>
+				<%
+			}
+		}
+		%>
+		</tbody>
+	</table>
+	</div>
 </section>
 <%@include file="/footer.jsp" %>
 </body>
