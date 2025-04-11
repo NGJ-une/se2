@@ -157,8 +157,10 @@ window.onload = function () {
 
 <body>
 <%@include file="/header.jsp" %>
-<section>
-    <form action="submit.jsp" method="post" enctype="multipart/form-data">
+
+<section class="Container1">
+
+    <form action="write_ok.jsp" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>작성자</th>
@@ -178,7 +180,7 @@ window.onload = function () {
                 <td>
                     <div class="custom-file">
                         <label for="file1">파일 선택</label>
-                        <input type="file" name="fileSelect1" id="file1">
+                        <input type="file" name="pname1" id="file1">
                         <span class="file-name" id="fileName1">선택된 파일 없음</span>
                     </div>
                 </td>
@@ -188,7 +190,7 @@ window.onload = function () {
                 <td>
                     <div class="custom-file">
                         <label for="file2">파일 선택</label>
-                        <input type="file" name="fileSelect2" id="file2">
+                        <input type="file" name="pname2" id="file2">
                         <span class="file-name" id="fileName2">선택된 파일 없음</span>
                     </div>
                 </td>
@@ -198,7 +200,7 @@ window.onload = function () {
                 <td>
                     <div class="custom-file">
                         <label for="file3">파일 선택</label>
-                        <input type="file" name="fileSelect3" id="file3">
+                        <input type="file" name="pname3" id="file3">
                         <span class="file-name" id="fileName3">선택된 파일 없음</span>
                     </div>
                 </td>
@@ -206,12 +208,12 @@ window.onload = function () {
 
             <tr>
                 <th>평점</th>
-                <td class="totalStar">
-                    <input type="radio" class="star" id="star1" name="rating" value="1">
-                    <input type="radio" class="star" id="star2" name="rating" value="2">
-                    <input type="radio" class="star" id="star3" name="rating" value="3">
-                    <input type="radio" class="star" id="star4" name="rating" value="4">
-                    <input type="radio" class="star" id="star5" name="rating" value="5">
+                <td class="totalStar" >
+                    <input type="radio" class="star" id="star1" name="vtotal" value="1">
+                    <input type="radio" class="star" id="star2" name="vtotal" value="2">
+                    <input type="radio" class="star" id="star3" name="vtotal" value="3">
+                    <input type="radio" class="star" id="star4" name="vtotal" value="4">
+                    <input type="radio" class="star" id="star5" name="vtotal" value="5">
                     <input type="button" id="resetStar" value="별점 초기화" onclick="show();">
                 </td>
             </tr>
@@ -222,6 +224,7 @@ window.onload = function () {
                     <input type="reset" value="다시 작성">
                 </td>
             </tr>
+  
         </table>
     </form>
 </section>

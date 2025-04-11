@@ -17,19 +17,13 @@ String email=email1+"@"+email2;
 mdto.setEmail(email); //mdto에 값 넣어줌
 String pwdcheck=request.getParameter("pwdcheck");
 String pwd=request.getParameter("pwd");
-String pwdok;
+
 
 
 %>
 <jsp:setProperty property="*" name="mdto" />
 <%
 
-System.out.println(email);
-System.out.println(pwdcheck);
-System.out.println(mdto.getId());
-System.out.println(mdto.getBirth());
-System.out.println(mdto.getId());
-System.out.println(mdto.getJoin_date());
 
 
 int result=mdao.memberJoin(mdto);
