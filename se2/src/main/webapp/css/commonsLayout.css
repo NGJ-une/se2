@@ -11,6 +11,7 @@ html, body {
   background-color: #fffdfb;
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
+  min-width: 1200px;
 }
 
 .wrapper {
@@ -21,6 +22,10 @@ html, body {
 
 /*body section 고정 너비 구조 */
 section {
+  width: 100%;
+}
+header.soft-header,
+.footer {
   width: 100%;
 }
 

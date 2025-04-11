@@ -23,16 +23,18 @@
 
     <!-- 연락처 + SNS -->
     <div class="footer-middle">
-      <div class="footer-contact">
-        <p>서울헬라호텔 02-2233-3131</p>
-        <p>울산헬라호텔 064-735-5114</p>
-        <p>헬라스테이 02-2230-0700</p>
-        <p>헬라리워즈 02-2230-5528</p>
-      </div>
-      <div class="footer-sns">
-        <a href="#"><img src="/se2/css/img/icon_instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="/se2/css/img/icon_facebook.png" alt="Facebook"></a>
-      </div>
+	    <div class="footer-contact-sns-horizontal">
+	      <div class="footer-contact">
+	        <p>서울헬라호텔 02-2233-3131</p>
+	        <p>울산헬라호텔 064-735-5114</p>
+	        <p>헬라스테이 02-2230-0700</p>
+	        <p>헬라리워즈 02-2230-5528</p>
+	      </div>
+	      <div class="footer-sns">
+	        <a href="#"><img src="/se2/css/img/icon_instagram.png" alt="Instagram"></a>
+	        <a href="#"><img src="/se2/css/img/icon_facebook.png" alt="Facebook"></a>
+	      </div>
+	    </div>
     </div>
 
     <!-- 약관 링크 -->
@@ -47,12 +49,11 @@
 
     <!-- 주소 + 카피라이트 -->
     <div class="footer-bottom">
-      <p>(주) 호텔신라 서울특별시 중구 동호로 249 (우: 04605) 대표이사 이부진</p>
+      <p>(주) 호텔신라 서울특별시 중구 동호로 249 (우: 04605) 대표이사 서광준</p>
       <p>사업자등록번호 203-81-43363 통신판매신고번호 중구00272호</p>
       <p>Copyright (C) HOTEL SHILLA CO.,LTD. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
-
 </body>
 </html>
