@@ -26,7 +26,6 @@ String getpwd= mdto != null ? mdto.getPwd() : null; //아이디 입력으로 비
 String getid= mdao.loginCheckId(userpwd); //비밀번호 입력으로 아이디 가져오기
 
 
-
 if (userpwd.equals(getpwd)) { // DB의 PWD 와 내가 입력한  동일한지 확인
 	session.setAttribute("sessionid", userid);
 	session.setAttribute("grade", mdto.getGrade());
