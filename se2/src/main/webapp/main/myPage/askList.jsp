@@ -62,7 +62,7 @@
     .listbt{
     	text-align:right;
     }
-    .listbt input[type="button"] {
+    .listbt input[type="button"],input[type="submit"] {
         padding: 10px 15px;
         margin: 10px 5px;
         border: 1px solid #f2f2f2;
@@ -74,7 +74,7 @@
         transition: background-color 0.3s ease;
     }
 
-    .listbt input[type="button"]:hover {
+    .listbt input[type="button"]:hover,input[type="submit"]:hover {
         background-color: #f0b675; /* 호버 시 버튼 색상 변경 */
     }
     .listbt input[type="text"] {
@@ -111,6 +111,9 @@
     	text-decoration: none;
     	color : black;
     }
+    .askbt{
+    	border-left:#f2f2f2;
+    }
     .askbt input[type="button"]{
     	padding:10px;
     	text-align:center;
@@ -128,8 +131,8 @@ function updateAskDate(months) {
 
 	  // 날짜를 "yyyy년 MM월 dd일" 형식으로 변환
 	  var formattedDate =
-	    now.getFullYear() + "년 " +
-	    String(now.getMonth() + 1).padStart(2, '0') + "월 " +
+	    now.getFullYear() + "년" +
+	    String(now.getMonth() + 1).padStart(2, '0') + "월" +
 	    String(now.getDate()).padStart(2, '0') + "일";
 
 	  // 업데이트된 날짜를 출력하거나 입력 필드에 반영
@@ -142,8 +145,10 @@ function updateZero(){
 </script>
 </head>
 <%
+
 String id = (String)session.getAttribute("sessionid");
-int totalCnt=adao.getTotalCnt(id);
+int totalCnt = adao.getTotalCnt(id);
+
 int listSize = 10;
 int pageSize = 5;
 String cp_s = request.getParameter("cp");
@@ -172,30 +177,33 @@ if(cp%pageSize==0)userGroup--;
 		    java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
 		    String formattedDate = today.format(formatter);
 		%>
-		<div class="listbt">
-		    기간조회
-		    <input type="button" value="1개월" onclick="updateAskDate(1)">
-		    <input type="button" value="3개월" onclick="updateAskDate(3)">
-		    <input type="button" value="6개월" onclick="updateAskDate(6)">
-		    <input type="button" value="전체" onclick="updateZero()">
-		    <br>
-		    <input type="text" name="askdate" value="" readonly>
-		    <input type="text"  value="~" readonly style='width:30px;'>
-		    <input type="text" name="now" value="<%= formattedDate %>" readonly>
-		    <input type="button" value="조회">
-		    <hr>
-		</div>
+		<form action="asklist" method="GET">
+			<div class="listbt">
+			    기간조회
+			    <input type="button" value="1개월" onclick="updateAskDate(1)">
+			    <input type="button" value="3개월" onclick="updateAskDate(3)">
+			    <input type="button" value="6개월" onclick="updateAskDate(6)">
+			    <input type="button" value="전체" onclick="updateZero()">
+			    <br>
+			    <input type="text" name="askdate" value="" readonly>
+			    <input type="text"  value="~" readonly style='width:30px;'>
+			    <input type="text" name="now" value="<%= formattedDate %>" readonly>
+			    <input type="submit" value="조회">
+			    <hr>
+			</div>
+		</form>
         <table class ="list">
         	<thead>
 	           <tr class ="listhead">
 	               <th style='width:100px;'>No</th>
-	               <th style='width:600px;'>유형 | 제목</th>
-	               <th style='width:200px;'>문의일자</th>
+	               <th style='width:150px;'>유형</th>
+	               <th style='width:500px;'>제목</th>
+	               <th style='width:150px;'>문의일자</th>
 	           </tr>
             </thead>
             <tfoot>
 				<tr class="listpage" >
-					<td colspan ="2" align = "center">
+					<td colspan ="3" align = "center">
 				<%
 				if(userGroup!=0){
 				%>
@@ -228,11 +236,11 @@ if(cp%pageSize==0)userGroup--;
 
 			<%
 			
-			ArrayList<AsklistDTO> arr = adao.askList(id, cp, listSize); 
+			ArrayList<AsklistDTO> arr = adao.askList(id, totalCnt, cp, listSize); 
 			if(arr==null || arr.size()==0) {
 				%>
 				<tr class="listbody">
-					<td colspan="3" align = "center">
+					<td colspan="4" align = "center">
 					등록된 게시글이 없습니다.
 					</td>
 				</tr>
@@ -242,8 +250,9 @@ if(cp%pageSize==0)userGroup--;
 					%>
 					<tr class="listbody">
 						<td style='width:100px;'><%=arr.get(i).getRownum()%></td>  
-						<td style='width:600px;'><a href = "ask/askContent.jsp?iidx=<%=arr.get(i).getIidx()%>"><%=arr.get(i).getItitle() %></a></td>
-						<td style='width:200px;'><%=arr.get(i).getIdate()%></td>
+						<td style='width:150px;'><%=arr.get(i).getItype()%></td>
+						<td style='width:500px;'><a href = "ask/askContent.jsp?iidx=<%=arr.get(i).getIidx()%>"><%=arr.get(i).getItitle() %></a></td>
+						<td style='width:150px;'><%=arr.get(i).getIdate()%></td>
 					</tr>
 					<%
 				}

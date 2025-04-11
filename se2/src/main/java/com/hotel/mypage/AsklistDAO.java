@@ -2,7 +2,7 @@ package com.hotel.mypage;
 
 import java.util.*;
 
-import com.hotel.reser.ReserDTO;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,17 +18,16 @@ public class AsklistDAO {
 		// TODO Auto-generated constructor stub
 	}
 	/*문의내역 가져오기*/
-	public ArrayList<AsklistDTO> askList(String id, int cp, int ls) {
+	public ArrayList<AsklistDTO> askList(String id, int totalCnt, int cp, int ls) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			
-			int start = (cp-1)*ls+1;
-			int end = cp*ls;
+			int start = totalCnt-(cp-1)*ls;
+			int end = totalCnt-cp*ls;
 			
 			String sql = "select * from"
-					+ " (select rownum as rnum,iidx,ititle,idate from inquiry"
+					+ " (select rownum as rnum,iidx,itype,ititle,idate from inquiry"
 					+ " where iid = ? )"
-					+ " where rnum >= ? and rnum <= ? ";
+					+ " where rnum <= ? and rnum >= ? order by rnum desc";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setInt(2, start);
@@ -38,9 +37,10 @@ public class AsklistDAO {
 			while(rs.next()) {
 				int rnum = rs.getInt("rnum");
 				int iidx = rs.getInt("iidx");
+				String itype = rs.getString("itype");
 				String ititle = rs.getString("ititle");
 				java.sql.Date idate = rs.getDate("idate");
-				AsklistDTO dto = new AsklistDTO(rnum,ititle,idate,iidx);
+				AsklistDTO dto = new AsklistDTO(rnum,itype,ititle,idate,iidx);
 				arr.add(dto);
 			}
 			return arr;
@@ -56,10 +56,50 @@ public class AsklistDAO {
 		}
 	}
 	
+	/*public ArrayList<AsklistDTO> askList(String id, int totalCnt, int cp, int ls, java.sql.Date askdate) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			
+			
+			int start = totalCnt-(cp-1)*ls;
+			int end = totalCnt-cp*ls;
+			
+			String sql = "select * from"
+					+ " (select rownum as rnum,iidx,itype,ititle,idate from inquiry"
+					+ " where iid = ? and idate >= ?)"
+					+ " where rnum <= ? and rnum >= ? order by rnum desc";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setDate(2, askdate);
+			ps.setInt(3, start);
+			ps.setInt(4, end);
+			rs = ps.executeQuery();
+			ArrayList<AsklistDTO> arr = new ArrayList<AsklistDTO>();
+			while(rs.next()) {
+				int rnum = rs.getInt("rnum");
+				int iidx = rs.getInt("iidx");
+				String itype = rs.getString("itype");
+				String ititle = rs.getString("ititle");
+				java.sql.Date idate = rs.getDate("idate");
+				AsklistDTO dto = new AsklistDTO(rnum,itype,ititle,idate,iidx);
+				arr.add(dto);
+			}
+			return arr;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}*/
 	public int getTotalCnt(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select count(*) from inquiry where iid = ? ";
+			String sql = "select count(*) from inquiry where iid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
@@ -78,15 +118,39 @@ public class AsklistDAO {
 		}
 	}
 	
-	public int askWrite(String iid,String ititle,String icontent) {
+	/*public int getTotalCnt(String id, java.sql.Date askdate) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select count(*) from inquiry where iid = ? and idate >= ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setDate(2, askdate);
+			rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			return count == 0 ? 1:count;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 1;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}*/
+	
+	public int askWrite(String iid, String itype,String ititle,String icontent) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			
-			String sql = "INSERT INTO inquiry VALUES (sq_inquiry_idx.NEXTVAL, ?, ?, ? ,sysdate, 0, 0, 0)";
+			String sql = "INSERT INTO inquiry VALUES (sq_inquiry_idx.NEXTVAL, ?, ?, ?, ? ,sysdate)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, iid);
-			ps.setString(2, ititle);
-			ps.setString(3, icontent);
+			ps.setString(2, itype);
+			ps.setString(3, ititle);
+			ps.setString(4, icontent);
 			return ps.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -103,16 +167,17 @@ public class AsklistDAO {
 		try {
 			conn = com.hotel.db.HotelDB.getConn(); 
 			
-			String sql = "select ititle,icontent,idate from inquiry where iidx=?";
+			String sql = "select itype,ititle,icontent,idate from inquiry where iidx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, iidx);
 			AsklistDTO dto=null;
 			rs=ps.executeQuery();
 			if(rs.next()) {
+				String itype = rs.getString("itype");
 				String ititle = rs.getString("ititle");
 				String icontent = rs.getString("icontent");
 				java.sql.Date idate = rs.getDate("idate");
-				dto = new AsklistDTO(ititle, icontent, idate);
+				dto = new AsklistDTO(itype,ititle, icontent, idate);
 			}
 			return dto;
 		} catch(Exception e) {
