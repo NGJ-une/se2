@@ -255,7 +255,7 @@ button.prev:hover, button.next:hover {
 
     	<article>
 	        <div class="wrapper">
-	            <label>GALLETY</label>
+	            <label>GALLERY</label>
 	            <hr>
 		            <img src="main/img/3.jpg" alt="g3">
 		            <img src="main/img/4.jpg" alt="g4">
