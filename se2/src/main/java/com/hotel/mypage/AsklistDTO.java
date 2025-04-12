@@ -58,8 +58,7 @@ public class AsklistDTO {
 	}
 
 
-	public AsklistDTO(int iidx, String iid, String itype, String ititle, String icontent, Date idate, int iref, int ilev,
-			int isunbun) {
+	public AsklistDTO(int iidx, String iid, String itype, String ititle, String icontent, Date idate) {
 		super();
 		this.iidx = iidx;
 		this.iid = iid;
