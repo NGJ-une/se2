@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.hotel.index.*" %>
+<jsp:useBean id="idao" class="com.hotel.index.indexDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,13 +102,24 @@
     </div>
   </article>
 </section>
-    <% if(sid==null){%>
+    <% if(sid==null||"".equals(sid)){%>
     
     <% } else { %>
     <section class="section3">
         <article>
 	        <div class="wrapper">
-	            <h2>GOLD<img src="/se2/css/img/icon_BRONZE.png">&nbsp;<%=sid %> 님 환영합니다</h2>
+	        	<% 
+	        	indexDTO dto = idao.indexshow(sid);
+	        	if(dto.getNow_grade().equals("BRONZE")){
+	            %><h2>BRONZE<img src="/se2/css/img/icon_BRONZE.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
+	        	}else if(dto.getNow_grade().equals("SILVER")){
+	            %><h2>SILVER<img src="/se2/css/img/icon_SILVER.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
+	        	}else if(dto.getNow_grade().equals("GOLD")){
+	            %><h2>GOLD<img src="/se2/css/img/icon_GOLD.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
+	        	}else if(dto.getNow_grade().equals("DIAMOND")){
+	            %><h2>DIAMOND<img src="/se2/css/img/icon_DIAMOND.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
+	        	}
+	       		%>
 	            <table class="table-grade">
 	                <tr>
 	                    <td>미사용포인트</td>
@@ -115,13 +128,23 @@
 	                    <td>총 사용금액</td>
 	                </tr>
 	                <tr>
-	                    <td>~%</td>
-	                    <td>~%</td>
-	                    <td>~%</td>
-	                    <td>~%</td>
+	                    <td><%=dto.getUnu_point() %>원</td>
+	                    <td><%=dto.getNow_discount() %> %</td>
+	                    <td><%=dto.getTotal_reser() %>건</td>
+	                    <td><%=dto.getTotal_point() %>원</td>
 	                </tr>
 	                <tr>
-	                    <td colspan="4">DIAMOND까찌 ~~마 남았습니다</td>
+	                <%
+	                if(dto.getNow_grade().equals("BRONZE")){
+                    %><td colspan="4"><img src="/se2/css/img/icon_SILVER.png">SILVER 등급까지 <%=dto.getRemain_grade() %> 남았습니다</td><%
+	                }else if(dto.getNow_grade().equals("SILVER")){
+                    %><td colspan="4"><img src="/se2/css/img/icon_GOLD.png">GOLD 등급까지 <%=dto.getRemain_grade() %> 남았습니다</td><%
+	                }else if(dto.getNow_grade().equals("GOLD")){
+                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png">DIAMOND까찌 <%=dto.getRemain_grade() %> 남았습니다</td><%
+	                }else if(dto.getNow_grade().equals("DIAMOND")){
+                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png">축하드립니다 최고등급 입니다</td><%
+	                }
+	                %>
 	                </tr>
 	            </table> 
 	         </div> 
@@ -146,7 +169,7 @@
     <section class="section2">
         <article>          
     		<div class="wrapper">
-	            <label>HELIA HOTEL의 다채롭고 아름다운 다양한 시설을 감상해 보세요.</label>
+	            <label>아름다움이 머무는 공간, HELIA HOTEL 갤러리로 초대합니다.</label>
 	            <input type="button" value="호텔갤러리 바로가기 →">          
     		</div>
         </article>

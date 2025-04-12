@@ -15,7 +15,7 @@
     <div class="footer-top">
       <h2 class="footer-title">THE HELIA HOTELS & RESORTS</h2>
       <div class="footer-brands">
-        <a href="#">HELIA</a>
+        <a href="#">THE HELIA</a>
         <a href="#">HELIA MONOGRAM</a>
         <a href="#">HELIA STAY</a>
       </div>
@@ -49,8 +49,7 @@
 
     <!-- 주소 + 카피라이트 -->
     <div class="footer-bottom">
-      <p>(주) 호텔신라 서울특별시 중구 동호로 249 (우: 04605) 대표이사 서광준</p>
-      <p>사업자등록번호 203-81-43363 통신판매신고번호 중구00272호</p>
+      <p>(주) 호텔신라 서울특별시 중구 동호로 249 (우: 04605) 대표이사 서광준 사업자등록번호 203-81-43363 통신판매신고번호 중구00272호</p>
       <p>Copyright (C) HOTEL SHILLA CO.,LTD. All Rights Reserved.</p>
     </div>
   </div>

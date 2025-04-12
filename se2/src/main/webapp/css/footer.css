@@ -66,7 +66,7 @@
 
 .footer-contact p {
   margin: 4px 0;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .footer-sns a {
@@ -95,7 +95,7 @@
 
 .footer-links a {
   color: #666;
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -108,7 +108,7 @@
 /* 하단 정보 */
 .footer-bottom {
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
   color: #888;
 }
 
