@@ -56,7 +56,7 @@ public class AsklistDAO {
 		}
 	}
 	
-	/*public ArrayList<AsklistDTO> askList(String id, int totalCnt, int cp, int ls, java.sql.Date askdate) {
+	public ArrayList<AsklistDTO> askList(String id, int totalCnt, int cp, int ls, java.sql.Date askdate) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			
@@ -95,7 +95,7 @@ public class AsklistDAO {
 				if(conn!=null)conn.close();
 			}catch(Exception e2) {}
 		}
-	}*/
+	}
 	public int getTotalCnt(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
@@ -118,7 +118,7 @@ public class AsklistDAO {
 		}
 	}
 	
-	/*public int getTotalCnt(String id, java.sql.Date askdate) {
+	public int getTotalCnt(String id, java.sql.Date askdate) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			String sql = "select count(*) from inquiry where iid = ? and idate >= ?";
@@ -139,7 +139,7 @@ public class AsklistDAO {
 				if(conn!=null)conn.close();
 			}catch(Exception e2) {}
 		}
-	}*/
+	}
 	
 	public int askWrite(String iid, String itype,String ititle,String icontent) {
 		try {

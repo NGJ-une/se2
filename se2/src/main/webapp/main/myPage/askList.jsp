@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
@@ -7,7 +8,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewpo   rt" content="width=device-width, initial-scale=1.0">
   <title>가로로 두 공간 만들기</title>
 <style>
     * {
@@ -120,6 +121,12 @@
     	border-color: white;
     	font-weight: bold;
     }
+    .askcont {
+    	text-decoration: none;
+    	color : #6b4c2f;
+    	font-weight: bold;
+    	font-size: 16px;
+    }
 </style>
 <script>
 function updateAskDate(months) {
@@ -145,10 +152,17 @@ function updateZero(){
 </script>
 </head>
 <%
+String faskdate_s=request.getParameter("fad");
 
 String id = (String)session.getAttribute("sessionid");
 int totalCnt = adao.getTotalCnt(id);
-
+if(faskdate_s==null||faskdate_s.length()==0){
+	totalCnt = adao.getTotalCnt(id);
+} else {
+	
+	java.sql.Date faskdate = java.sql.Date.valueOf(faskdate_s);
+	totalCnt = adao.getTotalCnt(id, faskdate);
+}
 int listSize = 10;
 int pageSize = 5;
 String cp_s = request.getParameter("cp");
@@ -174,10 +188,10 @@ if(cp%pageSize==0)userGroup--;
 		<%
 
 		    java.time.LocalDate today = java.time.LocalDate.now();	
-		    java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+		    java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy년MM월dd일");
 		    String formattedDate = today.format(formatter);
 		%>
-		<form action="asklist" method="GET">
+		<form action="askList_ok.jsp" method="GET">
 			<div class="listbt">
 			    기간조회
 			    <input type="button" value="1개월" onclick="updateAskDate(1)">
@@ -185,10 +199,21 @@ if(cp%pageSize==0)userGroup--;
 			    <input type="button" value="6개월" onclick="updateAskDate(6)">
 			    <input type="button" value="전체" onclick="updateZero()">
 			    <br>
-			    <input type="text" name="askdate" value="" readonly>
-			    <input type="text"  value="~" readonly style='width:30px;'>
-			    <input type="text" name="now" value="<%= formattedDate %>" readonly>
-			    <input type="submit" value="조회">
+			    <%if(faskdate_s==null||faskdate_s.length()==0){ %>
+				    <input type="text" name="askdate" value="" readonly>
+				    <input type="text"  value="~" readonly style='width:30px;'>
+				    <input type="text" name="now" value="<%= formattedDate %>" readonly>
+				    <input type="submit" value="조회">
+			    <%} else { 
+			    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date askdate_u = sdf.parse(faskdate_s);
+				SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy년MM월dd일");
+				String fad = sdf2.format(askdate_u);%>
+				    <input type="text" name="askdate" value="<%=fad %>" readonly>
+				    <input type="text"  value="~" readonly style='width:30px;'>
+				    <input type="text" name="now" value="<%= formattedDate %>" readonly>
+				    <input type="submit" value="조회">
+			    <%} %>
 			    <hr>
 			</div>
 		</form>
@@ -201,6 +226,7 @@ if(cp%pageSize==0)userGroup--;
 	               <th style='width:150px;'>문의일자</th>
 	           </tr>
             </thead>
+            <%if(faskdate_s==null||faskdate_s.length()==0){ %>
             <tfoot>
 				<tr class="listpage" >
 					<td colspan ="3" align = "center">
@@ -232,11 +258,50 @@ if(cp%pageSize==0)userGroup--;
 					</a></td>
 				</tr>
 			</tfoot>
+			<%} else {%>
+			<tfoot>
+				<tr class="listpage" >
+					<td colspan ="3" align = "center">
+				<%
+				if(userGroup!=0){
+				%>
+				<a href="askList.jsp?fad=<%= faskdate_s%>&cp=<%=(userGroup-1)*pageSize+pageSize %>">&lt;</a>
+				<% 
+				}
+				for(int i=(userGroup*pageSize+1); i<=(userGroup*pageSize +pageSize);i++){
+					if(i==cp){
+						%>&nbsp;&nbsp;<a href="askList.jsp?fad=<%= faskdate_s%>&cp=<%=i%>"style="color:red; font-weight:bold"><%=i%></a>&nbsp;&nbsp;<%	
+					} else {
+						%>&nbsp;&nbsp;<a href="askList.jsp?fad=<%= faskdate_s%>&cp=<%=i%>"><%=i%></a>&nbsp;&nbsp;<%
+					}
+					
+					if(i==totalPage){
+						break;
+					}
+				}
+				if(((totalPage/pageSize)-(totalPage%pageSize==0?1:0))!=userGroup){
+					%>
+					<a href = "askList.jsp?fad=<%= faskdate_s%>&cp=<%=(userGroup+1)*pageSize+1 %>">&gt;</a>
+					<%
+				}
+				%>
+					<td class = "askbt"><a href="ask/askWrite.jsp">
+					<input type="button" value="문의하기">
+					</a></td>
+				</tr>
+			</tfoot>
+			<%} %>
 	       	<tbody>
 
 			<%
-			
-			ArrayList<AsklistDTO> arr = adao.askList(id, totalCnt, cp, listSize); 
+			ArrayList<AsklistDTO> arr = adao.askList(id, totalCnt, cp, listSize);
+			if(faskdate_s==null||faskdate_s.length()==0){
+				
+			} else {
+				java.sql.Date faskdate = java.sql.Date.valueOf(faskdate_s);
+				arr = adao.askList(id, totalCnt, cp, listSize, faskdate);
+			}
+			 
 			if(arr==null || arr.size()==0) {
 				%>
 				<tr class="listbody">
@@ -251,7 +316,7 @@ if(cp%pageSize==0)userGroup--;
 					<tr class="listbody">
 						<td style='width:100px;'><%=arr.get(i).getRownum()%></td>  
 						<td style='width:150px;'><%=arr.get(i).getItype()%></td>
-						<td style='width:500px;'><a href = "ask/askContent.jsp?iidx=<%=arr.get(i).getIidx()%>"><%=arr.get(i).getItitle() %></a></td>
+						<td style='width:500px;'><a href = "ask/askContent.jsp?iidx=<%=arr.get(i).getIidx()%>" class="askcont"><%=arr.get(i).getItitle() %></a></td>
 						<td style='width:150px;'><%=arr.get(i).getIdate()%></td>
 					</tr>
 					<%
@@ -259,7 +324,6 @@ if(cp%pageSize==0)userGroup--;
 			}
 			%>
 			</tbody>
-		
         </table>
     </section>
   </div>
