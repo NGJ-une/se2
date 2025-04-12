@@ -154,25 +154,28 @@ window.onload = function () {
 };
 </script>
 </head>
+<%
+String id = (String)session.getAttribute("sessionid");
 
+%>
 <body>
 <%@include file="/header.jsp" %>
 
 <section class="Container1">
 
-    <form action="write_ok.jsp" method="post" enctype="multipart/form-data">
+    <form action="write_ok.jsp" method="post"  enctype="multipart/form-data">
         <table>
             <tr>
                 <th>작성자</th>
-                <td><input type="text" name="vid" placeholder="작성자 아이디 가져옴"></td>
+                <td><%=id %></td> 
             </tr>
             <tr>
                 <th>제목</th>
-                <td><input type="text" name="vtitle"></td>
+                <td><input type="text" name="vtitle" required></td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea rows="12" name="vcontent"></textarea></td>
+                <td><textarea rows="12" name="vcontent" required></textarea></td>
             </tr>
 
             <tr>
@@ -208,12 +211,12 @@ window.onload = function () {
 
             <tr>
                 <th>평점</th>
-                <td class="totalStar" >
-                    <input type="radio" class="star" id="star1" name="vtotal" value="1">
-                    <input type="radio" class="star" id="star2" name="vtotal" value="2">
-                    <input type="radio" class="star" id="star3" name="vtotal" value="3">
-                    <input type="radio" class="star" id="star4" name="vtotal" value="4">
-                    <input type="radio" class="star" id="star5" name="vtotal" value="5">
+                <td class="totalStar"  >
+                    <input type="radio" class="star" id="star1" name="vtotal" value="1" required>
+                    <input type="radio" class="star" id="star2" name="vtotal" value="2" required>
+                    <input type="radio" class="star" id="star3" name="vtotal" value="3" required>
+                    <input type="radio" class="star" id="star4" name="vtotal" value="4" required>
+                    <input type="radio" class="star" id="star5" name="vtotal" value="5" required>
                     <input type="button" id="resetStar" value="별점 초기화" onclick="show();">
                 </td>
             </tr>

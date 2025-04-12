@@ -49,6 +49,7 @@ public class SeoulWriteDAO {
 			conn=com.hotel.db.HotelDB.getConn();
 			String sql="SELECT * FROM REVIEW WHERE VIDX = ? ";
 			
+			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, vidx);
 			ps.execute();
@@ -67,5 +68,34 @@ public class SeoulWriteDAO {
 	}
 
 	
+	/** 제일 최신 글 가져오기*/
+	public int recentPost() {
+	    int vidx = -1; // 기본값: 실패 시 -1
+	    try {
+	        conn = com.hotel.db.HotelDB.getConn();
+	        String sql = "SELECT * FROM (SELECT * FROM review ORDER BY vidx DESC) WHERE ROWNUM = 1";
+	        ps = conn.prepareStatement(sql);
+	        rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            vidx = rs.getInt("vidx"); 
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace(); 
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+	    return vidx;
+	}
+	
 	
 	}
+
+

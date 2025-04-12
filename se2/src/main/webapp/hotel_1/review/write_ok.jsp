@@ -1,15 +1,22 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%><%request.setCharacterEncoding("utf-8");%>
 <%@ page import="com.oreilly.servlet.*" %>
-<%@ page import="java.io.*" %>
 
-<%@ page import="com.hotel.seoul.SeoulWriteDTO" %>
-<%@ page import="com.hotel.seoul.SeoulWriteDAO" %>
-<%@ page import="com.hotel.seoul.HotelPhotoDTO" %>
-<%@ page import="com.hotel.seoul.HotelPhotoDAO" %>
 
-<%request.setCharacterEncoding("utf-8");%>
+<%@page import="com.hotel.*" %>
+<%
+String contentType = request.getContentType();
+System.out.println("contentType = " + contentType);
+
+if (contentType == null || !contentType.startsWith("multipart/")) {
+    out.println("<h3 style='color:red'>오류: 잘못된 요청입니다. (multipart/form-data 아님)</h3>");
+    out.println("<p>이 페이지는 파일 업로드용 폼에서만 접근해야 해요.</p>");
+    out.println("<p><a href='write.jsp'>글쓰기 폼으로 돌아가기</a></p>");
+    return;
+}
+%>
+
 
 <jsp:useBean id="vdto" class="com.hotel.seoul.SeoulWriteDTO"></jsp:useBean>
 <jsp:useBean id="vdao" class="com.hotel.seoul.SeoulWriteDAO"></jsp:useBean>
@@ -17,13 +24,16 @@
 <jsp:useBean id="pdao" class="com.hotel.seoul.HotelPhotoDAO"></jsp:useBean>
 <%
 
-    String savePath = "C:/java_student/project2/se2/se2/src/main/webapp/hotel_1/review/upload";
-
+    //String savePath = "C:/java_student/project2/se2/se2/src/main/webapp/hotel_1/review/upload";
+String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/myweb/filebbs/files";
     int fileSize = 1024 * 1024 * 10; 
-    
-    MultipartRequest mr = new MultipartRequest(request, savePath, fileSize, "utf-8", new DefaultFileRenamePolicy());
+    MultipartRequest mr=
+    		new MultipartRequest(request,savePath,1024*1024*10,"utf-8");
 
-    String vid=mr.getParameter("vid");
+
+    String vid = (String)session.getAttribute("sessionid");
+
+    //String vid=mr.getParameter("vid");
     String vtitle=mr.getParameter("vtitle");
     String vcontent=mr.getParameter("vcontent");
     
@@ -34,45 +44,88 @@
     String pname2=mr.getOriginalFileName("pname2");
     String pname3=mr.getOriginalFileName("pname3");
     
-    //System.out.println(pname1);
-    //System.out.println(pname2);
-    //System.out.println(pname3);
-    //String filename=mr.getOriginalFileName("upload");//입력태그 이름 기입해주면 업로드로 입력태그 파일 이름을 가져올게 하고 파일이름 가져옮
-    //String writer=(String)session.getAttribute("sid");
-
-    //int result=filedao.fileBbsUpload(filename, writer);
-    //String msg=result>0?"파일 업로드 성공!":"업로드 중 오류발생!";
-
     //<jsp:setProperty property="*" name="vdto" />
 
 	vdto.setVid(vid);
 	vdto.setVtitle(vtitle);
 	vdto.setVcontent(vcontent);
     vdto.setVtotal(vtotal);
-    pdto.setPname1(pname1);
-    pdto.setPname2(pname2);
-    pdto.setPname3(pname3);
+
     
     // dto 안에 진짜 들어갔는지 확인
     System.out.println(vdto.getVid());
     System.out.println(vdto.getVtotal());
     //System.out.println(pdto.getPname1());  
 
-    // 글쓰기 등록 메서드 결과
-    int result=vdao.reviewWrite(vdto);
+    // 1. 글쓰기 등록 메서드 결과
+    int writeResult=vdao.reviewWrite(vdto);
     
-    // 글 쓴 파일을 등록할 vidx 가져오기
+    // 2. 글 쓴 파일을 등록할 vidx 가져오기
+    int vidx=vdao.recentPost();
     
-    int vidx=vdao.FileUploadvidx();
-  
-	System.out.println(vidx);
-    System.out.println(result);
+    // 3. 파일 작성 시 vidx동일하게 등록되도록 하기
+    
 
+	if (pdto.getPname1() == null){
+        //pdto.setPname1("");
+        pname1="none";
+       pdto.setPname1(pname1);
+         pdto.setPidx(vidx);
+
+         int fileUpload=pdao.photoUpload(pdto);
+     
+         String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
+         %>
+         <script>
+            window.alert('<%=msg%>');
+            location.href ='write.jsp';
+         </script>
+ <%
+	}if(pdto.getPname2() == null){
+     pname2="none";
+     pdto.setPname2(pname2);
+     pdto.setPidx(vidx);
+     
+     int fileUpload=pdao.photoUpload(pdto);
+     
+     String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
+     %>
+     <script>
+        window.alert('<%=msg%>');
+        location.href ='write.jsp';
+     </script>
+     
+  <%
+  }if(pdto.getPname3()==null){
+     pname3="none";
+     pdto.setPname3(pname3);
+     pdto.setPidx(vidx);
+    int fileUpload=pdao.photoUpload(pdto);
+     
+     String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
+     %>
+     <script>
+        window.alert('<%=msg%>');
+        location.href ='write.jsp';
+     </script>
+     
+	
+    <%
+  }if(!(pdto.equals(null))){
+        pdto.setPname1(pname1);
+        pdto.setPname2(pname2);
+        pdto.setPname3(pname3);
+        pdto.setPidx(vidx);
+   
     
-    
-    String msg = result > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
+    //4. 글, 파일 모두 등록
+  	int fileUpload=pdao.photoUpload(pdto);
+	
+
+    String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
     %>
     <script>
     	window.alert('<%=msg%>');
        location.href ='write.jsp';
     </script>
+<%}%>
