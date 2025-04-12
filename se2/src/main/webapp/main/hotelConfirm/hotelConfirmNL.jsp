@@ -64,7 +64,7 @@ function modification(){
           <div class="row"><strong>Email</strong><%=dto.getMemail()%></div>
           <div class="row"><strong>Tel</strong><%=dto.getMtel()%></div>
           <div class="row">
-            <strong>예약자 성함</strong><%=dto.getMlname()%><%=dto.getMfname()%>
+            <strong>예약자 성함</strong><%=dto.getMfname()%><%=dto.getMlname()%>&emsp;&emsp;&nbsp;
    	        <button type="button" class="btn-edit">회원 정보 수정</button>
           </div>
           <div class="row"><strong>객실</strong><%=dto.getRtype().substring(2)%></div>
