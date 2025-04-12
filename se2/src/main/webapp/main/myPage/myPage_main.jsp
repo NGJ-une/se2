@@ -151,6 +151,7 @@ ArrayList<MainPageDTO> arr2 = pdao.getReserInfo(id);
               <th>예약 날짜</th>
               <th>가격</th>
               <th>인원</th>
+              <th>후기</th>
             </tr>
 			<%
 			if(arr2 == null || arr2.size() == 0) {
