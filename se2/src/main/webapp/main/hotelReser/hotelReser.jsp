@@ -76,7 +76,7 @@
 </style>
     <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(){
-		// 날짜 선택 예외 처리
+		
 		const today = new Date().toISOString().split('T')[0];
 		
 		const checkInInput = document.getElementById('checkIn');
@@ -97,14 +97,14 @@
 			checkOutInput.setAttribute('min', checkInInput.value);
 		});
 		
-		// 날짜, 숫자 키보드 입력 방지
+		
 		document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
 			element.addEventListener('keydown', (event) => {
 				event.preventDefault();
 			});
 		});
 		
-		// 총 인원수 제한
+		
 		const numberInputs = document.querySelectorAll('input[type="number"]');
 
 		function limitHeadCount(event){
@@ -123,14 +123,6 @@
 			numberInput.setAttribute('prev-value', numberInput.value);
 			numberInput.addEventListener('change', limitHeadCount);
 		});
-		
-<%
-if (request.getContextPath().equals("/se2")){
-%>
-		docuemnt.hotelReserSearch.submit();
-<%
-}		
-%>
 	});
     </script>
 </head>
@@ -141,9 +133,6 @@ String checkOutStr = request.getParameter("checkOut");
 String adultStr = request.getParameter("adult");
 String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
-
-System.out.println(request.getContextPath());
-
 %>
 <body>
 <%@ include file="/header.jsp" %>

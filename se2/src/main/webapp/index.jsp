@@ -47,14 +47,14 @@ document.addEventListener("DOMContentLoaded", function(){
 	});
 	
 	
-	document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
-		element.addEventListener('keydown', (event) => {
+	document.querySelectorAll('reservation-form input[type="date"], input[type="number"]').forEach(element => {
+		element.addEventListener('keydown', function(event){
 			event.preventDefault();
 		});
 	});
 	
 	
-	const numberInputs = document.querySelectorAll('input[type="number"]');
+	const numberInputs = document.querySelectorAll('.reservation-form input[type="number"]');
 
 	function limitHeadCount(event){
 		const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		numberInput.setAttribute('prev-value', numberInput.value);
 		numberInput.addEventListener('change', limitHeadCount);
 	});
+});
 </script>
 </head>
 <body class="main-page">
@@ -271,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	                    <td><%=dto.getUnu_point() %>원</td>
 	                    <td><%=dto.getNow_discount() %> %</td>
 	                    <td><%=dto.getTotal_reser() %>건</td>
-	                    <td><%=dto.getTotal_point() %>원</td>
+	                    <td><%=(int)session.getAttribute("point") %>원</td>
 	                </tr>
 	                <tr>
 	                <%
