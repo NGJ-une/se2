@@ -3,14 +3,21 @@
 <div class="overlay" id="overlay" style="display: none;"></div>
 
 <div class="popup-page" id="popupPage" style="display: none;">
-  <h2 class="hs">호텔 찾기</h2>
-  <table class="table-bt">
-	  <tr>
-	  <td><a href="/se2/index.jsp"><input type="button" class="seoul-bt" value="h-seoul"></a></td>
-	  <td><a href="/se2/hotel_1/hotelUlsan.jsp"><input type="button" class="ulsan-bt" value="h-ulsan"></a></td>
-	  </tr>
-  </table>
-  <button class="close-bt" onclick="hidePopup()">X</button>
+  
+  <div>
+	  <table class="table-bt">
+		  <tr>
+		  	  <th colspan="2"><h2 class="hs">호텔 찾기</h2></th>
+		  </tr>  
+		  <tr>
+			  <td><a href="/se2/index.jsp"><input type="button" class="seoul-bt" value="HELIA SEOUL"></a></td>
+			  <td><a href="/se2/hotel_1/hotelUlsan.jsp"><input type="button" class="ulsan-bt" value="HELIA ULSAN"></a></td>
+		  </tr>
+		  <tr>
+  		      <td colspan="2" class="close-td"><input type="button" class="close-bt" onclick="hidePopup()" value="X"><td>
+  		  </tr>
+      </table>
+  </div>
 </div>
 
 <script>
@@ -26,15 +33,7 @@
 </script>
 
 <style>
-  .hs{
-   color: #d9d9d9;
-   background: #e8e8e8;
-   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
-   color: #d9d9d9;
-   background: #e8e8e8;
-   text-align: center;
-   font-size: 30px;
-  }
+
   .overlay {
     position: fixed; 
     top: 0;
@@ -53,8 +52,8 @@
     transform: translate(-50%, -50%); 
     /*팝업 창이 화면의 중앙에 정확히 배치되도록 보장 
     위에 top과 left는 기준점이 좌상단이여서 위 태그를 이용해 자신의 너비와 높이의 절반만큼 이동*/
-    width: 600px;
-    background: white;
+    width: 900px;
+    background: whitesmoke;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -62,24 +61,28 @@
     z-index: 1000;
     display: none;
   }
+    .hs{
+   color: #6b4c2f;
+   background: #E4D9C7;
+   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+   text-align: center;
+   font-size: 30px;
+  }
   .table-bt{
   	border:none;
-  	width:500px
+  	width:100%;
   	text-align:center;
+  	padding:10px;
   }
   .seoul-bt,.ulsan-bt{
-   width:280px;
+   width:100%;
    height:200px;
-   color: #d5d5d5;
-   background: #e8e8e8;
-   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+   color: white;
    background: #e8e8e8;
    text-align: center;
    font-size: 50px;
    border:none;
-   margin-left: 10px;
-   
-
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
   }
  .ulsan-bt {
     background-image: url('/se2/main/hotelSearch/img/ulsan.jpg'); /* 배경 이미지 경로 */
@@ -89,16 +92,18 @@
   .seoul-bt:hover, .ulsan-bt:hover {
     opacity: 0.8; /* 마우스를 올렸을 때 버튼이 살짝 투명해짐 */
   }
+  .close-td{
+  	text-align:right;
+  	height:30px;
+  	
   }
   .close-bt {
-    margin-top: 10px;
-    padding: 10px 20px;
     background-color: white;
-    color: black;
+    color: #6b4c2f;
     border: none;
     cursor: pointer;
     /*커서를 올리면 손모양으로 바뀌게*/
-    float: right;
+    text-align:right;
   }
   
 </style>
