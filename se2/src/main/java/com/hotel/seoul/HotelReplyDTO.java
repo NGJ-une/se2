@@ -5,26 +5,25 @@ import java.sql.*;
 // 댓글 테이블 
 public class HotelReplyDTO {
 
-	private int cidx;
-	private String cnum;
-	private String cid;
-	private String ccontent;
-	private Date cdate;
-	private int crecommend;
-	private int cnotrecommend;
-	private int cref;
-	private int clev;
-	private int csunbun;
-	
-	public HotelReplyDTO() {
-		
+    private int cidx;
+    private int vidx;
+    private String cid;
+    private String ccontent;
+    private Date cdate;
+    private int crecommend;
+    private int cnotrecommend;
+    private int cref;
+    private int clev;
+    private int csunbun;
+    
+    public HotelReplyDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public HotelReplyDTO(int cidx, String cnum, String cid, String ccontent, Date cdate, int crecommend,
-			int cnotrecommend, int cref, int clev, int csunbun) {
+	public HotelReplyDTO(int cidx, int vidx,String cid, String ccontent, Date cdate, int crecommend, int cnotrecommend, int cref,
+			int clev, int csunbun) {
 		super();
 		this.cidx = cidx;
-		this.cnum = cnum;
 		this.cid = cid;
 		this.ccontent = ccontent;
 		this.cdate = cdate;
@@ -33,6 +32,7 @@ public class HotelReplyDTO {
 		this.cref = cref;
 		this.clev = clev;
 		this.csunbun = csunbun;
+		this.vidx = vidx;
 	}
 
 	public int getCidx() {
@@ -41,14 +41,6 @@ public class HotelReplyDTO {
 
 	public void setCidx(int cidx) {
 		this.cidx = cidx;
-	}
-
-	public String getCnum() {
-		return cnum;
-	}
-
-	public void setCnum(String cnum) {
-		this.cnum = cnum;
 	}
 
 	public String getCid() {
@@ -114,4 +106,14 @@ public class HotelReplyDTO {
 	public void setCsunbun(int csunbun) {
 		this.csunbun = csunbun;
 	}
+
+	public int getVidx() {
+		return vidx;
+	}
+
+	public void setVidx(int vidx) {
+		this.vidx = vidx;
+	}
+    
+    
 }

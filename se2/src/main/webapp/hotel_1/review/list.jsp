@@ -180,7 +180,7 @@ if(cp%maxPage==0) userGroup--;
 				<tr>
 				<td><%=arr.get(i).getRnum() %></td>
 				<td><%=arr.get(i).getVid() %></td>
-				<td><a href = "content.jsp?vtitle =<%=arr.get(i).getVtitle()%>"><%=arr.get(i).getVtitle() %></a></td>
+				<td><a href="content.jsp?vidx=<%=arr.get(i).getVidx()%>"><%=arr.get(i).getVtitle() %></a></td>
 				<td><%=arr.get(i).getVrecommend() %></td>
 				<td><%=arr.get(i).getVtotal() %></td>
 				<td><%=arr.get(i).getVreadnum() %></td>

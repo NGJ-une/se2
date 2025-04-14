@@ -6,12 +6,12 @@
 <%
 String id = (String)session.getAttribute("sessionid");
 String grade = "BRONZE";
-int money = mdao.importAmount(id);
-if(money > 3000000) {
+int point = mdao.importAmount(id);
+if(point > 3000000) {
     grade = "DIAMOND";
-} else if(money > 1000000) {
+} else if(point > 1000000) {
     grade = "GOLD";
-} else if(money > 200000) {
+} else if(point > 200000) {
     grade = "SILVER";
 }
 mdao.grade(grade, id);
