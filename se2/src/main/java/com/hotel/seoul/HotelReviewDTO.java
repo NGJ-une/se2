@@ -17,14 +17,16 @@ public class HotelReviewDTO {
 	private int vcomment;
 	private int vtotal;
 	private int rnum;
-
+	private int vridx;
+	
 	public HotelReviewDTO() {
 
 		
 	}
-	
+
+
 	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
-			int vrecommend, int vcomment, int vtotal, int rnum) {
+			int vrecommend, int vcomment, int vtotal, int rnum, int vridx) {
 		super();
 		this.vidx = vidx;
 		this.vid = vid;
@@ -36,25 +38,17 @@ public class HotelReviewDTO {
 		this.vcomment = vcomment;
 		this.vtotal = vtotal;
 		this.rnum = rnum;
+		this.vridx = vridx;
 	}
 
 
-
-	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
-			int vrecommend, int vcomment, int vtotal) {
-		super();
-		this.vidx = vidx;
-		this.vid = vid;
-		this.vtitle = vtitle;
-		this.vcontent = vcontent;
-		this.vdate = vdate;
-		this.vreadnum = vreadnum;
-		this.vrecommend = vrecommend;
-		this.vcomment = vcomment;
-		this.vtotal = vtotal;
-		
+	public int getVridx() {
+		return vridx;
 	}
 
+	public void setVridx(int vridx) {
+		this.vridx = vridx;
+	}
 
 	public int getVidx() {
 		return vidx;
