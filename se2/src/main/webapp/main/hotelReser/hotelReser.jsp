@@ -120,6 +120,14 @@
 			numberInput.setAttribute('prev-value', numberInput.value);
 			numberInput.addEventListener('change', limitHeadCount);
 		});
+		
+<%
+if (request.getContextPath().equals("/se2")){
+%>
+		docuemnt.hotelReserSearch.submit();
+<%
+}		
+%>
 	});
     </script>
 </head>
@@ -130,6 +138,9 @@ String checkOutStr = request.getParameter("checkOut");
 String adultStr = request.getParameter("adult");
 String kidStr = request.getParameter("kid");
 String babyStr = request.getParameter("baby");
+
+System.out.println(request.getContextPath());
+
 %>
 <body>
 <%@ include file="/header.jsp" %>

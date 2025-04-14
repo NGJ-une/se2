@@ -206,11 +206,15 @@ button.next:hover {
   font-size: 13px;
   font-weight: bold;
   color: #222;
+  border: 0px;   
+  text-align: center;
 }
 /*체크인 체크아웃 value*/ 
 .date-item .value {
   font-size: 13px; /* 글씨 크기 */
-  color: #444;     
+  color: #444;  
+  border: 0px;   
+  text-align: center;
 }
 
 .input-wrapper {

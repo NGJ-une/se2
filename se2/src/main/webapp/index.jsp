@@ -7,6 +7,61 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
+<style>
+	.region-select{
+		width: 190px;
+	}
+</style>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(){
+	
+	const today = new Date().toISOString().split('T')[0];
+	
+	const checkInInput = document.getElementById('checkIn');
+	const checkOutInput = document.getElementById('checkOut');
+
+	checkInInput.setAttribute('min', today);
+	checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
+
+	checkOutInput.addEventListener('change', function(){
+		if (!checkInInput.value){
+		alert('체크인 날짜를 먼저 입력하세요');
+		checkOutInput.value = '';
+		checkInInput.focus();
+	}
+	});
+
+	checkInInput.addEventListener('change', function(){
+		checkOutInput.setAttribute('min', checkInInput.value);
+	});
+	
+	
+	document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
+		element.addEventListener('keydown', (event) => {
+			event.preventDefault();
+		});
+	});
+	
+	
+	const numberInputs = document.querySelectorAll('input[type="number"]');
+
+	function limitHeadCount(event){
+		const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
+
+		if (headCount > 6){
+			alert('총 인원은 6명까지 가능합니다');
+			event.target.value = event.target.getAttribute('prev-value') || 0;
+		}
+		else{
+			event.target.setAttribute('prev-value', event.target.value);
+		}
+	}
+
+	numberInputs.forEach(numberInput => {
+		numberInput.setAttribute('prev-value', numberInput.value);
+		numberInput.addEventListener('change', limitHeadCount);
+	});
+</script>
 </head>
 <body class="main-page">
 <%@include file="/header.jsp" %>
@@ -30,12 +85,15 @@
     <section class="section5">
   <article>
     <div class="reservation-box">
-      <div class="reservation-form">
+      <form class="reservation-form" action="/se2/main/hotelReser/hotelReser.jsp">
         <!-- 호텔/도시 -->
         <div class="reservation-item hotel-city">
           <label>호텔 또는 도시</label>
           <div class="input-wrapper">
-            <input type="text" placeholder="호텔을 선택해주세요.">
+            <select name="name" class="region-select">
+				<option value="h_seoul">서울</option>
+				<option value="h_ulsan">울산</option>
+            </select>
             <span class="icon-search">🔍</span>
           </div>
         </div>
@@ -43,13 +101,13 @@
         <!-- 체크인 -->
         <div class="reservation-item date-item">
           <label>체크인</label>
-          <div class="value">2025.04.11 <strong>(금)</strong></div>
+          <input class="value" type="date" name="checkIn" id="checkIn" required>
         </div>
 
         <!-- 체크아웃 -->
         <div class="reservation-item date-item">
           <label>체크아웃</label>
-          <div class="value">2025.04.12 <strong>(토)</strong></div>
+          <input class="value" type="date" name="checkOut" id="checkOut" required>
         </div>
 
         <!-- 숙박일수 -->
@@ -67,7 +125,7 @@
         <!-- 성인 -->
         <div class="reservation-item">
           <label>성인</label>
-          <div class="value">2</div>
+          <input class="value" type="number" name="adult" value="2" min="1" max="6" required>
         </div>
 
         <!-- 어린이 -->
@@ -78,7 +136,7 @@
               <span class="tooltip-text">37개월 이상 ~ 만 12세 이하<br>(베트남: 만 6세 이상 ~ 만 11세까지)</span>
             </span>
           </label>
-          <div class="value">0</div>
+          <input class="value" type="number" name="kid" value="0" min="0" max="5" required>
         </div>
 
         <!-- 유아 -->
@@ -89,14 +147,14 @@
               <span class="tooltip-text">36개월 이하<br>(베트남: 만 5세 이하)</span>
             </span>
           </label>
-          <div class="value">0</div>
+          <input class="value" type="number" name="baby" value="0" min="0" max="5" required>
         </div>
 
         <!-- 검색 버튼 -->
 		<div class="btn-search-wrapper">
-		  <button class="btn-search">검색</button>
+		  <input class="btn-search" type="submit" value="검색">
 		</div>
-      </div>
+      </form>
     </div>
   </article>
 </section>
