@@ -2,6 +2,7 @@ package com.hotel.seoul;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 
 public class SeoulWriteDAO {
@@ -96,6 +97,77 @@ public class SeoulWriteDAO {
 	}
 	
 	
+	
+	/**리뷰게시판 vidx 만 뽑아옴! */ //리뷰 게시판 vridx(예약번호) == vidx(후기번호) 비교
+	
+	public ArrayList<Integer> getVridxList(String id) {
+	    ArrayList<Integer> vridxList = new ArrayList<>();
+
+	    try {
+	        conn = com.hotel.db.HotelDB.getConn();
+	        String sql = "SELECT VRIDX FROM REVIEW WHERE VID=?";
+	        ps = conn.prepareStatement(sql);
+	        ps.setString(1, id);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            vridxList.add(rs.getInt("vridx"));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+
+	    return vridxList;
 	}
+}
 
-
+	
+	/** 체크아웃 후 7일 이내 후기작성 메서드 */
+	
+//	public boolean reviewCanWrite (int ridx) {
+//		
+//	    boolean result = false;
+//	    try {
+//	    	conn = com.hotel.db.HotelDB.getConn();
+//	        String sql = "SELECT RCEHCKOUT FROM RESER WHERE RIDX = ?";
+//	        ps = conn.prepareStatement(sql);
+//	        ps.setInt(1, ridx);
+//	        rs = ps.executeQuery();
+//
+//	        if (rs.next()) {
+//	            Date rcheckout = rs.getDate("rcheckout");
+//	        
+//	            long checkoutTime = rcheckout.getTime(); //체크아웃 날짜 시간
+//	            long now = System.currentTimeMillis(); //현재 시간 가져옴
+//
+//	            // 7일 = 7 * 24 * 60 * 60 * 1000 (밀리초 기준임)
+//	            long writeCan = now - checkoutTime;
+//
+//	            if (writeCan >= 0 && writeCan <= 7L * 24 * 60 * 60 * 1000) {
+//	                result = true;
+//	            }
+//	        }
+//	    }catch (Exception e) {
+//	    	e.printStackTrace();
+//	    	
+//		}finally {
+//			try {
+//				if (rs != null) rs.close();
+//	            if (ps != null) ps.close();
+//	            if (conn != null) conn.close();
+//			}catch (Exception e2) {
+//	        }
+//	    }
+//	    	return result;
+//	}
+//}
+//
+//	

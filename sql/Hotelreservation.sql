@@ -65,42 +65,51 @@ CREATE TABLE inquiry (
 
 constraint fk_member_id2 foreign key(iid) references member(mid)
 )  
---í›„ê¸° í…Œì´ë¸” ìƒì„±
+
+--ÈÄ±â Å×ÀÌºí »ı¼º 9¹ø  
 CREATE TABLE review (
-    vidx number(5) primary key, --í›„ê¸° ë²ˆí˜¸ 
-    vid varchar2(50) NOT NULL, -- í›„ê¸° ì•„ì´ë”” 
-    vtitle varchar2(100) NOT NULL, -- í›„ê¸° ì œëª© 
-    vcontent varchar2(3000) NOT NULL, -- í›„ê¸° ë‚´ìš© 
-    vdate DATE NOT NULL, --ì‘ì„±ë‚ ì§œ 
-    vreadnum number(5) default 0, --ì¡°íšŒìˆ˜ 
-    vrecommend number(5) default 0, --ì¶”ì²œìˆ˜ 
-    vcomment number(5) default 0, --ëŒ“ê¸€ ë‹¬ë¦° ìˆ˜
-    vtotal number(1) default 0, -- í‰ì 
+    vidx number(5) primary key, --ÈÄ±â ¹øÈ£ 
+    vid varchar2(50) NOT NULL, -- ÈÄ±â ¾ÆÀÌµğ 
+    vtitle varchar2(100) NOT NULL, -- ÈÄ±â Á¦¸ñ 
+    vcontent varchar2(3000) NOT NULL, -- ÈÄ±â ³»¿ë 
+    vdate DATE NOT NULL, --ÀÛ¼º³¯Â¥ 
+    vreadnum number(5) default 0, --Á¶È¸¼ö 
+    vrecommend number(5) default 0, --ÃßÃµ¼ö 
+    vcomment number(5) default 0, --´ñ±Û ´Ş¸° ¼ö
+    vtotal number(1) default 0, -- ÆòÁ¡
+    vridx number(5) not null,
     
-    constraint fk_member_id3 foreign key(vid) references member(mid)
+    constraint fk_member_id3 foreign key(vid) references member(mid),
+    constraint fk_reser_idx foreign key(vridx) references reser(ridx)
 )
--- ëŒ“ê¸€ í…Œì´ë¸” ìƒì„±
+
+
+-- ´ñ±Û Å×ÀÌºí »ı¼º 10¹ø  
 CREATE TABLE reply (
-    cidx number(5) primary key, --ëŒ“ê¸€ ë²ˆí˜¸
-    cid  varchar2(50) NOT NULL, --ëŒ“ê¸€ ì•„ì´ë””
-    ccontent varchar2(1000) NOT NULL, --ëŒ“ê¸€ ë‚´ìš©
-    cdate DATE NOT NULL, -- ëŒ“ê¸€ ë‚ ì§œ
-    crecommend number(5) default 0, --ì¶”ì²œìˆ˜ 
-    cnotrecommend number(5) default 0, --ë¹„ ì¶”ì²œìˆ˜ 
+    cidx number(5) primary key, --´ñ±Û ¹øÈ£
+    cid  varchar2(50) NOT NULL, --´ñ±Û ¾ÆÀÌµğ
+    ccontent varchar2(1000) NOT NULL, --´ñ±Û ³»¿ë
+    cdate DATE NOT NULL, -- ´ñ±Û ³¯Â¥
+    crecommend number(5) default 0, --ÃßÃµ¼ö 
+    cnotrecommend number(5) default 0, --ºñ ÃßÃµ¼ö 
     cref number(5) default 0, 
     clev number(5) default 0,
     csunbun number(5) default 0,
     constraint fk_member_id4 foreign key(cid) references member(mid),
     constraint fk_review_vidx foreign key(cidx) references review(vidx)
 ) 
---ì‚¬ì§„ í…Œì´ë¸” ìƒì„± 
+
+
+--»çÁø Å×ÀÌºí »ı¼º 11¹ø  
 CREATE TABLE photo (
-    pidx number(5) default 0, --ì‚¬ì§„ ë²ˆí˜¸
-    pnum number(5) not null, --í›„ê¸° ë²ˆí˜¸
-    pname varchar2(100) NOT NULL,
-    
+    pidx number(5) default 0, --ÈÄ±â ¹øÈ£ 
+    pnum number(5) primary key, --»çÁø ¹øÈ£
+    pname1 varchar2(100) NOT NULL, --»çÁø 1  
+    pname2 varchar2(100) NOT NULL,-- »çÁø 2
+    pname3 varchar2(100) NOT NULL, --»çÁø 3 
     constraint fk_review_vidx2 foreign key(pidx) references review(vidx) 
 )
+commit
 
 
 --ì‹œí€€ìŠ¤ ìƒì„±  

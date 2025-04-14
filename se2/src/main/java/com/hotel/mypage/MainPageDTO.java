@@ -17,6 +17,7 @@ public class MainPageDTO {
 	private int rbaby;
 	private int rmoney;
 	
+	
 	public MainPageDTO() {
 		// TODO Auto-generated constructor stub
 	}
