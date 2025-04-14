@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
     <title>Reservation</title>
     <style>
+    .section{
+    	min-height: 700px;
+    }
 	.reser-title {
 		font-size: 45px;
 		margin-left: 10%;
@@ -160,6 +163,7 @@ String babyStr = request.getParameter("baby");
 			                <input type="number" name="baby" class="input-components" min="0" max="5" 
 			                	value="<%= babyStr != null ? babyStr : "0" %>" required>
 			                <input type="submit" class="input-components" value="검색">
+			                <hr>
 			            </div>
 			        </fieldset>
 			   	</form>
