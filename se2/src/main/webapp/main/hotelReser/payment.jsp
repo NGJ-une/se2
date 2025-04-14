@@ -60,6 +60,7 @@
 	margin: 10px auto;
 	padding: 20px;
 	height: auto;
+	display:flex;
 }
 
 .payment-notice {
@@ -69,10 +70,11 @@
 .payment-info {
 	float: right;
 	text-align: right;
-	position: sticky;
-	top: 100px;
 	padding: 10px;
-	background-color: #c34a36;
+	background-color: #whitesmoke;
+	height : 500px;
+	position: sticky;
+	top: 20px;
 }
 
 .payment-info-list ul {
