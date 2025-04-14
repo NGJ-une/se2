@@ -167,6 +167,15 @@
 }
 </style>
 <%
+if (session.getAttribute("sessionid") == null){
+%>
+<script>
+	alert('로그인 후 사용 가능');
+	window.location.href = '/se2/main/member/login.jsp';	
+</script>
+<% 
+	return;
+}
 request.setCharacterEncoding("utf-8");
 
 String grade = (String)session.getAttribute("grade");
@@ -263,6 +272,7 @@ String imgSrc = request.getParameter("img");
 			    	<input type="hidden" name="id" value="<%= (String)session.getAttribute("sessionid") %>">
 					<input type="hidden" name="name" value="<%= reserDTO.getName() %>">
 			    	<input type="hidden" name="money" value="<%= dcPrice %>">
+			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney %>">
 				</form>
 			</div>
 		</article>
