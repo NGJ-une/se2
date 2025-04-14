@@ -66,66 +66,28 @@ String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.ser
     // 3. 파일 작성 시 vidx동일하게 등록되도록 하기
     
 
-	if (pdto.getPname1() == null){
-        //pdto.setPname1("");
-        pname1="none";
-       pdto.setPname1(pname1);
-         pdto.setPidx(vidx);
+       //4. 글, 파일 모두 등록
+  	//int fileUpload=pdao.photoUpload(pdto);
+	
 
-         int fileUpload=pdao.photoUpload(pdto);
-     
-         String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
-         %>
-         <script>
-            window.alert('<%=msg%>');
-            location.href ='write.jsp';
-         </script>
- <%
-	}if(pdto.getPname2() == null){
-     pname2="none";
-     pdto.setPname2(pname2);
-     pdto.setPidx(vidx);
-     
-     int fileUpload=pdao.photoUpload(pdto);
-     
-     String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
-     %>
-     <script>
-        window.alert('<%=msg%>');
-        location.href ='write.jsp';
-     </script>
-     
-  <%
-  }if(pdto.getPname3()==null){
-     pname3="none";
-     pdto.setPname3(pname3);
-     pdto.setPidx(vidx);
-    int fileUpload=pdao.photoUpload(pdto);
-     
-     String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
-     %>
-     <script>
-        window.alert('<%=msg%>');
-        location.href ='write.jsp';
-     </script>
-     
-	
-    <%
-  }if(!(pdto.equals(null))){
-        pdto.setPname1(pname1);
-        pdto.setPname2(pname2);
-        pdto.setPname3(pname3);
-        pdto.setPidx(vidx);
-   
-    
-    //4. 글, 파일 모두 등록
-  	int fileUpload=pdao.photoUpload(pdto);
-	
+
+    // null이면 "none"으로 대체
+    if (pname1 == null) pname1 = "none";
+    if (pname2 == null) pname2 = "none";
+    if (pname3 == null) pname3 = "none";
+
+    // dto에 담기
+    pdto.setPname1(pname1);
+    pdto.setPname2(pname2);
+    pdto.setPname3(pname3);
+    pdto.setPidx(vidx);
+
+    // 딱 한 번만 insert
+    int fileUpload = pdao.photoUpload(pdto);
 
     String msg = fileUpload > 0 ? "글이 등록되었습니다." : "글이 등록되지 않았습니다.";
-    %>
+%>
     <script>
-    	window.alert('<%=msg%>');
-       location.href ='write.jsp';
+        alert('<%=msg%>');
+        location.href = 'write.jsp';
     </script>
-<%}%>
