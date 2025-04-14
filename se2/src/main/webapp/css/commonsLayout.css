@@ -12,6 +12,16 @@ html, body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
   min-width: 1200px;
+  
+}
+
+/*body 일부분 80% 축소 */
+.scaled-content {
+  transform: scale(0.8);
+  transform-origin: top center;
+  width: 100%;        /* scale 보정 */
+  margin: 0 auto;
+  margin-bottom: -450px;
 }
 
 .wrapper {

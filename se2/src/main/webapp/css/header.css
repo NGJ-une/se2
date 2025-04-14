@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+/* 배경제외 모두80% */
+.scaled-header-content {
+  transform: scale(0.8);
+}
 .soft-header {
   background-color: #E4D9C7 ;
   border-bottom: 1px solid #d8cfc1;
@@ -11,7 +15,7 @@
 .soft-top-links {
   text-align: right;
   font-size: 12px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;   /*로그인  라인 로고메뉴바 라인 상하 간격 */
 }
 
 .soft-top-links a {
@@ -36,7 +40,7 @@
   top: 28%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 48px;
+  font-size: 52px;
   font-family: 'Playfair Display', serif;
   font-weight: bold;
   color: #6b4c2f;
@@ -55,7 +59,7 @@
   transform: translateY(-50%);
   display: flex;
   gap: 50px;
-  font-size: 16px;
+  font-size: 19px;
 }
 /*호텔찾기 호텔소개*/
 .soft-nav.left {

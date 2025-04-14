@@ -1,5 +1,8 @@
 @charset "UTF-8";
-
+/*배경 제외 80%*/
+.scaled-footer-content{
+	transform: scale(0.8);
+}
 /* 전체 */
 .footer {
   background-color: #E4D9C7;
@@ -8,6 +11,8 @@
   font-size: 14px;
   line-height: 1.6;
   padding: 5px 0;
+  overflow-x: hidden;
+  
 }
 
 .footer .wrapper {
@@ -22,7 +27,7 @@
   font-weight: bold;
   color: #6b4c2f;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 /* 브랜드 링크 */
