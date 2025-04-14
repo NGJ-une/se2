@@ -18,6 +18,11 @@
 		width: 190px;
 	}
 </style>
+<script>
+function show2(){
+	location.href='/se2/gallery/gallery_seoul.jsp';
+}
+</script>
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function(){
 	
@@ -395,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function(){
         <article>          
     		<div class="wrapper">
 	            <label>아름다움이 머무는 공간, HELIA HOTEL 갤러리로 초대합니다.</label>
-	            <input type="button" value="호텔갤러리 바로가기 →">          
+	            <input onclick="show2();" type="button" value="호텔갤러리 바로가기 →">          
     		</div>
         </article>
        </div> 
