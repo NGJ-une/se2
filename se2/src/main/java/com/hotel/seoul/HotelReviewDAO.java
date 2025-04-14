@@ -15,10 +15,6 @@ public class HotelReviewDAO {
 	Connection conn;
 	PreparedStatement ps;
 	ResultSet rs;
-
-	public HotelReviewDAO() {
-
-	}
 	
 
 	public HotelReviewDAO() {
@@ -72,7 +68,7 @@ public class HotelReviewDAO {
 	public int getTotalCount() {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select count(*) from review;";
+			String sql = "select count(*) from review";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			int count = 0;
@@ -96,25 +92,25 @@ public class HotelReviewDAO {
 		}
 	}
 	//게시물 보기 메서드
-	public ArrayList<HotelReviewDTO> getReviewRead(String title) {
+	public ArrayList<HotelReviewDTO> getReviewRead(int idx) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select * from review where vtitle = ?";
+			String sql = "select * from review where vidx = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, title);
+			ps.setInt(1, idx);
 			rs = ps.executeQuery();
 			ArrayList<HotelReviewDTO> arr = new ArrayList<HotelReviewDTO>();
 			while(rs.next()) {
-				int vidx = rs.getInt("vidx");
-				String vid = rs.getString("vid");
-				String vtitle = rs.getString("vtitle");
-				String vcontent = rs.getString("vcontent");
-				Date vdate = rs.getDate("vdate");
-				int vreadnum = rs.getInt("vreadnum");
-				int vrecomment = rs.getInt("vrecomment");
-				int vcomment = rs.getInt("vcomment");
-				int vtotal = rs.getInt("vtotal");
-				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecomment, vcomment, vtotal, vreadnum);
+	            int vidx = rs.getInt("VIDX");
+	            String vid = rs.getString("VID");
+	            String vtitle = rs.getString("VTITLE");
+	            String vcontent = rs.getString("VCONTENT");
+	            Date vdate = rs.getDate("VDATE");
+	            int vreadnum = rs.getInt("VREADNUM");
+	            int vrecommend = rs.getInt("VRECOMMEND");
+	            int vcomment = rs.getInt("VCOMMENT");
+	            int vtotal = rs.getInt("VTOTAL");
+				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal);
 				arr.add(dto);
 			}
 			return arr;

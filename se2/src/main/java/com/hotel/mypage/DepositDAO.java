@@ -39,15 +39,15 @@ public class DepositDAO {
 	public int importAmount(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select mmoney from member where mid = ?";
+			String sql = "select mpoint from member where mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
-			int money = 0;
+			int point = 0;
 			while(rs.next()) {
-				money = rs.getInt("mmoney");
+				point = rs.getInt("mpoint");
 			}
-			return money;
+			return point;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;

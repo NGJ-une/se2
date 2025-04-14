@@ -105,8 +105,10 @@
 </head>
 <%
 String id = (String)session.getAttribute("sessionid");
-String title = request.getParameter("vtitle");
-ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
+String vidx = request.getParameter("vidx");
+int idx = 0;
+if(vidx != null) idx = Integer.parseInt(vidx); 
+ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -114,7 +116,7 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
     <article class="center-part">
         <h2>본문 내용</h2>
         <ul>
-            <li><%=id %></li>
+            <li>작성자 : <%=arr.get(0).getVid() %></li>
             <%
             if(arr == null || arr.size() == 0) {
             	%>
@@ -122,18 +124,27 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
             	<%
             }else {
             %>
-            <li><%=arr.get(0).getVdate() %></li>
+            <li>작성날짜 : <%=arr.get(0).getVdate() %></li>
             <li>평점 
-                <div class="totalStar">
-                    <input type="radio" class="star" id="star1" value="1">
-                    <input type="radio" class="star" id="star2" value="2">
-                    <input type="radio" class="star" id="star3" value="3">
-                    <input type="radio" class="star" id="star4" value="4">
-                    <input type="radio" class="star" id="star5" value="5">
-                </div>
+                 <div class="totalStar">
+        <%
+            int score = arr.get(0).getVtotal();
+            for(int i=1; i<=5; i++) {
+                if(i <= score) {
+        %>
+            <span style="font-size: 20px; color: gold;">★</span>
+        <%
+                }else {
+        %>
+            <span style="font-size: 20px; color: lightgray;">☆</span>
+        <%
+                }
+            }
+        %>
+    </div>
             </li>
-            <li><%=arr.get(0).getVtitle() %></li>
-            <li><%=arr.get(0).getVcontent() %></li>
+            <li>제목 : <%=arr.get(0).getVtitle() %></li>
+            <li>내용 : <%=arr.get(0).getVcontent() %></li>
             
             <li><img src = "" alt = "사용자 업로드 이미지"></li>
         </ul>
@@ -150,11 +161,11 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
         <input type="button" name="notrecommend" value="비추천">
     </div>
 
-    <br><hr>
+    <br><hr><br>
 
     <div>
         <ul>
-            <li>댓글 리스트~</li>
+            
 
             <li>작성자 : 내용 
                 <input type="button" value="추천"> 
@@ -187,7 +198,7 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(title);
     <div>
         <ul>
             <li><br>
-                <textarea></textarea>
+                <textarea style = "resize: none;"></textarea>
                 <div class="comment-submit">
                     <input type="button" value="등록">
                 </div>
