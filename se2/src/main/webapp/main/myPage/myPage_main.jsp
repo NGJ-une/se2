@@ -180,64 +180,63 @@ td {
 						<th>인원</th>
 						<th>후기</th>
 					</tr>
-					<%
-					if (arr2 == null || arr2.size() == 0) {
-					%>
-					<tr>
-						<td colspan="5">최근 6개월 이내에 예약한 방이 없습니다.</td>
-					</tr>
-					<td>
-						<%
-						} else {
-						for (int i = 0; i < arr2.size(); i++) {
-						%>
 					
-					<tr>
-						<td><%=arr2.get(i).getRidx()%></td>
-						<td><%=arr2.get(i).getRtype()%></td>
-						<td><%=arr2.get(i).getRcheckin()%>~<%=arr2.get(i).getRcheckout()%></td>
-						<td><%=arr2.get(i).getRmoney()%></td>
-						<td><%=arr2.get(i).getRadult() + arr2.get(i).getRkid()%></td>
-						<td>
-							<%
-							boolean result=false;
-							Date checkoutDate = arr2.get(i).getRcheckout(); // Date 타입
+				<%
+				if (arr2 == null || arr2.size() == 0) {
+				%>
+				<tr>
+					<td colspan="6">최근 6개월 이내에 예약한 방이 없습니다.</td>
+				</tr>
+				<%
+				} else {
+					for (int i = 0; i < arr2.size(); i++) {
+						int ridx = arr2.get(i).getRidx();
+				%>
+				<tr>
+					<td><%=ridx%></td>
+					<td><%=arr2.get(i).getRtype()%></td>
+					<td><%=arr2.get(i).getRcheckin()%> ~ <%=arr2.get(i).getRcheckout()%></td>
+					<td><%=arr2.get(i).getRmoney()%></td>
+					<td><%=arr2.get(i).getRadult() + arr2.get(i).getRkid()%></td>
+					<td>
+					<%
+						if (arr3 != null && arr3.contains(ridx)) {
+					%>
+						작성완료
+					<%
+						} else {
+							Date checkoutDate = arr2.get(i).getRcheckout();
 							Calendar checkoutCal = Calendar.getInstance();
 							checkoutCal.setTime(checkoutDate);
 
-							// 오늘 날짜
 							Calendar today = Calendar.getInstance();
-
-							// 체크아웃 + 7일
 							Calendar sevenAfterCheckout = (Calendar) checkoutCal.clone();
 							sevenAfterCheckout.add(Calendar.DAY_OF_YEAR, 7);
 
-							// 조건: 오늘이 체크아웃 이후이면서, 체크아웃+7일 이전일 경우
 							if (!today.before(checkoutCal) && !today.after(sevenAfterCheckout)) {
-							    result = true;
-							%>
-							  <input type="button" value="후기작성" onclick="reviewWrite();">
-							<%
-							
-							
-						}else {
-							%>
-							    기한지남
-							<%
-							}
-		%>
-					</tr>
-					<%
-					}
-					}
 					%>
-				</table>
-			</fieldset>
-			<%
-			}
-			%>
-		</section>
-	</div>
-	<%@include file="/footer.jsp"%>
+						<input type="button" value="후기작성" onclick="reviewWrite();">
+					<%
+							} else {
+					%>
+						기한지남
+					<%
+							}
+						}
+					%>
+					</td>
+				</tr>
+				<%
+					}
+				}
+				%>
+			</table>
+		</fieldset>
+		<%
+		}
+		%>
+	</section>
+</div>
+<%@include file="/footer.jsp"%>
 </body>
 </html>

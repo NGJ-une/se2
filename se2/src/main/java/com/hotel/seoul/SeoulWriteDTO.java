@@ -13,13 +13,14 @@ public class SeoulWriteDTO {
 	private int vrecommend;
 	private int vcomment;
 	private int vtotal;
-
+	private int vridx;
+	
 	public SeoulWriteDTO() {
 
 	}
 
 	public SeoulWriteDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum, int vrecommend,
-			int vcomment, int vtotal) {
+			int vcomment, int vtotal, int vridx) {
 		super();
 		this.vidx = vidx;
 		this.vid = vid;
@@ -30,6 +31,7 @@ public class SeoulWriteDTO {
 		this.vrecommend = vrecommend;
 		this.vcomment = vcomment;
 		this.vtotal = vtotal;
+		this.vridx = vridx;
 	}
 
 	public int getVidx() {
@@ -103,6 +105,13 @@ public class SeoulWriteDTO {
 	public void setVtotal(int vtotal) {
 		this.vtotal = vtotal;
 	}
-	
-	
+
+	public int getVridx() {
+		return vridx;
+	}
+
+	public void setVridx(int vridx) {
+		this.vridx = vridx;
+	}
+
 }
