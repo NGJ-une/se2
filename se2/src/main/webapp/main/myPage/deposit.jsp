@@ -128,7 +128,8 @@
         <h1>포인트 충전</h1>
         <%
           String id = (String)session.getAttribute("sessionid");
-          int money = mdao.importAmount(id);
+          int money = mdao.getmemberMmoney(id);
+          int point = mdao.importAmount(id);
         %>
         <label class="currentMoney">현재 보유 금액 : <%=money %> 원</label>
 

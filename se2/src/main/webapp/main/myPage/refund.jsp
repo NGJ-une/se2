@@ -119,7 +119,7 @@
 
         <%
         String id = (String)session.getAttribute("sessionid");
-        int money = mdao.importAmount(id);
+        int money = mdao.getmemberMmoney(id);
         %>
         <label class = "currentMoney">현재 보유 금액 : <%=money %> 원</label>
         <label>환불할 금액  </label>

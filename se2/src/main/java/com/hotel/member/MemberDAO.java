@@ -17,7 +17,7 @@ public class MemberDAO {
 	public int memberJoin(MemberDTO mdto) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
-			String sql="INSERT INTO MEMBER(MID,MIDX,MPWD,MFNAME,MLNAME,MBIRTH,MEMAIL,MTEL,MADDR,MJOIN_DATE,MQUESTION,MANSWER)\r\n"
+			String sql="INSERT INTO MEMBER(MID,MIDX,MPWD,MFNAME,MLNAME,MBIRTH,MEMAIL,MTEL,MADDR,MJOIN_DATE,MQUESTION,MANSWER) "
 					+ "VALUES(?,sq_member_idx.NEXTVAL,?,?,?,?,?,?,?,sysdate,?,?)";
 
 			ps = conn.prepareStatement(sql);

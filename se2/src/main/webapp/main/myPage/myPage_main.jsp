@@ -186,7 +186,7 @@ input[type="button"]:active {
 				<p>
 					현재 등급: <span class="grade-<%=grade.toLowerCase()%>"><%=grade%></span><br>
 					회원 번호:
-					<%=arr.get(0).getMidx()%><br> 포인트:
+					<%=arr.get(0).getMidx()%><br> 누적 결제 금액:
 					<%=arr.get(0).getMpoint()%>p
 				</p>
 			</div>
