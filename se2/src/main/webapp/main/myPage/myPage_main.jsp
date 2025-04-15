@@ -236,13 +236,13 @@ input[type="button"]:active {
 							Calendar sevenAfterCheckout = (Calendar) checkoutCal.clone();
 							sevenAfterCheckout.add(Calendar.DAY_OF_YEAR, 7);
 
-							if (!today.before(checkoutCal) && !today.after(sevenAfterCheckout)) {
+							if (!today.before(checkoutCal) && (!today.after(sevenAfterCheckout))) {
 					%>
 						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
 					<%
 							} else {
 					%>
-						기한지남
+						작성기간이 아닙니다.
 					<%
 							}
 						}
