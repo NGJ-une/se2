@@ -61,7 +61,7 @@
  <h1>HELIA Ulsan</h1>
 
 <div class="Ulsanimg">
-  <img src="/se2/main/hotelInfo/img/ulsan.jpg" alt="HELIA Ulsan" class="hotelimg">
+  <img src="/se2/main/hotelInfo/img/U_Information.png" alt="HELIA Ulsan" class="hotelimg">
 </div>
 
 <label><h3>HELIA 호텔 울산 지점</h3></label>
@@ -116,7 +116,7 @@
   단순한 숙소가 아닌, 머무는 것만으로도 특별한 경험이 되는 공간.  
   HELIA 호텔 울산에서 여러분을 기다립니다.
 </p>
-
+</div>
 </section>
 <%@include file = "/footer.jsp" %>
 </body>
