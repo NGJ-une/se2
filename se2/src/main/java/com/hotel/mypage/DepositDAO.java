@@ -35,7 +35,7 @@ public class DepositDAO {
 			}
 		}
 	}
-	//충전 내역 가져오기 메서드
+	//사용 내역 가져오기 메서드
 	public int importAmount(String id) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
@@ -105,6 +105,32 @@ public class DepositDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	//현재 보유 금액 가져오기 메서드
+	public int getmemberMmoney(String id) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select mmoney from member where mid = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			int money = 0;
+			while(rs.next()) {
+				money = rs.getInt("mmoney");
+			}
+			return money;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
 		}finally {
 			try {
 				if(rs!=null) rs.close();
