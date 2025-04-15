@@ -117,7 +117,7 @@
         font-size: 14px;
         font-weight: bold;
         color: #333;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
     }
 
     .comment-content {
@@ -125,7 +125,7 @@
         line-height: 1.6;
         color: #444;
         white-space: pre-wrap;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .comment-actions {
@@ -154,6 +154,102 @@
     .reply-textarea {
         margin-top: 10px;
     }
+    .comment-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background-color: #ffffff; /* 일반 댓글은 흰색 배경 */
+    color: #333; /* 글자색 진한 회색 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.reply-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background-color: #f2f2f2; /* 답글은 옅은 회색 배경 */
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+.comment-box, .reply-box {
+    position: relative;
+}
+
+.comment-actions-top {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 12px;
+    display: flex;
+    gap: 6px;
+}
+
+.comment-actions-top input[type="button"] {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    color: #555;
+    cursor: pointer;
+}
+
+.comment-actions-bottom {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    font-size: 13px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.comment-actions-bottom:hover {
+    text-decoration: underline;
+}
+.commentSubmit {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.commentSubmit input[type="submit"] {
+    padding: 6px 14px;
+    font-size: 13px;
+    background-color: #e4d9c7;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.commentSubmit input[type="submit"]:hover {
+    background-color: #b8bca8;
+}
+.comment-submit input[type = "submit"] {
+    padding: 6px 14px;
+	font-size: 13px;
+	background-color: #e4d9c7;
+	color: black;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+.comment-submit input[type = "submit"]:hover {
+	background-color: #b8bca8;
+}
+.recommend input[type = "submit"] {
+        font-size: 13px;
+        padding: 6px 10px;
+        background-color: #f0f0f0;
+        color: #555;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+}
 </style>
 <script>
 function showTextArea(commentId) {
@@ -227,8 +323,8 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
     <hr><br>
 	<form name = "vrecommend1" action = "recommend_ok.jsp">
 		<input type = "hidden" name = "vidx" value = "<%=idx%>">
-    <div style="text-align: center">
-        <input type="submit" name="recommend" value="추천 <%=arr.get(0).getVrecommend()%>">
+    <div style="text-align: center" class = "recommend">
+        <input type="submit" name="recommend" value="추천 <%=arr.get(0).getVrecommend()%>"> 
     </div>
 	</form>
     <br><hr><br>
@@ -239,29 +335,36 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
         		if( arr2 != null && arr2.size() > 0) {
         			for(int i = 0; i < arr2.size(); i ++) {
         				int reWrite = arr2.get(i).getClev()*20;
-        				
         				%>
-        				<li style = "padding-left: <%=reWrite%>px;">
-        				<div></div>
-        				작성자 : <%=arr2.get(i).getCid() %>
-        				내용 : <%=arr2.get(i).getCcontent().replaceAll(" ", "&nbsp;").replaceAll("\\n", "<br>") %> 
-        				<input type="button" value="추천(<%=arr2.get(i).getCrecommend()%>)" onclick = "location.href = 'replyRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';"> 
-        				<input type="button" value="비추천(<%=arr2.get(i).getCnotrecommend()%>)" onclick = "location.href = 'replynotRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';"> 
-        				<a href = "javascript:void(0);" onclick = "showTextArea(<%=arr2.get(i).getCidx()%>)">답글</a>
-        				<form name = "reWriteReply" action = "reWriteReply_ok.jsp">
-					        <input type="hidden" name="vidx" value="<%=arr2.get(i).getVidx()%>">
-					        <input type="hidden" name="cid" value="<%=id %>">
-					        <input type="hidden" name="cref" value="<%=arr2.get(i).getCref()%>">
-					        <input type="hidden" name="clev" value="<%=arr2.get(i).getClev()%>">
-					        <input type="hidden" name="csunbun" value="<%=arr2.get(i).getCsunbun()%>">
-				        
-						<textarea id="replyTextArea<%=arr2.get(i).getCidx()%>" name="ccontent" style="resize: none; display: none;" placeholder="답글을 작성하세요."></textarea>
-						<div class = "commentSubmit">
-							<input type = "submit" value ="등록" id="commentSubmit<%=arr2.get(i).getCidx()%>" style = "display: none;">
-						</div>
-						</form>
-						</li>
+        		<li style="padding-left: <%=reWrite%>px;">
+				    <div class="<%= arr2.get(i).getClev() == 0 ? "comment-box" : "reply-box" %>">
+				        <div class="comment-actions-top">
+				            <input type="button" value="추천 <%=arr2.get(i).getCrecommend()%>" onclick="location.href='replyRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';">
+				            <input type="button" value="비추천 <%=arr2.get(i).getCnotrecommend()%>" onclick="location.href='replynotRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';">
+				        </div>
 				
+				        <div class="comment-meta">작성자 : <%=arr2.get(i).getCid()%></div>
+				        <div class="comment-content">
+				            <%=arr2.get(i).getCcontent().replaceAll(" ", "&nbsp;").replaceAll("\\n", "<br>")%>
+				        </div>
+				
+				        <div class="comment-actions-bottom" onclick="showTextArea(<%=arr2.get(i).getCidx()%>)">
+				            답글
+				        </div>
+				
+				        <form name="reWriteReply" action="reWriteReply_ok.jsp">
+				            <input type="hidden" name="vidx" value="<%=arr2.get(i).getVidx()%>">
+				            <input type="hidden" name="cid" value="<%=id %>">
+				            <input type="hidden" name="cref" value="<%=arr2.get(i).getCref()%>">
+				            <input type="hidden" name="clev" value="<%=arr2.get(i).getClev()%>">
+				            <input type="hidden" name="csunbun" value="<%=arr2.get(i).getCsunbun()%>">
+				            <textarea id="replyTextArea<%=arr2.get(i).getCidx()%>" name="ccontent" style="resize: none; display: none;" placeholder="답글을 작성하세요."></textarea>
+				            <div class="commentSubmit">
+				    		<input type="submit" value="등록" id="commentSubmit<%=arr2.get(i).getCidx()%>" style="display: none;">
+							</div>
+				        </form>
+				    </div>
+				</li>
         				<%
         			}
         		}else {
