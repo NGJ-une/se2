@@ -135,11 +135,7 @@ td {
 	font-weight: bold;
 }
 </style>
-<script>
-	function reviewWrite() {
-		window.open('/se2/hotel_1/review/write.jsp', 'idCheck')
-	}
-</script>
+
 
 </head>
 <body>
@@ -190,17 +186,18 @@ td {
 				<%
 				} else {
 					for (int i = 0; i < arr2.size(); i++) {
-						int ridx = arr2.get(i).getRidx();
+
+						
 				%>
 				<tr>
-					<td><%=ridx%></td>
+					<td><%=arr2.get(i).getRidx()%></td>
 					<td><%=arr2.get(i).getRtype()%></td>
 					<td><%=arr2.get(i).getRcheckin()%> ~ <%=arr2.get(i).getRcheckout()%></td>
 					<td><%=arr2.get(i).getRmoney()%></td>
 					<td><%=arr2.get(i).getRadult() + arr2.get(i).getRkid()%></td>
 					<td>
 					<%
-						if (arr3 != null && arr3.contains(ridx)) {
+						if (arr3 != null && arr3.contains(arr2.get(i).getRidx())) {
 					%>
 						작성완료
 					<%
@@ -215,8 +212,12 @@ td {
 
 							if (!today.before(checkoutCal) && !today.after(sevenAfterCheckout)) {
 					%>
-						<input type="button" value="후기작성" onclick="reviewWrite();">
+						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
+						
 					<%
+					
+						
+
 							} else {
 					%>
 						기한지남
