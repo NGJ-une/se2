@@ -2,133 +2,262 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Insert title here</title>
-  <link rel="stylesheet" type="text/css" href="/se2/css/sideBar.css">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      text-align: center;
-      margin: 0 auto;
-      padding: 0;
-    }
-    .container {
-      display: flex;
-      width: 1500px;
-      margin: 0 auto;
-    }
-    .box2 {
-      padding: 40px;
-      border-radius: 12px;
-      background-color: #fff;
-      width: 1200px;
-      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      color: #333;
-    }
-    .box2 h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-    .box2 hr {
-      border: none;
-      border-top: 1px solid #ddd;
-      margin: 20px 0;
-    }
-    .box2 table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 20px 20px;
-    }
-    .tr1 img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .tr2 td {
-      text-align: center;
-    }
-    .tr2 img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-    .tr2 img:hover {
-      transform: scale(1.05);
-    }
-    .tr2 div {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-  </style>
-  <script>
-  function change(element) {
-	  // 상단 이미지와 텍스트 가져오기
-	  var tr1Image = document.querySelector(".tr1 img");  // 상단 이미지
-	  var tr1Text = document.querySelector(".tr1 div");  // 상단 텍스트
-
-	  // 클릭한 이미지의 src와 텍스트 가져오기
-	  var selectedSrc = element.getAttribute("src");
-	  var selectedText = element.nextElementSibling.innerText;
-
-	  // 상단 이미지 및 텍스트 변경
-	  tr1Image.setAttribute("src", selectedSrc);  // 이미지 변경
-	  tr1Text.innerText = selectedText;  // 텍스트 변경
-	}
-  </script>
+<meta charset="UTF-8">
+<title>HELIA 서울 갤러리</title>
+<link rel="stylesheet" type="text/css" href="/se2/css/sideBar.css">
+<link rel="stylesheet" type="text/css" href="/se2/gallery/css/gallery.css">
 </head>
 <body>
 <%@include file="/header.jsp" %>
-  <div class="container">
-    <section class="box1">
-      <div class="sidebar">
-        <label>갤러리</label>
-      </div>
-      <hr>
-      <ul>
-        <li><a href="gallery_seoul.jsp">호텔서울</a></li>
-        <li><a href="gallery_ulsan.jsp">호텔울산</a></li>
-      </ul>
-    </section>
-    <section class="box2">
-      <h1>사진</h1>
-      <hr>
-      <table>
-        <tr class="tr1">
-          <td colspan="4">
-            <img src="/se2/main/img/1.jpg" alt="front">
-            <div>호텔 서울</div>
-          </td>
-        </tr>
-        <tr class="tr2">
-          <td>
-            <img src="/se2/main/img/3.jpg" alt="standard" onclick="change(this)">
-            <div>스탠다드</div>
-          </td>
-          <td>
-            <img src="/se2/main/img/4.jpg" alt="delux" onclick="change(this)">
-            <div>디럭스</div>
-          </td>
-          <td>
-            <img src="/se2/main/img/5.jpg" alt="suite" onclick="change(this)">
-            <div>스위트</div>
-          </td>
-          <td>
-            <img src="/se2/main/img/6.jpg" alt="grand" onclick="change(this)">
-            <div>그랜드</div>
-          </td>
-        </tr>
-      </table>
-    </section>
-  </div>
 
-<%@include file="/footer.jsp" %>
+<div class="container">
+  <!-- 왼쪽 사이드바 -->
+  <section class="box1">
+    <div class="sidebar">HELIA GALLERY</div>
+    <hr>
+    <ul>
+      <li><a href="gallery_seoul.jsp">호텔 서울</a></li>
+      <li><a href="gallery_ulsan.jsp">호텔 울산</a></li>
+    </ul>
+  </section>
+
+  <!-- 오른쪽 갤러리 영역 -->
+  <section class="gallery-container">
+
+      	<div class="gallery-title">
+		<strong>Photo</strong>
+      	</div>
+		<hr>
+  <!-- 카테고리 탭 -->
+  	<div class="category-tabs">
+	  <button onclick="filterImages('all')" class="active">ALL</button>
+	  <button onclick="filterImages('room')">객실</button>
+	  <button onclick="filterImages('dining')">다이닝</button>
+	  <button onclick="filterImages('activity')">액티비티</button>
+	  <button onclick="filterImages('facilities')">부대시설</button>
+	  <button onclick="filterImages('Other')">기타</button>
+	</div>
+  <!-- //카테고리 탭 -->
+  
+  <!-- 메인 이미지 슬라이드 -->
+    <div class="main-display">
+      <button class="nav left" onclick="prevImage()">&#10094;</button>
+     <div class="image-box">
+	  <img id="mainImage" class="active" src="/se2/gallery/img/seoul/other/LocalArea.png" alt="헬리아 서울 1">
+	  <p id="mainCaption">루프탑에서 바라본 서울의 야경</p>
+	</div>
+      <button class="nav right" onclick="nextImage()">&#10095;</button>
+    </div>
+	<!-- //메인 이미지 슬라이드 -->
+	
+	<div class="thumbnail-wrapper">
+ 	 <button class="thumb-nav left" onclick="scrollThumbnails(-1)">&#10094;</button>
+    <!-- 카테고리 필터 이미지 목록 -->
+    <div class="thumbnail-row" id="thumbnailRow">
+	  	<!-- 이미지 카드에서 class로 카테고리 지정 -->
+	  	
+	  	<!-- 객실 room -->
+	  	<!-- 그랜드 -->
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_G.jpg">
+	  	<p>그랜드 코너 스위트</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_G2.jpg">
+	  	<p>그랜드 디럭스</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_G3.jpg">
+	  	<p>시티뷰 그랜드</p>
+	  	</div>
+	  	 	<!-- 디럭스 -->
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_D.jpg">
+	  	<p>프리미어 디럭스</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_D2.jpg">
+	  	<p>디럭스 더블룸</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_D3.jpg">
+	  	<p>디럭스 트윈룸</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_D4.jpg">
+	  	<p>디럭스 오션뷰</p>
+	  	</div>
+	  	<!-- 스위트  -->
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_S.jpg">
+	  	<p>모노그램 스위트</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_S2.jpg">
+	  	<p>럭셔리 스위트</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_S3.jpg">
+	  	<p>코너 스위트룸</p>
+	  	</div>
+	  	<!-- 스탠다드 -->
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_ST.jpg">
+	  	<p>수페리어 스탠다드</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_ST2.jpg">
+	  	<p>이코노미 스탠다드</p>
+	  	</div>
+	  	
+	  	<div class="image-card room">
+	  	<img src="/se2/gallery/img/ulsan/room/U_ST3.jpg">
+	  	<p>스탠다드 트윈</p>
+	  	</div>
+	  	
+	  	
+	  	
+	  	
+	  	<!-- 다이닝 dining-->
+	  	<div class="image-card dining">
+	  	<img src="/se2/gallery/img/ulsan/dining/U_Restaurant.png">
+	  	<p>뷔페 레스토랑</p>
+	  	</div>
+	  	
+	  	<div class="image-card dining">
+	  	<img src="/se2/gallery/img/ulsan/dining/U_Restaurant2.png">
+	  	<p>다이닝 라운지</p>
+	  	</div>
+	  	
+	  	<div class="image-card dining">
+	  	<img src="/se2/gallery/img/ulsan/dining/U_Restaurant3.png">
+	  	<p>오션 다이닝 테라스</p>
+	  	</div>
+	  	
+	  	<div class="image-card dining">
+	  	<img src="/se2/gallery/img/ulsan/dining/U_Cafe.png">
+	  	<p>로비 카페</p>
+	  	</div>
+	  	
+	  	
+	  	<!-- 액티비티 activity -->
+	  	<div class="image-card activity">
+	  	<img src="/se2/gallery/img/ulsan/activity/U_Diebing.jpg">
+	  	<p>스킨스쿠버</p>
+	  	</div>
+	  	
+	  	<div class="image-card activity">
+	  	<img src="/se2/gallery/img/ulsan/activity/U_Show.jpg">
+	  	<p>라이브 쇼 가든</p>
+	  	</div>
+	  	
+	  	<!-- 부대시설 facilities-->
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Pool2.png">
+	  	<p>인도어 풀</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_KidPool.png">
+	  	<p>키즈 풀</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_PoolSide.png">
+	  	<p>풀사이드 테라스</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Wedding.png">
+	  	<p>프라이빗 웨딩홀</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Spa.png">
+	  	<p>힐링 스파</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Lounge.png">
+	  	<p>라운지 존</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_SecretPool.jpg">
+	  	<p>시크릿 풀</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Lounge2.png">
+	  	<p>프라이빗 라운지</p>
+	  	</div>
+	  	
+	  	<div class="image-card facilities">
+	  	<img src="/se2/gallery/img/ulsan/facilities/U_Zim.png">
+	  	<p>피트니스 센터</p>
+	  	</div>
+	  	
+	  	
+	  	
+	  	
+	  	<!-- 기타 Other-->
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_showPool.png">
+	  	<p>쇼풀 라운지</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Other2.png">
+	  	<p>아트 플로우</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Garden.png">
+	  	<p>가든 뷰</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Other1.png">
+	  	<p>디테일 존</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_beachgarden.jpg">
+	  	<p>비치 가든</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Lobby.jpg">
+	  	<p>로비 라운지</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Lobby2.png">
+	  	<p>웰컴 로비</p>
+	  	</div>
+	  	
+	  	<div class="image-card Other">
+	  	<img src="/se2/gallery/img/ulsan/other/U_Information.png">
+	  	<p>컨시어지 데스크</p>
+	  	</div>
+	  	
+	  	
+    <!--// 카테고리 필터 이미지 목록 -->
+    	</div>
+    	  <button class="thumb-nav right" onclick="scrollThumbnails(1)">&#10095;</button>
+    </div>
+  </section>
+</div>
+
+<%@ include file="/footer.jsp" %>
+<script src="/se2/gallery/js/gallery.js"></script>
 </body>
 </html>
