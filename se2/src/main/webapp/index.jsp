@@ -9,71 +9,13 @@
 <!-- SEO 핵심: 제목 -->
 <title>HELIA 호텔 - 서울, 울산 전 지점 예약 | 공식 예약 사이트</title>
 <!-- SEO 핵심: 검색 설명 -->
- <meta name="description" content="HELIA 호텔 공식 예약 사이트. 서울, 울산 등 전국 지점 럭셔리 숙박 제공. 회원 등급에 따른 리워즈 혜택까지 누리세요.">
+<meta name="description" content="HELIA 호텔 공식 예약 사이트. 서울, 울산 등 전국 지점 럭셔리 숙박 제공. 회원 등급에 따른 리워즈 혜택까지 누리세요.">
   
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
-<style>
-	.region-select{
-		width: 190px;
-	}
-</style>
-<script>
-function show2(){
-	location.href='/se2/gallery/gallery_seoul.jsp';
-}
-</script>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(){
-	
-	const today = new Date().toISOString().split('T')[0];
-	
-	const checkInInput = document.getElementById('checkIn');
-	const checkOutInput = document.getElementById('checkOut');
 
-	checkInInput.setAttribute('min', today);
-	checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
+<script src="/se2/indexJS_head.js"></script>
 
-	checkOutInput.addEventListener('change', function(){
-		if (!checkInInput.value){
-		alert('체크인 날짜를 먼저 입력하세요');
-		checkOutInput.value = '';
-		checkInInput.focus();
-	}
-	});
-
-	checkInInput.addEventListener('change', function(){
-		checkOutInput.setAttribute('min', checkInInput.value);
-	});
-	
-	
-	document.querySelectorAll('reservation-form input[type="date"], input[type="number"]').forEach(element => {
-		element.addEventListener('keydown', function(event){
-			event.preventDefault();
-		});
-	});
-	
-	
-	const numberInputs = document.querySelectorAll('.reservation-form input[type="number"]');
-
-	function limitHeadCount(event){
-		const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
-
-		if (headCount > 6){
-			alert('총 인원은 6명까지 가능합니다');
-			event.target.value = event.target.getAttribute('prev-value') || 0;
-		}
-		else{
-			event.target.setAttribute('prev-value', event.target.value);
-		}
-	}
-
-	numberInputs.forEach(numberInput => {
-		numberInput.setAttribute('prev-value', numberInput.value);
-		numberInput.addEventListener('change', limitHeadCount);
-	});
-});
-</script>
 </head>
 <body class="main-page">
 <%@include file="/header.jsp" %>
@@ -81,86 +23,77 @@ document.addEventListener("DOMContentLoaded", function(){
         <article>
             <div class="slider">
              <div class="slide active">
-			    <img src="main/img/1.jpg" alt="h1">
+			    <img src="/se2/gallery/img/ulsan/other/U_beachgarden.jpg" alt="h1">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Timeless Elegance in the Heart of Seoul</h2>
-				<p>서울의 중심에서 만나는 클래식한 휴식</p>
-				<p>프리미엄 디너 코스 & 와인 페어링 제공</p>
+					<h2>Timeless Serenity by the Sea</h2>
+					<p>바다와 정원이 어우러진 고요한 안식</p>
+					<p>로맨틱 디너 & 가든 산책 코스 제공</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/2.jpg" alt="h2">
+			    <img src="/se2/gallery/img/seoul/other/LocalArea.png" alt="h2">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Moments Made to Remember</h2>
-<p>잊지 못할 특별한 하루를 선물하세요</p>
-<p>풀 오션뷰 프라이빗 디너 예약 가능</p>
+					<h2>Where Memories Bloom</h2>
+					<p>기억에 남을 소중한 하루를 선물하세요</p>
+					<p>도보 거리 명소 투어 & 오션뷰 레스토랑</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/3.jpg" alt="h3">
+			    <img src="/se2/gallery/img/ulsan/other/U_showPool.png" alt="h3">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Gracefully Calm, Infinitely Yours</h2>
-<p>고요함 속에서 나만의 시간을 누리다</p>
-<p>헬라 명상 힐링 프로그램 진행 중</p>
+					<h2>Tranquility Beyond the Horizon</h2>
+					<p>하늘과 맞닿은 수영장에서의 깊은 휴식</p>
+					<p>야경 속 쇼풀 & 풀사이드 바 운영 중</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/4.jpg" alt="h4">
+			    <img src="/se2/gallery/img/seoul/dining/S_bar2.png" alt="h4">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Wake Up With a View</h2>
-<p>눈을 뜨면 펼쳐지는 감각적인 서울</p>
-<p>시티뷰 조식 서비스 포함 패키지</p>
+					<h2>Awaken in Sophistication</h2>
+					<p>서울의 아침을 감각적으로 맞이하다</p>
+					<p>시티뷰 조식 & 이브닝 칵테일 포함</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/5.jpg" alt="h5">
+			    <img src="/se2/gallery/img/ulsan/room/U_ST.jpg" alt="h5">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Evenings Bathed in Gold</h2>
-<p>석양과 함께하는 로맨틱 나이트</p>
-<p>루프탑 바 라이브 재즈 매일 운영</p>
+					<h2>Romance Painted in Sunset</h2>
+					<p>노을 아래 펼쳐지는 황홀한 한밤의 무드</p>
+					<p>루프탑 재즈 & 프라이빗 테이블 예약</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/6.jpg" alt="h6">
+			    <img src="/se2/gallery/img/ulsan/facilities/U_SecretPool.jpg" alt="h6">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Designed for the Inspired</h2>
-<p>감각적인 이들을 위한 모던 디자인</p>
-<p>아트 라운지 & 프라이빗 전시공간 제공</p>
+					<h2>Art Meets Architecture</h2>
+					<p>예술과 공간이 조화를 이루는 특별한 경험</p>
+					<p>프라이빗 아트룸 & 감성 수영장 운영</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/7.jpg" alt="h7">
+			    <img src="/se2/gallery/img/seoul/facilities/S_Reading_Room.png" alt="h7">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Your Journey Begins Here</h2>
-<p>당신의 여정은 여기서 시작됩니다</p>
-<p>24시간 컨시어지 & 웰컴 드링크 서비스</p>
+					<h2>Inspiration in Every Corner</h2>
+					<p>영감을 자극하는 감성 공간</p>
+					<p>북 라운지 & 24시간 컨시어지 서비스</p>	
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/8.jpg" alt="h8">
+			    <img src="/se2/gallery/img/seoul/room/S_G4.jpg" alt="h8">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Every Detail, Thoughtfully Curated</h2>
-<p>디테일이 완성하는 품격 있는 하루</p>
-<p>스위트룸 고객 전용 프리미엄 키트 제공</p>
+					<h2>Luxury, Thoughtfully Defined</h2>
+					<p>세심한 디테일이 만들어낸 진정한 럭셔리</p>
+					<p>스위트 전용 프라이빗 키트 제공</p>
 			    </div>
 			  </div>
 			  <div class="slide">
-			    <img src="main/img/9.jpg" alt="h9">
+			    <img src="/se2/gallery/img/ulsan/dining/U_Restaurant2.png" alt="h9">
 			    <div class="slide-caption fixed-bottom-left">
-			      <h2>Seoul’s Finest Urban Escape</h2>
-<p>서울 헬라 호텔, 도심 속 최상의 품격</p>
-<p>럭셔리 스파 & 루프탑 라운지 프로그램 운영 중</p>
+					<h2>Escape Within the City</h2>
+					<p>도심 속 완벽한 쉼, 헬리아 호텔</p>
+					<p>럭셔리 다이닝 & 루프탑 스파 프로그램</p>
 			    </div>
 			  </div>
-<!--                 <img src="main/img/1.jpg" alt="h1" class="slide"> -->
-<!--                 <img src="main/img/2.jpg" alt="h2" class="slide"> -->
-<!--                 <img src="main/img/3.jpg" alt="h3" class="slide"> -->
-<!--                 <img src="main/img/4.jpg" alt="h4" class="slide"> -->
-<!--                 <img src="main/img/5.jpg" alt="h5" class="slide"> -->
-<!--                 <img src="main/img/6.jpg" alt="h6" class="slide"> -->
-<!--                 <img src="main/img/7.jpg" alt="h7" class="slide"> -->
-<!--                 <img src="main/img/8.jpg" alt="h8" class="slide"> -->
-<!--                 <img src="main/img/9.jpg" alt="h9" class="slide"> -->
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     			<button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
@@ -316,41 +249,50 @@ document.addEventListener("DOMContentLoaded", function(){
 	<section class="room-preview">
 	  <h3>추천 객실</h3>
 	  <div class="room-grid">
-	    <div class="room-card">
-	      <img src="/se2/main/img/1.jpg" alt="디럭스룸">
-	      <div class="room-info">
-	        <h4>디럭스룸</h4>
-	        <p>아늑한 분위기와 세련된 인테리어의 조화</p>
-	      </div>
-	    </div>
-	     <div class="room-card">
-	      <img src="/se2/main/img/2.jpg" alt="디럭스룸">
-	      <div class="room-info">
-	        <h4>디럭스룸</h4>
-	        <p>아늑한 분위기와 세련된 인테리어의 조화</p>
-	      </div>
-	    </div>
-	     <div class="room-card">
-	      <img src="/se2/main/img/3.jpg" alt="디럭스룸">
-	      <div class="room-info">
-	        <h4>디럭스룸</h4>
-	        <p>아늑한 분위기와 세련된 인테리어의 조화</p>
-	      </div>
-	    </div>
-	     <div class="room-card">
-	      <img src="/se2/main/img/4.jpg" alt="디럭스룸">
-	      <div class="room-info">
-	        <h4>디럭스룸</h4>
-	        <p>아늑한 분위기와 세련된 인테리어의 조화</p>
-	      </div>
-	    </div>
-	    <div class="room-card">
-	      <img src="/se2/main/img/5.jpg" alt="디럭스룸">
-	      <div class="room-info">
-	        <h4>디럭스룸</h4>
-	        <p>아늑한 분위기와 세련된 인테리어의 조화</p>
-	      </div>
-	    </div>
+	    <!-- 1. 스위트룸 -->
+		<div class="room-card">
+		  <img src="/se2/gallery/img/seoul/room/S_G2.jpg" alt="서울 스위트룸">
+		  <div class="room-info">
+		    <h4>스위트룸</h4>
+		    <p>넓은 공간과 섬세한 디테일이 어우러진 프라이빗 럭셔리</p>
+		  </div>
+		</div>
+		
+		<!-- 2. 프리미엄룸 -->
+		<div class="room-card">
+		  <img src="/se2/gallery/img/ulsan/room/U_ST.jpg" alt="울산 프리미엄룸">
+		  <div class="room-info">
+		    <h4>프리미엄룸</h4>
+		    <p>창밖 노을과 함께 즐기는 고요하고 깊은 휴식</p>
+		  </div>
+		</div>
+		
+		<!-- 3. 스위트룸 -->
+		<div class="room-card">
+		  <img src="/se2/gallery/img/seoul/room/S_S.jpg" alt="서울 스위트룸">
+		  <div class="room-info">
+		    <h4>스위트룸</h4>
+		    <p>세련되고 아늑한 분위기의 합리적인 프리미엄 객실</p>
+		  </div>
+		</div>
+		
+		<!-- 4. 디럭스 더블 -->
+		<div class="room-card">
+		  <img src="/se2/gallery/img/ulsan/room/U_G.jpg" alt="울산 그랜드 더블룸">
+		  <div class="room-info">
+		    <h4>그랜드 더블</h4>
+		    <p>감각적인 인테리어와 탁 트인 공간의 조화</p>
+		  </div>
+		</div>
+		
+		<!-- 5. 디럭스 트윈 -->
+		<div class="room-card">
+		  <img src="/se2/gallery/img/seoul/room/S_D.jpg" alt="서울 디럭스 트윈룸">
+		  <div class="room-info">
+		    <h4>디럭스 트윈</h4>
+		    <p>비즈니스와 휴식을 동시에 만족시키는 시티뷰 객실</p>
+		  </div>
+		</div>
 	  </div>
 	</section>
 	
@@ -366,10 +308,17 @@ document.addEventListener("DOMContentLoaded", function(){
 	<!-- 지도 정보 -->
 	<section class="map-info">
 	  <h3>HELIA 호텔 오시는 길</h3>
+	  
+	  <!-- 버튼 트리거 -->
+	  <div class="map-buttons">
+	    <button class="map-btn active" onclick="setMap('seoul')">서울점 보기</button>
+	    <button class="map-btn" onclick="setMap('ulsan')">울산점 보기</button>
+	  </div>
 	  <!-- 다른 홈체이지 불러오기  -->
-	  <iframe 
-	    src="https://www.google.com/maps/embed?pb=..."
-	    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	  <iframe id="hotelMap"
+	    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2901454184985!2d-73.97612382332608!3d40.755642771387116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2595b7381bd11%3A0x354857268d76d20f!2zMTExIEUgNDh0aCBTdCwgTmV3IFlvcmssIE5ZIDEwMDE3IOuvuOq1rQ!5e0!3m2!1sko!2skr!4v1744639617409!5m2!1sko!2skr"
+	    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+	  </iframe>
 	</section>
 	
 	<!-- 예약 유도 CTA -->
@@ -386,13 +335,24 @@ document.addEventListener("DOMContentLoaded", function(){
 	        <div class="wrapper">
 	            <label>GALLERY</label>
 	            <hr>
-		            <img src="main/img/3.jpg" alt="g3">
-		            <img src="main/img/4.jpg" alt="g4">
-		            <img src="main/img/5.jpg" alt="g5">
-		            <img src="main/img/6.jpg" alt="g6">
-		            <img src="main/img/7.jpg" alt="g7">
-		            <img src="main/img/8.jpg" alt="g8">
-		            <img src="main/img/9.jpg" alt="g9">
+	            <div class="gallery-slider">
+       		    <div class="gallery-track">
+		            <img src="/se2/gallery/img/seoul/room/S_G.jpg" alt="g3">
+		            <img src="/se2/gallery/img/ulsan/dining/U_Restaurant2.png" alt="g4">
+		            <img src="/se2/gallery/img/seoul/dining/S_Dining1.png" alt="g5">
+		            <img src="/se2/gallery/img/ulsan/activity/U_Diebing.jpg" alt="g6">
+		            <img src="/se2/gallery/img/seoul/activity/S_SafariPark.jpg" alt="g7">
+		            <img src="/se2/gallery/img/ulsan/facilities/U_Wedding.png" alt="g8">
+		            <img src="/se2/gallery/img/seoul/other/hotel_1.png" alt="g9">
+		            <img src="/se2/gallery/img/seoul/room/S_G.jpg" alt="g3">
+		            <img src="/se2/gallery/img/ulsan/dining/U_Restaurant2.png" alt="g4">
+		            <img src="/se2/gallery/img/seoul/dining/S_Dining1.png" alt="g5">
+		            <img src="/se2/gallery/img/ulsan/activity/U_Diebing.jpg" alt="g6">
+		            <img src="/se2/gallery/img/seoul/activity/S_SafariPark.jpg" alt="g7">
+		            <img src="/se2/gallery/img/ulsan/facilities/U_Wedding.png" alt="g8">
+		            <img src="/se2/gallery/img/seoul/other/hotel_1.png" alt="g9">
+		        </div>
+		      </div>		            
 	        </div>
     	</article>
     </section>
@@ -407,63 +367,6 @@ document.addEventListener("DOMContentLoaded", function(){
        </div> 
     </section>
 <%@include file="/footer.jsp" %>
+<script src="/se2/indexJS_body.js"></script>
 </body>
-<script>
-    var slideIndex = 0;
-    var slideTimer;
-
-    function showSlides() {
-        var slides = document.getElementsByClassName("slide");
-        
-        // 모든 슬라이드 숨기기
-        for (var i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
-        
-     // slide-caption 내 p 태그 초기화
-        var captions = slides[i].querySelectorAll(".slide-caption p");
-        captions.forEach(function(p) {
-            p.style.opacity = "0";
-            p.style.transform = "translateY(20px)";
-            p.style.animation = "none";
-            // 강제 재실행 트릭 (reflow)
-            void p.offsetWidth;
-            p.style.animation = "fadeInText 1s ease forwards";
-            p.style.animationDelay = "0.5s";
-        });
-    }
-	
-        // 인덱스에 해당하는 슬라이드 표시
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-
-        slides[slideIndex - 1].classList.add("active");
-
-        clearTimeout(slideTimer);
-        slideTimer = setTimeout(showSlides, 5000);
-    }
-    showSlides();
-
-    function changeSlide(n) {
-    	var slides = document.getElementsByClassName("slide");
-
-        slideIndex += n;
-        if (slideIndex < 1) {
-            slideIndex = slides.length;
-        } else if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-
-        for (var i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("active");
-        }
-
-        slides[slideIndex - 1].classList.add("active");
-
-        clearTimeout(slideTimer);
-        slideTimer = setTimeout(showSlides, 5000);
-    }
-
-</script>
 </html>

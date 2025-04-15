@@ -3,7 +3,7 @@
       /* box1 섹션 스타일 */
   .box1 {
   text-align: center; /* box1 내부 전체 가운데 정렬 */
-    padding: 30px;
+    padding: 20px;
     margin-right: 20px;
     border: 1px solid #ddd; /* 더 부드러운 테두리 */
     border-radius: 8px; /* 둥근 테두리 추가 */
@@ -24,7 +24,7 @@
   }
   .box1 .sidebar a{
   	text-decoration: none;
-  	color:black;
+  	color: black;
   }
   .box1 ul {
     list-style-type: none;
@@ -49,8 +49,8 @@
   }
 
   .box1 ul li a:hover {
-    background-color: #e0e0e0; /* 마우스 오버 시 배경색 */
-    color: #DE169D; /* 링크 색상 변경 */
+    background-color: #E4D9C7; /* 마우스 오버 시 배경색 */
+    color: #b58143; /* 링크 색상 변경 */
   }
 
   .box1 hr {

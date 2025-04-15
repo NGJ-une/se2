@@ -169,6 +169,34 @@ button.next:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 12px rgba(0,0,0,0.2);
 }
+/*section4 gallery 슬라이더 */
+.gallery-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-track {
+  display: flex;
+  animation: slideGallery 30s linear infinite;
+}
+
+.gallery-track img {
+  flex-shrink: 0;
+  width: auto;
+  height: 180px; /* 원하는 이미지 높이 유지 */
+  margin-right: 20px;
+  transition: transform 0.3s ease;
+}
+/*왼쪽에서 오른쪾으로 */
+@keyframes slideGallery {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 
 
 /*section5*/
@@ -197,7 +225,10 @@ button.next:hover {
   width: 22px;
   height: 22px;
 }
-
+/*호텔찾기 select 길이 */
+.region-select{
+	width: 190px;
+}
 /*객실 성인 어린이 유아 */
 .reservation-item {
   flex: 0 0 70px;
@@ -540,4 +571,44 @@ body.main-page {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/*******************************************************************************/
+/*오시는길 */
+/* 섹션 간 여백 통일 */
+.custom-map {
+  background-color: #fdfaf6;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.custom-map h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #4a3d36;
+}
+
+/* 버튼 */
+.map-buttons {
+  margin-bottom: 25px;
+}
+
+.map-btn {
+  background-color: #c4a886; /* 따뜻한 브라운 계열 */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  margin: 0 10px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.map-btn:hover {
+  background-color: #a38468;
+}
+
+.map-btn.active {
+  background-color: #7b5e47;
 }
