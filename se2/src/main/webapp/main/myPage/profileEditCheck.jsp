@@ -56,7 +56,7 @@ String id = (String)session.getAttribute("sessionid");
     .user-id {
       margin-bottom: 20px;
       font-weight: bold;
-      color: #f0b675;
+      color: #b58143;
     }
 
     input[type="password"] {
@@ -80,8 +80,10 @@ String id = (String)session.getAttribute("sessionid");
     }
 
     input[type="submit"] {
-      background-color: #f0b675;
+      background-color: #b58143;
       color: white;
+  		
+}
     }
 
     input[type="submit"]:hover {
