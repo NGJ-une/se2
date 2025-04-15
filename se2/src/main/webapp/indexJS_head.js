@@ -7,47 +7,70 @@ function show2(){
 /****************************************************************/
 
 document.addEventListener("DOMContentLoaded", function() {
-  const today = new Date().toISOString().split('T')[0];
 
-  const checkInInput = document.getElementById('checkIn');
-  const checkOutInput = document.getElementById('checkOut');
+	const now = new Date();
+	const today = new Date().toISOString().split('T')[0];
+	const tomorrow = new Date(now);
+	tomorrow.setDate(now.getDate() + 1);
 
-  checkInInput.setAttribute('min', today);
-  checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
+  	const checkInInput = document.getElementById('checkIn');
+	const checkOutInput = document.getElementById('checkOut');
 
-  checkOutInput.addEventListener('change', function() {
-    if (!checkInInput.value) {
-      alert('체크인 날짜를 먼저 입력하세요');
-      checkOutInput.value = '';
-      checkInInput.focus();
-    }
-  });
+	checkInInput.value = today;
+	checkInInput.setAttribute('min', today);
+	checkOutInput.value = tomorrow.toISOString().split('T')[0];
+	checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
+	checkInInput.setAttribute('max', checkOutInput.value);
 
-  checkInInput.addEventListener('change', function() {
-    checkOutInput.setAttribute('min', checkInInput.value);
-  });
+	const nights = document.getElementById('nights');
 
-  document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
-    element.addEventListener('keydown', (event) => {
-      event.preventDefault();
-    });
-  });
+	function computeNights() {
+		let stay = Math.abs(new Date(checkOutInput.value) - new Date(checkInInput.value)) / (1000 * 60 * 60 * 24);
+		return stay + '박';
+	}
 
-  const numberInputs = document.querySelectorAll('input[type="number"]');
+	checkOutInput.addEventListener('change', function() {
+		if (!checkInInput.value) {
+			alert('체크인 날짜를 먼저 입력하세요');
+			checkOutInput.value = '';
+			checkInInput.focus();
+		}
 
-  function limitHeadCount(event) {
-    const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
+		nights.innerHTML = computeNights();
+	});
 
-    if (headCount > 6) {
-      alert('총 인원은 6명까지 가능합니다');
-      event.target.value = event.target.getAttribute('prev-value') || 0;
-    } else {
-      event.target.setAttribute('prev-value', event.target.value);
-    }
-  }
+	checkInInput.addEventListener('change', function() {
+		checkOutInput.setAttribute('min', checkInInput.value);
 
-  numberInputs.forEach(numberInput => {
-    numberInput.setAttribute('prev-value', numberInput.value);
-    numberInput.addEventListener('change', limitHeadCount);
-  });
+		nights.innerHTML = computeNights();
+	});
+
+	checkOutInput.addEventListener('change', function() {
+		checkInInput.setAttribute('max', checkOutInput.value);
+	});
+
+	document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
+		element.addEventListener('keydown', (event) => {
+			event.preventDefault();
+		});
+	});
+
+	const numberInputs = document.querySelectorAll('input[type="number"]');
+
+	function limitHeadCount(event) {
+		const headCount = Array.from(numberInputs).reduce((acc, input) => acc + Number(input.value), 0);
+
+		if (headCount > 6) {
+			alert('총 인원은 6명까지 가능합니다');
+			event.target.value = event.target.getAttribute('prev-value') || 0;
+		} else {
+			event.target.setAttribute('prev-value', event.target.value);
+		}
+	}
+
+	numberInputs.forEach(numberInput => {
+		numberInput.setAttribute('prev-value', numberInput.value);
+		numberInput.addEventListener('change', limitHeadCount);
+	});
+
 });

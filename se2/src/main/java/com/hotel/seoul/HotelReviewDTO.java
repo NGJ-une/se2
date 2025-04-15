@@ -24,6 +24,24 @@ public class HotelReviewDTO {
 		
 	}
 
+	
+
+	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
+			int vrecommend, int vcomment, int vtotal, int vridx) {
+		super();
+		this.vidx = vidx;
+		this.vid = vid;
+		this.vtitle = vtitle;
+		this.vcontent = vcontent;
+		this.vdate = vdate;
+		this.vreadnum = vreadnum;
+		this.vrecommend = vrecommend;
+		this.vcomment = vcomment;
+		this.vtotal = vtotal;
+		this.vridx = vridx;
+	}
+
+
 
 	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
 			int vrecommend, int vcomment, int vtotal, int rnum, int vridx) {
