@@ -178,7 +178,7 @@ if(cp%maxPage==0) userGroup--;
 			for(int i = 0; i<arr.size(); i++) {
 				%>
 				<tr>
-				<td><%=arr.get(i).getRnum() %></td>
+				<td><%=arr.get(i).getVidx() %></td>
 				<td><%=arr.get(i).getVid() %></td>
 				<td><a href="content.jsp?vidx=<%=arr.get(i).getVidx()%>"><%=arr.get(i).getVtitle() %></a></td>
 				<td><%=arr.get(i).getVrecommend() %></td>

@@ -96,5 +96,5 @@ String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.ser
 %>
     <script>
         alert('<%=msg%>');
-        location.href = 'write.jsp';
+        location.href = '/se2/main/myPage/myPage_main.jsp';
     </script>

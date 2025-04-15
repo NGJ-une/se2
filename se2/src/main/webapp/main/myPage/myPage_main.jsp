@@ -134,6 +134,32 @@ td {
 	color: #795548;
 	font-weight: bold;
 }
+
+input[type="button"] {
+	padding: 6px 12px;
+	font-size: 14px;
+	margin-top: 6px;
+	margin-right: 6px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	background-color: #b58143;
+	color: white;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="button"]:hover {
+	background-color: #d59a57;
+	transform: translateY(-1px);
+}
+
+input[type="button"]:active {
+	background-color: #a96c2d;
+	transform: translateY(0);
+}
+
+
 </style>
 
 
@@ -210,17 +236,13 @@ td {
 							Calendar sevenAfterCheckout = (Calendar) checkoutCal.clone();
 							sevenAfterCheckout.add(Calendar.DAY_OF_YEAR, 7);
 
-							if (!today.before(checkoutCal) && !today.after(sevenAfterCheckout)) {
+							if (!today.before(checkoutCal) && (!today.after(sevenAfterCheckout))) {
 					%>
 						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
-						
 					<%
-					
-						
-
 							} else {
 					%>
-						기한지남
+						작성기간이 아닙니다.
 					<%
 							}
 						}
