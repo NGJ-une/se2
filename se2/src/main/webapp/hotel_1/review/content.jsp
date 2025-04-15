@@ -2,8 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "com.hotel.seoul.HotelReviewDTO" %>
+<%@ page import = "com.hotel.seoul.HotelReplyDTO" %>
 <!DOCTYPE html>
 <jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
+<jsp:useBean id="redao" class = "com.hotel.seoul.HotelReplyDAO"></jsp:useBean>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -101,7 +103,73 @@
        content: '☆';
     }
 
+  .comment-box {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        background-color: #fdfdfd;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        position: relative;
+    }
+
+    .comment-meta {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .comment-content {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        white-space: pre-wrap;
+        margin-bottom: 10px;
+    }
+
+    .comment-actions {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .comment-actions input[type="button"],
+    .comment-actions a {
+        font-size: 13px;
+        padding: 6px 10px;
+        background-color: #f0f0f0;
+        color: #555;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .comment-actions a:hover,
+    .comment-actions input[type="button"]:hover {
+        background-color: #e0e0e0;
+    }
+
+    .reply-textarea {
+        margin-top: 10px;
+    }
 </style>
+<script>
+function showTextArea(commentId) {
+	
+	var textArea = document.getElementById("replyTextArea"+commentId);
+	var subbt = document.getElementById("commentSubmit"+commentId);
+	
+	if(textArea.style.display == "none" || textArea.style.display == "") {
+		textArea.style.display = "block";
+		subbt.style.display = "block";
+	}else {
+		textArea.style.display = "none";
+		subbt.style.display = "none";
+	}
+}
+</script>
 </head>
 <%
 String id = (String)session.getAttribute("sessionid");
@@ -109,6 +177,7 @@ String vidx = request.getParameter("vidx");
 int idx = 0;
 if(vidx != null) idx = Integer.parseInt(vidx); 
 ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
+ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -116,7 +185,7 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
     <article class="center-part">
         <h2>본문 내용</h2>
         <ul>
-            <li>작성자 : <%=arr.get(0).getVid() %></li>
+            
             <%
             if(arr == null || arr.size() == 0) {
             	%>
@@ -124,6 +193,7 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
             	<%
             }else {
             %>
+            <li>작성자 : <%=arr.get(0).getVid() %></li>
             <li>작성날짜 : <%=arr.get(0).getVdate() %></li>
             <li>평점 
                  <div class="totalStar">
@@ -155,63 +225,74 @@ ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
     </article>
 
     <hr><br>
-
+	<form name = "vrecommend1" action = "recommend_ok.jsp">
+		<input type = "hidden" name = "vidx" value = "<%=idx%>">
     <div style="text-align: center">
-        <input type="button" name="recommend" value="추천">
-        <input type="button" name="notrecommend" value="비추천">
+        <input type="submit" name="recommend" value="추천 <%=arr.get(0).getVrecommend()%>">
     </div>
-
+	</form>
     <br><hr><br>
 
     <div>
         <ul>
-            
-
-            <li>작성자 : 내용 
-                <input type="button" value="추천"> 
-                <input type="button" value="비추천">
-                <a>답글</a>
-            </li>
-
-            <li>작성자 : 내용 
-                <input type="button" value="추천"> 
-                <input type="button" value="비추천">
-                <a>답글</a>
-            </li>
-
-            <li>작성자 : 내용 
-                <input type="button" value="추천"> 
-                <input type="button" value="비추천">
-                <a>답글</a>
-            </li>
-
-            <li>l</li>
-
-            <li>ㅡ 작성자 : 내용 
-                <input type="button" value="추천"> 
-                <input type="button" value="비추천">
-                <a>답글</a>
-            </li>
+        	<%
+        		if( arr2 != null && arr2.size() > 0) {
+        			for(int i = 0; i < arr2.size(); i ++) {
+        				int reWrite = arr2.get(i).getClev()*20;
+        				
+        				%>
+        				<li style = "padding-left: <%=reWrite%>px;">
+        				<div></div>
+        				작성자 : <%=arr2.get(i).getCid() %>
+        				내용 : <%=arr2.get(i).getCcontent().replaceAll(" ", "&nbsp;").replaceAll("\\n", "<br>") %> 
+        				<input type="button" value="추천(<%=arr2.get(i).getCrecommend()%>)" onclick = "location.href = 'replyRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';"> 
+        				<input type="button" value="비추천(<%=arr2.get(i).getCnotrecommend()%>)" onclick = "location.href = 'replynotRecommend_ok.jsp?cidx=<%=arr2.get(i).getCidx()%>&vidx=<%=idx%>';"> 
+        				<a href = "javascript:void(0);" onclick = "showTextArea(<%=arr2.get(i).getCidx()%>)">답글</a>
+        				<form name = "reWriteReply" action = "reWriteReply_ok.jsp">
+					        <input type="hidden" name="vidx" value="<%=arr2.get(i).getVidx()%>">
+					        <input type="hidden" name="cid" value="<%=id %>">
+					        <input type="hidden" name="cref" value="<%=arr2.get(i).getCref()%>">
+					        <input type="hidden" name="clev" value="<%=arr2.get(i).getClev()%>">
+					        <input type="hidden" name="csunbun" value="<%=arr2.get(i).getCsunbun()%>">
+				        
+						<textarea id="replyTextArea<%=arr2.get(i).getCidx()%>" name="ccontent" style="resize: none; display: none;" placeholder="답글을 작성하세요."></textarea>
+						<div class = "commentSubmit">
+							<input type = "submit" value ="등록" id="commentSubmit<%=arr2.get(i).getCidx()%>" style = "display: none;">
+						</div>
+						</form>
+						</li>
+				
+        				<%
+        			}
+        		}else {
+        			%>
+        			<li>등록된 댓글이 없습니다.</li>
+        			<%
+        		}
+        	%>
         </ul>
     </div>
 
     <div>
+    	<form name = "writeReply" action = "writeReply_ok.jsp">
+    	<input type="hidden" name="vidx" value="<%= idx %>">
         <ul>
             <li><br>
-                <textarea style = "resize: none;"></textarea>
+                <textarea style = "resize: none;" name = "ccontent"></textarea>
                 <div class="comment-submit">
-                    <input type="button" value="등록">
+                    <input type="submit" value="등록">
                 </div>
             </li>
         </ul>
+        </form>
     </div>
 
     <br><hr><br>
 
     <div style="text-align:center">
-        <input type="button" name="writeEdit" value="게시글 수정">
+        <input type="button" name="writeEdit" value="게시글 수정" onclick = "location.href = 'contentEdit.jsp?vidx=<%=idx%>';">
         <input type="button" name="writeDelete" value="게시글 삭제">
-        <input type="button" name="writeList" value="게시글 목록">
+        <input type="button" name="writeList" value="게시글 목록" onclick = "location.href='list.jsp'">
     </div>
 
     <br><br>

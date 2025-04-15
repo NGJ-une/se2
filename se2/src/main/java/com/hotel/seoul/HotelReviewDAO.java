@@ -128,6 +128,53 @@ public class HotelReviewDAO {
 			}
 		}
 	}
+	//추천수 업데이트 메서드
+	public int recommendUpdate(int idx) {
+			try {
+				conn = com.hotel.db.HotelDB.getConn();
+				String sql = "update review set vrecommend = vrecommend+1 where vidx = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, idx);
+				int count = ps.executeUpdate();
+				return count;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				try {
+					if(ps!=null) ps.close();
+					if(conn!=null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+	}
+	//리뷰 수정 메서드
+//	public int contentEdit() {
+//		
+//	}
+	
+	//리뷰 삭제 메서드
+	public int contentDel(int idx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "delete review where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }
 	
 	
