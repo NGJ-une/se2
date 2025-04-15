@@ -154,9 +154,15 @@ window.onload = function () {
 };
 </script>
 </head>
+
 <%
 String id = (String)session.getAttribute("sessionid");
-String ridx = (String)request.getAttribute("ridx"); // 예약 번호를 request에서 받음
+String vridx=request.getParameter("vridx");
+//String vridx = (String)request.getAttribute("vridx"); // 예약 번호를 request에서 받음
+
+System.out.println(vridx);
+
+
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -223,7 +229,7 @@ String ridx = (String)request.getAttribute("ridx"); // 예약 번호를 request�
 
             <tr>
                 <td colspan="2" align="center">
-                <input type="hidden" name="ridx" value="<%= ridx %>">  <!-- hidden으로 예약 번호 전달 -->
+                <input type="hidden" name="vridx" value="<%= vridx %>">  <!-- hidden으로 예약 번호 전달 -->
                     <input type="submit" value="글쓰기">
                     <input type="reset" value="다시 작성">
                 </td>
