@@ -131,7 +131,7 @@
         <!-- 숙박일수 -->
         <div class="reservation-item">
           <label><img src="/se2/css/img/icon_MOON.png"></label>
-          <div class="value">1박</div>
+          <div class="value" id="nights">1박</div>
         </div>
 
         <!-- 객실 -->
