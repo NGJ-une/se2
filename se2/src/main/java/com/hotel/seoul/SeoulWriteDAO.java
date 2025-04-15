@@ -21,13 +21,21 @@ public class SeoulWriteDAO {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			
-			String sql = "INSERT INTO REVIEW (VIDX, VID, VTITLE, VCONTENT, VDATE, VTOTAL) VALUES(SQ_REVIEW_IDX.NEXTVAL,?,?,?,SYSDATE,?)";
+			String sql = "INSERT INTO REVIEW (VIDX, VID, VTITLE, VCONTENT, VDATE, VTOTAL) VALUES(SQ_REVIEW_IDX.NEXTVAL,?,?,?,SYSDATE,?,?)";
 			
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, vdto.getVid()); // dto에 있는 변수에 넣음 내가 넣을 변수들
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, vdto.getVid());// dto에 있는 변수에 넣음 내가 넣을 변수들
 			ps.setString(2, vdto.getVtitle());
 			ps.setString(3, vdto.getVcontent());
-			ps.setInt(4, vdto.getVtotal());
+			ps.setDate(4, vdto.getVdate());
+			ps.setInt(5, vdto.getVtotal());
+			ps.setInt(6, vdto.getVridx());
+			
+//			ps.setString(1, vdto.getVid()); 
+//			ps.setString(2, vdto.getVtitle());
+//			ps.setString(3, vdto.getVcontent());
+//			ps.setInt(4, vdto.getVtotal());
+//			ps.setInt(5), vdto.getVridx());
 			
 			int count=ps.executeUpdate();
 			
