@@ -1,4 +1,4 @@
---µî±Ş Å×ÀÌºí »ı¼º  
+--µî±Ş Å×ÀÌºí »ı¼º  1¹ø  
 CREATE TABLE grade (
     grade varchar2(50) primary key, --µî±Ş 
     min_point number(10) not null, --ÃÖ¼Ò Æ÷ÀÎÆ®  
@@ -6,35 +6,7 @@ CREATE TABLE grade (
     discount number(10) not null --ÇÒÀÎÀ²
 )
 
---Áú¹® Å×ÀÌºí »ı¼º
-CREATE TABLE question (
-    question number(2) primary key, -- Áú¹®¹øÈ£
-    content varchar(50) not null -- Áú¹®³»¿ë 
-) 
-
---·Î±×ÀÎ / È¸¿ø °¡ÀÔ Å×ÀÌºí »ı¼º 
-CREATE TABLE member( 
-    id varchar2(30) primary key, --¾ÆÀÌµğ
-    idx number(5) unique not null, --È¸¿ø¹øÈ£
-    pwd varchar2(50) not null, --ºñ¹Ğ¹øÈ£
-    fname varchar2(50) not null, --ÀÌ¸§
-    lname varchar2(50) not null, --¼º
-    birth date not null, --»ı³â¿ùÀÏ
-    email varchar2(100) not null, --ÀÌ¸ŞÀÏ
-    tel varchar2(50) not null, --ÀüÈ­¹øÈ£
-    addr varchar2(150) not null, -- ÁÖ¼Ò
-    grade varchar2(50) default 'BRONZE', --µî±Ş (¿Ü·¡Å°) 
-    join_date date not null, -- °¡ÀÔ³¯Â¥
-    point number(10) default 0, --´©ÀûÆ÷ÀÎÆ® 
-    money number(10) default 0, --»ç¿ë°¡´É±İ¾×  
-    question number(2) not null, --Áú¹®¹øÈ£ (¿Ü·¡Å°) 
-    answer varchar2(50) not null, --´äº¯ 
-    
-    constraint fk_grade foreign key(grade) references grade(grade),
-    constraint fk_question foreign key(question) references question(question)
-)
-
---°´½Ç Å×ÀÌºí »ı¼º  
+--°´½Ç Å×ÀÌºí »ı¼º 2¹ø  
 CREATE TABLE room (
     type varchar2(50) primary key, --°´½ÇÅ¸ÀÔ (¿Ü·¡Å°) 
     idx number(5) not null, --°íÀ¯ °´½Ç¹øÈ£
@@ -43,34 +15,66 @@ CREATE TABLE room (
     capacity number(5) not null --ÃÖ´ë¼ö¿ëÀÎ¿ø    
 )
 
---È£ÅÚ Å×ÀÌºí »ı¼º 
+--È£ÅÚ Å×ÀÌºí »ı¼º 3¹ø  
 CREATE TABLE hotel ( 
-    name varchar2(30) primary key, --È£ÅÚ ÀÌ¸§ (¿Ü·¡Å°) 
-    idx number(5) not null, --È£ÅÚ °íÀ¯¹øÈ£
+    hname varchar2(30) primary key, --È£ÅÚ ÀÌ¸§ (¿Ü·¡Å°) 
+    hidx number(5) not null, --È£ÅÚ °íÀ¯¹øÈ£
     standard number(10) not null, --½ºÅÄ´Ùµå
     deluxe number(10) not null, --µğ·°½º 
     suite number(10) not null, --½ºÀ§Æ® 
     grand number(10) not null -- ±×·£µå  
 ) 
 
---¿¹¾à Å×ÀÌºí »ı¼º 
-CREATE TABLE reser (
-    idx number(5) primary key, --¿¹¾à¹øÈ£  
-    id varchar2(30) unique not null, --¾ÆÀÌµğ (¿Ü·¡Å°) 
-    name varchar2(5) not null, -- È£ÅÚ ÀÌ¸§ (¿Ü·¡Å°) 
-    type varchar2(50) not null, -- °´½ÇÅ¸ÀÔ (¿Ü·¡Å°) 
-    checkin date not null, --Ã¼Å©ÀÎ ½Ã°£
-    checkout date not null, --Ã¼Å©¾Æ¿ô ½Ã°£
-    adult number(2) default 0, --¼ºÀÎ
-    kid number(2) default 0, --¾î¸°ÀÌ 
-    baby number(2) default 0, --À¯¾Æ
-    money number(10) not null, -- °áÁ¦±İ¾×  
+
+--Áú¹® Å×ÀÌºí »ıquestion¼º 4¹ø 
+CREATE TABLE question (
+    question number(2) primary key, -- Áú¹®¹øÈ£
+    content varchar(50) not null -- Áú¹®³»¿ë 
+) 
+
+
+--·Î±×ÀÎ / È¸¿ø °¡ÀÔ Å×ÀÌºí »ı¼º 5¹ø  
+CREATE TABLE member( 
+    mid varchar2(30) primary key, --¾ÆÀÌµğ 
+    midx number(5) unique not null, --È¸¿ø¹øÈ£
+    mpwd varchar2(50) not null, --ºñ¹Ğ¹øÈ£
+    mfname varchar2(50) not null, --ÀÌ¸§
+    mlname varchar2(50) not null, --¼º
+    mbirth date not null, --»ı³â¿ùÀÏ
+    memail varchar2(100) not null, --ÀÌ¸ŞÀÏ
+    mtel varchar2(50) not null, --ÀüÈ­¹øÈ£
+    maddr varchar2(150) not null, -- ÁÖ¼Ò
+    mgrade varchar2(50) default 'BRONZE', --µî±Ş (¿Ü·¡Å°) 
+    mjoin_date date not null, -- °¡ÀÔ³¯Â¥
+    mpoint number(10) default 0, --´©ÀûÆ÷ÀÎÆ® 
+    mmoney number(10) default 0, --»ç¿ë°¡´É±İ¾×  
+    mquestion number(2) not null, --Áú¹®¹øÈ£ (¿Ü·¡Å°) 
+    manswer varchar2(50) not null, --´äº¯ 
     
-    constraint fk_member_id foreign key(id) references member(id),
-    constraint fk_room_type foreign key(type) references room(type),
-    constraint fk_hotel_name foreign key(name) references hotel(name)
+    constraint fk_grade foreign key(mgrade) references grade(grade),
+    constraint fk_question foreign key(mquestion) references question(question)
 )
---È¯ºÒ Å×ÀÌºí »ı¼º
+
+--¿¹¾à Å×ÀÌºí »ı¼º 6¹ø  
+CREATE TABLE reser (
+    ridx number(5) primary key, --¿¹¾à¹øÈ£  
+    rid varchar2(50) not null, --¾ÆÀÌµğ (¿Ü·¡Å°) 
+    rname varchar2(50) not null, -- È£ÅÚ ÀÌ¸§ (¿Ü·¡Å°) 
+    rtype varchar2(50) not null, -- °´½ÇÅ¸ÀÔ (¿Ü·¡Å°) 
+    rcheckin date not null, --Ã¼Å©ÀÎ ½Ã°£
+    rcheckout date not null, --Ã¼Å©¾Æ¿ô ½Ã°£
+    radult number(3) default 0, --¼ºÀÎ
+    rkid number(3) default 0, --¾î¸°ÀÌ 
+    rbaby number(3) default 0, --À¯¾Æ
+    rmoney number(10) not null, -- °áÁ¦±İ¾× 
+    
+    constraint fk_member_id foreign key(rid) references member(mid),
+    constraint fk_room_type foreign key(rtype) references room(type),
+    constraint fk_hotel_name foreign key(rname) references hotel(hname)
+)
+
+
+--È¯ºÒ Å×ÀÌºí »ı¼º 7¹ø  
 CREATE TABLE refund (
     bidx number (5) primary key, --È¯ºÒ ¹øÈ£ 
     bid varchar2 (30) not null, -- È¸¿ø ¾ÆÀÌµğ (¿Ü·¡Å°) 
@@ -81,17 +85,24 @@ CREATE TABLE refund (
     
     constraint fk_member_mid foreign key(bid) references member(mid)
 )
---¹®ÀÇ Å×ÀÌºí »ı¼º 
+
+
+--¹®ÀÇ Å×ÀÌºí »ı¼º 8¹ø  
 CREATE TABLE inquiry (
     iidx number(5) primary key, --¹®ÀÇ È¸¿ø¹øÈ£ (±âº»Å°)  
-    iid varchar2(50) not null, --¹®ÀÇ ¾ÆÀÌµğ (¿Ü·¡Å°)
-    itype varchar2(30) not null, --¹®ÀÇ À¯Çü 
+    iid varchar2(50) not null, --¹®ÀÇ ¾ÆÀÌµğ (¿Ü·¡Å°) 
     ititle varchar2(100) not null, --¹®ÀÇ Á¦¸ñ 
     icontent varchar2(3000) not null, -- ¹®ÀÇ ³»¿ë 
     idate date not null, --¹®ÀÇ ³¯Â¥ 
+    iref number(4) default 0,
+    ilev number(4) default 0,
+    isunbun number(4) default 0,
 
 constraint fk_member_id2 foreign key(iid) references member(mid)
-) 
+)   
+
+
+   
 --ÈÄ±â Å×ÀÌºí »ı¼º 9¹ø  
 CREATE TABLE review (
     vidx number(5) primary key, --ÈÄ±â ¹øÈ£ 
@@ -102,8 +113,8 @@ CREATE TABLE review (
     vreadnum number(5) default 0, --Á¶È¸¼ö 
     vrecommend number(5) default 0, --ÃßÃµ¼ö 
     vcomment number(5) default 0, --´ñ±Û ´Ş¸° ¼ö
-    vtotal number(1) default 0, -- ÆòÁ¡
-    vridx number(5) not null,
+    vtotal number(1) default 0, -- ÆòÁ¡ 
+    vridx number(5) not null, --¿¹¾à ¹øÈ£ 
     
     constraint fk_member_id3 foreign key(vid) references member(mid),
     constraint fk_reser_idx foreign key(vridx) references reser(ridx)
@@ -126,7 +137,6 @@ CREATE TABLE reply (
     constraint fk_review_vidx foreign key(vidx) references review(vidx)
 ) 
 
-
 --»çÁø Å×ÀÌºí »ı¼º 11¹ø  
 CREATE TABLE photo (
     pidx number(5) default 0, --ÈÄ±â ¹øÈ£ 
@@ -139,6 +149,7 @@ CREATE TABLE photo (
 commit
 
 
+
 --½ÃÄö½º »ı¼º  
 CREATE SEQUENCE sq_member_idx --·Î±×ÀÎ/È¸¿ø°¡ÀÔ Å×ÀÌºí  È¸¿ø¹øÈ£ ½ÃÄö½º  
 CREATE SEQUENCE sq_reser_idx -- ¿¹¾à Å×ÀÌºí ¿¹¾à¹øÈ£ ½ÃÄö½º 
@@ -148,7 +159,7 @@ CREATE SEQUENCE sq_refund_idx -- È¯ºÒ Å×ÀÌºí È¯ºÒ ¹øÈ£ ½ÃÄö½º
 CREATE SEQUENCE sq_inquiry_idx --¹®ÀÇ Å×ÀÌºí ¹®ÀÇ ¹øÈ£ ½ÃÄö½º 
 CREATE SEQUENCE sq_review_idx --ÈÄ±â Å×ÀÌºí ÈÄ±â ¹øÈ£ ½ÃÄö½º
 CREATE SEQUENCE sq_reply_idx -- ´ñ±Û Å×ÀÌºí ´ñ±Û ¹øÈ£ ½ÃÄö½º
-CREATE SEQUENCE sq_photo_idx -- »çÁø Å×ÀÌºí »çÁø ¹øÈ£ ½ÃÄö½º 
+CREATE SEQUENCE sq_photo_num -- »çÁø °íÀ¯¹øÈ£ ½ÃÄö½º 
 
 --grade ±âº»µ¥ÀÌÅÍ ÀÔ·Â  
 INSERT INTO grade values('BRONZE',0,200000,0)
@@ -188,9 +199,7 @@ SELECT * FROM room
 SELECT * FROM hotel
 SELECT * FROM refund
 SELECT * FROM inquiry
-SELECT * FROM reviw
-SELECT * FROM reply
-SELECT * FROM photo
+
 --µ¥ÀÌÅÍ »èÁ¦ 
 DELETE reser
 DELETE member
@@ -200,9 +209,12 @@ DELETE question
 DELETE grade
 DELETE refund
 DELETE inquiry
-DELETE reviw
+DELETE review
 DELETE reply
 DELETE photo
+
+commit
+
 --Å×ÀÌºí »èÁ¦ 
 DROP TABLE reser
 DROP TABLE member
@@ -213,8 +225,9 @@ DROP TABLE grade
 DROP TABLE refund
 DROP TABLE inquiry
 DROP TABLE review
-DROP TABLE reply
 DROP TABLE photo
+DROP TABLE reply
+
 --½ÃÄö½º »èÁ¦ 
 DROP SEQUENCE sq_member_idx
 DROP SEQUENCE sq_reser_idx
@@ -222,9 +235,11 @@ DROP SEQUENCE sq_room_idx
 DROP SEQUENCE sq_hotel_idx
 DROP SEQUENCE sq_refund_idx
 DROP SEQUENCE sq_inquiry_idx
-DROP SEQUENCE sq_review_idx
-DROP SEQUENCE sq_reply_idx
-DROP SEQUENCE sq_photo_idx 
+DROP SEQUENCE sq_review_idx --ÈÄ±â Å×ÀÌºí ÈÄ±â ¹øÈ£ ½ÃÄö½º
+DROP SEQUENCE sq_reply_idx -- ´ñ±Û Å×ÀÌºí ´ñ±Û ¹øÈ£ ½ÃÄö½º
+DROP SEQUENCE sq_photo_idx -- »çÁø Å×ÀÌºí »çÁø ¹øÈ£ ½ÃÄö½º
+DROP SEQUENCE sq_photo_num  --»çÁø Å×ÀÌºí »çÁø °íÀ¯¹øÈ£ ½ÃÄö½º 
+
 --
 COMMIT
 
@@ -236,13 +251,3 @@ desc hotel
 desc question
 desc refund
 desc inquiry
-desc review
-desc reply
-desc photo
-
-?˜ë¶ˆ ?´ì—­ - ?˜ë¶ˆ ë²ˆí˜¸, ?„ì´?? ?€?? ê³„ì¢Œë²ˆí˜¸, ?˜ë¶ˆ ê¸ˆì•¡, ?˜ë¶ˆ ? ì§œ
-idx, id ,bank, account,refund , date
-?˜ë¶ˆ ?´ì—­ b ë¡??±ã„±
-n
-
-
