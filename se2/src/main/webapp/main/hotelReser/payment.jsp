@@ -15,7 +15,12 @@
 	margin-left: 10%;
 	color: #6b4c2f;
 }
-
+.payment-container {
+	margin: 10px auto;
+	padding: 20px;
+	height: auto;
+	display:flex;
+}
 .roomInfo {
 	padding: 20px;
 }
@@ -56,30 +61,31 @@
 	margin-right: 10px;
 }
 
-.payment-container {
-	margin: 10px auto;
-	padding: 20px;
-	height: auto;
-	display:flex;
-}
+
 
 .payment-notice {
-	width: 1080px;
+	width: 900px;
+	height: auto;
+	margin-left: 30px;
 }
 
 .payment-info {
-	float: right;
-	text-align: right;
+	width: 300px;
+	text-align: left;
 	padding: 10px;
-	background-color: #whitesmoke;
+	background-color: white;
 	height : 500px;
 	position: sticky;
-	top: 20px;
+	top: 220px;
+	border: 2px dashed #c34a36;
 }
 
 .payment-info-list ul {
 	list-style-type: none;
-	font-size: 20px;
+	font-size: 18px;
+}
+.payment-info-list-bold{
+	font-weight: bold;
 }
 .grade-diamond { color: #8e44ad; font-weight: bold; }
 .grade-gold { color: #f39c12; font-weight: bold; }
@@ -154,10 +160,11 @@
 
 .payment-confirm{
 	display: inline-block;
-	margin: 10px;
+	margin-top: 20px;
 	padding: 10px;
-	font-size: 30px;
+	font-size: 20px;
 	border-top: 1px solid black;
+	width: 240px;
 }
 
 .payment-confirm input {
@@ -167,6 +174,15 @@
 }
 </style>
 <%
+if (session.getAttribute("sessionid") == null){
+%>
+<script>
+	alert('로그인 후 사용 가능');
+	window.location.href = '/se2/main/member/login.jsp';	
+</script>
+<% 
+	return;
+}
 request.setCharacterEncoding("utf-8");
 
 String grade = (String)session.getAttribute("grade");
@@ -191,78 +207,90 @@ String imgSrc = request.getParameter("img");
 			<div class="wrapper">
 				<form action="/se2/main/hotelReser/hotelReser_ok.jsp" name="payment" method="post">
 					<h1 class="payment-title">예약하기</h1>
-					<div class="roomInfo">
-						<fieldset>
-							<legend>예약 정보 확인</legend>
-							<img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
-							<label>방 종류</label><input type="text" name="type" value="<%= selectedType %>" readonly><br>
-							<label>체크인</label><input type="date" name="checkInStr" value="<%= checkInStr %>" readonly>
-						    <label>체크아웃</label><input type="date" name="checkOutStr" value="<%= checkOutStr %>" readonly><br>
-						    <label>성인</label><input type="number" name="adult" value="<%= reserDTO.getAdult() %>" readonly>
-						    <label>어린이</label><input type="number" name="kid" value="<%= reserDTO.getKid() %>" readonly>
-						    <label>유아</label><input type="number" name="baby" value="<%= reserDTO.getBaby() %>" readonly>
-						</fieldset>
-					</div>
 					<div class="payment-container">
-						<div class="payment-notice">
-							<p>
-								결제 시 유의사항<br><br>
-							 	1. 결제 정보 정확성<br><br>
-							 	확인 결제에 사용되는 카드 정보, 주소 및 연락처 정보를 정확하게 입력해 주세요.<br>
-							 	 잘못된 정보 입력으로 인한 문제는 호텔에서 책임지지 않습니다.<br><br> 
-								2. 결제 수단 현재<br><br>
-								호텔은 신용카드, 체크카드, 온라인 결제 시스템 등 다양한 결제 수단을 지원합니다.<br>
-								결제 수단에 따라 추가 수수료가부과될 수 있습니다.<br><br> 
-								3. 예약 확정<br><br> 
-								결제가 완료되면 예약이 확정됩니다. 결제 전 예약 내용을 다시 한 번 확인해 주세요.<br>
-								결제 완료 후에는 예약 변경이나 취소가 제한될 수 있습니다.<br><br> 
-								4. 환불 정책<br><br> 
-								환불이 필요한 경우, 호텔의 환불 정책을 확인해주세요.<br>
-								환불은 결제 수단에 따라 다르게 처리될 수 있으며, 일부 예약은 환불이 불가할 수 있습니다.<br><br> 
-								5. 보안 모든 결제<br><br>
-								정보는 SSL 암호화로 안전하게 처리됩니다.<br>
-								결제 정보를 입력하는 페이지는 보안이 강화된 환경에서만 사용되므로 안심하고 결제하셔도 됩니다.<br><br>
-								6. 예약 변경 및 취소<br><br>
-								예약 변경 또는 취소가 필요한 경우, 호텔의 정책에 따라 제한이 있을 수 있습니다.<br>
-								예약 전 취소 및 변경 조건을 꼭 확인해 주세요.<br><br>
-								7. 기타<br><br> 
-								결제 후 발생한 오류나 문제에 대해서는 고객센터를 통해 문의해 주시기 바랍니다.<br>
-								결제 관련 문의는 [고객센터 연락처]로 해주시면 빠르게 처리해 드리겠습니다.<br>
-							</p>
+						<div class="">
+							<div class="roomInfo">
+								<fieldset>
+									<legend>예약 정보 확인</legend>
+									<img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
+									<label>방 종류</label><input type="text" name="type" value="<%= selectedType %>" readonly><br>
+									<label>체크인</label><input type="date" name="checkInStr" value="<%= checkInStr %>" readonly>
+								    <label>체크아웃</label><input type="date" name="checkOutStr" value="<%= checkOutStr %>" readonly><br>
+								    <label>성인</label><input type="number" name="adult" value="<%= reserDTO.getAdult() %>" readonly>
+								    <label>어린이</label><input type="number" name="kid" value="<%= reserDTO.getKid() %>" readonly>
+								    <label>유아</label><input type="number" name="baby" value="<%= reserDTO.getBaby() %>" readonly>
+								</fieldset>
+							</div>
+							<div class="payment-notice">
+								<p>
+									결제 시 유의사항<br><br>
+								 	1. 결제 정보 정확성 확인<br><br>
+								 	 결제에 사용되는 카드 정보, 주소 및 연락처 정보를 정확하게 입력해 주세요.<br>
+								 	 잘못된 정보 입력으로 인한 문제는 호텔에서 책임지지 않습니다.<br><br> 
+									2. 결제 수단<br><br>
+									현재 호텔은 신용카드, 체크카드, 온라인 결제 시스템 등 다양한 결제 수단을 지원합니다.<br>
+									결제 수단에 따라 추가 수수료가부과될 수 있습니다.<br><br> 
+									3. 예약 확정<br><br> 
+									결제가 완료되면 예약이 확정됩니다. 결제 전 예약 내용을 다시 한 번 확인해 주세요.<br>
+									결제 완료 후에는 예약 변경이나 취소가 제한될 수 있습니다.<br><br> 
+									4. 환불 정책<br><br> 
+									환불이 필요한 경우, 호텔의 환불 정책을 확인해주세요.<br>
+									환불은 결제 수단에 따라 다르게 처리될 수 있으며, 일부 예약은 환불이 불가할 수 있습니다.<br><br> 
+									5. 보안<br><br>
+									모든 결제 정보는 SSL 암호화로 안전하게 처리됩니다.<br>
+									결제 정보를 입력하는 페이지는 보안이 강화된 환경에서만 사용되므로 안심하고 결제하셔도 됩니다.<br><br>
+									6. 예약 변경 및 취소<br><br>
+									예약 변경 또는 취소가 필요한 경우, 호텔의 정책에 따라 제한이 있을 수 있습니다.<br>
+									예약 전 취소 및 변경 조건을 꼭 확인해 주세요.<br><br>
+									7. 기타<br><br> 
+									결제 후 발생한 오류나 문제에 대해서는 고객센터를 통해 문의해 주시기 바랍니다.<br>
+									결제 관련 문의는 [고객센터 연락처]로 해주시면 빠르게 처리해 드리겠습니다.<br>
+								</p>
+							</div>
 						</div>
 						<div class="payment-info">
 							<div class="payment-info-list">
 								<ul>
-									<li><span class="grade-<%= grade.toLowerCase() %>">회원 등급: <%= grade %></span>
+									<li class="payment-info-list-bold">&#8251; 숙소 금액
+									<li><br>
+									<li><%= selectedType.substring(2) %>: <%= selectedMoney %> 원
+									<li><br>
+									<li class="payment-info-list-bold">&#8251; 등급 및 할인
+									<li><br>
+									<li>등급: <span class="grade-<%= grade.toLowerCase() %>"><%= grade %></span>
+									<li>할인 : <span class="dcRate"><%= dcRate %>%</span>
+									<li><br>
+									<li class="payment-info-list-bold">&#8251; 최종 결제 금액
+									<li><br>
+									<li><%= selectedType.substring(2) %>: <%= dcPrice %>원 (<%= dcRate %>% 할인)
 									<li><br>
 									<li><span class="balance">보유 자금: <%= balance %> 원</span>
-									<li><br>
-									<li class="dcRate">-<%= dcRate %>% 할인
-									<li class="orgPrice"><%= selectedMoney %> 원
-									<li class="dcPrice"><%= dcPrice %> 원
 								</ul>
 							</div>
 							<div class="payment-confirm">
 			    <%
 			    if (dcPrice <= balance){
 			    %>
-					    	<span>결제 후 잔액: <%= balance - dcPrice %></span><br> 
-					    	<input type="submit" value="결제하기">
+					    		<span>결제 후 잔액: <%= balance - dcPrice %></span><br> 
+					    		<div style="text-align: right; margin-top: 5px;">
+					    			<input type="submit" value="결제하기">
 			    <%
 			    } else{
 			    %>
-					    	<span>잔액이 부족합니다</span><br>
-					    	<input type="button" value="충전하기" onclick="window.location.href = '/se2/main/myPage/deposit.jsp'">
+					    			<span>잔액이 부족합니다</span><br>
+					    			<input type="button" value="충전하기" onclick="window.location.href = '/se2/main/myPage/deposit.jsp'">
 			    <%
 			    }
 			    %>
-			    			<input type="button" value="취소" onclick="window.location.href = '/se2/main/hotelReser/hotelReser.jsp'">
+			    					<input type="button" value="취소" onclick="window.location.href = '/se2/main/hotelReser/hotelReser.jsp'">
+								</div>
 							</div>
 						</div>
 					</div>
 			    	<input type="hidden" name="id" value="<%= (String)session.getAttribute("sessionid") %>">
 					<input type="hidden" name="name" value="<%= reserDTO.getName() %>">
 			    	<input type="hidden" name="money" value="<%= dcPrice %>">
+			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney %>">
 				</form>
 			</div>
 		</article>

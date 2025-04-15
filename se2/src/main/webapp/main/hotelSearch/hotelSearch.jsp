@@ -8,6 +8,7 @@
   <h2 class="popup-title">호텔 찾기</h2>
   <div class="hotel-grid">
 
+
     <!-- 서울 카드 -->
     <div class="hotel-card" onclick="location.href='/se2/index.jsp'">
       <img src="/se2/gallery/img/seoul/other/LocalArea.png" alt="HELIA 서울">
@@ -16,6 +17,7 @@
         <p>세련된 도심 속 프라이빗한 럭셔리</p>
       </div>
     </div>
+
 
     <!-- 울산 카드 -->
     <div class="hotel-card" onclick="location.href='/se2/hotel_1/hotelUlsan.jsp'">

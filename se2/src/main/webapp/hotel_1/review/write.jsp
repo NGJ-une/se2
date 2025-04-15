@@ -156,7 +156,7 @@ window.onload = function () {
 </head>
 <%
 String id = (String)session.getAttribute("sessionid");
-
+String ridx = (String)request.getAttribute("ridx"); // 예약 번호를 request에서 받음
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -223,6 +223,7 @@ String id = (String)session.getAttribute("sessionid");
 
             <tr>
                 <td colspan="2" align="center">
+                <input type="hidden" name="ridx" value="<%= ridx %>">  <!-- hidden으로 예약 번호 전달 -->
                     <input type="submit" value="글쓰기">
                     <input type="reset" value="다시 작성">
                 </td>

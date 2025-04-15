@@ -13,7 +13,9 @@
   
 <link rel="stylesheet" type="text/css" href="/se2/css/body.main-page.css">
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
+
 <script src="/se2/indexJS_head.js"></script>
+
 </head>
 <body class="main-page">
 <%@include file="/header.jsp" %>
@@ -203,7 +205,7 @@
 	                    <td><%=dto.getUnu_point() %>원</td>
 	                    <td><%=dto.getNow_discount() %> %</td>
 	                    <td><%=dto.getTotal_reser() %>건</td>
-	                    <td><%=dto.getTotal_point() %>원</td>
+	                    <td><%=(int)session.getAttribute("point") %>원</td>
 	                </tr>
 	                <tr>
 	                <%

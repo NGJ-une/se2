@@ -1,6 +1,6 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><%request.setCharacterEncoding("utf-8");%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="com.oreilly.servlet.*" %>
 
 
@@ -44,13 +44,16 @@ String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.ser
     String pname2=mr.getOriginalFileName("pname2");
     String pname3=mr.getOriginalFileName("pname3");
     
+    String vridx_s = mr.getParameter("vridx"); // JSP에서 넘어온 ridx 값
+    int vridx = Integer.parseInt(vridx_s);  
+    
     //<jsp:setProperty property="*" name="vdto" />
 
 	vdto.setVid(vid);
 	vdto.setVtitle(vtitle);
 	vdto.setVcontent(vcontent);
     vdto.setVtotal(vtotal);
-
+    vdto.setVridx(vridx);
     
     // dto 안에 진짜 들어갔는지 확인
     System.out.println(vdto.getVid());

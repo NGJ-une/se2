@@ -73,7 +73,7 @@ public class ReserDAO {
 		}
 	}
 	
-	public int reserveRoom(ReserDTO dto) {
+	public int reserveRoom(ReserDTO dto, int orgPrice) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
 			
@@ -88,6 +88,18 @@ public class ReserDAO {
 			ps.setInt(7, dto.getKid());
 			ps.setInt(8, dto.getBaby());
 			ps.setInt(9, dto.getMoney());
+			
+			int count = ps.executeUpdate();
+			
+			if (count < 1) {
+				return count;
+			}
+			
+			sql = "UPDATE member SET mpoint = mpoint + ?, mmoney = mmoney - ? WHERE mid = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, orgPrice);
+			ps.setInt(2, dto.getMoney());
+			ps.setString(3, dto.getId());
 			
 			return ps.executeUpdate();
 		} catch(Exception e) {
