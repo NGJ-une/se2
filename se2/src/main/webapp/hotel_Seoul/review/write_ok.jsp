@@ -28,10 +28,12 @@ if (contentType == null || !contentType.startsWith("multipart/")) {
     //String savePath = "C:/java_student/project2/se2/se2/src/main/webapp/hotel_1/review/upload";
 	//String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/myweb/filebbs/files";
 
+
 	//String savePath = "C:/java_student/project2/se2/se2/src/main/webapp/hotel_1/review/upload";
 	String savePath = application.getRealPath("/upload");
 	
     File directory = new File(savePath);
+
 
     if (!directory.exists()) {
         directory.mkdirs();
