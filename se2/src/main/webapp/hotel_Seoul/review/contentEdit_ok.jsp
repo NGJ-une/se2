@@ -61,22 +61,42 @@ File directory = new File(savePath);
     vdto.setVtotal(vtotal);
     vdto.setVidx(vidx);
     	
+    ArrayList<HotelPhotoDTO> arr3 = pdao.getphoto(vidx);
+    String dpname1=mr.getOriginalFileName("pname1");
+    String dpname2=mr.getOriginalFileName("pname2");
+    String dpname3=mr.getOriginalFileName("pname3");
+    System.out.println("dpname1=" + dpname1);
+    String pname1= "";
+    String pname2= "";
+    String pname3= "";
+    if(arr3 != null && arr3.size() != 0) {
+    	pname1 = arr3.get(0).getPname1();
+    	pname2 = arr3.get(0).getPname2();
+    	pname3 = arr3.get(0).getPname3();
+    }
     
-    String dpname1=mr.getParameter("pname1");
-    String dpname2=mr.getParameter("pname2");
-    String dpname3=mr.getParameter("pname3");
-    
-    String pname1=mr.getOriginalFileName("pname1"); //사용자가 올린 파일 이름
-    String pname2=mr.getOriginalFileName("pname2");
-    String pname3=mr.getOriginalFileName("pname3");
+    System.out.println("pname1=" + pname1);
  
-  	if(pname1 == null) pname1 = dpname1; 
-  	if(pname2 == null) pname2 = dpname2; 
-  	if(pname3 == null) pname3 = dpname3; 
-  	
-  	pdto.setPname1(pname1);
-  	pdto.setPname2(pname2);
-  	pdto.setPname3(pname3);
+  	if(dpname1 == null) {
+  		dpname1=pname1;
+  		pdto.setPname1(dpname1); 
+  	}else {
+  		pdto.setPname1(dpname1);
+  	}
+  	if(dpname2 == null) {
+  		dpname2=pname2;
+  		pdto.setPname2(dpname2); 
+  	}else {
+  		pdto.setPname2(dpname2);
+  	}
+  	if(dpname3 == null) {
+  		dpname3=pname3;
+  		pdto.setPname3(dpname3); 
+  	}else {
+  		pdto.setPname3(dpname3);
+  	}
+  
+  	 System.out.println("111dpname1=" + dpname1);
   	pdto.setPidx(vidx);
  
 	int reviewUpdate = vdao.reviewUpdate(vdto);
@@ -86,14 +106,12 @@ File directory = new File(savePath);
 		if(reviewUpdate > 0 && photoUpdate > 0) {
 			%>
 			<script>
-			alert('리뷰 수정 O');
 			location.href = 'content.jsp?vidx=<%=vidx%>';
 			</script>
 			<%	
 		} else {
 			%>
 			<script>
-			alert('사진 수정 X');
 			location.href = 'content.jsp?vidx=<%=vidx%>';
 			</script>
 			<%
@@ -101,7 +119,7 @@ File directory = new File(savePath);
 	}else {
 		%>
 		<script>
-		alert('리뷰 수정 X');
+		alert('알 수 없는 이유로 리뷰 수정에 어려움이 있습니다. 고객센터로 문의바랍니다.(010-4193-9065)');
 		location.href = 'content.jsp?vidx=<%=vidx%>';
 		</script>
 		<%
