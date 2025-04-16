@@ -22,16 +22,17 @@ html, body {
 /* 로그인/회원가입 */
 .header-utils {
   display: flex;
-  justify-content: center; /* 좌우 배치 */
+  justify-content: space-betweenr; 
   align-items: center;
-  padding: 0 20px;
-  gap: 1000px; /* 링크 간 간격 */
+  width: 1300px;  /* 고정 폭*/
+  margin: 0 auto;
+  padding: 10px 0;
+  gap: 1000px;
 }
 
 .left-utils,
 .right-utils {
   display: flex;
-  align-items: center;
   gap: 12px; /* 링크 간 간격 */
 }
 
@@ -50,7 +51,7 @@ html, body {
 
 .hotel-search-btn {
   font-weight: 500;
-  padding: 4px 10px;
+  padding: 4px 50px;
   border-radius: 4px;
 }
 /* 로고 */
