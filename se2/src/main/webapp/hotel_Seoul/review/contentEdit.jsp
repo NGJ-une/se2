@@ -169,6 +169,7 @@ int vidx = 0;
 if(idx != null) vidx = Integer.parseInt(idx);
 String id = (String)session.getAttribute("sessionid");
 ArrayList<HotelReviewDTO> arr = rdao.getreviewEdit(vidx);
+System.out.println(arr);
 ArrayList<HotelPhotoDTO> arr2 = pdao.getphoto(vidx);
 String filename1 = "";
 String filename2 = "";
@@ -206,7 +207,8 @@ if(arr2 != null & arr2.size() != 0) {
             if (arr != null && arr.size() != 0) {	
            %>
                 <th>제목</th>
-                <td><input type="text" name="vtitle" required value = "<%=arr.get(0).getVtitle() %>"></td>
+                <td><input type="text" name="vtitle" required value = "<%=arr.get(0).getVtitle() %>">
+                <input type = "hidden" name = "idx" value = "<%=vidx%>"></td>
             </tr>
             <tr>
                 <th>내용</th>
@@ -219,7 +221,7 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file1">파일 선택</label>
-                        <input type="file" name="pname1" id="file1" value ="<%=filename1%>">
+                        <input type="file" name="p1" id="file1" value ="<%=filename1%>">
                         <input type = "hidden" name = "pname1" value = "<%=filename1%>">
                         <span class="file-name" id="fileName1"><%=filename1 %></span>
 
@@ -231,7 +233,7 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file2">파일 선택</label>
-                        <input type="file" name="pname2" id="file2" value ="<%=filename2%>">
+                        <input type="file" name="p2" id="file2" value ="<%=filename2%>">
                         <input type = "hidden" name = "pname2" value = "<%=filename2%>">
                         <span class="file-name" id="fileName2"><%=filename2 %></span>
 
@@ -243,7 +245,7 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file3">파일 선택</label>
-                        <input type="file" name="pname3" id="file3" value ="<%=filename3%>">
+                        <input type="file" name="p3" id="file3" value ="<%=filename3%>">
                         <input type = "hidden" name = "pname3" value = "<%=filename3%>">
                         <span class="file-name" id="fileName3"><%=filename3 %></span>
 

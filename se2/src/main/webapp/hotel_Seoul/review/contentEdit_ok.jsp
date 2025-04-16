@@ -44,16 +44,22 @@ File directory = new File(savePath);
 	
     String vid = (String)session.getAttribute("sessionid");
 	String vidx_s = mr.getParameter("idx");
+	System.out.println("vidx_s="+vidx_s);
 	int vidx = 0;
 	if(vidx_s!=null) vidx = Integer.parseInt(vidx_s);
 	System.out.println(vidx);
-    String vtitle=request.getParameter("vtitle");
+    String vtitle=mr.getParameter("vtitle");
+    System.out.println("vtitle="+vtitle);
     String vcontent=mr.getParameter("vcontent");
+    System.out.println("vcontent="+vcontent);
     ArrayList<HotelPhotoDTO> arr = pdao.getphoto(vidx);
     String vtotal_s=mr.getParameter("vtotal"); 
     int vtotal = Integer.parseInt(vtotal_s);
     
-    
+    vdto.setVtitle(vtitle);
+    vdto.setVcontent(vcontent);
+    vdto.setVtotal(vtotal);
+    vdto.setVidx(vidx);
     	
     
     String dpname1=mr.getParameter("pname1");
@@ -67,11 +73,31 @@ File directory = new File(savePath);
   	if(pname1 == null) pname1 = dpname1; 
   	if(pname2 == null) pname2 = dpname2; 
   	if(pname3 == null) pname3 = dpname3; 
+  	
+  	pdto.setPname1(pname1);
+  	pdto.setPname2(pname2);
+  	pdto.setPname3(pname3);
+  	pdto.setPidx(vidx);
  
 	int reviewUpdate = vdao.reviewUpdate(vdto);
 	int photoUpdate = 0;
 	if(reviewUpdate > 0) {
 		photoUpdate = pdao.photoUpdate(pdto);
+		if(reviewUpdate > 0 && photoUpdate > 0) {
+			%>
+			<script>
+			alert('리뷰 수정 O');
+			location.href = 'content.jsp?vidx=<%=vidx%>';
+			</script>
+			<%	
+		} else {
+			%>
+			<script>
+			alert('사진 수정 X');
+			location.href = 'content.jsp?vidx=<%=vidx%>';
+			</script>
+			<%
+		}
 	}else {
 		%>
 		<script>
@@ -80,12 +106,5 @@ File directory = new File(savePath);
 		</script>
 		<%
 	}
-	if(reviewUpdate > 0 && photoUpdate > 0) {
-		%>
-		<script>
-		alert('리뷰 수정 O');
-		location.href = 'content.jsp?vidx=<%=vidx%>';
-		</script>
-		<%	
-	}
+	
 %>
