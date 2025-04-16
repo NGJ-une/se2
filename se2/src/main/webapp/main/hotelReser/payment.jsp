@@ -14,15 +14,15 @@
 	font-size: 45px;
 	margin-left: 10%;
 	color: #6b4c2f;
+	margin-top: 20px;
 }
 .payment-container {
-	margin: 10px auto;
-	padding: 20px;
+	margin: 0px auto;
 	height: auto;
 	display:flex;
 }
 .roomInfo {
-	padding: 20px;
+	padding: 10px;
 }
 
 .roomInfo fieldset {
@@ -61,14 +61,14 @@
 	margin-right: 10px;
 }
 
-
-
 .payment-notice {
 	width: 900px;
 	height: auto;
 	margin-left: 30px;
 }
-
+.payment-notice p {
+	margin: 10px;
+}
 .payment-info {
 	width: 300px;
 	text-align: left;
