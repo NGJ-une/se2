@@ -69,7 +69,9 @@ public class HotelPhotoDAO {
 			return null;
 		}finally {
 			try {
-				
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
@@ -119,7 +121,6 @@ public class HotelPhotoDAO {
 			ps.setString(2, dto.getPname2());
 			ps.setString(3, dto.getPname3());
 			ps.setInt(4, dto.getPidx());
-			ps = conn.prepareStatement(sql);
 			int count = ps.executeUpdate();
 			return count;
 		} catch (Exception e) {

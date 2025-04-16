@@ -330,6 +330,27 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
 
 HotelPhotoDTO dto = pdao.photocontent(idx); 
 
+
+boolean already = false;
+Cookie[] ck = request.getCookies();
+if(ck != null) {
+	for(int i = 0; i < ck.length; i++) {
+		if(("vreadnum" + idx).equals(ck[i].getName())) {
+			already = true;
+			break;
+		}
+	}
+}
+
+if (!already) {
+	int readnum = rdao.reviewReadnumUpdate(idx);
+	if(readnum > 0) {
+		Cookie ck2 = new Cookie("vreadnum" + idx, "true");
+		ck2.setMaxAge(60*60*24);  // 하루 동안 유지
+		response.addCookie(ck2);
+	}
+}
+
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -392,21 +413,19 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
             <div class="ctimg">
             <%
             if(!dto.getPname1().equals("none")){%>
-            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname1() %>" alt = "pname1">
+            <img src = "/se2/upload/<%=dto.getPname1() %>" alt = "pname1">
             <%}
             if(!dto.getPname2().equals("none")){%>
-            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname2() %>" alt = "pname2">
+            <img src = "/se2/upload/<%=dto.getPname2() %>" alt = "pname2">
             <%}
             if(!dto.getPname3().equals("none")){%>
-            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname3() %>" alt = "pname3">
+            <img src = "/se2/upload/<%=dto.getPname3() %>" alt = "pname3">
             <%}
             %>
             </div></td> 
           	</tr>
         </table>
-        <%
-         } 
-        %>
+
 
     </article>
 
@@ -420,6 +439,9 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
     <br><hr><br>
 
     <div>
+        <%
+         } 
+        %>
         <ul>
         	<%
         		if( arr2 != null && arr2.size() > 0) {

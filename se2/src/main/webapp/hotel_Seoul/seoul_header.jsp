@@ -39,7 +39,7 @@
 			<h1><a href="/se2/index.jsp"> HELIA HOTEL SEOUL</a></h1>
 		</div>
 		
-</div> <!-- scaled-content 닫힘 -->
+</div> <!-- scaled-content-header 닫힘 -->
 
 	  <!-- 브라우저 전체 넓이로 -->
 	  <div class="menu-total-wrap">
@@ -47,11 +47,6 @@
 	    <div class="main-menu-container">
 	      <ul class="main-menu">
 	        <li class="has-submenu" data-menu="review"><a href="#">후기</a></li>
-	        <li class="has-submenu" data-menu="room"><a href="#">객실</a></li>
-	        <li class="has-submenu" data-menu="dining"><a href="#">다이닝</a></li>
-	        <li class="has-submenu" data-menu="activity"><a href="#">부대시설</a></li>
-	        <li><a href="#">위치보기</a></li>
-	        <li><a href="/se2/main/hotelReser/hotelReser.jsp?name=h_seoul">예약하기</a></li>
 	      </ul>
 	    </div>
 	  </nav>
@@ -60,23 +55,23 @@
 	  <div class="sub-menu-wrap">
 	    <ul class="sub-menu" data-menu="review"><li><a href="#">후기작성</a></li></ul>
 	    <ul class="sub-menu" data-menu="room">
-	      <li><a href="#">스탠다드</a></li>
-	      <li><a href="#">디럭스</a></li>
-	      <li><a href="#">스위트</a></li>
-	      <li><a href="#">그랜드</a></li>
-	      <li><a href="#">전체 객실 보기</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/room/standard.jsp">스탠다드</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/room/deluxe.jsp">디럭스</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/room/sweet.jsp">스위트</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/room/grand.jsp">그랜드</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/room/view_All.jsp">전체 객실 보기</a></li>
 	    </ul>
 	    <ul class="sub-menu" data-menu="dining">
-	      <li><a href="#">레스토랑</a></li>
-	      <li><a href="#">라운지 & 바</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/dining/restaurant.jsp">레스토랑</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/dining/lounge_bar.jsp">라운지 & 바</a></li>
 	    </ul>
 	    <ul class="sub-menu" data-menu="activity">
-	      <li><a href="#">미팅룸</a></li>
-	      <li><a href="#">비즈니스 룸</a></li>
-	      <li><a href="#">라운지</a></li>
-	      <li><a href="#">웨딩홀</a></li>
-	      <li><a href="#">피트니스 센터</a></li>
-	      <li><a href="#">전체 시설 보기</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/meeting.jsp">미팅룸</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/business.jsp">비즈니스 룸</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/lounge.jsp">연회장</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/wedding.jsp">웨딩홀</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/fitness.jsp">피트니스 센터</a></li>
+	      <li><a href="/se2/hotel_Seoul/menubar/facilities/view_All.jsp">전체 시설 보기</a></li>
 	    </ul>
 	  </div>
 	</div>
