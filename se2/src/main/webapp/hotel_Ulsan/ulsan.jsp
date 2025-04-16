@@ -19,7 +19,7 @@
 		<article>
 			<div class="slider">
 				<div class="slide active">
-					<img src="/se2/gallery/img/ulsan/other/U_Other1.png" alt="h1">
+					<img src="/se2/gallery/img/ulsan/other/U_showPool.png" alt="h1">
 					<div class="slide-caption fixed-bottom-left">
 						<h2>Timeless Serenity by the Sea</h2>
 						<p>바다와 정원이 어우러진 고요한 안식</p>
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="slide">
-					<img src="/se2/gallery/img/ulsan/other/U_showPool.png" alt="h2">
+					<img src="/se2/gallery/img/ulsan/other/U_Other1.png" alt="h2">
 					<div class="slide-caption fixed-bottom-left">
 						<h2>Where Memories Bloom</h2>
 						<p>기억에 남을 소중한 하루를 선물하세요</p>
