@@ -23,6 +23,9 @@
         margin:0 auto;
     }
 
+	h2 {
+	margin-bottom: 20px; font-size: 24px;  color: #6b4c2f;
+	}
     
     form {
     	width:500px;
@@ -51,13 +54,18 @@
         margin: 0 10px;
     }
     
+   	 a:hover {
+    		color: #6b4c2f; 
+    		text-decoration: underline; /* 호버 시 밑줄을 추가 */
+	} 
+    
     input[type="submit"] {
          border: none;
          cursor: pointer;
 	}
 
     input[type="submit"]:hover {
-    	background-color: #f0b675;
+    	background-color: #E4D9C7;
     }    
    
     
@@ -69,10 +77,10 @@
 <%@include file="/header.jsp" %>
     <section class="container"> 
             	<form name="idFind" action="idFind_ok.jsp" method="post">
-               	 <h1>아이디찾기</h1>
+               	 <h2>아이디찾기</h2>
                	 <hr>
-                   	 <input type="text" name="tel" placeholder="전화번호">
-                   	 <label>(000-0000-000 형식으로 입력해주세요.)</label>
+                   	 <input type="text" name="tel" placeholder="전화번호 (000 - 0000 - 0000)">
+
             
                      <select name="question"  required > 
 							<option value="1">  질문 1 : 보물 1호는? </option>

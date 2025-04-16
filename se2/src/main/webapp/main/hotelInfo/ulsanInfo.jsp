@@ -38,6 +38,10 @@
     	width: 830px;
     	height: 550px;
     }
+    
+    h1{
+    color: #6b4c2f;
+    }
   </style>
 </head>
 <body>

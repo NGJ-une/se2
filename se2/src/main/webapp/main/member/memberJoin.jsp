@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -7,15 +7,14 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
     <style>
-         * {
-	   	margin: 0;
-	    padding: 0;
-	    box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
         }
         body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
         
         form { 
-    
             width: 650px; 
             padding: 20px; 
             margin: 0 auto; 
@@ -23,7 +22,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
         }
         
-        h2 { margin-bottom: 20px; font-size: 24px; }
+        h2 { margin-bottom: 20px; font-size: 24px;  color: #6b4c2f;}
         
         label { display: block; margin-bottom: 5px; text-align: left; font-size: 14px; color: #333; }
         
@@ -36,7 +35,6 @@
             border-radius: 4px; 
         }
         
-        
         input[type="submit"], input[type="reset"] { 
             background-color: #eee; 
             border: none; 
@@ -47,9 +45,9 @@
             background-color: #eee; 
         }
 
-		input[type="reset"]:hover {
-    		background-color: #f0b675;
-    	} 
+        input[type="reset"]:hover {
+            background-color: #E4D9C7;
+        } 
         
         .email-group { 
             display: flex; 
@@ -58,83 +56,88 @@
         
         .email-group input { width: 48%; }
         
-       hr {
-        width: 100%;
-        border: none;
-        border-top: 2px solid #eeeeeec0;
-        margin: 10px 0 20px;
+        hr {
+            width: 100%;
+            border: none;
+            border-top: 2px solid #eeeeeec0;
+            margin: 10px 0 20px;
         }
 
-		.idCheck {
-   			width: 500px; /* 원하는 너비 */
-			padding: 10px; 
+        .idCheck {
+            width: 500px; /* 원하는 너비 */
+            padding: 10px; 
             margin-bottom: 15px; 
             font-size: 14px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
-	
-		}
+        }
 
-		input[type="button"]{ 
-         	width: 17%; 
+        input[type="button"]{ 
+            width: 17%; 
             background-color: #eeeeeec0; 
             border: none; 
             cursor: pointer; 
         }
 
-		input[type="button"]:hover {
-    		background-color: #f0b675;
-    	} 
+        input[type="button"]:hover {
+            background-color: #E4D9C7;
+        } 
 
-		a {
-        text-decoration: none;
-        color: #b58143;
-        margin: 0 10px;
-    	}
-    
-    	input[type="submit"] {
-         	border: none;
-        	 cursor: pointer;
-		}
+        a {
+            text-decoration: none;
+            color: #b58143;
+            margin: 0 10px;
+        }
+        
+        
 
-    	input[type="submit"]:hover {
-    		background-color: #f0b675;
-    	}    
-    	
-    	
-    	/** 비밀번호 눈 확인 */
-    	.password-wrapper {
-   			position: relative;
-   			width: 100%;
-		}
+        input[type="submit"] {
+            border: none;
+            cursor: pointer;
+        }
 
-		.password-wrapper input {
-    		width: 100%;
-    		padding-right: 40px; /* 아이콘 공간 확보 */
-		}
+        input[type="submit"]:hover {
+            background-color: #E4D9C7;
+        }    
 
-		.toggle-password {
-    		position: absolute;
-    		right: 10px;
-    		top: 50%;
-    		transform: translateY(-50%);
-   			cursor: pointer;
-    		font-size: 18px;
-		}
-    	
-    	
-   </style>
+		a:hover {
+    		color: #f0b675; /* 호버 시 색상을 변경 */
+    		text-decoration: underline; /* 호버 시 밑줄을 추가 */
+}
+
+		
+        /** 비밀번호 눈 확인 */
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 40px; /* 아이콘 공간 확보 */
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            padding-bottom : 15px;
+        }
+        
+    </style>
 
     <script>
         // 아이디 중복체크
         function openIdCheck() {
-           // window.open('idCheck.jsp','idCheck','width=500,height=250');
-         	var popupWidth = 600;
-			var popupHeight = 300;
-			var popupX = Math.ceil(( window.screen.width - popupWidth )/2);
-			var popupY = Math.ceil(( window.screen.height - popupHeight )/2); 
+            var popupWidth = 600;
+            var popupHeight = 300;
+            var popupX = Math.ceil(( window.screen.width - popupWidth ) / 2);
+            var popupY = Math.ceil(( window.screen.height - popupHeight ) / 2); 
 
-			window.open('idCheck.jsp','idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left='+ popupX + ', top='+ popupY)
+            window.open('idCheck.jsp', 'idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ',top=' + popupY)
         }
 
         // 비밀번호 확인
@@ -150,18 +153,16 @@
             return true;
         }
 
+        /** 비밀번호 입력 확인하는 코드 */
+        function togglePwd(id) {
+            const input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";  // 비밀번호를 텍스트로 변경
+            } else {
+                input.type = "password";  // 비밀번호를 다시 숨김
+            }
+        }
         
-        /** !! 비밀번호 입력 확인하는 코드 !!! */
-        function togglePwd(id, icon) {
-    		const input = document.getElementById(id);
-   				if (input.type === "password") {
-        			input.type = "text";
-       				 icon.textContent = "🙈"; // 눈 감은 아이콘
-    			} else {
-        			input.type = "password";
-        			icon.textContent = "👁️"; // 눈 아이콘
-    }
-}
         
         
     </script>    
@@ -185,12 +186,16 @@
         <input type="button" value="중복검사" onclick="openIdCheck();">
 
         <label>비밀번호</label>
-        <input type="password" name="pwd" placeholder="비밀번호" required>
-        <span class="toggle-password" onclick="togglePwd('pwd', this)">👁️</span>
+        <div class="password-wrapper">
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required>
+            <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
+        </div>
 
         <label>비밀번호 확인</label>
-        <input type="password" name="pwdcheck" placeholder="비밀번호 확인" required>
-        <span class="toggle-password" onclick="togglePwd('pwdcheck', this)">👁️</span>
+        <div class="password-wrapper">
+            <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required>
+            <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
+        </div>
         
         <label>E-mail</label>
         <div class="email-group">
@@ -220,9 +225,9 @@
         <input type="reset" value="다시작성">
         
         <p> 
-        	 <a href="login.jsp">  로그인  </a>	|	
-             <a href="idFind.jsp"> 아이디 찾기  </a> |
-             <a href="pwdFind.jsp">	비밀번호 찾기	</a>
+             <a href="login.jsp"> 로그인 </a> |  
+             <a href="idFind.jsp"> 아이디 찾기 </a> |
+             <a href="pwdFind.jsp"> 비밀번호 찾기 </a>
         </p>
     </form>
     <%@ include file="/footer.jsp" %>

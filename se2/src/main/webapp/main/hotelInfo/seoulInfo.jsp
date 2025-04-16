@@ -71,6 +71,9 @@
   	padding-left: 0;
     }
     
+	h1{
+	color: #6b4c2f;
+	}
 
 </style>
   
@@ -80,7 +83,7 @@
 <div class="container">
   	<%@include file = "hotelInfoSideBar.jsp" %>
     <section class="box2">
-      <h1> 서울 호텔 </h1>
+      <h1 style="color: #6b4c2f;"> 서울 호텔 </h1>
    
         <table>
           <tr>

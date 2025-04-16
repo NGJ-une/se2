@@ -34,8 +34,10 @@ function fadeOut(event, el) {
 		
 		    <div class="soft-main-header">
 		      <nav class="soft-nav left">
-		        <a  id="hotelSearchLink" onclick="showPopup()">호텔찾기</a>
-		        <a  href="/se2/main/hotelInfo/hotelInfo.jsp">호텔소개</a>
+		        <a  id="hotelSearchLink" onclick="showPopup()">호텔찾기<img src="/se2/main/myPage/img/Magnifier.png" alt="돋보기 이미지" 
+		        style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;"> </a>
+		        <a  href="/se2/main/hotelInfo/hotelInfo.jsp">호텔소개<img src="/se2/main/myPage/img/Calendar.png" alt="달력 이미지" 
+		        style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;"> </a>
 		      </nav>
 		  
 		    <div class="soft-logo">

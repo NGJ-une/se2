@@ -184,7 +184,17 @@ input[type="button"]:active {
 					님
 				</h2>
 				<p>
-					현재 등급: <span class="grade-<%=grade.toLowerCase()%>"><%=grade%></span><br>
+					현재 등급: <span class="grade-<%=grade.toLowerCase()%>"><%=grade%></span>
+		<%if ("BRONZE".equals(grade)) { %>
+				<img src="img/icon_BRONZE.png" alt="브론즈 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("SILVER".equals(grade)) {
+	%>			<img src="img/icon_DIAMOND.png" alt="실버 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("GOLD".equals(grade)) {
+	%>			<img src="img/icon_GOLD.png" alt="골드 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("DIAMOND".equals(grade)) {
+	%>	<img src="img/icon_SILVER.png" alt="다이아몬드 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } %><br>
+					<br>
 					회원 번호:
 					<%=arr.get(0).getMidx()%><br> 포인트:
 					<%=arr.get(0).getMpoint()%>p
