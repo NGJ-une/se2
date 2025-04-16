@@ -404,9 +404,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
             </div></td> 
           	</tr>
         </table>
-        <%
-         } 
-        %>
+
 
     </article>
 
@@ -420,6 +418,9 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
     <br><hr><br>
 
     <div>
+        <%
+         } 
+        %>
         <ul>
         	<%
         		if( arr2 != null && arr2.size() > 0) {
