@@ -21,7 +21,15 @@ public class HotelPhotoDTO {
 		this.pname3 = pname3;
 		
 	}
-
+	
+	public HotelPhotoDTO(String pname1, String pname2, String pname3) {
+		super();
+		this.pname1 = pname1;
+		this.pname2 = pname2;
+		this.pname3 = pname3;
+		
+	}
+	
 	public int getPidx() {
 		return pidx;
 	}

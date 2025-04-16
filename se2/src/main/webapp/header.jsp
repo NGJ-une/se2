@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>
-function fadeOut(event, el) {
-  event.preventDefault();
-  document.body.style.transition = 'opacity 0.5s';
-  document.body.style.opacity = 0;
-
-  setTimeout(() => {
-    window.location.href = el.href;
-  }, 500);
-  
-}
-</script>    
+<script src="/se2/headerJS.js"></script> 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
 <link rel="stylesheet" type="text/css" href="/se2/css/header.css">
@@ -24,7 +13,7 @@ function fadeOut(event, el) {
 		<div class="scaled-header-content">
 		    <div class="soft-top-links">
 		    <% if(sid==null) { %>
-		      <a href="/se2/main/member/login.jsp" id="login" onclick="fadeOut(event, this)"><strong>로그인</strong></a>
+		      <a href="/se2/main/member/login.jsp" id="login"><strong>로그인</strong></a>
 		      <a href="/se2/main/member/memberJoin.jsp">회원가입</a>
 		    <% } else { %>
 		      <a href = "/se2/main/myPage/myPage_main.jsp"><strong>마이페이지</strong></a>
@@ -41,7 +30,7 @@ function fadeOut(event, el) {
 		      </nav>
 		  
 		    <div class="soft-logo">
-		    	<a href="/se2/index.jsp">HELIA HOTEL</a>
+		    	<a href="/se2/index.jsp" onclick="fadeOut(event, this)">HELIA HOTEL</a>
 		    </div>
 		  
 		      <nav class="soft-nav right">

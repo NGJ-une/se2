@@ -172,6 +172,89 @@ public class HotelReviewDAO {
 			}
 		}
 	}
+	//리뷰 가져오기 메서드 
+	public ArrayList<HotelReviewDTO> getreviewEdit(int idx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select * from review where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
+			rs = ps.executeQuery();
+			ArrayList<HotelReviewDTO> arr = new  ArrayList<HotelReviewDTO>();
+			while(rs.next()) {
+				int vidx = rs.getInt("vidx");
+				String vid = rs.getString("vid");
+				String vtitle = rs.getString("vtitle");
+				String vcontent = rs.getString("vcontent");
+				Date vdate = rs.getDate("vdate");
+				int vreadnum = rs.getInt("vreadnum");
+				int vrecommend = rs.getInt("vrecommend");
+				int vcomment = rs.getInt("vcomment");
+				int vtotal = rs.getInt("vtotal");
+				int vridx = rs.getInt("vridx");
+				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx);
+				arr.add(dto);
+			}
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	//리뷰 수정 메서드 
+	public int reviewUpdate(HotelReviewDTO dto) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "update review set vtitle = ?, vcontent = ?, vtotal = ? where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, dto.getVtitle());
+			ps.setString(2, dto.getVcontent());
+			ps.setInt(3, dto.getVtotal());
+			ps.setInt(4, dto.getVidx());
+			System.out.println("vtitle="+dto.getVtitle());
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	//조회수 증가 메서드
+	public int reviewReadnumUpdate(int vidx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "update review set vreadnum = vreadnum+1 where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vidx);
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }
 	
 	

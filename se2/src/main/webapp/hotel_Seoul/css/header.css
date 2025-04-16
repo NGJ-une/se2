@@ -1,0 +1,153 @@
+@charset "UTF-8";
+html, body {
+  overflow-x: auto;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+.scaled-content-header {
+  transform: scale(0.8);
+  transform-origin: top center;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.header-seoul {
+  background-color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  position: relative;
+  overflow: visible;
+}
+
+/* 로그인/회원가입 */
+.header-utils {
+  display: flex;
+  justify-content: center; /* 좌우 배치 */
+  align-items: center;
+  padding: 0 20px;
+  gap: 1000px; /* 링크 간 간격 */
+}
+
+.left-utils,
+.right-utils {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 링크 간 간격 */
+}
+
+.left-utils .hotel-search-btn,
+.right-utils a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.right-utils a:hover,
+.left-utils .hotel-search-btn:hover {
+  color: #8b6f55;
+}
+
+.hotel-search-btn {
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+/* 로고 */
+.header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.header-logo a {
+  color: #222;
+  text-decoration: none;
+}
+
+/* 메인 메뉴 배경 전체 너비 */
+.header-nav {
+  background-color: #e5e0db;
+  border-top: 1px solid #d3ccc4;
+  border-bottom: 1px solid #d3ccc4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  width: 100vw;
+}
+/*마우스 빠질 틈 없개기*/
+.menu-total-wrap{
+	position: relative;
+}
+
+/* 실제 메뉴 리스트는 중앙 정렬 */
+.main-menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  gap: 60px;
+}
+
+.main-menu > li > a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 5px 5px;
+  display: block;
+  transition: color 0.2s ease;
+}
+.main-menu > li > a:hover {
+  color: #8b6f55;
+}
+
+/* 서브메뉴 전체 배경 */
+.sub-menu-wrap {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background-color: #5c5751;
+  padding: 5px 0;
+  text-align: center;
+  z-index: 999;
+}
+.sub-menu-wrap.active {
+  display: block;
+}
+.sub-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sub-menu.active {
+  display: inline-block;
+}
+
+.sub-menu li {
+  display: inline-block;
+  margin: 0 20px;
+}
+.sub-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 16px;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+.sub-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}

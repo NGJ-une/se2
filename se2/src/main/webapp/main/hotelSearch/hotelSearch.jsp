@@ -8,9 +8,8 @@
   <h2 class="popup-title">호텔 찾기</h2>
   <div class="hotel-grid">
 
-
     <!-- 서울 카드 -->
-    <div class="hotel-card" onclick="location.href='/se2/index.jsp'">
+    <div class="hotel-card" onclick="location.href='/se2/hotel_Seoul/seoul.jsp'">
       <img src="/se2/gallery/img/seoul/other/LocalArea.png" alt="HELIA 서울">
       <div class="hotel-info">
         <h3>HELIA 서울</h3>
@@ -20,7 +19,7 @@
 
 
     <!-- 울산 카드 -->
-    <div class="hotel-card" onclick="location.href='/se2/hotel_1/hotelUlsan.jsp'">
+    <div class="hotel-card" onclick="location.href='/se2/hotel_Ulsan/ulsan.jsp'">
       <img src="/se2/gallery/img/ulsan/other/U_showPool.png" alt="HELIA 울산">
       <div class="hotel-info">
         <h3>HELIA 울산</h3>

@@ -83,18 +83,21 @@
 		const checkOutInput = document.getElementById('checkOut');
 
 		checkInInput.setAttribute('min', today);
+		if (checkOutInput.value)
+			checkInInput.setAttribute('max', checkOutInput.value);
+		
 		checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
 
+		
 		checkOutInput.addEventListener('change', function(){
-			if (!checkInInput.value){
-			alert('체크인 날짜를 먼저 입력하세요');
-			checkOutInput.value = '';
-			checkInInput.focus();
-		}
+			if (checkOutInput.value)
+				checkInInput.setAttribute('max', checkOutInput.value);
+			else
+				checkInInput.removeAttribute('max');
 		});
 
 		checkInInput.addEventListener('change', function(){
-			checkOutInput.setAttribute('min', checkInInput.value);
+			checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
 		});
 		
 		

@@ -196,7 +196,7 @@ input[type="button"]:active {
 	<% } %><br>
 					<br>
 					회원 번호:
-					<%=arr.get(0).getMidx()%><br> 포인트:
+					<%=arr.get(0).getMidx()%><br> 누적 결제 금액:
 					<%=arr.get(0).getMpoint()%>p
 				</p>
 			</div>
@@ -235,7 +235,7 @@ input[type="button"]:active {
 					<%
 						if (arr3 != null && arr3.contains(arr2.get(i).getRidx())) {
 					%>
-						작성완료
+						<a href="/se2/hotel_Seoul/review/content.jsp?vidx=<%=vdao.getvidx(arr2.get(i).getRidx()) %>" style="text-decoration: none;">작성완료</a>
 					<%
 						} else {
 							Date checkoutDate = arr2.get(i).getRcheckout();
@@ -248,7 +248,7 @@ input[type="button"]:active {
 
 							if (!today.before(checkoutCal) && (!today.after(sevenAfterCheckout))) {
 					%>
-						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
+						<a href="/se2/hotel_Seoul/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
 					<%
 							} else {
 					%>
