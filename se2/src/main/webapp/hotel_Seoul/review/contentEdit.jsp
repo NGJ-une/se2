@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +6,7 @@
 <%@ page import = "com.hotel.seoul.HotelPhotoDTO" %>
 <jsp:useBean id="pdao" class = "com.hotel.seoul.HotelPhotoDAO"></jsp:useBean>
 <jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,11 +153,13 @@ function showFileName(inputId, spanId) {
         span.textContent = this.files[0]?.name || '선택된 파일 없음';
     });
 }
+
 window.onload = function () {
     showFileName('file1', 'fileName1');
     showFileName('file2', 'fileName2');
     showFileName('file3', 'fileName3');
 };
+
 
 </script>
 </head>
@@ -183,6 +187,7 @@ if(arr2 != null & arr2.size() != 0) {
 		filename3 = "선택된 파일 없음.";
 	}
 }
+
 %>
 <body>
 <%@include file="/header.jsp" %>
@@ -196,6 +201,7 @@ if(arr2 != null & arr2.size() != 0) {
                 <td><%=id %></td> 
             </tr>
             <tr>
+
             <%
             if (arr != null && arr.size() != 0) {	
            %>
@@ -205,6 +211,7 @@ if(arr2 != null & arr2.size() != 0) {
             <tr>
                 <th>내용</th>
                 <td><textarea rows="12" name="vcontent" required><%=arr.get(0).getVcontent() %></textarea></td>
+
             </tr>
 
             <tr>
@@ -213,7 +220,9 @@ if(arr2 != null & arr2.size() != 0) {
                     <div class="custom-file">
                         <label for="file1">파일 선택</label>
                         <input type="file" name="pname1" id="file1">
+
                         <span class="file-name" id="fileName1"><%=filename1 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -223,7 +232,9 @@ if(arr2 != null & arr2.size() != 0) {
                     <div class="custom-file">
                         <label for="file2">파일 선택</label>
                         <input type="file" name="pname2" id="file2">
+
                         <span class="file-name" id="fileName2"><%=filename2 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -234,6 +245,7 @@ if(arr2 != null & arr2.size() != 0) {
                         <label for="file3">파일 선택</label>
                         <input type="file" name="pname3" id="file3">
                         <span class="file-name" id="fileName3"><%=filename3 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -241,6 +253,7 @@ if(arr2 != null & arr2.size() != 0) {
             <tr>
                 <th>평점</th>
                 <td class="totalStar"  >
+
                 <%
                 String star1 = "";
                 String star2 = "";
@@ -267,6 +280,7 @@ if(arr2 != null & arr2.size() != 0) {
             <%
             }
             %>
+
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="수정 하기">

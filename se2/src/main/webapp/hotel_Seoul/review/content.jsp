@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
-<%@ page import = "com.hotel.seoul.HotelReviewDTO" %>
-<%@ page import = "com.hotel.seoul.HotelReplyDTO" %>
+<%@ page import = "com.hotel.seoul.*" %>
 <!DOCTYPE html>
 <jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <jsp:useBean id="redao" class = "com.hotel.seoul.HotelReplyDAO"></jsp:useBean>
+<jsp:useBean id="pdao" class = "com.hotel.seoul.HotelPhotoDAO"></jsp:useBean>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -41,6 +41,7 @@
         line-height: 1.8;
         width: 100%;
     }
+
 
     .center-part {
         text-align: center;
@@ -250,6 +251,58 @@
         cursor: pointer;
         text-decoration: none;
 }
+
+
+   /* 테이블의 기본 스타일 */
+    table.revct {
+        width: 95%; /* 전체 너비 */
+        margin: 20px auto; /* 가운데 정렬 */
+        border-collapse: collapse; /* 테두리 중복 제거 */
+        background-color: white; /* 테이블 배경색 */
+        border-radius: 8px; /* 테두리 모서리 둥글게 */
+        font-weight: bold;
+        
+    }
+
+    /* 헤더 스타일 */
+    table.revct th {
+        background-color: #ddd; /* 헤더 배경색 */
+        color: black; /* 헤더 글자색 */
+        padding: 10px; /* 여백 */
+        text-align: center; /* 중앙 정렬 */
+        font-size: 20px; /* 글자 크기 */
+    }
+
+    /* 바디 셀 스타일 */
+    table.revct td {
+        border: 2px solid #ddd; /* 셀의 테두리 */
+        padding: 10px; /* 셀의 내부 여백 */
+        text-align: center; /* 기본 정렬 */
+        font-size: 16px; /* 글자 크기 */
+        color: #555; /* 글자색 */
+    }
+
+    /* 이미지 스타일 */
+    .ctimg img {
+    	align: center;
+        width: 250px; /* 이미지 크기 조정 */
+        height: 230px;;
+        margin: 20px auto; /* 이미지 간격 */
+        border-radius: 8px; /* 이미지 모서리 둥글게 */
+    }
+
+    /* 평점 스타일 */
+    .totalStar span {
+        font-size: 24px; /* 별 크기 */
+        margin: 0 2px; /* 별 간격 */
+    }
+	.revct hr {
+		border:none;
+		height:2px;
+		width:100%;
+		background-color: #ddd;
+	}
+
 </style>
 <script>
 function showTextArea(commentId) {
@@ -274,25 +327,38 @@ int idx = 0;
 if(vidx != null) idx = Integer.parseInt(vidx); 
 ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
 ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
+
+HotelPhotoDTO dto = pdao.photocontent(idx); 
+
 %>
 <body>
 <%@include file="/header.jsp" %>
 <section>
     <article class="center-part">
-        <h2>본문 내용</h2>
-        <ul>
+
+        
+        <table class="revct">
+        <tr>
+        	<th colspan="3" style="height:100px; text-align:center; margin-botton:100px;"><h2>본문 내용</h2></th>
+        </tr>
+
             
             <%
             if(arr == null || arr.size() == 0) {
             	%>
-            	<li>내용이 없습니다.</li>
+
+            	<tr>
+            	<td colspan="3">내용이 없습니다.</td>
+            	</tr>
             	<%
             }else {
             %>
-            <li>작성자 : <%=arr.get(0).getVid() %></li>
-            <li>작성날짜 : <%=arr.get(0).getVdate() %></li>
-            <li>평점 
-                 <div class="totalStar">
+            <tr>
+            <td>작성자 : <%=arr.get(0).getVid() %></td>
+            <td>작성날짜 : <%=arr.get(0).getVdate() %></td>
+            <td>평점 
+            <span class="totalStar">
+
         <%
             int score = arr.get(0).getVtotal();
             for(int i=1; i<=5; i++) {
@@ -307,17 +373,40 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
                 }
             }
         %>
-    </div>
-            </li>
-            <li>제목 : <%=arr.get(0).getVtitle() %></li>
-            <li>내용 : <%=arr.get(0).getVcontent() %></li>
+
+    		</span>
+            </td>
+            </tr>
+            <tr>
+            	<td style="padding:30px;">제목 
+            	<td colspan="2" style="font-size: 20px;"><%=arr.get(0).getVtitle() %></td>
+            </tr>
+            <tr style="background-color:#f9f9f9">
             
-            <li><img src = "" alt = "사용자 업로드 이미지"></li>
-        </ul>
+            <td colspan="3" style="text-align:left; padding:30px; "><div style="text-align:center;">내용<hr></div>
+            <div style="padding:20px; font-weight:normal; height:300px;"><%=arr.get(0).getVcontent() %></div></td>
+            </tr>
+            <tr>
+            <td colspan="3" style="padding:30px;">
+            <div class="ctimg">
+            <%
+            if(!dto.getPname1().equals("none")){%>
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname1() %>" alt = "pname1">
+            <%}
+            if(!dto.getPname2().equals("none")){%>
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname2() %>" alt = "pname2">
+            <%}
+            if(!dto.getPname3().equals("none")){%>
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname3() %>" alt = "pname3">
+            <%}
+            %>
+            </div></td> 
+          	</tr>
+        </table>
         <%
-            }
+         } 
         %>
-        
+
     </article>
 
     <hr><br>
@@ -378,7 +467,9 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
 
     <div>
     	<form name = "writeReply" action = "writeReply_ok.jsp">
-    	<input type="hidden" name="vidx" value="<%= idx %>">
+
+    	<input type="hidden" name="vidx" value="<%=idx%>">
+
         <ul>
             <li><br>
                 <textarea style = "resize: none;" name = "ccontent"></textarea>
@@ -393,7 +484,8 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
     <br><hr><br>
 
     <div style="text-align:center">
-        <input type="button" name="writeEdit" value="게시글 수정" onclick = "location.href = 'contentEdit.jsp?vidx=<%=idx%>';">
+
+        <input type="button" name="writeEdit" value="게시글 수정" onclick = "location.href = 'contentEdit.jsp?vidx=<%=idx%>';"> 
         <input type="button" name="writeDelete" value="게시글 삭제">
         <input type="button" name="writeList" value="게시글 목록" onclick = "location.href='list.jsp'">
     </div>
