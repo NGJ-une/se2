@@ -330,6 +330,27 @@ ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
 
 HotelPhotoDTO dto = pdao.photocontent(idx); 
 
+
+boolean already = false;
+Cookie[] ck = request.getCookies();
+if(ck != null) {
+	for(int i = 0; i < ck.length; i++) {
+		if(("vreadnum" + idx).equals(ck[i].getName())) {
+			already = true;
+			break;
+		}
+	}
+}
+
+if (!already) {
+	int readnum = rdao.reviewReadnumUpdate(idx);
+	if(readnum > 0) {
+		Cookie ck2 = new Cookie("vreadnum" + idx, "true");
+		ck2.setMaxAge(60*60*24);  // 하루 동안 유지
+		response.addCookie(ck2);
+	}
+}
+
 %>
 <body>
 <%@include file="/header.jsp" %>
