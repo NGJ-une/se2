@@ -234,6 +234,27 @@ public class HotelReviewDAO {
 			}
 		}
 	}
+	//조회수 증가 메서드
+	public int reviewReadnumUpdate(int vidx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "update review set vreadnum = vreadnum+1 where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vidx);
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }
 	
 	
