@@ -219,8 +219,8 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file1">파일 선택</label>
-                        <input type="file" name="pname1" id="file1">
-
+                        <input type="file" name="pname1" id="file1" value ="<%=filename1%>">
+                        <input type = "hidden" name = "pname1" value = "<%=filename1%>">
                         <span class="file-name" id="fileName1"><%=filename1 %></span>
 
                     </div>
@@ -231,8 +231,8 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file2">파일 선택</label>
-                        <input type="file" name="pname2" id="file2">
-
+                        <input type="file" name="pname2" id="file2" value ="<%=filename2%>">
+                        <input type = "hidden" name = "pname2" value = "<%=filename2%>">
                         <span class="file-name" id="fileName2"><%=filename2 %></span>
 
                     </div>
@@ -243,7 +243,8 @@ if(arr2 != null & arr2.size() != 0) {
                 <td>
                     <div class="custom-file">
                         <label for="file3">파일 선택</label>
-                        <input type="file" name="pname3" id="file3">
+                        <input type="file" name="pname3" id="file3" value ="<%=filename3%>">
+                        <input type = "hidden" name = "pname3" value = "<%=filename3%>">
                         <span class="file-name" id="fileName3"><%=filename3 %></span>
 
                     </div>

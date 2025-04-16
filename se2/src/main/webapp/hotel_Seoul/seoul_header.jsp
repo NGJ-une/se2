@@ -51,7 +51,7 @@
 	        <li class="has-submenu" data-menu="dining"><a href="#">다이닝</a></li>
 	        <li class="has-submenu" data-menu="activity"><a href="#">부대시설</a></li>
 	        <li><a href="#">위치보기</a></li>
-	        <li><a href="#">예약하기</a></li>
+	        <li><a href="/se2/main/hotelReser/hotelReser.jsp?name=h_seoul">예약하기</a></li>
 	      </ul>
 	    </div>
 	  </nav>
