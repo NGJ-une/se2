@@ -51,6 +51,10 @@
         color: #b58143;
         margin: 0 10px;
     }
+    	a:hover {
+    		color: #6b4c2f; 
+    		text-decoration: underline; /* 호버 시 밑줄을 추가 */
+		}
     
     input[type="submit"] {
          border: none;
@@ -58,10 +62,12 @@
 	}
 
     input[type="submit"]:hover {
-    	background-color: #f0b675;
+    	background-color: #E4D9C7;
     }    
        
-
+	h2{
+	color: #6b4c2f;
+	}
 
   </style>
 </head>
@@ -72,7 +78,7 @@
                 <h2>비밀번호 찾기</h2>
                 <hr>
                <input type="text" name="id" placeholder="아이디" required>
-                <input type="text" name="tel" placeholder="전화번호" required>
+                <input type="text" name="tel" placeholder="전화번호 (000 - 0000 - 0000)" required>
                 <input type="submit" value="비밀번호 찾기">
                
                <p> 

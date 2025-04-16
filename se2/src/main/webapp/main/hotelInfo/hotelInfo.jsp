@@ -29,10 +29,10 @@
       font-size: 16px;
     }
     h1 {
-    	font-size: 28px;
-    	color: #333;
+    	font-size: 28px;	
     	margin-bottom: 30px;
     	border-bottom: 3px solid #eee;
+    	color: #6b4c2f;
     }
     .hotelimg {
     	width: 830px;

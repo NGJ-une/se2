@@ -184,7 +184,17 @@ input[type="button"]:active {
 					님
 				</h2>
 				<p>
-					현재 등급: <span class="grade-<%=grade.toLowerCase()%>"><%=grade%></span><br>
+					현재 등급: <span class="grade-<%=grade.toLowerCase()%>"><%=grade%></span>
+		<%if ("BRONZE".equals(grade)) { %>
+				<img src="img/icon_BRONZE.png" alt="브론즈 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("SILVER".equals(grade)) {
+	%>			<img src="img/icon_DIAMOND.png" alt="실버 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("GOLD".equals(grade)) {
+	%>			<img src="img/icon_GOLD.png" alt="골드 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } else if ("DIAMOND".equals(grade)) {
+	%>	<img src="img/icon_SILVER.png" alt="다이아몬드 등급 이미지" style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;">
+	<% } %><br>
+					<br>
 					회원 번호:
 					<%=arr.get(0).getMidx()%><br> 누적 결제 금액:
 					<%=arr.get(0).getMpoint()%>p
@@ -225,7 +235,7 @@ input[type="button"]:active {
 					<%
 						if (arr3 != null && arr3.contains(arr2.get(i).getRidx())) {
 					%>
-						작성완료
+						<a href="/se2/hotel_Seoul/review/content.jsp?vidx=<%=vdao.getvidx(arr2.get(i).getRidx()) %>" style="text-decoration: none;">작성완료</a>
 					<%
 						} else {
 							Date checkoutDate = arr2.get(i).getRcheckout();
@@ -238,7 +248,7 @@ input[type="button"]:active {
 
 							if (!today.before(checkoutCal) && (!today.after(sevenAfterCheckout))) {
 					%>
-						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
+						<a href="/se2/hotel_Seoul/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
 					<%
 							} else {
 					%>

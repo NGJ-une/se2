@@ -134,6 +134,32 @@ public class SeoulWriteDAO {
 
 	    return vridxList;
 	}
+	
+	public int getvidx(int vridx) {
+	    try {
+	        conn = com.hotel.db.HotelDB.getConn();
+	        String sql = "SELECT vidx FROM review WHERE vridx = ?";
+	        ps = conn.prepareStatement(sql);
+	        ps.setInt(1, vridx);
+	        rs = ps.executeQuery();
+	        int vidx = -1;
+	        if (rs.next()) {
+	            vidx = rs.getInt("vidx"); 
+	        }
+	        return vidx;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return -1;
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+	}
 }
 
 	

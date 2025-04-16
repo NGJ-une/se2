@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 본문 내용 보기 서버 </title>
+<title>Insert title here</title>
 </head>
 <body>
 

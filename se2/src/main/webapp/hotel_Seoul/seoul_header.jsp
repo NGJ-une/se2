@@ -47,11 +47,6 @@
 	    <div class="main-menu-container">
 	      <ul class="main-menu">
 	        <li class="has-submenu" data-menu="review"><a href="#">후기</a></li>
-	        <li class="has-submenu" data-menu="room"><a href="/se2/hotel_Seoul/menubar/room/view_All.jsp">객실</a></li>
-	        <li class="has-submenu" data-menu="dining"><a href="/se2/hotel_Seoul/menubar/dining/restaurant.jsp">다이닝</a></li>
-	        <li class="has-submenu" data-menu="activity"><a href="/se2/hotel_Seoul/menubar/facilities/view_All.jsp">부대시설</a></li>
-	        <li><a href="/se2/hotel_Seoul/menubar/ViewLocation/view_location.jsp">위치보기</a></li>
-	        <li><a href="#">예약하기</a></li>
 	      </ul>
 	    </div>
 	  </nav>
