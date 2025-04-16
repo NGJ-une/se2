@@ -172,6 +172,42 @@ public class HotelReviewDAO {
 			}
 		}
 	}
+	//리뷰 가져오기 메서드 
+	public ArrayList<HotelReviewDTO> getreviewEdit(int idx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select * from review where vidx = 1";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			ArrayList<HotelReviewDTO> arr = new  ArrayList<HotelReviewDTO>();
+			while(rs.next()) {
+				int vidx = rs.getInt("vidx");
+				String vid = rs.getString("vid");
+				String vtitle = rs.getString("vtitle");
+				String vcontent = rs.getString("vcontent");
+				Date vdate = rs.getDate("vdate");
+				int vreadnum = rs.getInt("vreadnum");
+				int vrecommend = rs.getInt("vrecommend");
+				int vcomment = rs.getInt("vcomment");
+				int vtotal = rs.getInt("vtotal");
+				int vridx = rs.getInt("vridx");
+				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx);
+				arr.add(dto);
+			}
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }
 	
 	
