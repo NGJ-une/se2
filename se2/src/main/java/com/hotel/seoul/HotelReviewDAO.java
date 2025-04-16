@@ -176,8 +176,9 @@ public class HotelReviewDAO {
 	public ArrayList<HotelReviewDTO> getreviewEdit(int idx) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select * from review where vidx = 1";
+			String sql = "select * from review where vidx = ?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
 			rs = ps.executeQuery();
 			ArrayList<HotelReviewDTO> arr = new  ArrayList<HotelReviewDTO>();
 			while(rs.next()) {
@@ -201,6 +202,31 @@ public class HotelReviewDAO {
 		}finally {
 			try {
 				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	//리뷰 수정 메서드 
+	public int reviewUpdate(HotelReviewDTO dto) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "update review set vtitle = ?, vcontent = ?, vtotal = ? where vidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, dto.getVtitle());
+			ps.setString(2, dto.getVcontent());
+			ps.setInt(3, dto.getVtotal());
+			ps.setInt(4, dto.getVidx());
+			System.out.println("vtitle="+dto.getVtitle());
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
 				if(ps!=null) ps.close();
 				if(conn!=null) conn.close();
 			} catch (Exception e2) {

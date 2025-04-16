@@ -15,38 +15,6 @@ public class HotelPhotoDAO {
 	}
 	
 	/** 사진 등록 메서드 */ 
-//	public int photoUpload(HotelPhotoDTO pdto) {
-//	
-//		try {
-//			conn=com.hotel.db.HotelDB.getConn();
-//			
-//			SeoulWriteDAO vdao;
-//			int vidx=vdao.recentPost();
-//			
-//		//	String sql="INSERT INTO PHOTO(PNUM,PNAME1,PNAME2,PNAME3) VALUES(SQ_PHOTO_NUM.NEXTVAL,?,?,?) WHERE = ? "; 
-//			String sql="INSERT INTO PHOTO VALUES(?,SQ_PHOTO_NUM.NEXTVAL,?,?,?)";
-//			ps=conn.prepareStatement(sql);
-//			ps.setInt(1, pdto.getPidx());
-//			ps.setString(2, pdto.getPname1());
-//			ps.setString(3, pdto.getPname2());
-//			ps.setString(4, pdto.getPname3());
-//			
-//			int count = ps.executeUpdate();
-//			return count;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return -1;
-//		}finally {
-//			try {
-//				if(ps!=null) ps.close();
-//				if(conn!=null) conn.close();
-//			}catch (Exception e2) {
-//		
-//			}
-//		}
-//	}
-	
-	/** 사진 등록 메서드 */ 
 	public int photoUpload(HotelPhotoDTO pdto) {
 	    try {
 	        conn = com.hotel.db.HotelDB.getConn();
@@ -141,7 +109,31 @@ public class HotelPhotoDAO {
 	        }
 	    }
 	}
-	
+	//사진 업데이트 메서드
+	public int photoUpdate(HotelPhotoDTO dto) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "update photo set pname1 = ?, pname2 = ?, pname3 = ? where pidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, dto.getPname1());
+			ps.setString(2, dto.getPname2());
+			ps.setString(3, dto.getPname3());
+			ps.setInt(4, dto.getPidx());
+			ps = conn.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 
 	
 }

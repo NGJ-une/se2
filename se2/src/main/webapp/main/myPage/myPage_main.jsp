@@ -238,7 +238,7 @@ input[type="button"]:active {
 
 							if (!today.before(checkoutCal) && (!today.after(sevenAfterCheckout))) {
 					%>
-						<a href="/se2/hotel_1/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
+						<a href="/se2/hotel_Seoul/review/write.jsp?vridx=<%=arr2.get(i).getRidx() %>"><input type="button" value="후기작성"></a>
 					<%
 							} else {
 					%>
