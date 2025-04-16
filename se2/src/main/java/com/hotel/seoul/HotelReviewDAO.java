@@ -29,9 +29,6 @@ public class HotelReviewDAO {
 			String sql = "select * from (select row_number() over (order by vdate desc) as rnum, vidx,"
 					+ "vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal "
 					+ "from review) where rnum between ? and ?";
-			String sql2 = "select * from (select rownum as rnum, vidx, "
-					+ "vid, vtitle, vcontent, vdate,vreadnum, vrecommend, vcomment, vtotal from review)"
-					+ " where rnum>= ? and rnum <= ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, start);
 			ps.setInt(2, end);
@@ -110,7 +107,7 @@ public class HotelReviewDAO {
 	            int vrecommend = rs.getInt("VRECOMMEND");
 	            int vcomment = rs.getInt("VCOMMENT");
 	            int vtotal = rs.getInt("VTOTAL");
-				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal);
+				HotelReviewDTO dto = new HotelReviewDTO(vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vidx);
 				arr.add(dto);
 			}
 			return arr;

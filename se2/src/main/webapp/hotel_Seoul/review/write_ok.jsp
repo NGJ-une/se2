@@ -25,7 +25,8 @@ if (contentType == null || !contentType.startsWith("multipart/")) {
 <%
 
     //String savePath = "C:/java_student/project2/se2/se2/src/main/webapp/hotel_1/review/upload";
-String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/myweb/filebbs/files";
+	//String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/myweb/filebbs/files";
+	String savePath = application.getRealPath("/upload");
     int fileSize = 1024 * 1024 * 10; 
     MultipartRequest mr=
     		new MultipartRequest(request,savePath,1024*1024*10,"utf-8");
@@ -43,11 +44,15 @@ String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.ser
     String pname1=mr.getOriginalFileName("pname1");
     String pname2=mr.getOriginalFileName("pname2");
     String pname3=mr.getOriginalFileName("pname3");
-    
+  
     String vridx_s = mr.getParameter("vridx"); // JSP에서 넘어온 ridx 값
-    int vridx = Integer.parseInt(vridx_s);  
+    int vridx=0;
+    if(vridx_s==null || vridx_s.length()==0){
+    vridx=0;
+    }else{
+    vridx = Integer.parseInt(vridx_s);  
+    }
     
-    //<jsp:setProperty property="*" name="vdto" />
 
 	vdto.setVid(vid);
 	vdto.setVtitle(vtitle);
@@ -92,5 +97,5 @@ String savePath="C:/java_student/jspstudy/.metadata/.plugins/org.eclipse.wst.ser
 %>
     <script>
         alert('<%=msg%>');
-        location.href = 'write.jsp';
+        location.href = '/se2/main/myPage/myPage_main.jsp';
     </script>
