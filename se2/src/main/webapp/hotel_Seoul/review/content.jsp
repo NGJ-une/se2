@@ -355,7 +355,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
             %>
             <tr>
             <td>작성자 : <%=arr.get(0).getVid() %></td>
-            <td>작성날짜 : <%=arr.get(0).getVdate() %></td>
+            
             <td>평점 
             <span class="totalStar">
 
@@ -376,6 +376,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
 
     		</span>
             </td>
+            <td>작성날짜 : <%=arr.get(0).getVdate() %></td>
             </tr>
             <tr>
             	<td style="padding:30px;">제목 
