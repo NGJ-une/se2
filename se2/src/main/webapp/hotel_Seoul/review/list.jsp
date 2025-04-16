@@ -119,7 +119,9 @@ if(cp%maxPage==0) userGroup--;
 <body>
 <%@include file="/header.jsp" %>
 <section>
+
 	<h1 style="text-align:center;">REVIEW</h1>
+
 	<div>
 	<table>
 		<thead>

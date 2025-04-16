@@ -76,6 +76,38 @@ public class HotelPhotoDAO {
 	        }
 	    }
 	}
+
+	//사진 가져오기 메서드 
+	public ArrayList<HotelPhotoDTO> getphoto(int vidx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "select * from photo where pidx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vidx);
+			rs = ps.executeQuery();
+			ArrayList<HotelPhotoDTO> arr = new ArrayList<HotelPhotoDTO>();
+			while(rs.next()) {
+				int pidx = rs.getInt("pidx");
+				int pnum = rs.getInt("pnum");
+				String pname1 = rs.getString("pname1");
+				String pname2 = rs.getString("pname2");
+				String pname3 = rs.getString("pname3");
+				HotelPhotoDTO dto = new HotelPhotoDTO(pidx, pnum, pname1, pname2, pname3);
+				arr.add(dto);
+			}
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+
 	
 	/** 사진 등록 메서드 */ 
 	public HotelPhotoDTO photocontent(int vidx) {
@@ -110,6 +142,7 @@ public class HotelPhotoDAO {
 	    }
 	}
 	
+
 	
 }
 

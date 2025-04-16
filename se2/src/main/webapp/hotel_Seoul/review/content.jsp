@@ -43,7 +43,6 @@
     }
 
 
-
     .center-part {
         text-align: center;
     }
@@ -253,6 +252,7 @@
         text-decoration: none;
 }
 
+
    /* 테이블의 기본 스타일 */
     table.revct {
         width: 95%; /* 전체 너비 */
@@ -302,6 +302,7 @@
 		width:100%;
 		background-color: #ddd;
 	}
+
 </style>
 <script>
 function showTextArea(commentId) {
@@ -326,21 +327,26 @@ int idx = 0;
 if(vidx != null) idx = Integer.parseInt(vidx); 
 ArrayList<HotelReviewDTO> arr = rdao.getReviewRead(idx);
 ArrayList<HotelReplyDTO> arr2 = redao.getReplyList(idx);
+
 HotelPhotoDTO dto = pdao.photocontent(idx); 
+
 %>
 <body>
 <%@include file="/header.jsp" %>
 <section>
     <article class="center-part">
+
         
         <table class="revct">
         <tr>
         	<th colspan="3" style="height:100px; text-align:center; margin-botton:100px;"><h2>본문 내용</h2></th>
         </tr>
+
             
             <%
             if(arr == null || arr.size() == 0) {
             	%>
+
             	<tr>
             	<td colspan="3">내용이 없습니다.</td>
             	</tr>
@@ -352,6 +358,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
             <td>작성날짜 : <%=arr.get(0).getVdate() %></td>
             <td>평점 
             <span class="totalStar">
+
         <%
             int score = arr.get(0).getVtotal();
             for(int i=1; i<=5; i++) {
@@ -366,6 +373,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
                 }
             }
         %>
+
     		</span>
             </td>
             </tr>
@@ -398,6 +406,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
         <%
          } 
         %>
+
     </article>
 
     <hr><br>
@@ -458,7 +467,9 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
 
     <div>
     	<form name = "writeReply" action = "writeReply_ok.jsp">
+
     	<input type="hidden" name="vidx" value="<%=idx%>">
+
         <ul>
             <li><br>
                 <textarea style = "resize: none;" name = "ccontent"></textarea>
@@ -473,6 +484,7 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
     <br><hr><br>
 
     <div style="text-align:center">
+
         <input type="button" name="writeEdit" value="게시글 수정" onclick = "location.href = 'contentEdit.jsp?vidx=<%=idx%>';"> 
         <input type="button" name="writeDelete" value="게시글 삭제">
         <input type="button" name="writeList" value="게시글 목록" onclick = "location.href='list.jsp'">
