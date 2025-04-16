@@ -383,13 +383,13 @@ HotelPhotoDTO dto = pdao.photocontent(idx);
             <div class="ctimg">
             <%
             if(!dto.getPname1().equals("none")){%>
-            <img src = "/se2/hotel_1/review/upload/<%=dto.getPname1() %>" alt = "pname1">
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname1() %>" alt = "pname1">
             <%}
             if(!dto.getPname2().equals("none")){%>
-            <img src = "/se2/hotel_1/review/upload/<%=dto.getPname2() %>" alt = "pname2">
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname2() %>" alt = "pname2">
             <%}
             if(!dto.getPname3().equals("none")){%>
-            <img src = "/se2/hotel_1/review/upload/<%=dto.getPname3() %>" alt = "pname3">
+            <img src = "/se2/hotel_Seoul/review/upload/<%=dto.getPname3() %>" alt = "pname3">
             <%}
             %>
             </div></td> 
