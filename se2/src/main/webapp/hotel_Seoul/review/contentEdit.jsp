@@ -1,5 +1,12 @@
+
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.hotel.seoul.HotelReviewDTO" %>
+<%@ page import = "com.hotel.seoul.HotelPhotoDTO" %>
+<jsp:useBean id="pdao" class = "com.hotel.seoul.HotelPhotoDAO"></jsp:useBean>
+<jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,10 +159,34 @@ window.onload = function () {
     showFileName('file2', 'fileName2');
     showFileName('file3', 'fileName3');
 };
+
+
 </script>
 </head>
 <%
+String idx = request.getParameter("vidx");
+int vidx = 0;
+if(idx != null) vidx = Integer.parseInt(idx);
 String id = (String)session.getAttribute("sessionid");
+ArrayList<HotelReviewDTO> arr = rdao.getreviewEdit(vidx);
+ArrayList<HotelPhotoDTO> arr2 = pdao.getphoto(vidx);
+String filename1 = "";
+String filename2 = "";
+String filename3 = "";
+if(arr2 != null & arr2.size() != 0) {
+	filename1 = arr2.get(0).getPname1();
+	filename2 = arr2.get(0).getPname2();
+	filename3 = arr2.get(0).getPname3();
+	if(filename1.equals("none")) {
+		filename1 = "선택된 파일 없음.";
+	}
+	if(filename2.equals("none")) {
+		filename2 = "선택된 파일 없음.";
+	}
+	if(filename3.equals("none")) {
+		filename3 = "선택된 파일 없음.";
+	}
+}
 
 %>
 <body>
@@ -170,12 +201,17 @@ String id = (String)session.getAttribute("sessionid");
                 <td><%=id %></td> 
             </tr>
             <tr>
+
+            <%
+            if (arr != null && arr.size() != 0) {	
+           %>
                 <th>제목</th>
-                <td><input type="text" name="vtitle" required></td>
+                <td><input type="text" name="vtitle" required value = "<%=arr.get(0).getVtitle() %>"></td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea rows="12" name="vcontent" required></textarea></td>
+                <td><textarea rows="12" name="vcontent" required><%=arr.get(0).getVcontent() %></textarea></td>
+
             </tr>
 
             <tr>
@@ -184,7 +220,9 @@ String id = (String)session.getAttribute("sessionid");
                     <div class="custom-file">
                         <label for="file1">파일 선택</label>
                         <input type="file" name="pname1" id="file1">
-                        <span class="file-name" id="fileName1">선택된 파일 없음</span>
+
+                        <span class="file-name" id="fileName1"><%=filename1 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -194,7 +232,9 @@ String id = (String)session.getAttribute("sessionid");
                     <div class="custom-file">
                         <label for="file2">파일 선택</label>
                         <input type="file" name="pname2" id="file2">
-                        <span class="file-name" id="fileName2">선택된 파일 없음</span>
+
+                        <span class="file-name" id="fileName2"><%=filename2 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -204,7 +244,8 @@ String id = (String)session.getAttribute("sessionid");
                     <div class="custom-file">
                         <label for="file3">파일 선택</label>
                         <input type="file" name="pname3" id="file3">
-                        <span class="file-name" id="fileName3">선택된 파일 없음</span>
+                        <span class="file-name" id="fileName3"><%=filename3 %></span>
+
                     </div>
                 </td>
             </tr>
@@ -212,14 +253,33 @@ String id = (String)session.getAttribute("sessionid");
             <tr>
                 <th>평점</th>
                 <td class="totalStar"  >
-                    <input type="radio" class="star" id="star1" name="vtotal" value="1" required>
-                    <input type="radio" class="star" id="star2" name="vtotal" value="2" required>
-                    <input type="radio" class="star" id="star3" name="vtotal" value="3" required>
-                    <input type="radio" class="star" id="star4" name="vtotal" value="4" required>
-                    <input type="radio" class="star" id="star5" name="vtotal" value="5" required>
+
+                <%
+                String star1 = "";
+                String star2 = "";
+                String star3 = "";
+                String star4 = "";
+                String star5 = "";
+                int total = arr.get(0).getVtotal();
+                switch(total) {
+                case 1 : star1 = "checked"; break;
+                case 2 : star2 = "checked"; break;
+                case 3 : star3 = "checked"; break;
+                case 4 : star4 = "checked"; break;
+                case 5 : star5 = "checked";
+                }
+                %>
+                    <input type="radio" class="star" id="star1" name="vtotal" value="1" required <%=star1 %>>
+                    <input type="radio" class="star" id="star2" name="vtotal" value="2" required <%=star2 %>>
+                    <input type="radio" class="star" id="star3" name="vtotal" value="3" required <%=star3 %>>
+                    <input type="radio" class="star" id="star4" name="vtotal" value="4" required <%=star4 %>>
+                    <input type="radio" class="star" id="star5" name="vtotal" value="5" required <%=star5 %>>
                     <input type="button" id="resetStar" value="별점 초기화" onclick="show();">
                 </td>
             </tr>
+            <%
+            }
+            %>
 
             <tr>
                 <td colspan="2" align="center">

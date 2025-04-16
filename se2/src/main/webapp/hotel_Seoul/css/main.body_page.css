@@ -1,0 +1,371 @@
+@charset "UTF-8";
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.main-page {
+  background-color: #fffdfb;
+  color: #333;
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 공통 wrapper */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 섹션 1: 슬라이더 전체화면 */
+.section1 .slider {
+  width: 100vw;
+  height: 740px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slider {
+  width: 100vw;
+  height: 700px;  /* 고정 높이 */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* 슬라이드 버튼 */
+button.prev, button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+  height: 100px;
+}
+
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+button.prev:hover,
+button.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*section5 호텔 예약 open*/
+
+.reservation-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/*reservation 전체 */
+.reservation-form {
+  display: flex;
+  flex-wrap: nowrap; /* 버튼이 줄바꿈되지 않게 */
+  gap: 16px;
+  padding: 20px;
+  align-items: flex-end;
+  padding-left: 30px;  /*왼쪽에 빈칸 넣어서 오른쪽으로 밀기 */
+}
+/*호텔찾기 */
+.reservation-item.hotel-city {
+  flex: 0 0 220px;
+}
+/*체크인 체크아웃 */
+.reservation-item.date-item {
+  flex: 0 0 180px;
+}
+.reservation-item img {
+  width: 22px;
+  height: 22px;
+}
+/*호텔찾기 select 길이 */
+.region-select{
+	width: 190px;
+}
+/*객실 성인 어린이 유아 */
+.reservation-item {
+  flex: 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservation-item label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.reservation-item .value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  border: 0px;   
+  text-align: center;
+}
+/*체크인 체크아웃 value*/ 
+.date-item .value {
+  font-size: 13px; /* 글씨 크기 */
+  color: #444;  
+  border: 0px;   
+  text-align: center;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-wrapper input[type="text"] {
+  width: 100%;
+  padding-right: 25px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+/*검색버튼*/
+.btn-search {
+  padding: 10px 40px;
+  background-color: #3b2b29;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  height: 56px;
+  white-space: nowrap;
+}
+/*검색버튼 자체 */
+.btn-search-wrapper {
+  margin-left: auto; /*오른쪽으로 정렬 */
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 20px;
+}
+.btn-search:hover {
+  background-color: #5a423f;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 8px;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+/***********************************************************************************/
+.section-cta {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f4ef;
+}
+
+.section-cta h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #3b2b29;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #5a423f;
+}
+
+/* 오퍼 섹션 */
+.section-offers {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-offers h2 {
+  font-size: 26px;
+}
+
+.section-offers .subtitle {
+  color: #888;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offer {
+  position: relative;
+  overflow: hidden;
+}
+
+.offer.large {
+  grid-column: span 2;
+}
+
+.offer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.offer-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  text-align: left;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.offer-info p {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.offer-info h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.offer-info span {
+  font-size: 12px;
+}
+
+/* 주변 관광지 */
+.section-nearby {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.nearby-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nearby-cards .card {
+  width: 400px;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nearby-cards .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.nearby-cards .card p {
+  background: #fff;
+  padding: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 오시는길 */
+.section-directions {
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+.section-directions h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.section-directions p {
+  margin-bottom: 4px;
+  color: #555;
+  font-size: 14px;
+}
+
+.map-wrap {
+  margin-top: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-wrap iframe {
+  display: block;
+  margin-bottom: 0 !important;   /* 혹시 모를 기본 마진 제거 */
+  padding-bottom: 0 !important;
+}
