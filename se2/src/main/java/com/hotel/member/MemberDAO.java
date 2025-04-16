@@ -86,7 +86,7 @@ public class MemberDAO {
 
 			if(rs.next()) {
 				return new MemberDTO(userid, 0, rs.getString("mpwd"), null, null, null, null, null, null,
-						rs.getString("mgrade"), null, rs.getInt("mpoint"), rs.getInt("mmoney"), 0, null);
+						rs.getString("mgrade"), null, rs.getInt("mpoint"), rs.getInt("mmoney"), rs.getInt("discount"), 0, null);
 			} 
 			return null;
 		}

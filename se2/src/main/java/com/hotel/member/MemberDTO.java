@@ -24,7 +24,8 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String id, int idx, String pwd, String fname, String lname, String birth, String email, String tel,
-			String addr, String grade, Date join_date, int point, int money, int question, String answer) {
+			String addr, String grade, Date join_date, int point, int money, int discount, int question,
+			String answer) {
 		super();
 		this.id = id;
 		this.idx = idx;
@@ -39,9 +40,12 @@ public class MemberDTO {
 		this.join_date = join_date;
 		this.point = point;
 		this.money = money;
+		this.discount = discount;
 		this.question = question;
 		this.answer = answer;
 	}
+
+
 
 	public String getId() {
 		return id;

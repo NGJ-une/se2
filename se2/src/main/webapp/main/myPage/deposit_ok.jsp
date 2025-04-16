@@ -15,6 +15,9 @@ if(money < 1000) {
 }else {
 int result = hdao.chargeAmount(money, id);
 String msg = result > 0 ? "금액이 충전되었습니다." : "충전 실패~";
+
+if (result > 0)
+	session.setAttribute("balance", (int)session.getAttribute("balance") + money);
 %>
 <script>
 window.alert('<%=msg%>');
