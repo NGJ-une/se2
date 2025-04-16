@@ -33,7 +33,7 @@ if (contentType == null || !contentType.startsWith("multipart/")) {
 	String savePath = application.getRealPath("/upload");
 	
     File directory = new File(savePath);
-
+	System.out.println("savePath= "+savePath);
 
     if (!directory.exists()) {
         directory.mkdirs();

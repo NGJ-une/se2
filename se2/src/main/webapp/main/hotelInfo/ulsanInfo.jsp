@@ -51,6 +51,10 @@
     .intro h3{
       font-weight: 600;
     }
+    
+    h1{
+    color: #6b4c2f;
+    }
   </style>
 </head>
 <body>

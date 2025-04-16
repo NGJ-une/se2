@@ -12,7 +12,7 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f9f5f0;
+        background-color: white;
         margin: 0;
         padding: 0;
         color: #5c4033;
@@ -117,7 +117,7 @@ if(cp%maxPage==0) userGroup--;
 %>
  
 <body>
-<%@include file="/header.jsp" %>
+<%@include file="/hotel_Seoul/seoul_header.jsp" %>
 <section>
 
 	<h1 style="text-align:center;">REVIEW</h1>
@@ -196,6 +196,6 @@ if(cp%maxPage==0) userGroup--;
 	</table>
 	</div>
 </section>
-<%@include file="/footer.jsp" %>
+<%@include file="/hotel_Seoul/seoul_footer.jsp"%> 
 </body>
 </html>

@@ -30,6 +30,5 @@ int result=mdao.memberJoin(mdto);
 String msg = result > 0 ? "회원가입을 축하합니다" : "회원가입에 오류가 발생하였습니다.";
 %>
 <script>
-	window.alert('<%=msg%>');
-   location.href ='login.jsp';
+   location.href ='register.jsp';
 </script>

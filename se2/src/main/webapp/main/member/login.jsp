@@ -46,7 +46,7 @@
     }
     
     input[type="submit"]:hover {
-    	background-color: #f0b675;
+    	background-color: #E4D9C7;
     }
 
     hr {
@@ -86,6 +86,15 @@
         margin: 0 10px;
     }
     
+    
+	a:hover {
+    		color: #6b4c2f; 
+    		text-decoration: underline; /* 호버 시 밑줄을 추가 */
+	}
+	    
+    h2 {
+    color: #6b4c2f;
+    }
      
     
 </style>
@@ -107,13 +116,15 @@ if (cks != null) {
 <%@include file="/header.jsp" %>
 <section class="container">
     <form name="login" action="login_ok.jsp" method="post">
-        <h1>로그인</h1>
+        <h2>로그인</h2>
         <hr>
-        <p>
-            HELIA호텔에 오신 것을 환영합니다.<br>
-            ※ HELIA회원이 되시면 회원만을 위한<br>
-            다양한 서비스와 혜택을 받으실 수 있습니다.
-        </p>
+        
+          <h3 style="color: #825517" >HELIA호텔에 오신 것을 환영합니다.</h3>
+         <div style="color: #825517">신라리워즈 번호와 비밀번호를 입력해주시기 바랍니다.</div>
+       <p style="white-space: nowrap; width: 100%; text-align: center; font-size: 15px;">
+    ※ HELIA회원이 되시면 회원만을 위한 다양한 서비스와 혜택을 받으실 수 있습니다.
+</p>
+        
         <br>
         <hr>
         <br>
