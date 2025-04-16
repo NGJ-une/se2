@@ -111,7 +111,6 @@
 							<div class="input-wrapper">
 								<select name="name" class="region-select">
 									<option value="h_seoul">서울</option>
-									<option value="h_ulsan">울산</option>
 								</select> <span class="icon-search">🔍</span>
 							</div>
 						</div>
@@ -131,7 +130,7 @@
 						<!-- 숙박일수 -->
 						<div class="reservation-item">
 							<label><img src="/se2/css/img/icon_MOON.png"></label>
-							<div class="value">1박</div>
+							<div class="value" id="nights">1박</div>
 						</div>
 
 						<!-- 객실 -->

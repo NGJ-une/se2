@@ -17,37 +17,35 @@ document.addEventListener("DOMContentLoaded", function() {
 	const checkOutInput = document.getElementById('checkOut');
 
 	checkInInput.value = today;
-	checkInInput.setAttribute('min', today);
 	checkOutInput.value = tomorrow.toISOString().split('T')[0];
+	checkInInput.setAttribute('min', today);
 	checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
 	checkInInput.setAttribute('max', checkOutInput.value);
 
 	const nights = document.getElementById('nights');
 
 	function computeNights() {
-		let stay = Math.abs(new Date(checkOutInput.value) - new Date(checkInInput.value)) / (1000 * 60 * 60 * 24);
-		return stay + '박';
+		let stay = (checkInInput.value && checkOutInput.value) ? 
+			Math.abs(new Date(checkOutInput.value) - new Date(checkInInput.value)) / (1000 * 60 * 60 * 24) + '박' : '숙박기간';
+
+		return stay;
 	}
 
 	checkOutInput.addEventListener('change', function() {
-		if (!checkInInput.value) {
-			alert('체크인 날짜를 먼저 입력하세요');
-			checkOutInput.value = '';
-			checkInInput.focus();
-		}
+		if (checkOutInput.value)
+			checkInInput.setAttribute('max', checkOutInput.value);
+		else
+			checkInInput.removeAttribute('max');
 
 		nights.innerHTML = computeNights();
 	});
 
 	checkInInput.addEventListener('change', function() {
-		checkOutInput.setAttribute('min', checkInInput.value);
+		checkOutInput.setAttribute('min', checkInInput.value ? checkInInput.value : today);
 
 		nights.innerHTML = computeNights();
 	});
 
-	checkOutInput.addEventListener('change', function() {
-		checkInInput.setAttribute('max', checkOutInput.value);
-	});
 
 	document.querySelectorAll('input[type="date"], input[type="number"]').forEach(element => {
 		element.addEventListener('keydown', (event) => {
