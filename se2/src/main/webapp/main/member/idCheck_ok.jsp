@@ -7,16 +7,8 @@ String userid=request.getParameter("userid");
 boolean result=mdao.idCheck(userid); //userid의 값을 dao idcheck메소드로 넘김
 
 if(result){ //userid 입력한 값과 db의 userid와 같을때
- %>
- 
- 
-<script>
-window.alert('이미 가입되어있는 아이디입니다.');
-location.href='idCheck.jsp';
-</script>
-    
-    
-<%
+	session.setAttribute("errorMsg", "이미 사용하고있는 아이디 입니다.");
+    response.sendRedirect("idCheck.jsp");
  }else{ //DBid 입력한 값과 db의 userid와 같을때
 %>
 
