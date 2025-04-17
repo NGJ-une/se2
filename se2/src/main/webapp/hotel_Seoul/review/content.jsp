@@ -289,6 +289,7 @@
         height: 230px;;
         margin: 20px auto; /* 이미지 간격 */
         border-radius: 8px; /* 이미지 모서리 둥글게 */
+        cursor:pointer;
     }
 
     /* 평점 스타일 */
@@ -302,7 +303,40 @@
 		width:100%;
 		background-color: #ddd;
 	}
+	.modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
+        .modal-content {
+            margin: 15% auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            width: 800px;
+            text-align: center;
+        }
+
+        .modal img {
+            width: 700px;
+            height: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        
 </style>
 <script>
 function showTextArea(commentId) {
@@ -413,13 +447,13 @@ if (!already) {
             <div class="ctimg">
             <%
             if(!dto.getPname1().equals("none")){%>
-            <img src = "/se2/upload/<%=dto.getPname1() %>" alt = "pname1">
+            <img src = "/se2/upload/<%=dto.getPname1() %>" alt = "pname1" onclick="openModal('<%= dto.getPname1() %>')">
             <%}
             if(!dto.getPname2().equals("none")){%>
-            <img src = "/se2/upload/<%=dto.getPname2() %>" alt = "pname2">
+            <img src = "/se2/upload/<%=dto.getPname2() %>" alt = "pname2" onclick="openModal('<%= dto.getPname2() %>')">
             <%}
             if(!dto.getPname3().equals("none")){%>
-            <img src = "/se2/upload/<%=dto.getPname3() %>" alt = "pname3">
+            <img src = "/se2/upload/<%=dto.getPname3() %>" alt = "pname3" onclick="openModal('<%= dto.getPname3() %>')">
             <%}
             %>
             </div></td> 
@@ -514,6 +548,24 @@ if (!already) {
     </div>
 
     <br><br>
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="팝업 이미지">
+        </div>
+    </div>
+    <script>
+        // 모달 열기
+        function openModal(imageSrc) {
+            document.getElementById("modalImage").src = "/se2/upload/" + imageSrc;
+            document.getElementById("imageModal").style.display = "block";
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
 </section>
 <%@include file="/footer.jsp" %>
 </body>
