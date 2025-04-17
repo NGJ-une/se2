@@ -15,12 +15,8 @@ String useranswer=request.getParameter("answer");
 String dbid=(mdao.idFind(usertel, userquestion, useranswer));
 
 if(dbid==null){
-%>
-<script>
-window.alert('잘못 입력하셨습니다. 다시 입력해주세요.');
-location.href ='idFind.jsp';
-</script>
-<%
+    session.setAttribute("errorMsg", "등록한 정보와 입력하신 정보가 일치하지 않습니다. <br>다시 확인해주세요.");
+    response.sendRedirect("login.jsp");
 }else if(dbid!=null){
 %>
 <script>

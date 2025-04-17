@@ -23,12 +23,8 @@ int confirmNumber=Integer.parseInt(confirmNumber_s);
 // DB 검색 후 없을 시 경고창 알림 
 boolean result = hcdao.ConfirmNumberCheck(confirmNumber, id);
 if(result==false){
-	%>
-	<script>
-		window.alert('예약 번호로 예약된 내역이 없습니다 \n 다시 입력해 주시길 바랍니다');
-		location.href='hotelConfirmNLC.jsp';
-	</script>
-	<%
+    session.setAttribute("errorMsg", "예약 번호로 예약된 내역이 없습니다. <br> 다시 입력해 주시길 바랍니다.");
+    response.sendRedirect("hotelConfirmNLC.jsp");
 }else{
 	//받았던 confirmM 으로 예약번호/id 값 넘기기 
 	response.sendRedirect("hotelConfirmNL.jsp?ridx="+confirmNumber+"&mid="+id);

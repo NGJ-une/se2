@@ -82,6 +82,11 @@
     	color:#333;
     	text-align: left;
     }
+    .pwChangeErrorlMsg {
+        color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -105,6 +110,15 @@
         <label>새 비밀번호 확인 : </label>
         <input type="password" name = "newpwdCheck">
         </div>
+        <%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "pwChangeErrorlMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
         <br>
         <input type="submit" value="변경">
         <input type="button" value="취소">

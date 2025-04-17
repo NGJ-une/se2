@@ -17,7 +17,7 @@
         <h2>예약번호로 예약내역 확인</h2>
         <p class="subtext">예약번호만 알고있어도 간편하게 확인할 수 있습니다.</p>
         <ul class="info-list">
-          <li>저희 호텔에 오신 것을 환영합니다.</li>
+          <li>HELIA 호텔에 오신 것을 환영합니다.</li>
           <li>예약번호를 입력해 주시기 바랍니다.</li>
           <li>회원 가입 시, 다양한 혜택을 누릴 수 있습니다.</li>
           <li><a href="/se2/main/member/login.jsp">로그인</a>하시면 더 빠른 조회가 가능합니다.</li>
@@ -33,6 +33,17 @@
             <label for="confirmNumber">예약번호</label>
             <input type="number" name="confirmNumber" id="confirmNumber" required>
           </div>
+          <div class = "confirmFailMsg">
+                    		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
+		</div>
           <div class="form-buttons">
             <input type="reset" value="비우기">
             <input type="submit" value="예약 확인">

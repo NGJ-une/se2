@@ -18,11 +18,7 @@ if(nowpwd.equals(nowpwdIndb) && newpwd.equals(newpwdCheck)) {
 </script>
 	<%
 }else {
-	%>
-<script>
-	window.alert('비밀번호를 확인해주세요.');
-	location.href = 'pwChange.jsp';
-</script>
-	<%
+    session.setAttribute("errorMsg", "비밀번호가 잘못 입력되었습니다. <br>다시 확인해주세요.");
+    response.sendRedirect("pwChange.jsp");
 }
 %>

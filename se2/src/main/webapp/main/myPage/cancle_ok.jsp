@@ -36,11 +36,7 @@ if(pwd.equals(dbpwd)) {
 		}
 	}
 }else {
-	%>
-	<script>
-	window.alert('비밀번호를 확인해주세요.');
-	location.href = 'cancle.jsp';
-	</script>
-	<%
+    session.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다. <br>다시 확인해주세요.");
+    response.sendRedirect("cancle.jsp");
 }
 %>
