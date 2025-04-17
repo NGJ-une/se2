@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment</title>
+<title>HELIA HOTEL : 결제</title>
 <jsp:useBean id="reserDTO" class="com.hotel.reser.ReserDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="reserDTO"/>
 <style>

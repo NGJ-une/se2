@@ -13,7 +13,7 @@ if(mid==null||mid.equals("")){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약 확인 - HELIA HOTEL</title>
+<title>HELIA HOTEL : 예약확인</title>
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
 <link rel="stylesheet" type="text/css" href="/se2/main/hotelConfirm/css/lPage.css">
 <script>

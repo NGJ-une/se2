@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>본문 내용</title>
+<title>HELIA HOTEL : 후기 내용</title>
 <style>
     body {
         font-family: '맑은 고딕', sans-serif;
