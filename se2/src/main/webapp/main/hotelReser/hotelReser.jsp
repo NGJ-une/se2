@@ -159,24 +159,24 @@ String babyStr = request.getParameter("baby");
 			        <fieldset class="reser-fieldset">
 			            <div>
 			                <label>지역</label>
-			                <select name="name" class="input-components">
+			                <select name="name">
 			                    <option value="h_seoul" <%= "h_seoul".equals(name) ? "selected" : "" %>>서울</option>
 			                    <option value="h_ulsan" <%= "h_ulsan".equals(name) ? "selected" : "" %>>울산</option>
 			                </select>
 			                <label>체크인</label>
-			                <input type="date" name="checkIn" class="input-components" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
+			                <input type="date" name="checkIn" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
 			                <label>체크아웃</label>
-			                <input type="date" name="checkOut" class="input-components" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
+			                <input type="date" name="checkOut" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
 			                <label>성인</label>
-			                <input type="number" name="adult" class="input-components" min="1" max="6" 
+			                <input type="number" name="adult" min="1" max="6" 
 			                	value="<%= adultStr != null ? adultStr : "2" %>" required>
 			                <label>어린이</label>
-			                <input type="number" name="kid" class="input-components" min="0" max="5" 
+			                <input type="number" name="kid" min="0" max="5" 
 			                	value="<%= kidStr != null ? kidStr : "0" %>" required>
 			                <label>유아</label>
-			                <input type="number" name="baby" class="input-components" min="0" max="5" 
+			                <input type="number" name="baby" min="0" max="5" 
 			                	value="<%= babyStr != null ? babyStr : "0" %>" required>
-			                <input type="submit" class="input-components" value="검색">
+			                <input type="submit" value="검색">
 			                <hr>
 			            </div>
 			        </fieldset>
