@@ -120,7 +120,7 @@ if (cks != null) {
         <hr>
         
           <h3 style="color: #825517" >HELIA호텔에 오신 것을 환영합니다.</h3>
-         <div style="color: #825517">신라리워즈 번호와 비밀번호를 입력해주시기 바랍니다.</div>
+         <div style="color: #b58143;">HELIA리워즈 번호와 비밀번호를 입력해주시기 바랍니다.</div>
        <p style="white-space: nowrap; width: 100%; text-align: center; font-size: 15px;">
     ※ HELIA회원이 되시면 회원만을 위한 다양한 서비스와 혜택을 받으실 수 있습니다.
 </p>

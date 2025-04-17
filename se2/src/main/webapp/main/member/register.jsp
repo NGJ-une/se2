@@ -151,6 +151,33 @@ if (mdto != null ) {
     .login-btn-container a:hover {
         background-color: #bca987; 
     }
+    
+    /** 상단에 표처럼 생긴 거 꾸민 것 css @*/
+     .step-wrapper {
+        display: flex;
+        justify-content: center; /* wrapper 안에서 가운데 정렬 */
+    }
+
+    .step-container {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .step {
+        text-align: center;
+        padding: 1rem;
+        border-bottom: 3px solid #ccc;
+        color: #888;
+        font-weight: bold;
+        min-width: 120px;
+    }
+
+    .step.active {
+        border-bottom: 4px solid #825517;
+        color: #000;
+       
+       }
+    
 
   </style>
   <script>
@@ -161,15 +188,24 @@ if (mdto != null ) {
 </head>
 <body>
 <%@ include file="/header.jsp" %>
+
     <section class="container">
+      <div class="step-wrapper">
+   		 <div class="step-container">
+           <div class="step">약관동의</div>
+           <div class="step">회원정보 입력</div>
+           <div class="step active">가입완료</div>
+         </div>
+      </div><br>
+
         <div class="box">
-            <h2>헬리아리워즈 가입완료</h2>
+            <h2>헬리아리워즈 가입완료</h2> 
             <h4 style="color:#aca291">감사합니다.</h4>
             <h6><%=mfname+mlname%> 님께서는 헬리아리워즈에 정상적으로 가입되셨습니다.</h6>
             <hr>
 
             <div class="label-container">
-                <label ">헬리아 리워즈 번호</label>
+                <label>헬리아 리워즈 번호</label>
                 <span>ㅣ</span>
                 <label style="color:#aca291"><%=midx%></label>
             </div>

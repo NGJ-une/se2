@@ -220,36 +220,7 @@ public class MemberDAO {
       }
    }
 
-   /** 가입 완료 시 최신 정보의 이름, 아이디 창 보이도록 하는 메서드 */
-   
-   public int registerInfo1() {
-       int midx = -1; // 기본값: 실패 시 -1
 
-       try {
-           conn = com.hotel.db.HotelDB.getConn();
-           String sql = "SELECT midx FROM (SELECT midx FROM member ORDER BY midx DESC) WHERE ROWNUM = 1";
-           ps = conn.prepareStatement(sql);
-           rs = ps.executeQuery();
-
-           if (rs.next()) {
-               midx = rs.getInt("midx"); 
-             
-           }
-
-       } catch (Exception e) {
-           e.printStackTrace(); 
-       } finally {
-           try {
-               if (rs != null) rs.close();
-               if (ps != null) ps.close();
-               if (conn != null) conn.close();
-           } catch (Exception e2) {
-               
-           }
-       }
-       return midx;
-       
-   }
    
    /** registerDTO 이용해서 정보 가져오기 */
    public RegisterDTO registerOk() {
@@ -285,7 +256,40 @@ public class MemberDAO {
       }
    }
    
-}
+}  
+/** 가입 완료 시 최신 정보의 이름, 아이디 창 보이도록 하는 메서드 */
+
+//public int registerInfo1() {
+//  int midx = -1; // 실패 시 -1
+//
+//  try {
+//      conn = com.hotel.db.HotelDB.getConn();
+//      String sql = "SELECT midx FROM (SELECT midx FROM member ORDER BY midx DESC) WHERE ROWNUM = 1";
+//      ps = conn.prepareStatement(sql);
+//      rs = ps.executeQuery();
+//
+//      if (rs.next()) {
+//          midx = rs.getInt("midx"); 
+//        
+//      }
+//
+//  } catch (Exception e) {
+//      e.printStackTrace(); 
+//  } finally {
+//      try {
+//          if (rs != null) rs.close();
+//          if (ps != null) ps.close();
+//          if (conn != null) conn.close();
+//      } catch (Exception e2) {
+//          
+//      }
+//  }
+//  return midx;
+//  
+//}
+
+
+	
 
    
 
