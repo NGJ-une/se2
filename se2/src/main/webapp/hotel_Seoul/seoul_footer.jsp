@@ -42,6 +42,7 @@
       </div>
     </div>
   </div>
+</footer><!-- footer 끝 -->
 
   <div class="footer-bottom">
     <div class="legal-links">
@@ -61,4 +62,3 @@
       서울 중구 명동로 123 (우: 04556)  | 사업자등록번호 123-45-67890
     </div>
   </div>
-</footer>
