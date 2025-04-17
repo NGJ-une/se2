@@ -150,7 +150,7 @@ function show() {
 }
 
 	input[type="submit"] {
-  		background-color: #f0b675;
+  		background-color: #b58143;
   		color: white;
 	}
 
