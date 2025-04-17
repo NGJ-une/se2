@@ -33,6 +33,8 @@ int result2 = rdao.refundDetails(rdto);
 if(result2 > 0) {
 	int result = rdao.reFund(id, mmoney);
 	msg = result > 0 ? "입력하신 "+bbank+"은행 "+bacount+"계좌로 "+mmoney+"원 환불 되셧습니다." : "환불 받을 금액을 다시 확인해주세요.";
+	if (result > 0)
+		session.setAttribute("balance", (int)session.getAttribute("balance") - mmoney);
 	%>
 	<script>
 	window.alert('<%=msg%>');
