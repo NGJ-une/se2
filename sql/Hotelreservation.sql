@@ -152,7 +152,7 @@ commit
 
 --시퀀스 생성  
 CREATE SEQUENCE sq_member_idx START WITH 11--로그인/회원가입 테이블  회원번호 시퀀스  
-CREATE SEQUENCE sq_reser_idx -- 예약 테이블 예약번호 시퀀스 
+CREATE SEQUENCE sq_reser_idx START WITH 26 -- 예약 테이블 예약번호 시퀀스 
 CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
 CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
 CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스

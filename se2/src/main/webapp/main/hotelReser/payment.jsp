@@ -42,6 +42,7 @@
 	font-size: 18px;
 	margin: 10px;
 	padding: 10px;
+	background-color: #fffdfb;
 }
 
 .roomInfo input[type=number]{
@@ -196,7 +197,7 @@ int balance = (int)session.getAttribute("balance");
 int dcRate = (int)session.getAttribute("dcRate");
 
 String selectedRow = request.getParameter("selectedRow");
-String selectedType = request.getParameter("type_" + selectedRow).substring(2);
+String selectedType = request.getParameter("type_" + selectedRow);
 
 int selectedMoney = Integer.parseInt(request.getParameter("money_" + selectedRow));
 int dcPrice = (int)Math.floor(selectedMoney * (1 - dcRate / 100.0)) ;
@@ -220,7 +221,7 @@ String imgSrc = request.getParameter("img");
 								<fieldset>
 									<legend>예약 정보 확인</legend>
 									<img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
-									<label>방 종류</label><input type="text" name="type" value="<%= selectedType %>" readonly><br>
+									<label>방 종류</label><input type="text" value="<%= selectedType.substring(2) %>" disabled><br>
 									<label>체크인</label><input type="date" name="checkInStr" value="<%= checkInStr %>" readonly>
 								    <label>체크아웃</label><input type="date" name="checkOutStr" value="<%= checkOutStr %>" readonly><br>
 								    <label>성인</label><input type="number" name="adult" value="<%= reserDTO.getAdult() %>" readonly>
@@ -264,7 +265,7 @@ String imgSrc = request.getParameter("img");
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 숙소 금액
 									<li><br>
-									<li><%= selectedType %>: <%= selectedMoney %> 원
+									<li><%= selectedType.substring(2) %>: <%= selectedMoney %> 원
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 등급 및 할인
 									<li><br>
@@ -300,6 +301,7 @@ String imgSrc = request.getParameter("img");
 						</div>
 					</div>
 			    	<input type="hidden" name="id" value="<%= (String)session.getAttribute("sessionid") %>">
+					<input type="hidden" name="type" value="<%= selectedType %>">
 					<input type="hidden" name="name" value="<%= reserDTO.getName() %>">
 			    	<input type="hidden" name="money" value="<%= dcPrice * nights %>">
 			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney * nights %>">
