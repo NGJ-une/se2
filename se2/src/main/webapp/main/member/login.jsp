@@ -96,7 +96,11 @@
     color: #6b4c2f;
     }
      
-    
+    .loginfailMsg {
+    	color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+     }
 </style>
 </head>
 
@@ -142,7 +146,16 @@ if (cks != null) {
         </div>
 
         <input type="submit" value="  로그인  ">
-        <br>
+        
+		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "loginfailMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
         <p>
             <a href="idFind.jsp"> 아이디 찾기 </a> |
             <a href="pwdFind.jsp"> 비밀번호 찾기 </a> |

@@ -127,6 +127,11 @@
             padding-bottom : 15px;
         }
         
+        .pwdMissMatch {
+	        color: red;
+		    font-size: 14px;
+		    margin-top: 10px;
+        }
     </style>
 
     <script>
@@ -144,12 +149,14 @@
         function pwdCheck() {
             let pwd = document.memberJoin.pwd.value;
             let pwdcheck = document.memberJoin.pwdcheck.value;
+            var errorMsg = document.getElementById("pwdErrorMsg");
 
             if (pwd !== pwdcheck) {
-                alert("비밀번호가 일치하지 않습니다.");
-                document.memberJoin.pwd.focus();
+            	errorMsg.textContent = "비밀번호가 일치하지 않습니다.";
+            	document.memberJoin.pwd.focus();
                 return false;
             }
+            errorMsg.textContent = "";
             return true;
         }
 
@@ -196,6 +203,7 @@
             <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required>
             <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
         </div>
+        <p id="pwdErrorMsg" class = "pwdMissMatch"></p>
         
         <label>E-mail</label>
         <div class="email-group">
