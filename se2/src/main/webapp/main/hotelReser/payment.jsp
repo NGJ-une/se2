@@ -76,7 +76,7 @@
 	text-align: left;
 	padding: 10px;
 	background-color: white;
-	height : 650px;;
+	height : 700px;;
 	position: sticky;
 	top: 220px;
 	border: 2px dashed #c34a36;
@@ -164,7 +164,7 @@
 	display: inline-block;
 	margin-top: 20px;
 	padding: 10px;
-	font-size: 20px;
+	font-size: 18px;
 	border-top: 1px solid black;
 	width: 240px;
 }
@@ -173,6 +173,10 @@
 	margin: 5px;
 	padding: 5px;
 	font-size: 15px;
+}
+
+.icons {
+	font-size: 28px;
 }
 </style>
 <%
@@ -254,9 +258,9 @@ String imgSrc = request.getParameter("img");
 						<div class="payment-info">
 							<div class="payment-info-list">
 								<ul>
-									<li class="user-id"><%= (String)session.getAttribute("sessionid") %> 회원님
+									<li class="user-id"><span class="icons">🤩</span> <%= (String)session.getAttribute("sessionid") %> 회원님
 									<li><br>
-									<li><span class="balance">보유 자금: <%= balance %> 원</span>
+									<li><span class="icons">🤑</span><span class="balance">보유 자금: <%= balance %> 원</span>
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 숙소 금액
 									<li><br>
@@ -272,20 +276,20 @@ String imgSrc = request.getParameter("img");
 									<li><%= selectedMoney * nights %>원 (<%= nights %>박)
 									<li>- <%= (int)(selectedMoney * nights * dcRate / 100.0) %>원 (<%= dcRate %>% 할인)
 									<li>--------------------------------------
-									<li class="total-price">= <%= dcPrice * nights %>원
+									<li class="total-price">= <%= dcPrice * nights %>원 <span class="icons">👍</span>
 								</ul>
 							</div>
 							<div class="payment-confirm">
 			    <%
 			    if (dcPrice * nights <= balance){
 			    %>
-					    		<span>결제 후 잔액: <%= balance - dcPrice * nights %></span><br> 
+					    		<span class="icons">😘</span>결제 후 잔액: <%= balance - dcPrice * nights %>원<br> 
 					    		<div style="text-align: right; margin-top: 5px;">
 					    			<input type="submit" value="결제하기">
 			    <%
 			    } else{
 			    %>
-					    			<span>잔액이 부족합니다</span><br>
+					    			<span class="icons">🤬</span>잔액이 부족합니다<br>
 					    			<input type="button" value="충전하기" onclick="window.location.href = '/se2/main/myPage/deposit.jsp'">
 			    <%
 			    }
