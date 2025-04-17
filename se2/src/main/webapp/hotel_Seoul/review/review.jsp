@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>호텔 리뷰</title>
+<title>HELIA HOTEL : 후기</title>
 <style>
     /* 전체 초기화 및 기본 설정 */
     * {

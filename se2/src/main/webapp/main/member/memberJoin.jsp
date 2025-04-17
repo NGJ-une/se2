@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>HELIA HOTEL : 회원가입</title>
     <style>
         * {
             margin: 0;
@@ -132,6 +132,36 @@
 		    font-size: 14px;
 		    margin-top: 10px;
         }
+        
+     
+     /** 약관동의 / 회원정보 입력 / 가입완료 */   
+        
+     .step-wrapper {
+        display: flex;
+        justify-content: center; /* wrapper 안에서 가운데 정렬 */
+    }
+
+    .step-container {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .step {
+        text-align: center;
+        padding: 1rem;
+        border-bottom: 3px solid #ccc;
+        color: #888;
+        font-weight: bold;
+        min-width: 120px;
+    }
+
+    .step.active {
+        border-bottom: 4px solid #825517;
+        color: #000;
+       
+       }
+        
+        
     </style>
 
     <script>
@@ -177,6 +207,17 @@
 </head>
 <body>
     <%@ include file="/header.jsp" %>
+    <br>
+    <h1 style="color:#56340c;">신라리워즈 가입</h1>  
+	<div class="step-wrapper">
+    <div class="step-container">
+        <div class="step">약관동의</div>
+        <div class="step active">회원정보 입력</div>
+        <div class="step">가입완료</div>
+    </div>
+</div>
+<br><br>
+    
     <form name="memberJoin" action="memberJoin_ok.jsp" method="post" onsubmit="return pwdCheck();">
         <h2>회원가입</h2>
         <hr>

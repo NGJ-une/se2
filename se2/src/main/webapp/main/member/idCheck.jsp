@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 중복검사</title>
+<title>HELIA HOTEL : 아이디 중복검사</title>
 <style>
     html, body {
         margin: 0;

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment</title>
+<title>HELIA HOTEL : 결제</title>
 <jsp:useBean id="reserDTO" class="com.hotel.reser.ReserDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="reserDTO"/>
 <style>
@@ -42,6 +42,7 @@
 	font-size: 18px;
 	margin: 10px;
 	padding: 10px;
+	background-color: #fffdfb;
 }
 
 .roomInfo input[type=number]{
@@ -76,7 +77,7 @@
 	text-align: left;
 	padding: 10px;
 	background-color: white;
-	height : 650px;;
+	height : 700px;;
 	position: sticky;
 	top: 220px;
 	border: 2px dashed #c34a36;
@@ -164,7 +165,7 @@
 	display: inline-block;
 	margin-top: 20px;
 	padding: 10px;
-	font-size: 20px;
+	font-size: 18px;
 	border-top: 1px solid black;
 	width: 240px;
 }
@@ -173,6 +174,10 @@
 	margin: 5px;
 	padding: 5px;
 	font-size: 15px;
+}
+
+.icons {
+	font-size: 28px;
 }
 </style>
 <%
@@ -192,7 +197,7 @@ int balance = (int)session.getAttribute("balance");
 int dcRate = (int)session.getAttribute("dcRate");
 
 String selectedRow = request.getParameter("selectedRow");
-String selectedType = request.getParameter("type_" + selectedRow).substring(2);
+String selectedType = request.getParameter("type_" + selectedRow);
 
 int selectedMoney = Integer.parseInt(request.getParameter("money_" + selectedRow));
 int dcPrice = (int)Math.floor(selectedMoney * (1 - dcRate / 100.0)) ;
@@ -216,7 +221,7 @@ String imgSrc = request.getParameter("img");
 								<fieldset>
 									<legend>예약 정보 확인</legend>
 									<img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
-									<label>방 종류</label><input type="text" name="type" value="<%= selectedType %>" readonly><br>
+									<label>방 종류</label><input type="text" value="<%= selectedType.substring(2) %>" disabled><br>
 									<label>체크인</label><input type="date" name="checkInStr" value="<%= checkInStr %>" readonly>
 								    <label>체크아웃</label><input type="date" name="checkOutStr" value="<%= checkOutStr %>" readonly><br>
 								    <label>성인</label><input type="number" name="adult" value="<%= reserDTO.getAdult() %>" readonly>
@@ -254,13 +259,13 @@ String imgSrc = request.getParameter("img");
 						<div class="payment-info">
 							<div class="payment-info-list">
 								<ul>
-									<li class="user-id"><%= (String)session.getAttribute("sessionid") %> 회원님
+									<li class="user-id"><span class="icons">🤩</span> <%= (String)session.getAttribute("sessionid") %> 회원님
 									<li><br>
-									<li><span class="balance">보유 자금: <%= balance %> 원</span>
+									<li><span class="icons">🤑</span><span class="balance">보유 자금: <%= balance %> 원</span>
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 숙소 금액
 									<li><br>
-									<li><%= selectedType %>: <%= selectedMoney %> 원
+									<li><%= selectedType.substring(2) %>: <%= selectedMoney %> 원
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 등급 및 할인
 									<li><br>
@@ -272,20 +277,20 @@ String imgSrc = request.getParameter("img");
 									<li><%= selectedMoney * nights %>원 (<%= nights %>박)
 									<li>- <%= (int)(selectedMoney * nights * dcRate / 100.0) %>원 (<%= dcRate %>% 할인)
 									<li>--------------------------------------
-									<li class="total-price">= <%= dcPrice * nights %>원
+									<li class="total-price">= <%= dcPrice * nights %>원 <span class="icons">👍</span>
 								</ul>
 							</div>
 							<div class="payment-confirm">
 			    <%
 			    if (dcPrice * nights <= balance){
 			    %>
-					    		<span>결제 후 잔액: <%= balance - dcPrice * nights %></span><br> 
+					    		<span class="icons">😘</span>결제 후 잔액: <%= balance - dcPrice * nights %>원<br> 
 					    		<div style="text-align: right; margin-top: 5px;">
 					    			<input type="submit" value="결제하기">
 			    <%
 			    } else{
 			    %>
-					    			<span>잔액이 부족합니다</span><br>
+					    			<span class="icons">🤬</span>잔액이 부족합니다<br>
 					    			<input type="button" value="충전하기" onclick="window.location.href = '/se2/main/myPage/deposit.jsp'">
 			    <%
 			    }
@@ -296,6 +301,7 @@ String imgSrc = request.getParameter("img");
 						</div>
 					</div>
 			    	<input type="hidden" name="id" value="<%= (String)session.getAttribute("sessionid") %>">
+					<input type="hidden" name="type" value="<%= selectedType %>">
 					<input type="hidden" name="name" value="<%= reserDTO.getName() %>">
 			    	<input type="hidden" name="money" value="<%= dcPrice * nights %>">
 			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney * nights %>">

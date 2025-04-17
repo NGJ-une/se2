@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 호텔소개</title>
 <style>
 	* {
 		margin: 0;
@@ -65,7 +65,8 @@
  <h1>HELIA Ulsan</h1>
 
 <div class="Ulsanimg">
-  <img src="/se2/main/hotelInfo/img/U_Information.png" alt="HELIA Ulsan" class="hotelimg">
+
+  <img src="/se2/main/hotelInfo/img/Helia2.png" alt="HELIA Ulsan" class="hotelimg">
 </div>
 
 <label><h3>HELIA 호텔 울산 지점</h3></label>

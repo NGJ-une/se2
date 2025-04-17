@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체 목록 리스트</title>
+<title>HELIA HOTEL : 후기 목록</title>
 <jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <style>
     body {

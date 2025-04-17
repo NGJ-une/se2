@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>HELIA HOTEL : 아이디 찾기</title>
  <style>
  
     * {
@@ -68,6 +68,11 @@
     	background-color: #E4D9C7;
     }    
    
+   .idFindErrorMsg {
+   		color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+   }
     
 
     
@@ -91,7 +96,15 @@
                      </select>   
                      <input type="text" name="answer" placeholder="답변" required>
                	 	 <input type="submit" value="아이디찾기">
-               	 	 
+               	 	 		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "idFindErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
                	<p> 
                		 <a href="pwdFind.jsp"> 비밀번호 찾기</a> |
                 	<a href="login.jsp">로그인</a>	|

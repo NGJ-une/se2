@@ -21,7 +21,7 @@ String msg = result > 0 ? "예약 성공" : "예약 실패";
 
 if (result > 0){
 	session.setAttribute("point", (int)session.getAttribute("point") + orgPrice);
-	session.setAttribute("balance", (int)session.getAttribute("balance") + reserDTO.getMoney());
+	session.setAttribute("balance", (int)session.getAttribute("balance") - reserDTO.getMoney());
 }
 %>
 <script>

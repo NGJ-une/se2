@@ -90,13 +90,11 @@ CREATE TABLE refund (
 --문의 테이블 생성 8번  
 CREATE TABLE inquiry (
     iidx number(5) primary key, --문의 회원번호 (기본키)  
-    iid varchar2(50) not null, --문의 아이디 (외래키) 
+    iid varchar2(50) not null, --문의 아이디 (외래키)
+    itype varchar2(30) not null, 
     ititle varchar2(100) not null, --문의 제목 
     icontent varchar2(3000) not null, -- 문의 내용 
     idate date not null, --문의 날짜 
-    iref number(4) default 0,
-    ilev number(4) default 0,
-    isunbun number(4) default 0,
 
 constraint fk_member_id2 foreign key(iid) references member(mid)
 )   

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 글쓰기 </title>
+<title>HELIA HOTEL : 후기 작성</title>
 <style>
     body {
         font-family: 'Segoe UI', sans-serif;
@@ -20,11 +20,12 @@
     }
 
     table {
-         width: 100%;
+        width: 100%;
     	border-collapse: separate; /* 둥글게 만들려면 separate! */
-    	border: 2px solid #f0b675; /* 주황 테두리 */
+    	border: 2px solid #eeeeeec0; 
     	border-radius: 12px;
     	overflow: hidden; /* 둥근 테두리 효과 유지 */
+    	 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     }
 
     th {
@@ -48,8 +49,7 @@
     }
 
     .custom-file label {
-        background-color: #f0b675;
-        color: white;
+        background-color: #eeeeeec0;
         padding: 6px 14px;
         border-radius: 6px;
         cursor: pointer;
@@ -58,7 +58,7 @@
     }
 
     .custom-file label:hover {
-        background-color: #e3a55c;
+        background-color: #E4D9C7;
     }
 
     .file-name {
@@ -120,16 +120,15 @@
     input[type="submit"], input[type="reset"] {
         padding: 10px 20px;
         margin: 10px;
-        background-color: #f0b675;
+        background-color: #eee; 
         border: none;
-        color: white;
         border-radius: 8px;
         cursor: pointer;
         font-weight: bold;
     }
 
     input[type="submit"]:hover, input[type="reset"]:hover {
-        background-color: #e3a55c;
+        background-color: #E4D9C7;
     }
 </style>
 

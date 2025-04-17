@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>가로로 두 공간 만들기</title>
+  <title>HELIA HOTEL : 환불</title>
  <style>
     * {
 	   margin: 0;
@@ -107,6 +107,11 @@
 	    font-size: 16px;
 	    color: #555;
 	}
+	.container p {
+    	color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+     }
   </style>
 </head>
 <body>
@@ -138,6 +143,15 @@
          <label>계좌 번호 : </label>
          <input type = "number" name = "bacount" required="required">
         </div>
+        <%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "refundErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
         <br>
         <input type="submit" value="환불">
         <input type="reset" value="취소">

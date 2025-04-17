@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 호텔소개</title>
 <style>
 	* {
 		margin: 0;
@@ -55,7 +55,7 @@
   <section class="box2">
       <h1>개요</h1>
       <div class = "hotelInfoimg">
-        <img src = "/se2/main/hotelInfo/img/1.jpg" alt="h1" class = "hotelimg">
+        <img src = "/se2/main/hotelInfo/img/Helia1.png" alt="h1" class = "hotelimg">
       </div>
 <label><h3>Welcome to HELIA Hotel, where luxury meets comfort.</h3></label>
 <br>

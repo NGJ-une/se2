@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- SEO 핵심: 제목 -->
-<title>HELIA 호텔 - 서울, 울산 전 지점 예약 | 공식 예약 사이트</title>
+<title>HELIA HOTEL - 서울, 울산 전 지점 예약 | 공식 예약 사이트</title>
 <!-- SEO 핵심: 검색 설명 -->
 <meta name="description" content="HELIA 호텔 공식 예약 사이트. 서울, 울산 등 전국 지점 럭셔리 숙박 제공. 회원 등급에 따른 리워즈 혜택까지 누리세요.">
   

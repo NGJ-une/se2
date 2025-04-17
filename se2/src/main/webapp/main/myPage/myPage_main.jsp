@@ -27,7 +27,7 @@ ArrayList<Integer> arr3 = vdao.getVridxList(id);
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>HELIA HOTEL : 마이페이지</title>
 <style>
 * {
 	margin: 0;
