@@ -26,7 +26,7 @@
 			
 			<% if(sid==null||"".equals(sid)) { %>
 				<a href="/se2/main/member/login.jsp" id="login"><strong>로그인</strong></a>
-				<a href="/se2/main/member/memberJoin.jsp">회원가입</a>
+				<a href="/se2/main/member/agreeToTerms.jsp">회원가입</a>
 			<% } else { %>
 				<a href="/se2/main/myPage/myPage_main.jsp?userid=<%=sid%>"><strong>마이페이지</strong></a>
 				<a href="/se2/main/member/logout.jsp">로그아웃</a>

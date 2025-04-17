@@ -206,7 +206,42 @@ public class MemberDAO {
 		}
 	}
 	
-	 
+	  /** registerDTO 이용해서 정보 가져오기 */
+	   public RegisterDTO registerOk() {
+	      try {
+	         conn=com.hotel.db.HotelDB.getConn();
+	         String sql="SELECT MIDX,MID,MFNAME,MLNAME FROM (SELECT MIDX,MID,MFNAME,MLNAME FROM member ORDER BY mjoin_date DESC) WHERE ROWNUM = 1";
+	         ps=conn.prepareStatement(sql);
+	          
+	           rs= ps.executeQuery();
+	           RegisterDTO dto=null;
+	           if(rs.next()) {
+	              int midx  = rs.getInt("midx");
+	              String mid = rs.getString("mid");
+	              String mfname = rs.getString("mfname");
+	              String mlname = rs.getString("mlname");
+	              dto= new RegisterDTO(midx,mid,mfname,mlname);
+	              
+	           }
+	           return dto;
+	      
+	      }catch (Exception e) {
+	         e.printStackTrace();
+	              return null;
+	      }finally {
+	         try {
+	            if (rs != null) rs.close();
+	                  if (ps != null) ps.close();
+	                  if (conn != null) conn.close();
+	         }catch (Exception e2) {
+	            e2.printStackTrace();
+	            
+	         }
+	      }
+	   }
+	   
+	}
+
 
 
 
