@@ -30,7 +30,7 @@
 		<!-- sidebar 다음에 들어가는 중앙 콘텐츠 -->
 		<div class="room-content">
 			<div class="room-content-inner">
-				<h2 class="room-title">디럭스</h2>
+				<h2 class="room-title">스위트</h2>
 
 				<div class="room-visual-wrap">
 					<div class="room-main-image">

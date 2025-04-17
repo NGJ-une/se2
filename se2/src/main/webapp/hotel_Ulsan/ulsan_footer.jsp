@@ -4,7 +4,7 @@
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-top-row">
-      <div class="footer-logo">HELIA HOTEL SEOUL</div>
+      <div class="footer-logo">HELIA HOTEL ULSAN</div>
 		 <div class="footer-address">
 		 헬라 스테이 인 서울 <br />
         서울특별시 중구 명동로 123<br />
@@ -42,6 +42,7 @@
       </div>
     </div>
   </div>
+</footer> <!-- footer 끝  -->
 
   <div class="footer-bottom">
     <div class="legal-links">
@@ -61,4 +62,3 @@
       서울 중구 명동로 123 (우: 04556)  | 사업자등록번호 123-45-67890
     </div>
   </div>
-</footer>

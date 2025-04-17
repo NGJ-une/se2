@@ -26,7 +26,7 @@ html, body {
   width: 1300px;  /* 고정 폭*/
   margin: 0 auto;
   padding: 10px 0;
-  gap: 1000px;/* 링크 간 간격 */
+  gap: 900px;/* 링크 간 간격 */
 }
 
 .left-utils,
