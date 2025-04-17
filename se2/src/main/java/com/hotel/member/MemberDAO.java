@@ -79,15 +79,15 @@ public class MemberDAO {
 	public MemberDTO loginCheckPwd(String userid) {
 		try {
 			conn=com.hotel.db.HotelDB.getConn();
-			String sql="SELECT mpwd, mgrade, mpoint, mmoney, discount FROM member, grade "
-					+ "WHERE member.mgrade = grade.grade AND mid = ?";
+			String sql="SELECT mpwd, grade, mpoint, mmoney, discount FROM member, grade "
+					+ "WHERE mpoint BETWEEN min_point AND max_point AND mid = ?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
 
 			if(rs.next()) {
 				return new MemberDTO(userid, 0, rs.getString("mpwd"), null, null, null, null, null, null,
-						rs.getString("mgrade"), null, rs.getInt("mpoint"), rs.getInt("mmoney"), rs.getInt("discount"), 0, null);
+						rs.getString("grade"), null, rs.getInt("mpoint"), rs.getInt("mmoney"), rs.getInt("discount"), 0, null);
 			} 
 			return null;
 		}

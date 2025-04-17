@@ -75,6 +75,12 @@
 		height: 90px;
 	}
 	
+	.reser-search-result input[type=submit]{
+		padding: 5px;
+		border: 1px solid #6b4c2f;
+		border-radius: 5px;
+	}
+	
 	.img-cell {
 		width: 160px;
 	}
@@ -180,7 +186,7 @@ String babyStr = request.getParameter("baby");
 		
 		<article>
 			<div class="wrapper">
-				<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" id="hotelReser" method="post">
+				<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" method="post">
 					<table class="reser-search-result">
 					<%
 			    	if (name != null && adultStr != null
@@ -238,7 +244,7 @@ String babyStr = request.getParameter("baby");
 			    				<input type="hidden" name="adult" value="<%= adultStr %>">
 			    				<input type="hidden" name="kid" value="<%= kidStr %>">
 			    				<input type="hidden" name="baby" value="<%= babyStr %>">
-								<input type="submit" class="input-components" value="예약하기">
+								<input type="submit" value="예약하기">
 							</td>
 						</tr>
 						<%
