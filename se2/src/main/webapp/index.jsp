@@ -100,7 +100,7 @@
         </article>
     </section>
  	<div class="scaled-content">
-    <section class="section5">
+ <section class="section5">
   <article>
     <div class="reservation-box">
       <form class="reservation-form" action="/se2/main/hotelReser/hotelReser.jsp">

@@ -210,12 +210,14 @@ button.next:hover {
 
 
 /*section5*/
+
 .reservation-box {
   max-width: 1200px;
   margin: 0 auto;
 }
 /*reservation 전체 */
 .reservation-form {
+  transform: scale(1.1);
   display: flex;
   flex-wrap: nowrap; /* 버튼이 줄바꿈되지 않게 */
   gap: 16px;
@@ -232,12 +234,13 @@ button.next:hover {
   flex: 0 0 180px;
 }
 .reservation-item img {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
 }
 /*호텔찾기 select 길이 */
 .region-select{
 	width: 190px;
+	height: 25px;
 }
 /*객실 성인 어린이 유아 */
 .reservation-item {
