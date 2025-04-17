@@ -37,6 +37,8 @@
         border-bottom: 3px double #9c6a31;
         background-color: #ffffff;
         box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+        
+        
     }
 
     thead th {
@@ -119,7 +121,7 @@ if(cp%maxPage==0) userGroup--;
 %>
  
 <body>
-<%@include file="/hotel_Seoul/seoul_header.jsp" %>
+<%@include file="/hotel_Ulsan/ulsan_header.jsp" %>
 <section>
 
 	<h1 style="text-align:center;">REVIEW</h1>
@@ -198,6 +200,6 @@ if(cp%maxPage==0) userGroup--;
 	</table>
 	</div>
 </section>
-<%@include file="/hotel_Seoul/seoul_footer.jsp"%> 
+<%@include file="/hotel_Ulsan/ulsan_footer.jsp" %> 
 </body>
 </html>

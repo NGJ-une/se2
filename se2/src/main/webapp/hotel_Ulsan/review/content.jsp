@@ -387,7 +387,7 @@ if (!already) {
 
 %>
 <body>
-<%@include file="/hotel_Seoul/seoul_header.jsp" %>
+<%@include file="/hotel_Ulsan/ulsan_header.jsp" %>
 <section>
     <article class="center-part">
 
@@ -567,6 +567,6 @@ if (!already) {
         }
     </script>
 </section>
-<%@include file="/hotel_Seoul/seoul_footer.jsp" %>
+<%@include file="/hotel_Ulsan/ulsan_footer.jsp" %>
 </body>
 </html>

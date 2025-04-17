@@ -47,7 +47,7 @@
 	  <nav class="header-nav">
 	    <div class="main-menu-container">
 	      <ul class="main-menu">
-	        <li class="has-submenu" data-menu="review"><a href="/se2/hotel_Seoul/review/list.jsp">후기</a></li>
+	        <li class="has-submenu" data-menu="review"><a href="/se2/hotel_Ulsan/review/list.jsp">후기</a></li>
 	        <li class="has-submenu" data-menu="room"><a href="/se2/hotel_Ulsan/menubar/room/standard.jsp">객실</a></li>
 	        <li class="has-submenu" data-menu="dining"><a href="/se2/hotel_Ulsan/menubar/dining/restaurant.jsp">다이닝</a></li>
 	        <li class="has-submenu" data-menu="activity"><a href="/se2/hotel_Ulsan/menubar/facilities/meeting.jsp">부대시설</a></li>
