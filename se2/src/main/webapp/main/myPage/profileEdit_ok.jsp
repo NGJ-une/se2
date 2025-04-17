@@ -10,7 +10,7 @@ String lmail = request.getParameter("lmail");
 String email = fmail+"@"+lmail;
 mdto.setMemail(email);
 int result = mdao.memberEdit(sid, mdto);
-String msg = result > 0 ? "수정성공!" : "수정실패!";
+String msg = result > 0 ? "회원 정보가 수정 되었습니다." : "고객센터에 문의 해주세요.";
 if(result > 0 ) {
 	%>
 	<script>
@@ -19,12 +19,8 @@ location.href='myPage_main.jsp';
 </script>
 	<%
 }else {
-	%>
-	<script>
-window.alert('<%=msg%>');
-location.href='profileEdit.jsp';
-</script>
-	<%
+    session.setAttribute("errorMsg", "입력하신 값을 다시 확인해주세요. <br>다시 확인해주세요.");
+    response.sendRedirect("profileEdit.jsp");
 }
 %>
 

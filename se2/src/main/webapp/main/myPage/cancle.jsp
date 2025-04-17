@@ -93,6 +93,11 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
      input[type="button"]:hover {
       background-color: #bdbdbd;
     }
+    .cancleErrorMsg {
+        color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+    }
   </style>
 </head>
 <script>
@@ -116,6 +121,15 @@ function cancleConfirm() {
           <label>비밀 번호 :</label>
           <input type = "password" name = "pwd">
           <br>
+          		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "cancleErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
           <br>
           <input type="submit" value="탈퇴">
           <input type="button" value="취소">

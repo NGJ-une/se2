@@ -99,6 +99,11 @@ String id = (String)session.getAttribute("sessionid");
       background-color: #bbb;
     }
     
+    .pwdErrorMsg {
+        color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+    }
     
 </style>
 </head>
@@ -115,6 +120,15 @@ String id = (String)session.getAttribute("sessionid");
         <label for="pwd">비밀번호</label>
         <input type="password" id="pwd" name="pwd" required>
 
+		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "pwdErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
         <br>
         <input type="submit" value="확인">
         <input type="button" value="취소" onclick="history.back()">
