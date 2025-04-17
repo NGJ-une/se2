@@ -69,6 +69,11 @@
     input[type="submit"]:hover {
         background-color: #e69c4e;
     }
+    .idDuplitionMsg {
+    	color:red;
+    	font-size: 14px;
+	    margin-top: 10px;
+    }
 </style>
 </head>
 <body>
@@ -80,6 +85,15 @@
                 <input type="text" name="userid" id="userid" placeholder="ID 입력">
                 <input type="submit" value="중복검사">
             </div>
+                            <%
+                String errorMsg = (String)session.getAttribute("errorMsg");
+                if(errorMsg != null) {
+                	%>
+                	<p class = "idDuplitionMsg"><%=errorMsg %></p>
+                	<%
+                	session.removeAttribute("errorMsg");
+                }
+                %>
         </form>
     </div>
 </body>

@@ -1,0 +1,136 @@
+@charset "UTF-8";
+.room-content {
+  padding: 40px;
+  background-color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.container {
+	display: flex;
+	width: 1500px;
+	margin: 60px auto;
+}
+/*content 안 내부 정렬*/
+.room-content-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.room-title {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #222;
+  margin-top: 0;
+}
+.room-main-image {
+  display: flex;
+  justify-content: center;
+}
+.room-main-image img {
+  width: 800px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.room-description {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.room-info-table {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.room-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.room-buttons .btn {
+  background-color: #8b6f55;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
+}
+.room-buttons .btn:hover {
+  background-color: #a88c6e;
+}
+/*사진 옆 컨텐츠 나열 */
+.room-visual-wrap {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+  align-items: flex-start;
+   max-width: 100%;
+}
+
+.room-side-info {
+  flex: 1;
+  background-color: #e5e0db;
+  padding: 20px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  color: #4a3b2c;
+  font-size: 16px;
+}
+
+.room-side-info h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #6d5845;
+}
+
+.room-side-info ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.room-side-info li {
+  margin-bottom: 8px;
+  list-style: disc;
+}
+
+/*룸소개 폰트 */
+.room-description {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+.room-description .desc-title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #6d5845;
+}
+
+.room-description .desc-strong {
+  font-weight: 600;
+  color: #3f3123;
+}
+
+.room-description .desc-phone {
+  font-weight: 500;
+  color: #777;
+  margin-right: 10px;
+}
+
+.room-description .desc-number {
+  font-size: 17px;
+  font-weight: bold;
+  color: #8b6f55;
+}
+
+.room-description .desc-note {
+  font-size: 16px;
+  color: #666;
+}

@@ -121,7 +121,6 @@ public class HotelPhotoDAO {
 			ps.setString(2, dto.getPname2());
 			ps.setString(3, dto.getPname3());
 			ps.setInt(4, dto.getPidx());
-			ps = conn.prepareStatement(sql);
 			int count = ps.executeUpdate();
 			return count;
 		} catch (Exception e) {

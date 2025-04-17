@@ -1,6 +1,8 @@
+<%@page import="java.time.temporal.ChronoUnit"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.Date" %>
+<%@ page import="java.time.LocalDate" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +16,15 @@
 	font-size: 45px;
 	margin-left: 10%;
 	color: #6b4c2f;
+	margin-top: 20px;
 }
 .payment-container {
-	margin: 10px auto;
-	padding: 20px;
+	margin: 0px auto;
 	height: auto;
 	display:flex;
 }
 .roomInfo {
-	padding: 20px;
+	padding: 10px;
 }
 
 .roomInfo fieldset {
@@ -61,20 +63,20 @@
 	margin-right: 10px;
 }
 
-
-
 .payment-notice {
 	width: 900px;
 	height: auto;
 	margin-left: 30px;
 }
-
+.payment-notice p {
+	margin: 10px;
+}
 .payment-info {
 	width: 300px;
 	text-align: left;
 	padding: 10px;
 	background-color: white;
-	height : 500px;
+	height : 650px;;
 	position: sticky;
 	top: 220px;
 	border: 2px dashed #c34a36;
@@ -134,6 +136,12 @@
 					 0 0 75px #ff4500;
 	}
 }
+
+.user-id {
+	color: #f85df8;
+	font-weight: bolder;
+}
+
 .balance {
 	color: white;
 	background: linear-gradient(90deg, #ffd700, #ffa500, #ff4500);
@@ -148,14 +156,8 @@
 	font-style: italic;
 }
 
-.orgPrice {
-	opacity: 0.3;
-	text-decoration: line-through;
-}
-
-.dcPrice {
-	color: maroon;
-	text-shadow: 0 1px 1px olive;
+.total-price {
+	font-weight: bold;
 }
 
 .payment-confirm{
@@ -190,13 +192,14 @@ int balance = (int)session.getAttribute("balance");
 int dcRate = (int)session.getAttribute("dcRate");
 
 String selectedRow = request.getParameter("selectedRow");
-String selectedType = request.getParameter("type_" + selectedRow);
+String selectedType = request.getParameter("type_" + selectedRow).substring(2);
 
 int selectedMoney = Integer.parseInt(request.getParameter("money_" + selectedRow));
-int dcPrice = selectedMoney * (1 - (int)session.getAttribute("dcRate"));
+int dcPrice = (int)Math.floor(selectedMoney * (1 - dcRate / 100.0)) ;
 
 String checkInStr = request.getParameter("checkInStr");
 String checkOutStr = request.getParameter("checkOutStr");
+int nights = (int)ChronoUnit.DAYS.between(LocalDate.parse(checkInStr), LocalDate.parse(checkOutStr));
 String imgSrc = request.getParameter("img");
 %>
 </head>
@@ -251,9 +254,13 @@ String imgSrc = request.getParameter("img");
 						<div class="payment-info">
 							<div class="payment-info-list">
 								<ul>
+									<li class="user-id"><%= (String)session.getAttribute("sessionid") %> 회원님
+									<li><br>
+									<li><span class="balance">보유 자금: <%= balance %> 원</span>
+									<li><br>
 									<li class="payment-info-list-bold">&#8251; 숙소 금액
 									<li><br>
-									<li><%= selectedType.substring(2) %>: <%= selectedMoney %> 원
+									<li><%= selectedType %>: <%= selectedMoney %> 원
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 등급 및 할인
 									<li><br>
@@ -262,16 +269,17 @@ String imgSrc = request.getParameter("img");
 									<li><br>
 									<li class="payment-info-list-bold">&#8251; 최종 결제 금액
 									<li><br>
-									<li><%= selectedType.substring(2) %>: <%= dcPrice %>원 (<%= dcRate %>% 할인)
-									<li><br>
-									<li><span class="balance">보유 자금: <%= balance %> 원</span>
+									<li><%= selectedMoney * nights %>원 (<%= nights %>박)
+									<li>- <%= (int)(selectedMoney * nights * dcRate / 100.0) %>원 (<%= dcRate %>% 할인)
+									<li>--------------------------------------
+									<li class="total-price">= <%= dcPrice * nights %>원
 								</ul>
 							</div>
 							<div class="payment-confirm">
 			    <%
-			    if (dcPrice <= balance){
+			    if (dcPrice * nights <= balance){
 			    %>
-					    		<span>결제 후 잔액: <%= balance - dcPrice %></span><br> 
+					    		<span>결제 후 잔액: <%= balance - dcPrice * nights %></span><br> 
 					    		<div style="text-align: right; margin-top: 5px;">
 					    			<input type="submit" value="결제하기">
 			    <%
@@ -289,8 +297,8 @@ String imgSrc = request.getParameter("img");
 					</div>
 			    	<input type="hidden" name="id" value="<%= (String)session.getAttribute("sessionid") %>">
 					<input type="hidden" name="name" value="<%= reserDTO.getName() %>">
-			    	<input type="hidden" name="money" value="<%= dcPrice %>">
-			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney %>">
+			    	<input type="hidden" name="money" value="<%= dcPrice * nights %>">
+			    	<input type="hidden" name="orgPrice" value="<%= selectedMoney * nights %>">
 				</form>
 			</div>
 		</article>

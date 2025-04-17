@@ -21,25 +21,30 @@
 		font-size: 45px;
 		margin-left: 10%;
 		color: #6b4c2f;
+		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 	
 	.reser-fieldset {
 		text-align: center;
 		border: 0px;
+		margin-bottom: 20px;
 	}
 	
-	.input-components {
-		margin-left: 15px;
-		margin-right: 15px;
-		margin-top: 10px;
-		margin-bottom: 10px;
+	.reser-fieldset input, .reser-fieldset select {
+		margin: 10px 15px 10px 15px;
 		border-radius: 5px;
 		padding: 5px;
+	}
+	
+	.reser-fieldset input[type=date]{
+		width: 100px;
 	}
 	
 	.reser-fieldset label {
 		font-weight: 100%;
 		font-size: 15px;
+		margin: 10px 15px 10px 15px
 	}
 	
 	.reser-fieldset input, .reser-fieldset select, reser-search-result input {
@@ -68,6 +73,12 @@
 	.reser-search-result img {
 		width: 160px;
 		height: 90px;
+	}
+	
+	.reser-search-result input[type=submit]{
+		padding: 5px;
+		border: 1px solid #6b4c2f;
+		border-radius: 5px;
 	}
 	
 	.img-cell {
@@ -152,17 +163,17 @@ String babyStr = request.getParameter("baby");
 			                    <option value="h_seoul" <%= "h_seoul".equals(name) ? "selected" : "" %>>서울</option>
 			                    <option value="h_ulsan" <%= "h_ulsan".equals(name) ? "selected" : "" %>>울산</option>
 			                </select>
-			                <label class="input-components">체크인</label>
+			                <label>체크인</label>
 			                <input type="date" name="checkIn" class="input-components" id="checkIn" value="<%= checkInStr != null ? checkInStr : "" %>" required>
-			                <label class="input-components">체크아웃</label>
+			                <label>체크아웃</label>
 			                <input type="date" name="checkOut" class="input-components" id="checkOut" value="<%= checkOutStr != null ? checkOutStr : "" %>" required>
-			                <label class="input-components">성인</label>
+			                <label>성인</label>
 			                <input type="number" name="adult" class="input-components" min="1" max="6" 
 			                	value="<%= adultStr != null ? adultStr : "2" %>" required>
-			                <label class="input-components">어린이</label>
+			                <label>어린이</label>
 			                <input type="number" name="kid" class="input-components" min="0" max="5" 
 			                	value="<%= kidStr != null ? kidStr : "0" %>" required>
-			                <label class="input-components">유아</label>
+			                <label>유아</label>
 			                <input type="number" name="baby" class="input-components" min="0" max="5" 
 			                	value="<%= babyStr != null ? babyStr : "0" %>" required>
 			                <input type="submit" class="input-components" value="검색">
@@ -175,7 +186,7 @@ String babyStr = request.getParameter("baby");
 		
 		<article>
 			<div class="wrapper">
-				<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" id="hotelReser" method="post">
+				<form action="/se2/main/hotelReser/payment.jsp" name="hotelReser" method="post">
 					<table class="reser-search-result">
 					<%
 			    	if (name != null && adultStr != null
@@ -233,7 +244,7 @@ String babyStr = request.getParameter("baby");
 			    				<input type="hidden" name="adult" value="<%= adultStr %>">
 			    				<input type="hidden" name="kid" value="<%= kidStr %>">
 			    				<input type="hidden" name="baby" value="<%= babyStr %>">
-								<input type="submit" class="input-components" value="예약하기">
+								<input type="submit" value="예약하기">
 							</td>
 						</tr>
 						<%

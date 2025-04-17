@@ -26,7 +26,7 @@ if (result > 0){
 %>
 <script>
 window.alert('<%= msg %>');
-window.location.href = '/se2/main/hotelReser/hotelReser.jsp';
+window.location.href = '/se2/index.jsp';
 </script>
 
 
