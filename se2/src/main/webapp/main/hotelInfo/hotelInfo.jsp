@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 호텔소개</title>
 <style>
 	* {
 		margin: 0;

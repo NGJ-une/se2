@@ -8,7 +8,7 @@ String id = (String)session.getAttribute("sessionid");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>프로필 수정 전 비밀번호 확인</title>
+<title>HELIA HOTEL : 프로필 수정</title>
   
   <style>
   * {

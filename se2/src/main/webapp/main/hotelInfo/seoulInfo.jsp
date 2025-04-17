@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 서울 지점 정보 </title>
+<title>HELIA HOTEL : 호텔소개</title>
 
 
 <style>

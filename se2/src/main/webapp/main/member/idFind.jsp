@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>HELIA HOTEL : 아이디 찾기</title>
  <style>
  
     * {

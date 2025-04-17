@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>약관 동의</title>
+<title>HELIA HOTEL : 약관 동의</title>
 <style>
     * {
         margin: 0;

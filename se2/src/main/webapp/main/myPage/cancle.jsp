@@ -11,7 +11,7 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 회원탈퇴</title>
    <style>
     * {
 	   margin: 0;

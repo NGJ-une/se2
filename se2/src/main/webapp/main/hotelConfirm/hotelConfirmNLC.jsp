@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 예약확인</title>
 <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
 <link rel="stylesheet" type="text/css" href="/se2/main/hotelConfirm/css/nlc.css">
 </head>

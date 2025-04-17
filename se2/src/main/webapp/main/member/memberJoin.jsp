@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>HELIA HOTEL : 회원가입</title>
     <style>
         * {
             margin: 0;

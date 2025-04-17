@@ -16,7 +16,7 @@ String lmail = arr.get(0).getMemail().substring(fmailLocation+1, total); // @의
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 프로필수정</title>
 <script>
 function show() {
     var setlmail = document.getElementById("lmail");<!-- lmail 가져오기-->

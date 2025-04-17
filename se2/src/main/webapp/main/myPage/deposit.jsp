@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>충전하기</title>
+  <title>HELIA HOTEL : 충전하기</title>
   <style>
     * {
       margin: 0;

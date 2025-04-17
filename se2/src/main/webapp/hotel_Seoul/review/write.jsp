@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 글쓰기 </title>
+<title>HELIA HOTEL : 후기 작성</title>
 <style>
     body {
         font-family: 'Segoe UI', sans-serif;
