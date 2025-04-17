@@ -219,6 +219,7 @@
                     %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png">축하드립니다 최고등급 입니다</td><%
 	                }
 	                session.setAttribute("dcRate", dto.getNow_discount());
+	                session.setAttribute("grade", dto.getNow_grade());
 	                %>
 	                </tr>
 	            </table> 

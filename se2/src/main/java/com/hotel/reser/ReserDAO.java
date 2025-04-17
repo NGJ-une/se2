@@ -112,4 +112,58 @@ public class ReserDAO {
 			} catch(Exception e) {}
 		}
 	}
+	
+	public int getPayment(int idx) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			
+			String sql = "SELECT rmoney FROM reser WHERE ridx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("rmoney");
+			}
+			return -1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {}
+		}
+	}
+	
+	public int cancelReservation(int idx, String id, int orgPrice, int payment) {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			
+			String sql = "DELETE FROM reser WHERE ridx = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
+			int delResult = ps.executeUpdate();
+			
+			if (!(delResult > 0)) return delResult;
+			
+			sql = "UPDATE member SET mpoint = mpoint - ?, mmoney = mmoney + ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, orgPrice);
+			ps.setInt(2, payment);
+			
+			return ps.executeUpdate();
+		} catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {}
+		}
+	}
 }

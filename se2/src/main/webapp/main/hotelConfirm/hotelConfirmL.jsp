@@ -32,7 +32,7 @@ function moveEdit(){
   <article class="reservation-block">
     <h2 class="reservation-title">📋 예약 확인</h2>
     <hr>
-    <form name="hotelConfirmM" action="#">
+    <form name="hotelConfirmM" action="/se2/main/hotelReser/hotelReserCancel.jsp" method="post">
       <div class="reservation-info">
         <%
         ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmReser(mid);
@@ -46,7 +46,8 @@ function moveEdit(){
         <div class="reservation-card">
           <div class="row"><strong>예약번호</strong><%=dto.getRidx()%></div>
           <div class="row"><strong>체크인</strong><%=dto.getRcheckin()%> 
-            <button type="submit" class="btn-change">예약 날짜 변경</button></div>
+            <input type="button" class="btn-change" value="예약 취소" 
+            onclick="javascript:window.location.href = '/se2/main/hotelReser/hotelReserCancel.jsp?idx=<%=dto.getRidx()%>'"></div>
           <div class="row"><strong>체크아웃</strong><%=dto.getRcheckout()%></div>
           <div class="row"><strong>기간</strong><%=dto.getDay()%>박 <%=dto.getDay()+1%>일</div>
           <div class="row title">📞 연락처 정보</div>
