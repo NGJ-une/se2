@@ -8,13 +8,15 @@ public class indexDTO {
 	private int now_discount;
 	private int total_reser;
 	private String remain_grade;
+	private String mfname;
+	private String mlname;
 	
 	public indexDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public indexDTO(String unu_point, String total_point, String now_grade, int now_discount, int total_reser,
-			String remain_grade) {
+			String remain_grade, String mfname, String mlname) {
 		super();
 		this.unu_point = unu_point;
 		this.total_point = total_point;
@@ -22,6 +24,24 @@ public class indexDTO {
 		this.now_discount = now_discount;
 		this.total_reser = total_reser;
 		this.remain_grade = remain_grade;
+		this.mfname = mfname;
+		this.mlname = mlname;
+	}
+    
+	public String getMfname() {
+		return mfname;
+	}
+
+	public void setMfname(String mfname) {
+		this.mfname = mfname;
+	}
+
+	public String getMlname() {
+		return mlname;
+	}
+
+	public void setMlname(String mlname) {
+		this.mlname = mlname;
 	}
 
 	public String getUnu_point() {

@@ -17,6 +17,8 @@ public class indexDAO {
 			String sql="SELECT "
 					+ "    TO_CHAR(member.mmoney, '999,999,999') AS unu_point, "
 					+ "    TO_CHAR(member.mpoint, '999,999,999') AS total_point, "
+					+ "    member.mfname,"
+					+ "    member.mlname,"
 					+ "    grade.grade AS now_grade, "
 					+ "    grade.discount AS now_discount, "
 					+ "    ( SELECT COUNT(*) "
@@ -43,8 +45,10 @@ public class indexDAO {
 					int now_discount=rs.getInt("now_discount");
 					int total_reser=rs.getInt("total_reser");
 					String remain_grade=rs.getString("remain_grade");
+					String mfname=rs.getString("mfname");
+					String mlname=rs.getString("mlname");
 					
-					dto = new indexDTO(unu_point, total_point, now_grade, now_discount, total_reser, remain_grade);
+					dto = new indexDTO(unu_point, total_point, now_grade, now_discount, total_reser, remain_grade, mfname, mlname);
 				}while(rs.next());
 			}
 			return dto;
