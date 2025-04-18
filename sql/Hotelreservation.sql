@@ -148,16 +148,17 @@ commit
 
 
 
---   
-CREATE SEQUENCE sq_member_idx START WITH 11--濡洹몄/媛 대  踰   
-CREATE SEQUENCE sq_reser_idx start with 26 --  대 쎈  
-CREATE SEQUENCE sq_room_idx -- 媛 대 媛ㅻ  
-CREATE SEQUENCE sq_hotel_idx -- 명 대 명踰  
-CREATE SEQUENCE sq_refund_idx -- 遺 대 遺 踰 
-CREATE SEQUENCE sq_inquiry_idx START WITH 11 --臾몄 대 臾몄 踰  
-CREATE SEQUENCE sq_review_idx START WITH 51 --湲 대 湲 踰 
-CREATE SEQUENCE sq_reply_idx START WITH 13 -- 湲 대 湲 踰 
-CREATE SEQUENCE sq_photo_num START WITH 51-- ъ 怨踰  
+--시퀀스 생성  
+CREATE SEQUENCE sq_member_idx START WITH 11  --로그인/회원가입 테이블  회원번호 시퀀스  
+CREATE SEQUENCE sq_reser_idx start with 26 -- 예약 테이블 예약번호 시퀀스
+CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
+CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
+CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
+CREATE SEQUENCE sq_inquiry_idx START WITH 11 -- 문의 테이블 문의 번호 시퀀스 
+CREATE SEQUENCE sq_review_idx START WITH 51 -- 후기 테이블 후기 번호 시퀀스
+CREATE SEQUENCE sq_reply_idx START WITH 13 -- 댓글 테이블 댓글 번호 시퀀스
+CREATE SEQUENCE sq_photo_num START WITH 51 -- 사진 고유번호 시퀀스 
+
   
 
 
@@ -279,36 +280,7 @@ INSERT ALL
 SELECT * FROM dual;
 
 
-INSERT ALL
-    INTO grade values('BRONZE',0,200000,0)
-    INTO grade values('SILVER',200001,1000000,5)
-    INTO grade values('GOLD',1000001,3000000,10)
-    INTO grade values('DIAMOND',3000001,10000000,15) 
-SELECT * FROM dual
 
-
-INSERT ALL
-    INTO question values(1,'보물 1호는?')
-    INTO question values(2,'내가 다닌 초등학교 이름은?') 
-    INTO question values(3,'짝사랑했던 이성친구 이름은?') 
-    INTO question values(4,'어렸을 적 별명은?') 
-    INTO question values(5,'내가 살던 고향은?') 
-SELECT * FROM dual
-
-INSERT ALL
-    INTO room values('s_standard',1,'s_st.jpg',250000,4) 
-    INTO room values('s_deluxe',2,'s_d.jpg',400000,4)
-    INTO room values('s_suite',3,'s_s.jpg',200000,2)
-    INTO room values('s_grand',4,'s_g.jpg',600000,6)
-    INTO room values('u_standard',5,'u_st.jpg',150000,4)
-    INTO room values('u_deluxe',6,'u_d.jpg',300000,4)
-    INTO room values('u_suite',7,'u_s.jpg',100000,2)
-    INTO room values('u_grand',8,'u_g.jpg',500000,6)
-SELECT * FROM dual
-
-
-INSERT INTO hotel values('h_seoul',sq_hotel_idx.nextval,20,15,10,10)
-INSERT INTO hotel values('h_ulsan',sq_hotel_idx.nextval,25,10,10,15)
 
 INSERT ALL
   INTO reser (ridx, rid, rname, rtype, rcheckin, rcheckout, radult, rkid, rbaby, rmoney)
