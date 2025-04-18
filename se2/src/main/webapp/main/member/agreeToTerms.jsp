@@ -146,6 +146,25 @@ window.addEventListener("DOMContentLoaded", function () {
             box.checked = isChecked;
         });
     });
+    
+    
+    /** 전체 체크 해ㅏㄹ 떄 모두 취소되거나 모두 체크되고 중복체크 안되도록 막아놓음*/
+    document.getElementById("agreeAll").addEventListener("change", function () {
+        const isChecked = this.checked;
+
+        // '동의함' 체크박스 (class="agreeItem") 처리
+        document.querySelectorAll(".agreeItem").forEach(function (box) {
+            box.checked = isChecked;
+        });
+
+        // '동의하지 않음' 체크박스들에 대해 모두 해제
+        const disagreeBoxes = ["disagree1", "disagree2", "disagree3", "disagree4", "disagree5"];
+        disagreeBoxes.forEach(id => {
+            document.getElementById(id).checked = false;
+        });
+    });
+    
+    
 
     // '동의함'과 '동의하지 않음'이 서로 배타적으로 작동하도록 설정
     const agreePairs = [

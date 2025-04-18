@@ -23,29 +23,34 @@ String pwd=request.getParameter("pwd");
 %>
 <jsp:setProperty property="*" name="mdto" />
 <%
-Calendar now = Calendar.getInstance();
-int year = now.get(Calendar.YEAR) -19;
-String birth_s = request.getParameter("birth");
-int birth = 0;
-if(birth_s != null) {
-	birth_s = birth_s.substring(0, 4);
-	birth = Integer.parseInt(birth_s);
-}
-if(birth > year) {
+//Calendar now = Calendar.getInstance();
+//int year = now.get(Calendar.YEAR) -19;
+//String birth_s = request.getParameter("birth");
+//int birth = 0;
+//if(birth_s != null) {
+	//birth_s = birth_s.substring(0, 4);
+	//birth = Integer.parseInt(birth_s);
+//}
+//if(birth > year) {
 %>
-<script>
-window.alert('만 19세 이하는 회원가입이 불가능합니다.');
-location.href = '/se2/index.jsp';
-</script>
+
 <%
-}else {
+//}
 int result=mdao.memberJoin(mdto);
-String msg = result > 0 ? "회원가입을 축하합니다" : "회원가입에 오류가 발생하였습니다.";
+
+if(result > 0) { // 회원가입 성공 시
 %>
 <script>
-   window.alert('<%=msg%>');
-   location.href ='register.jsp';
+   location.href = 'register.jsp';
+</script>
+<%
+} else { // 회원가입 실패 시
+%>
+<script>
+   window.alert('회원가입에 오류가 발생하였습니다.');
+   location.href = 'memberJoin.jsp';  // 다시 가입 폼으로
 </script>
 <%
 }
 %>
+

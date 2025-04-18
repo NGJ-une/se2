@@ -99,7 +99,7 @@
                <p> 
                 <a href="idFind.jsp"> 아이디 찾기</a> |
                 <a href="login.jsp">로그인</a>	|
-                <a href="memberJoin.jsp">	회원가입	</a>
+                <a href="agreeToTerms.jsp">	회원가입	</a>
                 </p>
             </form> 
     </div>  

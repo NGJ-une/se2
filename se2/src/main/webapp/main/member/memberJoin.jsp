@@ -1,6 +1,8 @@
+<%@page import="com.hotel.mypage.PwchangeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,48 +163,216 @@
        
        }
         
+
+	.error-msg {
+    color: red;
+    font-size: 12px;
+    display: none; /* 기본적으로 숨김 */
+    margin-top: 5px;
+	}
+
+
+	.invalid {
+    border: 1px solid red;
+}
         
     </style>
 
     <script>
-        // 아이디 중복체크
-        function openIdCheck() {
-            var popupWidth = 600;
-            var popupHeight = 300;
-            var popupX = Math.ceil(( window.screen.width - popupWidth ) / 2);
-            var popupY = Math.ceil(( window.screen.height - popupHeight ) / 2); 
 
-            window.open('idCheck.jsp', 'idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ',top=' + popupY)
+    // 아이디 중복체크
+    function openIdCheck() {
+        var popupWidth = 600;
+        var popupHeight = 300;
+        var popupX = Math.ceil(( window.screen.width - popupWidth ) / 2);
+        var popupY = Math.ceil(( window.screen.height - popupHeight ) / 2); 
+
+        window.open('idCheck.jsp', 'idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ',top=' + popupY)
+    }
+
+    // 비밀번호 확인
+    function pwdCheck() {
+        let pwd = document.memberJoin.pwd.value;
+        let pwdcheck = document.memberJoin.pwdcheck.value;
+        var errorMsg = document.getElementById("pwdErrorMsg");
+
+        if (pwd !== pwdcheck) {
+            errorMsg.textContent = "비밀번호가 일치하지 않습니다.";
+            document.memberJoin.pwd.focus();
+            return false;
         }
+        errorMsg.textContent = "";
+        return true;
+    }
 
-        // 비밀번호 확인
-        function pwdCheck() {
-            let pwd = document.memberJoin.pwd.value;
-            let pwdcheck = document.memberJoin.pwdcheck.value;
-            var errorMsg = document.getElementById("pwdErrorMsg");
+    // 비밀번호 입력 확인하는 코드
+    function togglePwd(id) {
+        const input = document.getElementById(id);
+        if (input.type === "password") {
+            input.type = "text";  // 비밀번호를 텍스트로 변경
+        } else {
+            input.type = "password";  // 비밀번호를 다시 숨김
+        }
+    }
+    
+    function emailChange() {
+        var setlmail = document.getElementById("email2");
+        var getemail = document.getElementById("emailSel").value;
+        if (getemail != "type") {
+            setlmail.value = getemail;
+        } else {
+            setlmail.value = ""; 
+        }
+    }
+    
+    // 19세 미만 가입 불가
+    document.addEventListener("DOMContentLoaded", function () {
+        const birthInput = document.querySelector('input[name="birth"]');
+        const errorMsg = document.getElementById("birthError");
+        const today = new Date();
+        const adultYear = today.getFullYear() - 19;
+        const maxDate = new Date(adultYear, 11, 31); // 12월 31일
 
-            if (pwd !== pwdcheck) {
-            	errorMsg.textContent = "비밀번호가 일치하지 않습니다.";
-            	document.memberJoin.pwd.focus();
+        const yyyy = maxDate.getFullYear();
+        const mm = String(maxDate.getMonth() + 1).padStart(2, '0');
+        const dd = String(maxDate.getDate()).padStart(2, '0');
+
+        // 최대 날짜 제한
+        birthInput.max = `${yyyy}-${mm}-${dd}`;
+
+        // 가입 폼 전송 전에 19세 미만 체크
+        document.forms['memberJoin'].onsubmit = function(event) {
+            const birthDate = new Date(birthInput.value);
+
+            if (birthDate > maxDate) {
+                errorMsg.style.display = "inline";  
+                event.preventDefault(); 
                 return false;
+            } else {
+                errorMsg.style.display = "none";  
             }
-            errorMsg.textContent = "";
-            return true;
+        };
+    });
+
+    // 이름 숫자 포함 시
+    function blockName(input) {
+        const regex = /[0-9]/g;
+        const error = document.getElementById("nameError");
+
+        if (regex.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+
+    // 전화번호 유효성: 숫자, 하이픈만 허용
+    function blockTel(input) {
+        const error = document.getElementById("telError");
+        input.value = input.value.replace(/[^0-9\-]/g, "");
+
+        if (/[^0-9\-]/.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+    
+    // 주소 유효성 검사: 특수문자 제외
+    function blockAddr(input) {
+        const error = document.getElementById("addrError");
+        if (/[^가-힣a-zA-Z0-9\s\-]/.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+
+    // 이메일 앞부분: 영문 숫자만
+    function blockEmail1(input) {
+        const error = document.getElementById("emailError1");
+        if (/[^a-zA-Z0-9]/.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+
+    // 이메일 도메인: 영문 + 점(.)만
+    function blockEmail2(input) {
+        const error = document.getElementById("emailError2");
+        if (/[^a-zA-Z.]/.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+
+    // 비밀번호: 영문, 숫자, !@#만 허용 / 한글 금지
+    function blockPwd(input) {
+        const error = document.getElementById("pwdError");
+        if (/[ㄱ-ㅎ가-힣]/.test(input.value)) {
+            error.style.display = "block";
+            input.classList.add("invalid");
+        } else {
+            error.style.display = "none";
+            input.classList.remove("invalid");
+        }
+    }
+
+    // 전체 폼 유효성 검사
+    document.forms['memberJoin'].onsubmit = function(event) {
+        const fname = document.getElementsByName("fname")[0];
+        const lname = document.getElementsByName("lname")[0];
+        const pwd = document.getElementById("pwd");
+        const pwdcheck = document.getElementById("pwdcheck");
+        const tel = document.getElementById("tel");
+        const addr = document.getElementById("addr");
+        const email1 = document.getElementsByName("email1")[0];
+        const email2 = document.getElementsByName("email2")[0];
+        const emailSel = document.getElementById("emailSel");
+
+        // 이름이 비어있거나 숫자를 포함한 경우
+        if (fname.value.trim() === "" || lname.value.trim() === "") {
+            alert("이름을 입력해주세요.");
+            event.preventDefault();
+            return false;
         }
 
-        /** 비밀번호 입력 확인하는 코드 */
-        function togglePwd(id) {
-            const input = document.getElementById(id);
-            if (input.type === "password") {
-                input.type = "text";  // 비밀번호를 텍스트로 변경
-            } else {
-                input.type = "password";  // 비밀번호를 다시 숨김
-            }
+        // 비밀번호 확인이 맞지 않을 경우
+        if (!pwdCheck()) {
+            event.preventDefault();
+            return false;
         }
-        
-        
-        
-    </script>    
+
+        // 전화번호와 주소 유효성 검사
+        if (!tel.value || !addr.value) {
+            alert("전화번호와 주소를 모두 입력해주세요.");
+            event.preventDefault();
+            return false;
+        }
+
+        // 이메일 유효성 검사
+        if (!email1.value || !email2.value) {
+            alert("이메일을 올바르게 입력해주세요.");
+            event.preventDefault();
+            return false;
+        }
+
+        return true;
+    };
+</script>
+ 
     
 </head>
 <body>
@@ -222,12 +392,17 @@
         <h2>회원가입</h2>
         <hr>
 
-        <label>이름</label>
-        <input type="text" name="fname" placeholder="First Name" required>
-        <input type="text" name="lname" placeholder="Last Name" required>
+		
+		<label>이름</label>
+		<input type="text" name="fname" placeholder="First Name" required oninput="blockName(this)">
+		<input type="text" name="lname" placeholder="Last Name" required oninput="blockName(this)">
+     	<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
 
-        <label>생년월일</label>
-        <input type="date" name="birth" required>
+		<label>생년월일</label>
+		<input type="date" name="birth" required>
+		<small id="birthError" style="color: red; display: none;">19세 이상만 가입 가능합니다.</small>
+
+
 
         <label>아이디</label>
         <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required>
@@ -235,28 +410,45 @@
 
         <label>비밀번호</label>
         <div class="password-wrapper">
-            <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required>
-            <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="blockPwd(this)">
+            <span class="toggle-password" onclick="togglePwd('pwd')" >👁️‍🗨️</span>
+            <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
         </div>
 
         <label>비밀번호 확인</label>
         <div class="password-wrapper">
-            <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required>
+            <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="blockPwd(this)">
             <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
+            <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
         </div>
         <p id="pwdErrorMsg" class = "pwdMissMatch"></p>
         
         <label>E-mail</label>
         <div class="email-group">
-            <input type="text" name="email1" placeholder="E-mail" required> @ 
-            <input type="text" name="email2" placeholder="Domain" required>
+            <input type="text" name="email1" placeholder="E-mail" required oninput="blockEmail1(this)"> @ 
+            
+
+            <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)">
+            
+            <select id="emailSel" onchange="emailChange()">
+            	<option value="type">직접입력</option>
+            	<option value="naver.com">naver.com</option>
+            	<option value="google.com">google.com</option>
+            	<option value="nate.com">nate.com</option>
+            	<option value="daum.net">daum.net</option>
+            </select>
+            <br><Br>
+            <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
+            <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
         </div>
 
         <label>전화번호 (000 - 0000 - 0000)</label>
-        <input type="text" name="tel" placeholder="전화번호" required>
-
+        <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)">
+		<small id="telError" class="error-msg" >숫자와 하이픈(-)만 입력 가능합니다.</small>
+		
         <label>주소</label>
-        <input type="text" name="addr" placeholder="주소" required>
+        <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)">
+        <small id="addrError" class="error-msg"> 잘못 입력하였습니다. 주소에는 특수문자를 사용할 수 없습니다.</small>
 
         <label>질문</label>
         <select name="question" required>
