@@ -108,7 +108,7 @@
                	<p> 
                		 <a href="pwdFind.jsp"> 비밀번호 찾기</a> |
                 	<a href="login.jsp">로그인</a>	|
-                	<a href="memberJoin.jsp">	회원가입	</a>
+                	<a href="agreeToTerms.jsp">	회원가입	</a>
                 </p>
             	</form>
   		  </section>     
