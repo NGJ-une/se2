@@ -18,7 +18,7 @@
         padding: 0;
     }
 
-    section {
+    section.ulsan-content {
         max-width: 1000px;
         margin: 40px auto;
         padding: 40px;
@@ -28,14 +28,14 @@
         text-align: left;
     }
 
-    ul {
+    .ulsan-content ul {
         list-style: none;
         padding: 0;
         margin: 0;
         width: 100%;
     }
 
-    ul li {
+    .ulsan-content ul li {
         margin-bottom: 18px;
         font-size: 16px;
         line-height: 1.8;
@@ -47,7 +47,7 @@
         text-align: center;
     }
 
-    textarea {
+    .ulsan-content textarea {
         width: 100%;
         height: 100px;
         font-size: 15px;
@@ -61,7 +61,7 @@
         text-align: right;
     }
 
-    input[type="button"] {
+    .ulsan-content input[type="button"] {
         margin-top: 10px;
         margin-right: 10px;
         padding: 8px 16px;
@@ -326,6 +326,7 @@
         .modal img {
             width: 700px;
             height: auto;
+            max-height: 500px;
         }
 
         .close {
@@ -388,7 +389,7 @@ if (!already) {
 %>
 <body>
 <%@include file="/hotel_Ulsan/ulsan_header.jsp" %>
-<section>
+<section class="ulsan-content">
     <article class="center-part">
 
         
@@ -541,9 +542,10 @@ if (!already) {
     <br><hr><br>
 
     <div style="text-align:center">
-
+		<%if(arr.get(0).getVid().equals(id)){ %>
         <input type="button" name="writeEdit" value="게시글 수정" onclick = "location.href = 'contentEdit.jsp?vidx=<%=idx%>';"> 
-        <input type="button" name="writeDelete" value="게시글 삭제">
+        <input type="button" name="writeDelete" value="게시글 삭제" onclick = "location.href = 'contentDel.jsp?vidx=<%=idx%>';">
+        <%} %>
         <input type="button" name="writeList" value="게시글 목록" onclick = "location.href='list.jsp'">
     </div>
 
