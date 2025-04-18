@@ -3,10 +3,11 @@
 input::-webkit-inner-spin-button{-webkit-appearance: none; }
 .confirmNLC {
   background-color: #FAFAFA;
-  padding: 60px 0;
+  padding: 41px 0;
 }
 
 .confirm-box {
+  height: 550px;
   background-color: #fff;
   padding: 40px;
   max-width: 600px;

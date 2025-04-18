@@ -56,7 +56,6 @@ function modification(){
           <div class="row"><strong>예약번호</strong><%=dto.getRidx()%></div>
           <div class="row">
             <strong>체크인</strong><%=dto.getRcheckin()%>
-            <button type="submit" class="btn-change">예약 날짜 변경</button>
           </div>
           <div class="row"><strong>체크아웃</strong><%=dto.getRcheckout()%></div>
           <div class="row"><strong>기간</strong><%=dto.getDay()%>박 <%=dto.getDay() + 1%>일</div>
@@ -65,7 +64,6 @@ function modification(){
           <div class="row"><strong>Tel</strong><%=dto.getMtel()%></div>
           <div class="row">
             <strong>예약자 성함</strong><%=dto.getMfname()%><%=dto.getMlname()%>&emsp;&emsp;&nbsp;
-   	        <button type="button" class="btn-edit">회원 정보 수정</button>
           </div>
           <div class="row"><strong>객실</strong><%=dto.getRtype().substring(2)%></div>
           <div class="row"><strong>인원 수</strong><%=dto.getPersons()%>명</div>

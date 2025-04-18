@@ -38,7 +38,7 @@ function moveEdit(){
         ArrayList<HotelConfirmDTO> arr = hcdao.hotelConfirmReser(mid);
         if(arr == null || arr.size() == 0 || arr.get(0).getRidx() == 0){
         %>
-          <p class="no-result">❌ 체크아웃된 예약 내역이거나 최근 예약 내역이 없습니다.</p>
+          <p class="no-result"> 체크아웃된 예약 내역이거나 최근 예약 내역이 없습니다.</p>
         <%
         } else {
           for(HotelConfirmDTO dto : arr){
