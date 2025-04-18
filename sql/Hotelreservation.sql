@@ -147,16 +147,19 @@ commit
 
 
 
---시퀀스 생성  
-CREATE SEQUENCE sq_member_idx START WITH 11--로그인/회원가입 테이블  회원번호 시퀀스  
-CREATE SEQUENCE sq_reser_idx -- 예약 테이블 예약번호 시퀀스 
-CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
-CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
-CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
-CREATE SEQUENCE sq_inquiry_idx START WITH 11 --문의 테이블 문의 번호 시퀀스 
-CREATE SEQUENCE sq_review_idx START WITH 51 --후기 테이블 후기 번호 시퀀스
-CREATE SEQUENCE sq_reply_idx START WITH 13 -- 댓글 테이블 댓글 번호 시퀀스
-CREATE SEQUENCE sq_photo_num -- 사진 고유번호 시퀀스 
+
+--   
+CREATE SEQUENCE sq_member_idx START WITH 11--濡洹몄/媛 대  踰   
+CREATE SEQUENCE sq_reser_idx --  대 쎈  
+CREATE SEQUENCE sq_room_idx -- 媛 대 媛ㅻ  
+CREATE SEQUENCE sq_hotel_idx -- 명 대 명踰  
+CREATE SEQUENCE sq_refund_idx -- 遺 대 遺 踰 
+CREATE SEQUENCE sq_inquiry_idx START WITH 11 --臾몄 대 臾몄 踰  
+CREATE SEQUENCE sq_review_idx START WITH 51 --湲 대 湲 踰 
+CREATE SEQUENCE sq_reply_idx START WITH 13 -- 湲 대 湲 踰 
+CREATE SEQUENCE sq_photo_num -- ъ 怨踰  
+  
+
 
 --grade 기본데이터 입력  
 INSERT INTO grade values('BRONZE',0,200000,0)
@@ -254,25 +257,27 @@ desc inquiry
 
 INSERT ALL
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user001', 1, 'password123', '민수', '김', TO_DATE('1990-05-01', 'YYYY-MM-DD'), 'minsu.kim@example.com', '010-1234-5678', '서울시 강남구 역삼동 123-45', 'BRONZE', TO_DATE('2023-01-15', 'YYYY-MM-DD'), 1500, 1000000, 1, '이순신')
+
+  VALUES ('user001', 1, 'password123', '誘쇱', '源', TO_DATE('1990-05-01', 'YYYY-MM-DD'), 'minsu.kim@example.com', '010-1234-5678', '몄 媛④뎄 �쇰 123-45', 'BRONZE', TO_DATE('2023-01-15', 'YYYY-MM-DD'), 1500, 1000000, 1, '댁')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user002', 2, 'mypassword456', '지은', '박', TO_DATE('1992-08-20', 'YYYY-MM-DD'), 'jieun.park@example.com', '010-2345-6789', '서울시 송파구 방이동 456-78', 'BRONZE', TO_DATE('2022-12-25', 'YYYY-MM-DD'), 200001, 1000000, 2, '동양초등학교')
+  VALUES ('user002', 2, 'mypassword456', '吏', '諛', TO_DATE('1992-08-20', 'YYYY-MM-DD'), 'jieun.park@example.com', '010-2345-6789', '몄 ≫援 諛⑹대 456-78', 'BRONZE', TO_DATE('2022-12-25', 'YYYY-MM-DD'), 200001, 1000000, 2, '珥깊援')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user003', 3, 'securepass789', '수현', '이', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 'soohyun.lee@example.com', '010-3456-7890', '부산시 해운대구 우동 789-01', 'BRONZE', TO_DATE('2023-03-01', 'YYYY-MM-DD'), 1000001, 1000000, 3, '지민')
+  VALUES ('user003', 3, 'securepass789', '', '', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 'soohyun.lee@example.com', '010-3456-7890', '遺곗 댁대援 곕 789-01', 'BRONZE', TO_DATE('2023-03-01', 'YYYY-MM-DD'), 1000001, 1000000, 3, '吏誘')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user004', 4, 'secretpass101', '윤아', '정', TO_DATE('1995-11-14', 'YYYY-MM-DD'), 'yoona.jeong@example.com', '010-4567-8901', '인천시 부평구 부평동 234-56', 'BRONZE', TO_DATE('2021-06-30', 'YYYY-MM-DD'), 3000001, 1000000, 4, '짱구')
+  VALUES ('user004', 4, 'secretpass101', 'ㅼ', '�', TO_DATE('1995-11-14', 'YYYY-MM-DD'), 'yoona.jeong@example.com', '010-4567-8901', '몄 遺援 遺 234-56', 'BRONZE', TO_DATE('2021-06-30', 'YYYY-MM-DD'), 3000001, 1000000, 4, '吏깃뎄')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user005', 5, 'strongpass111', '영민', '최', TO_DATE('1993-01-25', 'YYYY-MM-DD'), 'youngmin.choi@example.com', '010-5678-9012', '대구시 중구 동성로 12-34', 'BRONZE', TO_DATE('2022-09-10', 'YYYY-MM-DD'), 2200, 1000000, 5, '대전')
+  VALUES ('user005', 5, 'strongpass111', '誘', '理', TO_DATE('1993-01-25', 'YYYY-MM-DD'), 'youngmin.choi@example.com', '010-5678-9012', '援ъ 以援 깅 12-34', 'BRONZE', TO_DATE('2022-09-10', 'YYYY-MM-DD'), 2200, 1000000, 5, '�')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user006', 6, 'mypassword222', '하늘', '홍', TO_DATE('2000-07-30', 'YYYY-MM-DD'), 'haneul.hong@example.com', '010-6789-0123', '대전시 서구 갈마동 345-67', 'BRONZE', TO_DATE('2023-02-05', 'YYYY-MM-DD'), 1200, 1000000, 1, '이순신')
+  VALUES ('user006', 6, 'mypassword222', '', '', TO_DATE('2000-07-30', 'YYYY-MM-DD'), 'haneul.hong@example.com', '010-6789-0123', '� 援 媛留 345-67', 'BRONZE', TO_DATE('2023-02-05', 'YYYY-MM-DD'), 1200, 1000000, 1, '댁')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user007', 7, 'password333', '태희', '김', TO_DATE('1998-04-15', 'YYYY-MM-DD'), 'taehee.kim@example.com', '010-7890-1234', '경기도 수원시 영통구 원천동 567-89', 'BRONZE', TO_DATE('2021-11-22', 'YYYY-MM-DD'), 2800, 1000000, 2, '동양초등학교')
+  VALUES ('user007', 7, 'password333', '', '源', TO_DATE('1998-04-15', 'YYYY-MM-DD'), 'taehee.kim@example.com', '010-7890-1234', '寃쎄린  듦뎄 泥 567-89', 'BRONZE', TO_DATE('2021-11-22', 'YYYY-MM-DD'), 2800, 1000000, 2, '珥깊援')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user008', 8, 'password444', '지호', '이', TO_DATE('1997-09-05', 'YYYY-MM-DD'), 'jiho.lee@example.com', '010-8901-2345', '서울시 마포구 합정동 678-90', 'BRONZE', TO_DATE('2022-03-14', 'YYYY-MM-DD'), 1100, 1000000, 3, '지민')
+  VALUES ('user008', 8, 'password444', '吏', '', TO_DATE('1997-09-05', 'YYYY-MM-DD'), 'jiho.lee@example.com', '010-8901-2345', '몄 留ш뎄 ⑹ 678-90', 'BRONZE', TO_DATE('2022-03-14', 'YYYY-MM-DD'), 1100, 1000000, 3, '吏誘')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user009', 9, 'password555', '소연', '박', TO_DATE('1989-06-12', 'YYYY-MM-DD'), 'soyeon.park@example.com', '010-9012-3456', '경기도 성남시 분당구 정자동 123-45', 'BRONZE', TO_DATE('2023-04-01', 'YYYY-MM-DD'), 2000, 1000000, 4, '짱구')
+  VALUES ('user009', 9, 'password555', '', '諛', TO_DATE('1989-06-12', 'YYYY-MM-DD'), 'soyeon.park@example.com', '010-9012-3456', '寃쎄린 깅⑥ 遺밴뎄 � 123-45', 'BRONZE', TO_DATE('2023-04-01', 'YYYY-MM-DD'), 2000, 1000000, 4, '吏깃뎄')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user010', 10, 'password666', '지민', '강', TO_DATE('1996-12-22', 'YYYY-MM-DD'), 'jimin.kang@example.com', '010-0123-4567', '서울시 동대문구 회기동 890-12', 'BRONZE', TO_DATE('2022-07-18', 'YYYY-MM-DD'), 3300, 1000000, 5, '대전')
+  VALUES ('user010', 10, 'password666', '吏誘', '媛', TO_DATE('1996-12-22', 'YYYY-MM-DD'), 'jimin.kang@example.com', '010-0123-4567', '몄 臾멸뎄 湲곕 890-12', 'BRONZE', TO_DATE('2022-07-18', 'YYYY-MM-DD'), 3300, 1000000, 5, '�')
+
 SELECT * FROM dual;
 
 INSERT ALL
@@ -398,206 +403,209 @@ SELECT * FROM dual;
 
 INSERT ALL
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (1, 'user001', '훌륭한 숙박이었어요!', '호텔이 매우 깨끗하고 서비스도 좋았습니다.', TO_DATE('2025-01-13', 'YYYY-MM-DD'), 120, 80, 6, 5, 15)
+
+  VALUES (1, 'user001', '瑜� 諛댁댁!', '명 留ㅼ 源⑤怨 鍮ㅻ 醫듬.', TO_DATE('2025-01-13', 'YYYY-MM-DD'), 120, 80, 6, 5, 15)
   
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (2, 'user002', '괜찮은 편이었습니다.', '방이 조금 작았지만 위치는 좋았어요.', TO_DATE('2025-02-18', 'YYYY-MM-DD'), 90, 60, 6, 4, 16)
+  VALUES (2, 'user002', '愿李� 몄댁듬.', '諛⑹ 議곌 吏留 移 醫댁.', TO_DATE('2025-02-18', 'YYYY-MM-DD'), 90, 60, 6, 4, 16)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (3, 'user003', '편안한 휴식이었어요.', '가족과 함께 좋은 시간을 보냈습니다.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 100, 70, 0, 5, 17)
+  VALUES (3, 'user003', '몄 댁댁댁.', '媛議깃낵 ④ 醫 媛 蹂대듬.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 100, 70, 0, 5, 17)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (4, 'user004', '서비스가 조금 아쉬웠어요.', '직원 응대는 친절했지만 청소가 미흡했어요.', TO_DATE('2025-04-20', 'YYYY-MM-DD'), 110, 50, 0, 3, 14)
+  VALUES (4, 'user004', '鍮ㅺ 議곌 ъ댁.', '吏  移�吏留 泥�媛 誘명≫댁.', TO_DATE('2025-04-20', 'YYYY-MM-DD'), 110, 50, 0, 3, 14)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (5, 'user005', '가성비 좋네요.', '저렴한 가격에 만족스러운 숙소였어요.', TO_DATE('2025-04-20', 'YYYY-MM-DD'), 85, 40, 0, 4, 19)
+  VALUES (5, 'user005', '媛깅 醫ㅼ.', '��댄 媛寃⑹ 留議깆ㅻъ 댁.', TO_DATE('2025-04-20', 'YYYY-MM-DD'), 85, 40, 0, 4, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (6, 'user006', '무난한 숙박이었습니다.', '전반적으로 만족했어요.', TO_DATE('2025-05-01', 'YYYY-MM-DD'), 130, 95, 0, 4, 6)
+  VALUES (6, 'user006', '臾대 諛댁듬.', '�諛�쇰 留議깊댁.', TO_DATE('2025-05-01', 'YYYY-MM-DD'), 130, 95, 0, 4, 6)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (7, 'user007', '너무 좋았어요!', '룸컨디션도 좋고 조식도 맛있었습니다.', TO_DATE('2023-11-06', 'YYYY-MM-DD'), 75, 50, 0, 5, 7)
+  VALUES (7, 'user007', '臾 醫댁!', '猷몄빻 醫怨 議곗 留듬.', TO_DATE('2023-11-06', 'YYYY-MM-DD'), 75, 50, 0, 5, 7)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (8, 'user008', '추천합니다!', '가족단위 여행객에게 추천해요.', TO_DATE('2023-12-20', 'YYYY-MM-DD'), 140, 60, 0, 4, 8)
+  VALUES (8, 'user008', '異泥⑸!', '媛議깅⑥ ы媛寃 異泥댁.', TO_DATE('2023-12-20', 'YYYY-MM-DD'), 140, 60, 0, 4, 8)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (9, 'user009', '방음이 아쉬웠어요.', '전체적으로 괜찮지만 방음이 약했어요.', TO_DATE('2024-01-15', 'YYYY-MM-DD'), 95, 40, 0, 3, 9)
+  VALUES (9, 'user009', '諛⑹ ъ댁.', '�泥댁쇰 愿李�留 諛⑹ 쏀댁.', TO_DATE('2024-01-15', 'YYYY-MM-DD'), 95, 40, 0, 3, 9)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (10, 'user010', '좋은 경험이었습니다.', '친절한 직원과 깨끗한 시설이 인상적이었어요.', TO_DATE('2024-02-08', 'YYYY-MM-DD'), 115, 70, 0, 5, 10)
+  VALUES (10, 'user010', '醫 寃쏀댁듬.', '移� 吏怨 源⑤ ㅼ 몄�댁댁.', TO_DATE('2024-02-08', 'YYYY-MM-DD'), 115, 70, 0, 5, 10)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (11, 'user001', '또 이용하고 싶어요', '친구들과 즐거운 여행이었습니다.', TO_DATE('2024-03-12', 'YYYY-MM-DD'), 105, 70, 0, 5, 11)
+  VALUES (11, 'user001', ' 댁⑺怨 띠댁', '移援щㅺ낵 利嫄곗 ы댁듬.', TO_DATE('2024-03-12', 'YYYY-MM-DD'), 105, 70, 0, 5, 11)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (12, 'user002', '편안한 숙소였습니다', '넓은 방과 좋은 위치 덕분에 만족스러웠어요.', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 98, 55, 0, 4, 12)
+  VALUES (12, 'user002', '몄 듬', ' 諛⑷낵 醫 移 遺 留議깆ㅻъ댁.', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 98, 55, 0, 4, 12)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (13, 'user003', '가족 여행 추천', '아이들과 함께 이용하기에 안성맞춤이었습니다.', TO_DATE('2024-05-06', 'YYYY-MM-DD'), 120, 80, 0, 5, 13)
+  VALUES (13, 'user003', '媛議 ы 異泥', '대ㅺ낵 ④ 댁⑺湲곗 깅異ㅼ댁듬.', TO_DATE('2024-05-06', 'YYYY-MM-DD'), 120, 80, 0, 5, 13)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (14, 'user004', '청결이 조금 아쉬움', '시설은 좋았지만 청소가 덜 되어 있었어요.', TO_DATE('2024-06-12', 'YYYY-MM-DD'), 89, 35, 0, 3, 14)
+  VALUES (14, 'user004', '泥�껐 議곌 ъ', 'ㅼ 醫吏留 泥�媛   댁.', TO_DATE('2024-06-12', 'YYYY-MM-DD'), 89, 35, 0, 3, 14)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (15, 'user001', '재방문 의사 있음', '직원들이 매우 친절해서 기분 좋게 머물렀습니다.', TO_DATE('2025-01-14', 'YYYY-MM-DD'), 100, 60, 0, 5, 15)
+  VALUES (15, 'user001', 'щ갑臾  ', '吏ㅼ 留ㅼ 移�댁 湲곕 醫寃 癒몃Ъ�듬.', TO_DATE('2025-01-14', 'YYYY-MM-DD'), 100, 60, 0, 5, 15)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (16, 'user002', '식사가 아쉬워요', '룸은 좋았지만 조식은 개선이 필요해요.', TO_DATE('2025-02-17', 'YYYY-MM-DD'), 135, 45, 0, 3, 16)
+  VALUES (16, 'user002', 'ш ъ', '猷몄 醫吏留 議곗 媛 댁.', TO_DATE('2025-02-17', 'YYYY-MM-DD'), 135, 45, 0, 3, 16)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (17, 'user003', '비용 대비 훌륭함', '합리적인 가격에 만족스러운 서비스.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 110, 75, 0, 4, 17)
+  VALUES (17, 'user003', '鍮 鍮 瑜�', '⑸━� 媛寃⑹ 留議깆ㅻъ 鍮.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 110, 75, 0, 4, 17)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (18, 'user005', '아이들과 좋은 추억', '가족끼리 여행하기 좋은 숙소였어요.', TO_DATE('2025-04-21', 'YYYY-MM-DD'), 95, 85, 0, 5, 19)
+  VALUES (18, 'user005', '대ㅺ낵 醫 異', '媛議깅쇰━ ы湲 醫 댁.', TO_DATE('2025-04-21', 'YYYY-MM-DD'), 95, 85, 0, 5, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (19, 'user006', '전반적으로 만족', '주차가 조금 불편했지만 나머지는 만족.', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 145, 65, 0, 4, 6)
+  VALUES (19, 'user006', '�諛�쇰 留議', '二쇱감媛 議곌 遺명吏留 癒몄 留議.', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 145, 65, 0, 4, 6)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (20, 'user007', '룸 컨디션 좋아요', '모던한 인테리어가 인상적이었습니다.', TO_DATE('2023-11-04', 'YYYY-MM-DD'), 75, 50, 0, 5, 7)
+  VALUES (20, 'user007', '猷 而⑤ 醫', '紐⑤ 명由ъ닿 몄�댁듬.', TO_DATE('2023-11-04', 'YYYY-MM-DD'), 75, 50, 0, 5, 7)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (21, 'user008', '조용한 분위기 좋아요', '도심 속 조용한 숙소였어요. 재방문 의사 있어요.', TO_DATE('2023-12-19', 'YYYY-MM-DD'), 100, 90, 0, 5, 8)
+  VALUES (21, 'user008', '議곗⑺ 遺湲 醫', '  議곗⑺ 댁. щ갑臾  댁.', TO_DATE('2023-12-19', 'YYYY-MM-DD'), 100, 90, 0, 5, 8)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (22, 'user009', '조명이 어두워요', '전체적으로 만족했지만 방 조명이 조금 어두웠어요.', TO_DATE('2024-01-11', 'YYYY-MM-DD'), 80, 30, 0, 3, 9)
+  VALUES (22, 'user009', '議곕 대', '�泥댁쇰 留議깊吏留 諛 議곕 議곌 대댁.', TO_DATE('2024-01-11', 'YYYY-MM-DD'), 80, 30, 0, 3, 9)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (23, 'user010', '무난한 숙박', '특별한 점은 없었지만 불편함도 없었어요.', TO_DATE('2024-02-05', 'YYYY-MM-DD'), 110, 40, 0, 4, 10)
+  VALUES (23, 'user010', '臾대 諛', '밸 � 吏留 遺명⑤ 댁.', TO_DATE('2024-02-05', 'YYYY-MM-DD'), 110, 40, 0, 4, 10)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (24, 'user001', '룸 깨끗하고 넓어요', '아이와 함께 여행했는데 매우 만족스러웠어요.', TO_DATE('2023-05-04', 'YYYY-MM-DD'), 90, 70, 0, 5, 1)
+  VALUES (24, 'user001', '猷 源⑤怨 댁', '댁 ④ ы 留ㅼ 留議깆ㅻъ댁.', TO_DATE('2023-05-04', 'YYYY-MM-DD'), 90, 70, 0, 5, 1)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (25, 'user002', '예약 시스템이 편리함', '모바일로 간편하게 예약할 수 있어 좋아요.', TO_DATE('2023-06-12', 'YYYY-MM-DD'), 115, 85, 0, 4, 2)
+  VALUES (25, 'user002', ' ㅽ 몃━', '紐⑤쇰 媛명寃 쏀   醫.', TO_DATE('2023-06-12', 'YYYY-MM-DD'), 115, 85, 0, 4, 2)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (26, 'user003', '만족한 숙박', '조용하고 침구가 편했어요.', TO_DATE('2023-07-06', 'YYYY-MM-DD'), 130, 95, 0, 5, 3)
+  VALUES (26, 'user003', '留議깊 諛', '議곗⑺怨 移④뎄媛 명댁.', TO_DATE('2023-07-06', 'YYYY-MM-DD'), 130, 95, 0, 5, 3)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (27, 'user004', '아늑한 분위기', '가족들과 함께 머물기 좋은 숙소예요.', TO_DATE('2023-08-14', 'YYYY-MM-DD'), 120, 65, 0, 4, 4)
+  VALUES (27, 'user004', ' 遺湲', '媛議깅ㅺ낵 ④ 癒몃Ъ湲 醫 .', TO_DATE('2023-08-14', 'YYYY-MM-DD'), 120, 65, 0, 4, 4)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (28, 'user005', '시설 깔끔', '전체적으로 잘 관리된 느낌을 받았어요.', TO_DATE('2023-09-03', 'YYYY-MM-DD'), 105, 70, 0, 4, 5)
+  VALUES (28, 'user005', ' 源', '�泥댁쇰  愿由щ  諛댁.', TO_DATE('2023-09-03', 'YYYY-MM-DD'), 105, 70, 0, 4, 5)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (29, 'user006', '침대가 편했어요', '여행 피로를 잘 풀 수 있었어요.', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 95, 50, 0, 5, 6)
+  VALUES (29, 'user006', '移⑤媛 명댁', 'ы 쇰瑜    댁.', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 95, 50, 0, 5, 6)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (30, 'user007', '쾌적한 환경', '청결도와 공기질이 좋았어요.', TO_DATE('2023-11-05', 'YYYY-MM-DD'), 100, 60, 0, 5, 7)
+  VALUES (30, 'user007', '苡� 寃', '泥�껐 怨듦린吏 醫댁.', TO_DATE('2023-11-05', 'YYYY-MM-DD'), 100, 60, 0, 5, 7)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (31, 'user008', '역시 기대 이상!', '시설도 좋고 직원도 친절해서 정말 만족했어요.', TO_DATE('2023-12-20', 'YYYY-MM-DD'), 115, 80, 0, 5, 8)
+  VALUES (31, 'user008', '� 湲곕 댁!', 'ㅻ 醫怨 吏 移�댁 �留 留議깊댁.', TO_DATE('2023-12-20', 'YYYY-MM-DD'), 115, 80, 0, 5, 8)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (32, 'user009', '잠자리가 편했어요', '숙면을 취할 수 있는 침대와 조용한 분위기 최고.', TO_DATE('2024-01-12', 'YYYY-MM-DD'), 90, 60, 0, 5, 9)
+  VALUES (32, 'user009', '由ш 명댁', '硫댁 痍⑦   移⑤ 議곗⑺ 遺湲 理怨.', TO_DATE('2024-01-12', 'YYYY-MM-DD'), 90, 60, 0, 5, 9)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (33, 'user010', '괜찮은 경험이었어요', '가격 대비 꽤 괜찮은 경험이었습니다.', TO_DATE('2024-02-03', 'YYYY-MM-DD'), 125, 65, 0, 4, 10)
+  VALUES (33, 'user010', '愿李� 寃쏀댁댁', '媛寃 鍮 苑 愿李� 寃쏀댁듬.', TO_DATE('2024-02-03', 'YYYY-MM-DD'), 125, 65, 0, 4, 10)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (34, 'user001', '다음에도 또 이용할게요', '호텔 뷰가 정말 예뻐서 감동받았어요.', TO_DATE('2024-03-10', 'YYYY-MM-DD'), 130, 90, 0, 5, 11)
+  VALUES (34, 'user001', 'ㅼ  댁⑺寃', '명 酉곌 �留 六 媛諛댁.', TO_DATE('2024-03-10', 'YYYY-MM-DD'), 130, 90, 0, 5, 11)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (35, 'user002', '깔끔하고 정돈된 숙소', '청결 상태가 좋고 편하게 쉴 수 있었어요.', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 140, 100, 0, 5, 12)
+  VALUES (35, 'user002', '源怨 � ', '泥�껐 媛 醫怨 명寃   댁.', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 140, 100, 0, 5, 12)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (36, 'user003', '프론트 친절해요', '프론트 직원 응대가 너무 좋았어요.', TO_DATE('2024-05-03', 'YYYY-MM-DD'), 88, 58, 0, 4, 13)
+  VALUES (36, 'user003', '濡 移�댁', '濡 吏 媛 臾 醫댁.', TO_DATE('2024-05-03', 'YYYY-MM-DD'), 88, 58, 0, 4, 13)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (37, 'user004', '가족여행 강추', '아이들도 좋아했고 전체적으로 만족도 높았어요.', TO_DATE('2024-06-12', 'YYYY-MM-DD'), 125, 85, 0, 5, 14)
+  VALUES (37, 'user004', '媛議깆ы 媛異', '대ㅻ 醫怨 �泥댁쇰 留議깅 댁.', TO_DATE('2024-06-12', 'YYYY-MM-DD'), 125, 85, 0, 5, 14)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (38, 'user005', '적당한 가격에 만족', '비용 대비 퀄리티가 괜찮았어요.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 110, 70, 0, 4, 19)
+  VALUES (38, 'user005', '�뱁 媛寃⑹ 留議', '鍮 鍮 由ы곌 愿李�댁.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 110, 70, 0, 4, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (39, 'user006', '스파 너무 좋아요', '스파 시설이 최고였습니다. 힐링 제대로 했어요.', TO_DATE('2023-10-06', 'YYYY-MM-DD'), 135, 90, 0, 5, 6)
+  VALUES (39, 'user006', 'ㅽ 臾 醫', 'ㅽ ㅼ 理怨듬. 留 �濡 댁.', TO_DATE('2023-10-06', 'YYYY-MM-DD'), 135, 90, 0, 5, 6)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (40, 'user007', '주차 공간 부족', '차량이 많을 땐 주차가 살짝 불편했어요.', TO_DATE('2023-11-04', 'YYYY-MM-DD'), 95, 40, 0, 3, 7)
+  VALUES (40, 'user007', '二쇱감 怨듦 遺議', '李⑤ 留  二쇱감媛 댁 遺명댁.', TO_DATE('2023-11-04', 'YYYY-MM-DD'), 95, 40, 0, 3, 7)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (41, 'user001', '비 오는 날 더 좋았어요', '창밖 풍경이 정말 예뻤어요. 조용하고 깔끔.', TO_DATE('2025-01-12', 'YYYY-MM-DD'), 95, 85, 0, 5, 15)
+  VALUES (41, 'user001', '鍮 ㅻ   醫댁', '李쎈 寃쎌 �留 六ㅼ댁. 議곗⑺怨 源.', TO_DATE('2025-01-12', 'YYYY-MM-DD'), 95, 85, 0, 5, 15)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (42, 'user002', '욕실이 넓고 쾌적해요', '샤워 시설이 만족스러웠습니다.', TO_DATE('2025-02-16', 'YYYY-MM-DD'), 130, 75, 0, 4, 16)
+  VALUES (42, 'user002', 'ㅼ 怨 苡�댁', 'ㅼ ㅼ 留議깆ㅻъ듬.', TO_DATE('2025-02-16', 'YYYY-MM-DD'), 130, 75, 0, 4, 16)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (43, 'user003', '서비스에 감동했어요', '직원분들이 정말 친절하고 세심하게 대해주셨어요.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 145, 100, 0, 5, 17)
+  VALUES (43, 'user003', '鍮ㅼ 媛댁', '吏遺ㅼ �留 移�怨 몄ы寃 댁＜⑥댁.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 145, 100, 0, 5, 17)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (44, 'user004', '뷰가 아쉬웠어요', '객실은 좋았지만 창밖 뷰는 기대 이하였어요.', TO_DATE('2025-04-21', 'YYYY-MM-DD'), 85, 50, 0, 3, 18)
+  VALUES (44, 'user004', '酉곌 ъ댁', '媛ㅼ 醫吏留 李쎈 酉곕 湲곕 댄댁.', TO_DATE('2025-04-21', 'YYYY-MM-DD'), 85, 50, 0, 3, 18)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (45, 'user005', '아침 조식 맛있어요', '조식이 다양하고 맛있어서 만족했어요.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 140, 95, 0, 5, 19)
+  VALUES (45, 'user005', '移 議곗 留댁', '議곗 ㅼ怨 留댁 留議깊댁.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 140, 95, 0, 5, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (46, 'user006', '가성비 좋아요', '가격에 비해 시설이나 서비스가 괜찮았어요.', TO_DATE('2025-05-02', 'YYYY-MM-DD'), 120, 70, 0, 4, 20)
+  VALUES (46, 'user006', '媛깅 醫', '媛寃⑹ 鍮 ㅼ대 鍮ㅺ 愿李�댁.', TO_DATE('2025-05-02', 'YYYY-MM-DD'), 120, 70, 0, 4, 20)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (47, 'user007', '깔끔한 객실', '정돈 잘 되어 있어서 기분 좋게 지냈어요.', TO_DATE('2025-05-18', 'YYYY-MM-DD'), 100, 60, 0, 5, 21)
+  VALUES (47, 'user007', '源 媛', '�   댁 湲곕 醫寃 吏댁.', TO_DATE('2025-05-18', 'YYYY-MM-DD'), 100, 60, 0, 5, 21)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (48, 'user008', '냉방 잘 돼요', '여름철 숙박에도 시원하게 잘 지냈습니다.', TO_DATE('2025-06-07', 'YYYY-MM-DD'), 110, 50, 0, 4, 22)
+  VALUES (48, 'user008', '諛  쇱', 'щ泥 諛 寃  吏듬.', TO_DATE('2025-06-07', 'YYYY-MM-DD'), 110, 50, 0, 4, 22)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (49, 'user009', '생각보다 조용했어요', '시내 근처인데도 조용해서 좋았어요.', TO_DATE('2025-06-23', 'YYYY-MM-DD'), 145, 90, 0, 5, 23)
+  VALUES (49, 'user009', '媛蹂대 議곗⑺댁', ' 洹쇱몃곕 議곗⑺댁 醫댁.', TO_DATE('2025-06-23', 'YYYY-MM-DD'), 145, 90, 0, 5, 23)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (50, 'user010', '전반적으로 만족', '크게 아쉬운 점 없이 편하게 쉬었어요.', TO_DATE('2025-07-12', 'YYYY-MM-DD'), 135, 88, 0, 4, 24)
+  VALUES (50, 'user010', '�諛�쇰 留議', 'ш ъ �  명寃 ъ댁.', TO_DATE('2025-07-12', 'YYYY-MM-DD'), 135, 88, 0, 4, 24)
+
 SELECT * FROM dual;
 
 
 
 INSERT ALL
-  -- 댓글 1 (리뷰 작성 다음날 아침)
-  INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (1, 1, 'user002', '정말 공감합니다! 저도 비 오는 날 갔었어요.', TO_DATE('2025-01-14 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), 10, 0, 1, 0, 0)
 
-  -- 댓글 2 (작성 2일 후 오전)
+  -- 湲 1 (由щ럭  ㅼ 移)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (2, 1, 'user003', '서울 호텔 중 여기 제일 좋아요.', TO_DATE('2025-01-15 10:20:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 1, 2, 0, 0)
+  VALUES (1, 1, 'user002', '�留 怨듦⑸! � 鍮 ㅻ  媛댁.', TO_DATE('2025-01-14 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), 10, 0, 1, 0, 0)
 
-  -- 댓글 3 (작성 3일 후 오후)
+  -- 湲 2 ( 2  ㅼ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (3, 1, 'user004', '후기 보고 예약했어요 감사합니다~', TO_DATE('2025-01-16 15:45:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 0, 3, 0, 0)
+  VALUES (2, 1, 'user003', ' 명 以 ш린 � 醫.', TO_DATE('2025-01-15 10:20:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 1, 2, 0, 0)
 
-  -- 대댓글 1 (댓글 1번에 대한 답글, 작성 4일 후 오전)
+  -- 湲 3 ( 3  ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (4, 1, 'user005', '비 오는 날 감성 최고였죠~', TO_DATE('2025-01-17 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 0, 1, 1, 1)
+  VALUES (3, 1, 'user004', '湲 蹂닿� 쏀댁 媛ы⑸~', TO_DATE('2025-01-16 15:45:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 0, 3, 0, 0)
 
-  -- 대댓글 2 (댓글 2번에 대한 답글, 작성 4일 후 오후)
+  -- 湲 1 (湲 1踰  듦,  4  ㅼ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (5, 1, 'user006', '혹시 가격 대비 괜찮았나요?', TO_DATE('2025-01-17 13:40:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, 2, 1, 1)
+  VALUES (4, 1, 'user005', '鍮 ㅻ  媛 理怨二~', TO_DATE('2025-01-17 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 0, 1, 1, 1)
 
-  -- 대댓글 3 (댓글 3번에 대한 답글, 작성 5일 후 밤)
+  -- 湲 2 (湲 2踰  듦,  4  ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (6, 1, 'user007', '저도 후기 보고 결정했어요ㅎㅎ', TO_DATE('2025-01-18 21:10:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 0, 3, 1, 1)
+  VALUES (5, 1, 'user006', '뱀 媛寃 鍮 愿李�?', TO_DATE('2025-01-17 13:40:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, 2, 1, 1)
+
+  -- 湲 3 (湲 3踰  듦,  5  諛)
+  INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
+  VALUES (6, 1, 'user007', '� 湲 蹂닿� 寃곗댁', TO_DATE('2025-01-18 21:10:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 0, 3, 1, 1)
 
   INSERT ALL
-  -- 댓글 1 (리뷰 작성 당일 오후)
+  -- 湲 1 (由щ럭  뱀 ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (7, 2, 'user008', '정말 좋은 후기네요! 서울에서 이곳이 최고인 듯.', TO_DATE('2025-02-18 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 12, 0, 1, 0, 0)
+  VALUES (7, 2, 'user008', '�留 醫 湲곕ㅼ! 몄 닿납 理怨 .', TO_DATE('2025-02-18 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 12, 0, 1, 0, 0)
 
-  -- 댓글 2 (작성 1일 후 오전)
+  -- 湲 2 ( 1  ㅼ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (8, 2, 'user009', '다음에 또 가고 싶어요. 강력 추천합니다.', TO_DATE('2025-02-19 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 15, 0, 2, 0, 0)
+  VALUES (8, 2, 'user009', 'ㅼ  媛怨 띠댁. 媛� 異泥⑸.', TO_DATE('2025-02-19 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 15, 0, 2, 0, 0)
 
-  -- 댓글 3 (작성 3일 후 오후)
+  -- 湲 3 ( 3  ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (9, 2, 'user010', '리뷰 보고 예약했는데 대만족입니다.', TO_DATE('2025-02-21 14:45:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 1, 3, 0, 0)
+  VALUES (9, 2, 'user010', '由щ럭 蹂닿� 쏀 留議깆.', TO_DATE('2025-02-21 14:45:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 1, 3, 0, 0)
 
-  -- 대댓글 1 (댓글 1번에 대한 답글, 작성 2일 후 오전)
+  -- 湲 1 (湲 1踰  듦,  2  ㅼ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (10, 2, 'user011', '저도 여기가 제일 좋았어요! 정말 추천합니다.', TO_DATE('2025-02-20 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 0, 1, 1, 1)
+  VALUES (10, 2, 'user011', '� ш린媛 � 醫댁! �留 異泥⑸.', TO_DATE('2025-02-20 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 0, 1, 1, 1)
 
-  -- 대댓글 2 (댓글 2번에 대한 답글, 작성 3일 후 오후)
+  -- 湲 2 (湲 2踰  듦,  3  ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (11, 2, 'user012', '가격이 괜찮은 곳이죠? 계속 가고 싶어요.', TO_DATE('2025-02-21 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 0, 2, 1, 1)
+  VALUES (11, 2, 'user012', '媛寃⑹ 愿李� 怨녹댁�? 怨 媛怨 띠댁.', TO_DATE('2025-02-21 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 0, 2, 1, 1)
 
-  -- 대대댓글 1 (대댓글 1번에 대한 답글, 작성 1일 후 오후)
+  -- 湲 1 (湲 1踰  듦,  1  ㅽ)
   INTO reply (cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun)
-  VALUES (12, 2, 'user013', '저도 여기가 너무 좋아서 추천드립니다!', TO_DATE('2025-02-22 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 0, 1, 2, 2)
+  VALUES (12, 2, 'user013', '� ш린媛 臾 醫 異泥由쎈!', TO_DATE('2025-02-22 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 0, 1, 2, 2)
 
 SELECT * FROM dual;  

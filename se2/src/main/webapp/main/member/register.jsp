@@ -31,7 +31,7 @@ if (mdto != null ) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>가입 완료</title>
+<title>HELIA HOTEL : 회원가입</title>
  <style>
     * {
         margin: 0;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 서울 지점 정보 </title>
+<title>HELIA HOTEL : 호텔소개</title>
 
 
 <style>
@@ -88,7 +88,7 @@
         <table>
           <tr>
          	 <td class="tr1">
-         	 	<img src="/se2/main/hotelInfo/img/seoulMainImg.jpg" alt="front">
+         	 	<img src="/se2/main/hotelInfo/img/U_Other1.png" alt="front">
          	 </td>
        	  </tr>
        	  <tr>

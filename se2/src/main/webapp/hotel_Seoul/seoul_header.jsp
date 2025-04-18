@@ -17,7 +17,8 @@
 			<!-- 왼쪽 호텔찾기 -->
 			<div class="left-utils">
 			<nav class="soft-nav left">
-		        <a  class="hotel-search-btn" id="hotelSearchLink" onclick="showPopup()">호텔찾기</a>
+		        <a  class="hotel-search-btn" id="hotelSearchLink" onclick="showPopup()">호텔찾기<img src="/se2/main/myPage/img/Magnifier.png" alt="돋보기 이미지" 
+		        style="width:20px; height:20px; vertical-align: middle; margin-left: 6px;"></a>
 		    </nav>    
 			</div>
 			<!-- 오른쪽 로그인 회원가입 -->
@@ -25,9 +26,9 @@
 			
 			<% if(sid==null||"".equals(sid)) { %>
 				<a href="/se2/main/member/login.jsp" id="login"><strong>로그인</strong></a>
-				<a href="/se2/main/member/memberJoin.jsp">회원가입</a>
+				<a href="/se2/main/member/agreeToTerms.jsp">회원가입</a>
 			<% } else { %>
-				<a href="/se2/main/member/login.jsp"><strong>마이페이지</strong></a>
+				<a href="/se2/main/myPage/myPage_main.jsp?userid=<%=sid%>"><strong>마이페이지</strong></a>
 				<a href="/se2/main/member/logout.jsp">로그아웃</a>
 			<% } %>
 			</div>
@@ -46,14 +47,19 @@
 	  <nav class="header-nav">
 	    <div class="main-menu-container">
 	      <ul class="main-menu">
-	        <li class="has-submenu" data-menu="review"><a href="#">후기</a></li>
+	        <li class="has-submenu" data-menu="review"><a href="/se2/hotel_Seoul/review/list.jsp">후기</a></li>
+     	    <li class="has-submenu" data-menu="room"><a href="/se2/hotel_Seoul/menubar/room/standard.jsp">객실</a></li>
+	        <li class="has-submenu" data-menu="dining"><a href="/se2/hotel_Seoul/menubar/dining/restaurant.jsp">다이닝</a></li>
+	        <li class="has-submenu" data-menu="activity"><a href="/se2/hotel_Seoul/menubar/facilities/meeting.jsp">부대시설</a></li>
+	        <li><a href="/se2/hotel_Seoul/menubar/ViewLocation/view_location.jsp">위치보기</a></li>
+	        <li><a href="/se2/main/hotelReser/hotelReser.jsp?name=s_seoul">예약하기</a></li>
 	      </ul>
 	    </div>
 	  </nav>
 	
 	  <!-- 💥 서브메뉴도 scaled 밖! -->
 	  <div class="sub-menu-wrap">
-	    <ul class="sub-menu" data-menu="review"><li><a href="#">후기작성</a></li></ul>
+	    <ul class="sub-menu" data-menu="review"><li><a href="/se2/hotel_Seoul/review/list.jsp">후기 목록</a></li></ul>
 	    <ul class="sub-menu" data-menu="room">
 	      <li><a href="/se2/hotel_Seoul/menubar/room/standard.jsp">스탠다드</a></li>
 	      <li><a href="/se2/hotel_Seoul/menubar/room/deluxe.jsp">디럭스</a></li>

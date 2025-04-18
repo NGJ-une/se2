@@ -16,7 +16,7 @@ String lmail = arr.get(0).getMemail().substring(fmailLocation+1, total); // @의
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HELIA HOTEL : 프로필수정</title>
 <script>
 function show() {
     var setlmail = document.getElementById("lmail");<!-- lmail 가져오기-->
@@ -185,16 +185,16 @@ function show() {
             <label>아이디 : <%=sid %> </label>
           
             <label>성</label>
-            <input type = "text" name = "mfname" value = "<%=arr.get(0).getMfname()%>"> 
+            <input type = "text" name = "mfname" value = "<%=arr.get(0).getMfname()%>" required="required"> 
             <label>이름 </label>
-            <input type = "text" name = "mlname" value = "<%=arr.get(0).getMlname()%>">
+            <input type = "text" name = "mlname" value = "<%=arr.get(0).getMlname()%>" required="required">
 
             
              <label> 이메일 </label>
         <div class="email-group">
-          <input type="text" name="fmail" value="<%=fmail%>">
+          <input type="text" name="fmail" value="<%=fmail%>" required="required">
           <span class="at">@</span>
-          <input type="text" id="lmail" name="lmail" value="<%=lmail%>">
+          <input type="text" id="lmail" name="lmail" value="<%=lmail%>" required="required">
           <select id="emailSel" onchange="show()">
             <option value="type">직접입력</option>
             <option value="naver.com">naver.com</option>
@@ -205,10 +205,10 @@ function show() {
         </div>
         
             <label>전화번호 </label>
-            <input type = "text" name = "mtel" value = "<%=arr.get(0).getMtel()%>">
+            <input type = "text" name = "mtel" value = "<%=arr.get(0).getMtel()%>" required="required">
             
             <label>주소 </label>
-            <input type = "text" name = "maddr" value = "<%=arr.get(0).getMaddr()%>">
+            <input type = "text" name = "maddr" value = "<%=arr.get(0).getMaddr()%>" required="required">
             
             <div class="button-group">
   				<input type="submit" value="변경">

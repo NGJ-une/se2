@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/se2/css/commonsLayout.css">
-    <title>Reservation</title>
+    <title>HELIA HOTEL : 예약</title>
     <style>
     .section{
     	min-height: 700px;

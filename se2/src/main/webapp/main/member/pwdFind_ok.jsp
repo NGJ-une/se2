@@ -13,12 +13,10 @@ String usertel=request.getParameter("tel");
 String dbpwd=(mdao.pwdFind(userid, usertel));
 
 if(dbpwd==null){
-%>
-<script>
-window.alert('잘못 입력하셨습니다. 다시 입력해주세요.');
-location.href ='pwdFind.jsp';
-</script>
-<%
+
+session.setAttribute("errorMsg", "ID 또는 전화번호가 잘못 입력되었습니다. <br>다시 확인해주세요.");
+response.sendRedirect("pwdFind.jsp");
+
 }else if(dbpwd!=null){
 %>
 <script>

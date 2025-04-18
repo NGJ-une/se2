@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 찾기</title>
+<title>HELIA HOTEL : 비밀번호 찾기</title>
  <style>
  
     * {
@@ -69,6 +69,11 @@
 	color: #6b4c2f;
 	}
 
+	.pwdErrorMsg {
+		color: red;
+		font-size: 14px;
+		margin-top: 10px;
+	}
   </style>
 </head>
 <body>
@@ -79,6 +84,15 @@
                 <hr>
                <input type="text" name="id" placeholder="아이디" required>
                 <input type="text" name="tel" placeholder="전화번호 (000 - 0000 - 0000)" required>
+                		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "pwdErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
                 <input type="submit" value="비밀번호 찾기">
                
                <p> 

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체 목록 리스트</title>
+<title>HELIA HOTEL : 후기 목록</title>
 <jsp:useBean id="rdao" class = "com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <style>
     body {
@@ -17,7 +17,9 @@
         padding: 0;
         color: #5c4033;
     }
-
+	section{
+		min-height:700px;	
+	}
     h2 {
         text-align: center;
         color: #f0b675;
@@ -163,7 +165,7 @@ if(cp%maxPage==0) userGroup--;
 				}
 				%>
 					        <td>
-           <a href="write.jsp" class="write-button"> 글쓰기</a>
+           <a href="/se2/main/myPage/myPage_main.jsp" class="write-button"> 글쓰기</a>
            </td>
 			</tr>
 		</tfoot>

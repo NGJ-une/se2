@@ -22,12 +22,12 @@ html, body {
 /* 로그인/회원가입 */
 .header-utils {
   display: flex;
-  justify-content: space-betweenr; 
+  justify-content: space-between; 
   align-items: center;
   width: 1300px;  /* 고정 폭*/
   margin: 0 auto;
   padding: 10px 0;
-  gap: 1000px;
+  gap: 900px;
 }
 
 .left-utils,

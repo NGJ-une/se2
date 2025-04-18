@@ -21,12 +21,8 @@ case 4 : bbank = "카카오";
 }
 rdto.setBbank(bbank);
 if(bankValue == 0) {
-	%>
-	<script>
-	window.alert('환불 받을 은행을 선택해주세요.');
-	location.href = 'refund.jsp';
-	</script>
-	<%
+    session.setAttribute("errorMsg", "환불 받을 은행을 선택해주세요.");
+    response.sendRedirect("refund.jsp");
 }else {
 
 int result2 = rdao.refundDetails(rdto);
