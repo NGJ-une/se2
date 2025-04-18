@@ -1,7 +1,10 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.hotel.index.*" %>
+<%@ page import="com.hotel.seoul.*" %>
 <jsp:useBean id="idao" class="com.hotel.index.indexDAO"></jsp:useBean>
+<jsp:useBean id="rvdao" class="com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,16 +238,25 @@
     
 	<section class="review-carousel">
 	  <h3>고객 후기</h3>
-	  <div class="reviews">
-	    <div class="review">
-	      <p>"최고의 서비스, 다음에도 꼭 방문할 거예요!"</p>
-	      <span>- 김지은 님</span>
-	    </div>
-	    <div class="review">
-	      <p>"청결하고 조용한 분위기가 좋았어요."</p>
-	      <span>- 박현수 님</span>
-	    </div>
-	  </div>
+<div class="reviews">
+  <div class="review-slider">
+    <div class="slider-track">
+      <%
+        ArrayList<HotelReviewDTO> arr = rvdao.indexReview();
+        for (int k = 0; k < 2; k++) { // 무한 슬라이드 위해 2번 반복
+          for (int i = 0; i < arr.size(); i++) {
+      %>
+        <div class="review">
+          <p>"<%=arr.get(i).getVtitle()%>"</p>
+          <span>- <%=arr.get(i).getVid()%>님</span>
+        </div>
+      <%
+          }
+        }
+      %>
+    </div>
+  </div>
+</div>
 	</section>
 	
 	<!-- 추천 객실 미리보기 -->

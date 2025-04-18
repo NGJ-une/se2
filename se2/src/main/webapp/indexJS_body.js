@@ -72,3 +72,6 @@ function changeSlide(n) {
     clearTimeout(slideTimer);
     slideTimer = setTimeout(showSlides, 5000);
 }
+
+/************************************** */
+
