@@ -68,7 +68,7 @@ CREATE TABLE reser (
     rbaby number(3) default 0, --유아
     rmoney number(10) not null, -- 결제금액 
     
-    constraint fk_member_id foreign key(rid) references member(mid),
+    constraint fk_member_id foreign key(rid) references member(mid) ON DELETE CASCADE,
     constraint fk_room_type foreign key(rtype) references room(type),
     constraint fk_hotel_name foreign key(rname) references hotel(hname)
 )
@@ -83,7 +83,7 @@ CREATE TABLE refund (
     brefund number (10) not null, -- 환불금액 
     bdate DATE not null, --환불 날짜 
     
-    constraint fk_member_mid foreign key(bid) references member(mid)
+    constraint fk_member_mid foreign key(bid) references member(mid) ON DELETE CASCADE
 )
 
 
@@ -96,7 +96,7 @@ CREATE TABLE inquiry (
     icontent varchar2(3000) not null, -- 문의 내용 
     idate date not null, --문의 날짜 
 
-constraint fk_member_id2 foreign key(iid) references member(mid)
+constraint fk_member_id2 foreign key(iid) references member(mid) ON DELETE CASCADE
 )   
 
    
@@ -113,7 +113,7 @@ CREATE TABLE review (
     vtotal number(1) default 0, -- 평점 
     vridx number(5) not null, --예약 번호 
     
-    constraint fk_member_id3 foreign key(vid) references member(mid),
+    constraint fk_member_id3 foreign key(vid) references member(mid) ON DELETE CASCADE,
     constraint fk_reser_idx foreign key(vridx) references reser(ridx)
 )
 
@@ -130,8 +130,8 @@ CREATE TABLE reply (
     cref number(5) default 0,
     clev number(5) default 0,
     csunbun number(5) default 0,
-    constraint fk_member_id4 foreign key(cid) references member(mid),
-    constraint fk_review_vidx foreign key(vidx) references review(vidx)
+    constraint fk_member_id4 foreign key(cid) references member(mid) ON DELETE CASCADE,
+    constraint fk_review_vidx foreign key(vidx) references review(vidx) ON DELETE CASCADE
 ) 
 
 --사진 테이블 생성 11번  
@@ -141,7 +141,7 @@ CREATE TABLE photo (
     pname1 varchar2(100) NOT NULL, --사진 1  
     pname2 varchar2(100) NOT NULL,-- 사진 2
     pname3 varchar2(100) NOT NULL, --사진 3 
-    constraint fk_review_vidx2 foreign key(pidx) references review(vidx) 
+    constraint fk_review_vidx2 foreign key(pidx) references review(vidx) ON DELETE CASCADE 
 )
 commit
 
@@ -150,14 +150,14 @@ commit
 
 --   
 CREATE SEQUENCE sq_member_idx START WITH 11--濡洹몄/媛 대  踰   
-CREATE SEQUENCE sq_reser_idx --  대 쎈  
+CREATE SEQUENCE sq_reser_idx START WITH 26 --  대 쎈  
 CREATE SEQUENCE sq_room_idx -- 媛 대 媛ㅻ  
 CREATE SEQUENCE sq_hotel_idx -- 명 대 명踰  
 CREATE SEQUENCE sq_refund_idx -- 遺 대 遺 踰 
 CREATE SEQUENCE sq_inquiry_idx START WITH 11 --臾몄 대 臾몄 踰  
 CREATE SEQUENCE sq_review_idx START WITH 51 --湲 대 湲 踰 
 CREATE SEQUENCE sq_reply_idx START WITH 13 -- 湲 대 湲 踰 
-CREATE SEQUENCE sq_photo_num -- ъ 怨踰  
+CREATE SEQUENCE sq_photo_num START WITH 51-- ъ 怨踰  
   
 
 
