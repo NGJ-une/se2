@@ -16,8 +16,8 @@
     <div class="sidebar">HELIA GALLERY</div>
     <hr>
     <ul>
-      <li><a href="gallery_seoul.jsp">호텔 서울</a></li>
-      <li><a href="gallery_ulsan.jsp">호텔 울산</a></li>
+      <li><a href="/se2/gallery/gallery_seoul.jsp">호텔 서울</a></li>
+      <li><a href="/se2/gallery/gallery_ulsan.jsp"><strong>호텔 울산</strong></a></li>
     </ul>
   </section>
 

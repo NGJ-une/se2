@@ -11,7 +11,7 @@
 //dto에서 값 가져와야됨 !!!! ㅜㅜ
 
 RegisterDTO mdto = mdao.registerOk();
-
+ 
 int midx = 0;
 String mid = "";
 String mfname = "";

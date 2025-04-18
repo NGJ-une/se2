@@ -234,15 +234,15 @@
 		  <h2>주변 관광지</h2>
 		  <div class="nearby-cards">
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot1.jpg" alt="남산타워">
+		      <img src="/se2/hotel_Seoul/recommended_img/namsan.jpg" alt="남산타워">
 		      <p>남산타워 도보 15분</p>
 		    </div>
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot2.jpg" alt="명동">
+		      <img src="/se2/hotel_Seoul/recommended_img/myeondong.jpg" alt="명동">
 		      <p>명동 쇼핑거리 3분 거리</p>
 		    </div>
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot3.jpg" alt="경복궁">
+		      <img src="/se2/hotel_Seoul/recommended_img/Gyeongbokgung .jpg" alt="경복궁">
 		      <p>경복궁 차량 15분 거리</p>
 		    </div>
 		  </div>
@@ -254,7 +254,7 @@
 		  <p>서울특별시 중구 명동로 123</p>
 		  <p>지하철 명동역 6번 출구 도보 3분 거리</p>
 		  <div class="map-wrap">
-		    <iframe src="https://www.google.com/maps/embed?pb=..."
+		    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2901454184985!2d-73.97612382332608!3d40.755642771387116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2595b7381bd11%3A0x354857268d76d20f!2zMTExIEUgNDh0aCBTdCwgTmV3IFlvcmssIE5ZIDEwMDE3IOuvuOq1rQ!5e0!3m2!1sko!2skr!4v1744639617409!5m2!1sko!2skr"
 		            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 		  </div>
 		</section>

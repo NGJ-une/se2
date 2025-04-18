@@ -1,9 +1,16 @@
-
-
-function show2(){
-	location.href='/se2/gallery/gallery_seoul.jsp';
+/**추천객실 및 최하단 갤러리 바로가기 하이퍼링크 */
+const pageMape={
+	gallery_seoul :'/se2/gallery/gallery_seoul.jsp',
+	seoul_grand :'/se2/hotel_Seoul/menubar/room/grand.jsp',
+	ulsan_standard :'/se2/hotel_Ulsan/menubar/room/standard.jsp',
+	seoul_suite :'/se2/hotel_Seoul/menubar/room/sweet.jsp',
+	ulsan_grand :'/se2/hotel_Ulsan/menubar/room/grand.jsp',
+	seoul_deluxe :'/se2/hotel_Seoul/menubar/room/deluxe.jsp',
+};
+function movePage(key) {
+	const url=pageMape[key];
+	if(url) location.href=url;
 }
-
 /****************************************************************/
 
 document.addEventListener("DOMContentLoaded", function() {

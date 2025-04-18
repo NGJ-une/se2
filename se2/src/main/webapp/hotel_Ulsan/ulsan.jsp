@@ -234,16 +234,16 @@
 		  <h2>주변 관광지</h2>
 		  <div class="nearby-cards">
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot1.jpg" alt="남산타워">
-		      <p>남산타워 도보 15분</p>
+		      <img src="/se2/hotel_Ulsan/recommended_img/Amethyst.png" alt="남산타워">
+		      <p>자수정 동굴나라 차량 15분 거리</p>
 		    </div>
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot2.jpg" alt="명동">
-		      <p>명동 쇼핑거리 3분 거리</p>
+		      <img src="/se2/hotel_Ulsan/recommended_img/kingRock.jpg" alt="명동">
+		      <p>대왕암 선박 출항 후 15분 거리</p>
 		    </div>
 		    <div class="card">
-		      <img src="/se2/gallery/img/seoul/other/spot3.jpg" alt="경복궁">
-		      <p>경복궁 차량 15분 거리</p>
+		      <img src="/se2/hotel_Ulsan/recommended_img/GrancPark.png" alt="경복궁">
+		      <p>울산 대공원 차량 20분 거리</p>
 		    </div>
 		  </div>
 		</section>
@@ -254,7 +254,7 @@
 		  <p>서울특별시 중구 명동로 123</p>
 		  <p>지하철 명동역 6번 출구 도보 3분 거리</p>
 		  <div class="map-wrap">
-		    <iframe src="https://www.google.com/maps/embed?pb=..."
+		    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.2277595270143!2d144.80334147591537!3d13.52160958684674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x671f826093894699%3A0x9dbedb49b2d74286!2s241%20Gun%20Beach%20Road%2C%20Tumon%2C%2096913%20%EA%B4%8C!5e0!3m2!1sko!2skr!4v1744639993099!5m2!1sko!2skr"
 		            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 		  </div>
 		</section>

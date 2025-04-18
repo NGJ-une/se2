@@ -205,21 +205,21 @@
 	                    <td>총 사용금액</td>
 	                </tr>
 	                <tr>
-	                    <td><%=dto.getUnu_point() %>원</td>
+	                    <td><%=dto.getUnu_point() %> 원</td>
 	                    <td><%=dto.getNow_discount() %> %</td>
-	                    <td><%=dto.getTotal_reser() %>건</td>
-	                    <td><%=(int)session.getAttribute("point") %>원</td>
+	                    <td><%=dto.getTotal_reser() %> 건</td>
+	                    <td><%=dto.getTotal_point() %> 원</td>
 	                </tr>
 	                <tr>
 	                <%
 	                if(dto.getNow_grade().equals("BRONZE")){
-                    %><td colspan="4"><img src="/se2/css/img/icon_SILVER.png">SILVER 등급까지 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
+                    %><td colspan="4"><img src="/se2/css/img/icon_SILVER.png"> SILVER 등급까지 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
 	                }else if(dto.getNow_grade().equals("SILVER")){
-                    %><td colspan="4"><img src="/se2/css/img/icon_GOLD.png">GOLD 등급까지 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
+                    %><td colspan="4"><img src="/se2/css/img/icon_GOLD.png"> GOLD 등급까지 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
 	                }else if(dto.getNow_grade().equals("GOLD")){
-                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png">DIAMOND까찌 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
+                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png"> DIAMOND까지 <%=dto.getRemain_grade() %> 포인트 남았습니다</td><%
 	                }else if(dto.getNow_grade().equals("DIAMOND")){
-                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png">축하드립니다 최고등급 입니다</td><%
+                    %><td colspan="4"><img src="/se2/css/img/icon_DIAMOND.png"> 축하드립니다 최고등급 입니다</td><%
 	                }
 	                session.setAttribute("dcRate", dto.getNow_discount());
 	                session.setAttribute("grade", dto.getNow_grade());
@@ -264,25 +264,25 @@
 	  <h3>추천 객실</h3>
 	  <div class="room-grid">
 	    <!-- 1. 스위트룸 -->
-		<div class="room-card">
-		  <img src="/se2/gallery/img/seoul/room/S_G2.jpg" alt="서울 스위트룸">
+		<div class="room-card" onclick="movePage('seoul_grand');">
+		  <img src="/se2/gallery/img/seoul/room/S_G2.jpg" alt="서울 그랜드룸" >
 		  <div class="room-info">
-		    <h4>스위트룸</h4>
+		    <h4>그랜드룸</h4>
 		    <p>넓은 공간과 섬세한 디테일이 어우러진 프라이빗 럭셔리</p>
 		  </div>
 		</div>
 		
 		<!-- 2. 프리미엄룸 -->
-		<div class="room-card">
-		  <img src="/se2/gallery/img/ulsan/room/U_ST.jpg" alt="울산 프리미엄룸">
+		<div class="room-card" onclick="movePage('ulsan_standard');">
+		  <img src="/se2/gallery/img/ulsan/room/U_ST.jpg" alt="울산 스탠다드룸" >
 		  <div class="room-info">
-		    <h4>프리미엄룸</h4>
+		    <h4>스텐다드룸</h4>
 		    <p>창밖 노을과 함께 즐기는 고요하고 깊은 휴식</p>
 		  </div>
 		</div>
 		
 		<!-- 3. 스위트룸 -->
-		<div class="room-card">
+		<div class="room-card" onclick="movePage('seoul_suite');">
 		  <img src="/se2/gallery/img/seoul/room/S_S.jpg" alt="서울 스위트룸">
 		  <div class="room-info">
 		    <h4>스위트룸</h4>
@@ -291,7 +291,7 @@
 		</div>
 		
 		<!-- 4. 디럭스 더블 -->
-		<div class="room-card">
+		<div class="room-card" onclick="movePage('ulsan_grand');">
 		  <img src="/se2/gallery/img/ulsan/room/U_G.jpg" alt="울산 그랜드 더블룸">
 		  <div class="room-info">
 		    <h4>그랜드 더블</h4>
@@ -300,7 +300,7 @@
 		</div>
 		
 		<!-- 5. 디럭스 트윈 -->
-		<div class="room-card">
+		<div class="room-card" onclick="movePage('seoul_deluxe');">
 		  <img src="/se2/gallery/img/seoul/room/S_D.jpg" alt="서울 디럭스 트윈룸">
 		  <div class="room-info">
 		    <h4>디럭스 트윈</h4>
@@ -375,7 +375,7 @@
         <article>          
     		<div class="wrapper">
 	            <label>아름다움이 머무는 공간, HELIA HOTEL 갤러리로 초대합니다.</label>
-	            <input onclick="show2();" type="button" value="호텔갤러리 바로가기 →">          
+	            <input onclick="movePage('gallery_seoul');" type="button" value="호텔갤러리 바로가기 →">          
     		</div>
         </article>
        </div> 
