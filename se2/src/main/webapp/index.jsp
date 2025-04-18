@@ -188,7 +188,7 @@
 	        	<% 
 	        	indexDTO dto = idao.indexshow(sid);
 	        	if(dto.getNow_grade().equals("BRONZE")){
-	            %><h2>BRONZE<img src="/se2/css/img/icon_BRONZE.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
+	            %><h2>BRONZE<img src="/se2/css/img/icon_BRONZE.png">&nbsp;<%=dto.getMfname()+dto.getMlname() %> 님 환영합니다</h2><%
 	        	}else if(dto.getNow_grade().equals("SILVER")){
 	            %><h2>SILVER<img src="/se2/css/img/icon_SILVER.png">&nbsp;<%=sid %> 님 환영합니다</h2><%
 	        	}else if(dto.getNow_grade().equals("GOLD")){
