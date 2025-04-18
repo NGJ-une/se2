@@ -149,10 +149,11 @@ public class ReserDAO {
 			
 			if (!(delResult > 0)) return delResult;
 			
-			sql = "UPDATE member SET mpoint = mpoint - ?, mmoney = mmoney + ?";
+			sql = "UPDATE member SET mpoint = mpoint - ?, mmoney = mmoney + ? WHERE mid = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, orgPrice);
 			ps.setInt(2, payment);
+			ps.setString(3, id);
 			
 			return ps.executeUpdate();
 		} catch(Exception e){
