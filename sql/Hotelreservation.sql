@@ -150,7 +150,7 @@ commit
 
 --   
 CREATE SEQUENCE sq_member_idx START WITH 11--濡洹몄/媛 대  踰   
-CREATE SEQUENCE sq_reser_idx START WITH 26 --  대 쎈  
+CREATE SEQUENCE sq_reser_idx start with 26 --  대 쎈  
 CREATE SEQUENCE sq_room_idx -- 媛 대 媛ㅻ  
 CREATE SEQUENCE sq_hotel_idx -- 명 대 명踰  
 CREATE SEQUENCE sq_refund_idx -- 遺 대 遺 踰 
