@@ -398,10 +398,10 @@ SELECT * FROM dual;
 
 INSERT ALL
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (1, 'user001', '훌륭한 숙박이었어요!', '호텔이 매우 깨끗하고 서비스도 좋았습니다.', TO_DATE('2025-01-13', 'YYYY-MM-DD'), 120, 80, 0, 5, 15)
+  VALUES (1, 'user001', '훌륭한 숙박이었어요!', '호텔이 매우 깨끗하고 서비스도 좋았습니다.', TO_DATE('2025-01-13', 'YYYY-MM-DD'), 120, 80, 6, 5, 15)
   
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (2, 'user002', '괜찮은 편이었습니다.', '방이 조금 작았지만 위치는 좋았어요.', TO_DATE('2025-02-18', 'YYYY-MM-DD'), 90, 60, 0, 4, 16)
+  VALUES (2, 'user002', '괜찮은 편이었습니다.', '방이 조금 작았지만 위치는 좋았어요.', TO_DATE('2025-02-18', 'YYYY-MM-DD'), 90, 60, 6, 4, 16)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
   VALUES (3, 'user003', '편안한 휴식이었어요.', '가족과 함께 좋은 시간을 보냈습니다.', TO_DATE('2025-03-07', 'YYYY-MM-DD'), 100, 70, 0, 5, 17)
