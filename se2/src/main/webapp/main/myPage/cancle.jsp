@@ -98,6 +98,32 @@ ArrayList<DepositDTO> arr = mdao.mypageMemberInfo(id);
 	    font-size: 14px;
 	    margin-top: 10px;
     }
+    
+    .cancleInfoBox {
+      flex: 0.5;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      color: #444;
+      width: 300px;
+    }
+    
+        .cancleInfoBox h3 {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .cancleInfoBox p {
+      font-size: 15px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 22px;
+      margin-right: 6px;
+    }
   </style>
 </head>
 <script>
@@ -135,6 +161,13 @@ function cancleConfirm() {
           <input type="button" value="취소">
       </form>
       </section>
+      <aside class = "cancleInfoBox">
+      	<h3>❗탈퇴 유의사항</h3>
+      	<p><span class = "emoji">1.</span> 회원 탈퇴를 진행하기 전에 충전금액을 환불해주세요.</p>
+      	<p><span class = "emoji">2.</span> 한번 탈퇴한 계정은 복구할 수 없습니다. </p>
+      	<p><span class = "emoji">3.</span> 충전금액이 1,000원 이하일 경우 충전금액이 남아있더라도 회원탈퇴 처리 됩니다.</p>
+      	<p><span class = "emoji">☎</span> 문의: 1234-5678</p>
+      </aside>
     </div>
   </body>
   <%@include file="/footer.jsp" %>

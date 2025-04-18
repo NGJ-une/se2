@@ -134,7 +134,7 @@ public class PwchangeDAO {
 	public int memberDelete(String sid) {
 		try {
 			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "delete member where mid = ? and mmoney = 0";
+			String sql = "delete member where mid = ? and mmoney < 1000";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, sid);
 			int count = ps.executeUpdate();

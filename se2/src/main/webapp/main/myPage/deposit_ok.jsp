@@ -6,12 +6,8 @@
 int money = Integer.parseInt(request.getParameter("money"));
 String id = (String)session.getAttribute("sessionid");
 if(money < 1000) {
-	%>
-	<script>
-	window.alert('1,000원 이하로는 충전할 수 없습니다.')
-	location.href = 'deposit.jsp';
-	</script>
-	<%
+    session.setAttribute("errorMsg", "1,000원 이하로는 충전할 수 없습니다. <br>금액을 다시 확인해주세요.");
+    response.sendRedirect("deposit.jsp");
 }else {
 int result = hdao.chargeAmount(money, id);
 String msg = result > 0 ? "금액이 충전되었습니다." : "충전 실패~";

@@ -73,6 +73,7 @@
 		color: red;
 		font-size: 14px;
 		margin-top: 10px;
+		padding-bottom: 5px;
 	}
   </style>
 </head>
@@ -84,7 +85,8 @@
                 <hr>
                <input type="text" name="id" placeholder="아이디" required>
                 <input type="text" name="tel" placeholder="전화번호 (000 - 0000 - 0000)" required>
-                		<%
+                <input type="submit" value="비밀번호 찾기">
+                        <%
 		    String errorMsg = (String) session.getAttribute("errorMsg");
 		    if (errorMsg != null) {
 		%>
@@ -93,7 +95,6 @@
 		        session.removeAttribute("errorMsg");
 		    }
 		%>
-                <input type="submit" value="비밀번호 찾기">
                
                <p> 
                 <a href="idFind.jsp"> 아이디 찾기</a> |
