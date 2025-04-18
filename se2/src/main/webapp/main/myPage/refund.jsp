@@ -108,10 +108,41 @@
 	    color: #555;
 	}
 	.container p {
-    	color: red;
 	    font-size: 14px;
 	    margin-top: 10px;
      }
+     
+     .refundInfoBox {
+      flex: 1;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      color: #444;
+      width: 300px;
+    }
+    
+    .refundInfoBox h3 {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .refundInfoBox p {
+      font-size: 15px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 22px;
+      margin-right: 6px;
+    }
+    
+    .refundErrorMsg {
+        color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -128,7 +159,7 @@
         %>
         <label class = "currentMoney">현재 보유 금액 : <%=money %> 원</label>
         <label>환불할 금액  </label>
-        <input type="number" name = "mmoney" required="required">
+        <input type="number" name = "mmoney" required="required" min="1" max ="1000000000">
         <br>
         <label>환불 받을 은행 </label>
         <div class = "bankGroup">
@@ -157,6 +188,14 @@
         <input type="reset" value="취소">
     </form>
     </section>
+      <aside class = "refundInfoBox">
+      	<h3>❗유의사항</h3>
+      	<p class = "refundInfo"><span class = "emoji">1.</span> 환불 최소 금액은 1,000원 입니다.</p>
+      	<p class = "refundInfo"><span class = "emoji">2.</span> 계좌번호 형식은 - 없이 숫자만 입력 해주세요.</p>
+      	<p class = "refundInfo"><span class = "emoji">3.</span> 환불 후 환불이 완료되기 전까지 영업일 기준 2~3 일 정도 소요 됩니다.</p>
+      	<p class = "refundInfo"><span class = "emoji">☎</span> 문의: 1234-5678</p>
+      </aside>
+    </div>
   </div>
 <%@include file = "/footer.jsp" %>
 </body>

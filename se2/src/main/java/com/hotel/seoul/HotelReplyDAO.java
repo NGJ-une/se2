@@ -44,7 +44,6 @@ public class HotelReplyDAO {
 	//댓글 쓰기 메서드
 		public int writeReply(int vidx, String cid, String ccontent) {
 			try {
-				
 				int cref = getMaxRef(vidx);
 				String sql = "insert into reply(cidx, vidx, cid, ccontent, cdate, crecommend, cnotrecommend, cref, clev, csunbun) "
 						+ "values (sq_reply_idx.nextval, ?, ?, ?, sysdate, 0, 0, ?, 0, 0)";
@@ -119,7 +118,7 @@ public class HotelReplyDAO {
 		public ArrayList<HotelReplyDTO> getReplyList(int idx) {
 			try {
 				conn = com.hotel.db.HotelDB.getConn();
-				String sql = "select * from reply where vidx = ? order by cref desc, csunbun asc";
+				String sql = "select * from reply where vidx = ? order by cref asc, csunbun asc";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, idx);
 				rs = ps.executeQuery();
@@ -195,3 +194,4 @@ public class HotelReplyDAO {
 			}
 		}
 }
+

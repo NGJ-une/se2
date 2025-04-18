@@ -116,6 +116,12 @@
       font-size: 22px;
       margin-right: 6px;
     }
+    
+    .depositErrorMsg {
+        color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -135,7 +141,15 @@
 
         <label for="money">충전할 금액 입력</label>
         <input type="number" id="money" name="money" placeholder="예: 10000" required>
-
+		<%
+		    String errorMsg = (String) session.getAttribute("errorMsg");
+		    if (errorMsg != null) {
+		%>
+		    <p class = "depositErrorMsg"><%= errorMsg %></p>
+		<%
+		        session.removeAttribute("errorMsg");
+		    }
+		%>
         <br>
         <input type="submit" value="충전하기">
         <input type="reset" value="초기화">
@@ -143,10 +157,10 @@
     </section>
 
     <aside class="info-box">
-      <h3>충전 유의사항</h3>
+      <h3>❗충전 유의사항</h3>
       <p><span class="emoji">1.</span> 최소 충전 금액은 1,000원입니다.</p>
       <p><span class="emoji">2.</span> 충전 후 환불은 환불하기를 통해 가능합니다.</p>
-      <p><span class="emoji">3.</span> 환불 후 환불이 완료되기 전까지 영업일 기준 2~3 일 정도 소요 됩니다.</p>
+      <p><span class="emoji">3.</span> 충전 금액을 입력할때 숫자만 입력해주세요.</p>
       <p><span class="emoji">☎</span> 문의: 1234-5678</p>
     </aside>
   </div>

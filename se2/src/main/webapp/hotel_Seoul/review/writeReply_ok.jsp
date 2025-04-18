@@ -21,7 +21,6 @@ int result = rdao.writeReply(vidx, cid, ccontent);
 if (result > 0) {
 %>
     <script>
-        alert('댓글 등록 성공');
         location.href = 'content.jsp?vidx=<%=vidx%>';
     </script>
 <%

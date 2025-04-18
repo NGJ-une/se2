@@ -16,13 +16,10 @@ String dbid=(mdao.idFind(usertel, userquestion, useranswer));
 
 if(dbid==null){
     session.setAttribute("errorMsg", "등록한 정보와 입력하신 정보가 일치하지 않습니다. <br>다시 확인해주세요.");
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("idFind.jsp");
 }else if(dbid!=null){
-%>
-<script>
-window.alert('회원님의 아이디는 <%=dbid%> 입니다. ');
-location.href='idFind.jsp';
-</script>
-<%
+    session.setAttribute("errorMsg", "회원님의 아이디는"+ dbid+ "입니다.");
+    response.sendRedirect("idFind.jsp");
+
 }
 %>

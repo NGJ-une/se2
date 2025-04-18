@@ -22,7 +22,6 @@ int reWrite = rdao.reWriteReply(rdto);
 if(reWrite > 0) {
 	%>
 	<script>
-	window.alert('답글 등록 성공');
 	location.href = 'content.jsp?vidx=<%=vidx%>';
 	</script>
 	<%

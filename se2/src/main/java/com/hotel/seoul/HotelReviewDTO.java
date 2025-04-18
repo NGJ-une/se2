@@ -24,7 +24,13 @@ public class HotelReviewDTO {
 		
 	}
 
-	
+	public HotelReviewDTO(String vid, String vtitle) {
+		super();
+		
+		this.vid = vid;
+		this.vtitle = vtitle;
+		
+	}
 
 	public HotelReviewDTO(int vidx, String vid, String vtitle, String vcontent, Date vdate, int vreadnum,
 			int vrecommend, int vcomment, int vtotal, int vridx) {
