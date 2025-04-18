@@ -176,7 +176,7 @@ INSERT INTO question values(5,'내가 살던 고향은?')
 
 --room 기본 데이터 입력 
 INSERT INTO room values('s_standard',sq_room_idx.nextval,'s_st.jpg',250000,4) 
-INSERT INTO room values('s_deluxe',sq_room_idx.nextval,'s_sd.jpg',400000,4)
+INSERT INTO room values('s_deluxe',sq_room_idx.nextval,'s_d.jpg',400000,4)
 INSERT INTO room values('s_suite',sq_room_idx.nextval,'s_s.jpg',200000,2)
 INSERT INTO room values('s_grand',sq_room_idx.nextval,'s_g.jpg',600000,6)
 INSERT INTO room values('u_standard',sq_room_idx.nextval,'u_st.jpg',150000,4)
@@ -298,7 +298,7 @@ SELECT * FROM dual
 
 INSERT ALL
     INTO room values('s_standard',1,'s_st.jpg',250000,4) 
-    INTO room values('s_deluxe',2,'s_sd.jpg',400000,4)
+    INTO room values('s_deluxe',2,'s_d.jpg',400000,4)
     INTO room values('s_suite',3,'s_s.jpg',200000,2)
     INTO room values('s_grand',4,'s_g.jpg',600000,6)
     INTO room values('u_standard',5,'u_st.jpg',150000,4)
