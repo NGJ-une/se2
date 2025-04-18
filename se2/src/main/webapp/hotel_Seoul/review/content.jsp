@@ -122,12 +122,29 @@
     }
 
     .comment-content {
+    	max-height: 120px; /* 댓글 내용의 최대 높이 */
+   	 	overflow-y: auto; /* 내용이 많을 경우 스크롤 추가 */
+   		white-space: pre-wrap; /* 줄바꿈을 그대로 반영 */
         font-size: 15px;
         line-height: 1.6;
         color: #444;
         white-space: pre-wrap;
         margin-bottom: 5px;
     }
+    
+    /* 스크롤바 숨기기 */
+.comment-content::-webkit-scrollbar {
+    width: 0px;  /*가로*/
+    height: 0px; 
+}
+
+.comment-content::-webkit-scrollbar-thumb {
+    background-color: transparent; /* 스크롤바 막대 숨기기 */
+}
+
+.comment-content::-webkit-scrollbar-track {
+    background: transparent; /* 스크롤바 트랙 숨기기 */
+}
 
     .comment-actions {
         display: flex;
@@ -532,8 +549,7 @@ if (!already) {
                 </div>
 
                 <div class="comment-meta">작성자 : <%=arr2.get(i).getCid()%></div>
-                <div class="comment-content">
-                    <%= arr2.get(i).getCcontent().replaceAll(" ", "&nbsp;").replaceAll("\\n", "<br>") %>
+                <div class="comment-content" style = "height: 40px;"><%= arr2.get(i).getCcontent().replaceAll(" ", "&nbsp;").replaceAll("\\n", "<br>") %>
                 </div>
 
                 <div class="comment-actions-bottom" onclick="showTextArea(<%=arr2.get(i).getCidx()%>)">
