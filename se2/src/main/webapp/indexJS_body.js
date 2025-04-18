@@ -75,21 +75,74 @@ function changeSlide(n) {
 
 /************************************** */
 
-document.addEventListener("DOMContentLoaded", function () {
-  var groups = document.querySelectorAll(".review-group");
-  var index = 0;
+//document.addEventListener("DOMContentLoaded", function () {
+//  var groups = document.querySelectorAll(".review-group");
+//  var index = 0;
+//
+//  function showGroup(i) {
+//    for (var j = 0; j < groups.length; j++) {
+//      groups[j].classList.remove("active");
+//    }
+//    groups[i].classList.add("active");
+//  }
+//
+//  showGroup(index);
+//
+//  setInterval(function () {
+//    index = (index + 1) % groups.length;
+//    showGroup(index);
+//  }, 3000);
+//});
 
-  function showGroup(i) {
-    for (var j = 0; j < groups.length; j++) {
-      groups[j].classList.remove("active");
+/********************************************************* */
+/*추천 후기 텍스트 변경 효과 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const groups = document.querySelectorAll(".review-group");
+  console.log("리뷰 그룹 개수:", groups.length); // 디버깅용
+  let groupIndex = 0;
+  function showGroupReviews() {
+    // 모든 그룹 비활성화 (중요!!)
+    groups.forEach((g, i) => {
+      g.classList.remove("active");
+
+      // 안의 리뷰도 초기화
+      const reviews = g.querySelectorAll(".review");
+      reviews.forEach(r => {
+        r.style.opacity = "0";
+        r.style.transform = "translateY(20px)";
+        r.style.transition = "none";
+      });
+    });
+
+    const currentGroup = groups[groupIndex];
+    currentGroup.classList.add("active");
+
+    const reviews = currentGroup.querySelectorAll(".review");
+
+    // 첫 번째 리뷰 보여줌
+    if (reviews[0]) {
+      void reviews[0].offsetWidth;
+      reviews[0].style.transition = "opacity 1s ease, transform 1s ease";
+      reviews[0].style.opacity = "1";
+      reviews[0].style.transform = "translateY(0)";
     }
-    groups[i].classList.add("active");
+
+    // 두 번째 리뷰는 딜레이 후 등장
+    if (reviews[1]) {
+      setTimeout(() => {
+        void reviews[1].offsetWidth;
+        reviews[1].style.transition = "opacity 1s ease, transform 1s ease";
+        reviews[1].style.opacity = "1";
+        reviews[1].style.transform = "translateY(0)";
+      }, 1500);
+    }
+
+    // 다음 그룹 인덱스 갱신
+    groupIndex = (groupIndex + 1) % groups.length;
   }
 
-  showGroup(index);
-
-  setInterval(function () {
-    index = (index + 1) % groups.length;
-    showGroup(index);
-  }, 3000);
+  // 최초 실행 + 타이머 시작
+  showGroupReviews();
+  setInterval(showGroupReviews, 4000);
 });

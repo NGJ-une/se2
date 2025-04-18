@@ -11,6 +11,11 @@ public class indexDTO {
 	private String mfname;
 	private String mlname;
 	
+	/*고객 후기 용*/
+	private int vidx;
+	private String vid;
+	private String vtitle;
+	
 	public indexDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,6 +33,37 @@ public class indexDTO {
 		this.mlname = mlname;
 	}
     
+	public indexDTO(int vidx, String vid, String vtitle) {
+		super();
+		this.vidx = vidx;
+		this.vid = vid;
+		this.vtitle = vtitle;
+	}
+
+	public int getVidx() {
+		return vidx;
+	}
+
+	public void setVidx(int vidx) {
+		this.vidx = vidx;
+	}
+
+	public String getVid() {
+		return vid;
+	}
+
+	public void setVid(String vid) {
+		this.vid = vid;
+	}
+
+	public String getVtitle() {
+		return vtitle;
+	}
+
+	public void setVtitle(String vtitle) {
+		this.vtitle = vtitle;
+	}
+
 	public String getMfname() {
 		return mfname;
 	}
@@ -91,7 +127,4 @@ public class indexDTO {
 	public void setRemain_grade(String remain_grade) {
 		this.remain_grade = remain_grade;
 	}
-
-	
-	
 }

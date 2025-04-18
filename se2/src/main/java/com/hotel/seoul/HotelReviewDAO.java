@@ -256,36 +256,6 @@ public class HotelReviewDAO {
 			}
 		}
 	}
-	
-	public ArrayList<HotelReviewDTO> indexReview() {
-		try {
-			conn = com.hotel.db.HotelDB.getConn();
-			String sql = "select vid, vtitle from (select vid, vtitle from review order by vidx desc) where rownum<=10";
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			ArrayList<HotelReviewDTO> arr = new ArrayList<HotelReviewDTO>();
-			
-			while(rs.next()) {
-				String vid=rs.getString("vid");
-				String vtitle=rs.getString("vtitle");
-				HotelReviewDTO dto = new HotelReviewDTO(vid,vtitle);
-				arr.add(dto);
-			}
-			return arr;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}finally {
-			try {
-				if(rs!=null) rs.close();
-				if(ps!=null) ps.close();
-				if(conn!=null) conn.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-	}
 }
 	
 	

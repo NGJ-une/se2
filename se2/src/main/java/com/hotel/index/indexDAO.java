@@ -3,6 +3,7 @@ package com.hotel.index;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class indexDAO {
 	
@@ -56,13 +57,31 @@ public class indexDAO {
 			e.printStackTrace();
 			return null;
 		}finally {
-			try {
-				if(rs!=null)rs.close();
-				if(ps!=null)ps.close();
-				if(conn!=null)conn.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
+			com.hotel.db.HotelDB.close(conn,ps,rs);
+		}
+	}
+	/*고객 후기 관련 메서드 */
+	public ArrayList<indexDTO> indexReview() {
+		try {
+			conn = com.hotel.db.HotelDB.getConn();
+			String sql = "SELECT vidx, vid, vtitle FROM (SELECT * FROM review ORDER BY vidx DESC) WHERE ROWNUM <= 10";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			ArrayList<indexDTO> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				indexDTO dto = new indexDTO();
+				dto.setVidx(rs.getInt("vidx"));
+				dto.setVid(rs.getString("vid"));
+				dto.setVtitle(rs.getString("vtitle"));
+				list.add(dto);
 			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			com.hotel.db.HotelDB.close(conn,ps,rs);
 		}
 	}
 }
