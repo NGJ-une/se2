@@ -81,7 +81,7 @@ function moveEdit(){
         <div class="reservation-card">
           <div class="row"><strong>예약번호</strong><%=dto.getRidx()%></div>
           <div class="row"><strong>체크인</strong><%=dto.getRcheckin()%> 
-            <button type="submit" class="btn-change">예약 날짜 변경</button></div>
+            </div>
           <div class="row"><strong>체크아웃</strong><%=dto.getRcheckout()%></div>
           <div class="row"><strong>기간</strong><%=dto.getDay()%>박 <%=dto.getDay()+1%>일</div>
           <div class="row title">📞 연락처 정보</div>
