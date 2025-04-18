@@ -164,22 +164,30 @@
        }
         
 
-	.error-msg {
+.error-msg {
     color: red;
     font-size: 12px;
     display: none; /* 기본적으로 숨김 */
     margin-top: 5px;
-	}
+}
 
-
-	.invalid {
+.invalid {
     border: 1px solid red;
+}
+
+/* 빨간색 테두리 추가 */
+input:invalid {
+    border: 1px solid black;
+}
+
+/* 오류 메시지가 보일 때 */
+input.invalid + .error-msg {
+    display: inline-block; 
 }
         
     </style>
 
     <script>
-
     // 아이디 중복체크
     function openIdCheck() {
         var popupWidth = 600;
@@ -372,6 +380,7 @@
         return true;
     };
 </script>
+
  
     
 </head>
@@ -392,85 +401,88 @@
         <h2>회원가입</h2>
         <hr>
 
-		
+
+
+
 		<label>이름</label>
-		<input type="text" name="fname" placeholder="First Name" required oninput="blockName(this)">
+    	<input type="text" name="fname" placeholder="First Name" required oninput="blockName(this)">
+		<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
+
 		<input type="text" name="lname" placeholder="Last Name" required oninput="blockName(this)">
-     	<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
-
-		<label>생년월일</label>
-		<input type="date" name="birth" required>
-		<small id="birthError" style="color: red; display: none;">19세 이상만 가입 가능합니다.</small>
+		<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
 
 
 
-        <label>아이디</label>
-        <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required>
-        <input type="button" value="중복검사" onclick="openIdCheck();">
+    <label>생년월일</label>
+    <input type="date" name="birth" required>
+    <small id="birthError" class="error-msg">19세 이상만 가입 가능합니다.</small>
 
-        <label>비밀번호</label>
-        <div class="password-wrapper">
-            <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="blockPwd(this)">
-            <span class="toggle-password" onclick="togglePwd('pwd')" >👁️‍🗨️</span>
-            <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
-        </div>
 
-        <label>비밀번호 확인</label>
-        <div class="password-wrapper">
-            <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="blockPwd(this)">
-            <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
-            <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
-        </div>
-        <p id="pwdErrorMsg" class = "pwdMissMatch"></p>
-        
-        <label>E-mail</label>
-        <div class="email-group">
-            <input type="text" name="email1" placeholder="E-mail" required oninput="blockEmail1(this)"> @ 
-            
+    <label>아이디</label>
+    <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required>
+    <input type="button" value="중복검사" onclick="openIdCheck();">
 
-            <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)">
-            
-            <select id="emailSel" onchange="emailChange()">
-            	<option value="type">직접입력</option>
-            	<option value="naver.com">naver.com</option>
-            	<option value="google.com">google.com</option>
-            	<option value="nate.com">nate.com</option>
-            	<option value="daum.net">daum.net</option>
-            </select>
-            <br><Br>
-            <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-            <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-        </div>
+    <label>비밀번호</label>
+    <div class="password-wrapper">
+        <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="blockPwd(this)">
+        <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
+        <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
+    </div>
 
-        <label>전화번호 (000 - 0000 - 0000)</label>
-        <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)">
-		<small id="telError" class="error-msg" >숫자와 하이픈(-)만 입력 가능합니다.</small>
-		
-        <label>주소</label>
-        <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)">
-        <small id="addrError" class="error-msg"> 잘못 입력하였습니다. 주소에는 특수문자를 사용할 수 없습니다.</small>
+    <label>비밀번호 확인</label>
+    <div class="password-wrapper">
+        <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="blockPwd(this)">
+        <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
+        <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
+    </div>
+    <p id="pwdErrorMsg" class="pwdMissMatch"></p>
 
-        <label>질문</label>
-        <select name="question" required>
-            <option value="1">질문 1: 보물 1호는?</option>
-            <option value="2">질문 2: 내가 다닌 초등학교 이름은?</option>
-            <option value="3">질문 3: 짝사랑했던 이성친구 이름은?</option>
-            <option value="4">질문 4: 어렸을 적 별명은?</option>
-            <option value="5">질문 5: 내가 살던 고향은?</option>
+   
+    <label for="email1">E-mail</label>
+    <div class="email-group">
+        <input type="text" name="email1" id="email1" placeholder="E-mail" required oninput="blockEmail1(this)"> @
+        <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)">
+        <select id="emailSel" onchange="emailChange()">
+            <option value="type">직접입력</option>
+            <option value="naver.com">naver.com</option>
+            <option value="google.com">google.com</option>
+            <option value="nate.com">nate.com</option>
+            <option value="daum.net">daum.net</option>
         </select>
+    </div>
+    <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
+    <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
 
-        <label>답변</label>
-        <input type="text" name="answer" placeholder="답변" required>
 
-        <input type="submit" value="가입신청">
-        <input type="reset" value="다시작성">
-        
-        <p> 
-             <a href="login.jsp"> 로그인 </a> |  
-             <a href="idFind.jsp"> 아이디 찾기 </a> |
-             <a href="pwdFind.jsp"> 비밀번호 찾기 </a>
-        </p>
-    </form>
-    <%@ include file="/footer.jsp" %>
-</body>
-</html>
+    <label>전화번호 (000 - 0000 - 0000)</label>
+    <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)">
+    <small id="telError" class="error-msg">숫자와 하이픈(-)만 입력 가능합니다.</small>
+
+
+    <label>주소</label>
+    <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)">
+    <small id="addrError" class="error-msg">주소에는 특수문자를 사용할 수 없습니다.</small>
+
+
+    <label>질문</label>
+    <select name="question" required>
+        <option value="1">질문 1: 보물 1호는?</option>
+        <option value="2">질문 2: 내가 다닌 초등학교 이름은?</option>
+        <option value="3">질문 3: 짝사랑했던 이성친구 이름은?</option>
+        <option value="4">질문 4: 어렸을 적 별명은?</option>
+        <option value="5">질문 5: 내가 살던 고향은?</option>
+    </select>
+
+    <label>답변</label>
+    <input type="text" name="answer" placeholder="답변" required>
+
+    <input type="submit" value="가입신청">
+    <input type="reset" value="다시작성">
+
+    <p>
+        <a href="login.jsp">로그인</a> |
+        <a href="idFind.jsp">아이디 찾기</a> |
+        <a href="pwdFind.jsp">비밀번호 찾기</a>
+    </p>
+</form>
+
