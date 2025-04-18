@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.hotel.index.*" %>
-<%@ page import="com.hotel.seoul.*" %>
 <jsp:useBean id="idao" class="com.hotel.index.indexDAO"></jsp:useBean>
-<jsp:useBean id="rvdao" class="com.hotel.seoul.HotelReviewDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +28,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Timeless Serenity by the Sea</h2>
 					<p>바다와 정원이 어우러진 고요한 안식</p>
-					<p>로맨틱 디너 & 가든 산책 코스 제공</p>
+					<p>로맨틱 디너 &#38; 가든 산책 코스 제공</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -38,7 +36,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Where Memories Bloom</h2>
 					<p>기억에 남을 소중한 하루를 선물하세요</p>
-					<p>도보 거리 명소 투어 & 오션뷰 레스토랑</p>
+					<p>도보 거리 명소 투어 &#38; 오션뷰 레스토랑</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -46,7 +44,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Tranquility Beyond the Horizon</h2>
 					<p>하늘과 맞닿은 수영장에서의 깊은 휴식</p>
-					<p>야경 속 쇼풀 & 풀사이드 바 운영 중</p>
+					<p>야경 속 쇼풀 &#38; 풀사이드 바 운영 중</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -54,7 +52,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Awaken in Sophistication</h2>
 					<p>서울의 아침을 감각적으로 맞이하다</p>
-					<p>시티뷰 조식 & 이브닝 칵테일 포함</p>
+					<p>시티뷰 조식 &#38; 이브닝 칵테일 포함</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -62,7 +60,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Romance Painted in Sunset</h2>
 					<p>노을 아래 펼쳐지는 황홀한 한밤의 무드</p>
-					<p>루프탑 재즈 & 프라이빗 테이블 예약</p>
+					<p>루프탑 재즈 &#38; 프라이빗 테이블 예약</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -70,7 +68,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Art Meets Architecture</h2>
 					<p>예술과 공간이 조화를 이루는 특별한 경험</p>
-					<p>프라이빗 아트룸 & 감성 수영장 운영</p>
+					<p>프라이빗 아트룸 &#38; 감성 수영장 운영</p>
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -78,7 +76,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Inspiration in Every Corner</h2>
 					<p>영감을 자극하는 감성 공간</p>
-					<p>북 라운지 & 24시간 컨시어지 서비스</p>	
+					<p>북 라운지 &#38; 24시간 컨시어지 서비스</p>	
 			    </div>
 			  </div>
 			  <div class="slide">
@@ -94,7 +92,7 @@
 			    <div class="slide-caption fixed-bottom-left">
 					<h2>Escape Within the City</h2>
 					<p>도심 속 완벽한 쉼, 헬리아 호텔</p>
-					<p>럭셔리 다이닝 & 루프탑 스파 프로그램</p>
+					<p>럭셔리 다이닝 &#38; 루프탑 스파 프로그램</p>
 			    </div>
 			  </div>
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
@@ -235,33 +233,31 @@
     
     <!-- 고객 후기 슬라이드 -->
    <section class="section7">
-    
 	<section class="review-carousel">
-	  <h3>고객 후기</h3>
-<div class="review-wrapper">
-  <%
-    ArrayList<HotelReviewDTO> arr = rvdao.indexReview();
-    int totalReviews = 10;
-    for (int i = 0; i < totalReviews; i += 2) {
-  %>
-    <div class="review-group">
-      <div class="review">
-        <p>"<%=arr.get(i).getVtitle()%>"</p>
-        <span>- <%=arr.get(i).getVid()%>님</span>
-      </div>
-      <% if (i + 1 < totalReviews) { %>
-      <div class="review">
-        <p>"<%=arr.get(i + 1).getVtitle()%>"</p>
-        <span>- <%=arr.get(i + 1).getVid()%>님</span>
-      </div>
-      <% } %>
-    </div>
-  <%
-    }
-  %>
-</div>
-
+		 <h3>고객 후기</h3>
+		  <div class="review-wrapper">
+		    <% ArrayList<indexDTO> arr = idao.indexReview();
+		     if (arr!=null && arr.size() > 0) { 
+		    	 for(int i=0; i < arr.size(); i+=2) {
+		    		 %>
+		    <div class="review-group">
+		      <div class="review">
+		        <p><%=arr.get(i).getVtitle() %></p>
+		        <span>- <%=arr.get(i).getVid() %>님</span>
+		      </div>
+		      
+			   <%if (i + 1 < arr.size()) { %> 		 
+		      <div class="review">
+		        <p><%=arr.get(i+1).getVtitle() %></p>
+		        <span>- <%=arr.get(i+1).getVid() %>님</span>
+		      </div>
+		      <% } %>
+		    </div>
+		    	<% }
+		     } %>
+		</div>
 	</section>
+	
 	
 	<!-- 추천 객실 미리보기 -->
 	<section class="room-preview">

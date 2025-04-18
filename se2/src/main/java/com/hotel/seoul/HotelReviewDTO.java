@@ -1,6 +1,7 @@
 package com.hotel.seoul;
 
 import java.sql.*;
+
 import java.sql.Date;
 import java.util.*;
 
@@ -21,14 +22,6 @@ public class HotelReviewDTO {
 	
 	public HotelReviewDTO() {
 
-		
-	}
-
-	public HotelReviewDTO(String vid, String vtitle) {
-		super();
-		
-		this.vid = vid;
-		this.vtitle = vtitle;
 		
 	}
 
