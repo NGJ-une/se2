@@ -75,3 +75,21 @@ function changeSlide(n) {
 
 /************************************** */
 
+document.addEventListener("DOMContentLoaded", function () {
+  var groups = document.querySelectorAll(".review-group");
+  var index = 0;
+
+  function showGroup(i) {
+    for (var j = 0; j < groups.length; j++) {
+      groups[j].classList.remove("active");
+    }
+    groups[i].classList.add("active");
+  }
+
+  showGroup(index);
+
+  setInterval(function () {
+    index = (index + 1) % groups.length;
+    showGroup(index);
+  }, 3000);
+});

@@ -238,25 +238,29 @@
     
 	<section class="review-carousel">
 	  <h3>고객 후기</h3>
-<div class="reviews">
-  <div class="review-slider">
-    <div class="slider-track">
-      <%
-        ArrayList<HotelReviewDTO> arr = rvdao.indexReview();
-        for (int k = 0; k < 2; k++) { // 무한 슬라이드 위해 2번 반복
-          for (int i = 0; i < arr.size(); i++) {
-      %>
-        <div class="review">
-          <p>"<%=arr.get(i).getVtitle()%>"</p>
-          <span>- <%=arr.get(i).getVid()%>님</span>
-        </div>
-      <%
-          }
-        }
-      %>
+<div class="review-wrapper">
+  <%
+    ArrayList<HotelReviewDTO> arr = rvdao.indexReview();
+    int totalReviews = 10;
+    for (int i = 0; i < totalReviews; i += 2) {
+  %>
+    <div class="review-group">
+      <div class="review">
+        <p>"<%=arr.get(i).getVtitle()%>"</p>
+        <span>- <%=arr.get(i).getVid()%>님</span>
+      </div>
+      <% if (i + 1 < totalReviews) { %>
+      <div class="review">
+        <p>"<%=arr.get(i + 1).getVtitle()%>"</p>
+        <span>- <%=arr.get(i + 1).getVid()%>님</span>
+      </div>
+      <% } %>
     </div>
-  </div>
+  <%
+    }
+  %>
 </div>
+
 	</section>
 	
 	<!-- 추천 객실 미리보기 -->
