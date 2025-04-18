@@ -157,7 +157,7 @@ CREATE SEQUENCE sq_refund_idx -- 遺 대 遺 踰 
 CREATE SEQUENCE sq_inquiry_idx START WITH 11 --臾몄 대 臾몄 踰  
 CREATE SEQUENCE sq_review_idx START WITH 51 --湲 대 湲 踰 
 CREATE SEQUENCE sq_reply_idx START WITH 13 -- 湲 대 湲 踰 
-CREATE SEQUENCE sq_photo_num -- ъ 怨踰  
+CREATE SEQUENCE sq_photo_num START WITH 51 -- ъ 怨踰  
   
 
 
@@ -257,28 +257,27 @@ desc inquiry
 
 INSERT ALL
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-
-  VALUES ('user001', 1, 'password123', '誘쇱', '源', TO_DATE('1990-05-01', 'YYYY-MM-DD'), 'minsu.kim@example.com', '010-1234-5678', '몄 媛④뎄 �쇰 123-45', 'BRONZE', TO_DATE('2023-01-15', 'YYYY-MM-DD'), 1500, 1000000, 1, '댁')
+  VALUES ('user001', 1, '123', '민수', '김', TO_DATE('1990-05-01', 'YYYY-MM-DD'), 'minsu.kim@example.com', '010-1234-5678', '서울시 강남구 역삼동 123-45', 'BRONZE', TO_DATE('2023-01-15', 'YYYY-MM-DD'), 1500, 1000000, 1, '이순신')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user002', 2, 'mypassword456', '吏', '諛', TO_DATE('1992-08-20', 'YYYY-MM-DD'), 'jieun.park@example.com', '010-2345-6789', '몄 ≫援 諛⑹대 456-78', 'BRONZE', TO_DATE('2022-12-25', 'YYYY-MM-DD'), 200001, 1000000, 2, '珥깊援')
+  VALUES ('user002', 2, '123', '지은', '박', TO_DATE('1992-08-20', 'YYYY-MM-DD'), 'jieun.park@example.com', '010-2345-6789', '서울시 송파구 방이동 456-78', 'BRONZE', TO_DATE('2022-12-25', 'YYYY-MM-DD'), 200001, 1000000, 2, '동양초등학교')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user003', 3, 'securepass789', '', '', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 'soohyun.lee@example.com', '010-3456-7890', '遺곗 댁대援 곕 789-01', 'BRONZE', TO_DATE('2023-03-01', 'YYYY-MM-DD'), 1000001, 1000000, 3, '吏誘')
+  VALUES ('user003', 3, '123', '수현', '이', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 'soohyun.lee@example.com', '010-3456-7890', '부산시 해운대구 우동 789-01', 'BRONZE', TO_DATE('2023-03-01', 'YYYY-MM-DD'), 1000001, 1000000, 3, '지민')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user004', 4, 'secretpass101', 'ㅼ', '�', TO_DATE('1995-11-14', 'YYYY-MM-DD'), 'yoona.jeong@example.com', '010-4567-8901', '몄 遺援 遺 234-56', 'BRONZE', TO_DATE('2021-06-30', 'YYYY-MM-DD'), 3000001, 1000000, 4, '吏깃뎄')
+  VALUES ('user004', 4, '123', '윤아', '정', TO_DATE('1995-11-14', 'YYYY-MM-DD'), 'yoona.jeong@example.com', '010-4567-8901', '인천시 부평구 부평동 234-56', 'BRONZE', TO_DATE('2021-06-30', 'YYYY-MM-DD'), 3000001, 1000000, 4, '짱구')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user005', 5, 'strongpass111', '誘', '理', TO_DATE('1993-01-25', 'YYYY-MM-DD'), 'youngmin.choi@example.com', '010-5678-9012', '援ъ 以援 깅 12-34', 'BRONZE', TO_DATE('2022-09-10', 'YYYY-MM-DD'), 2200, 1000000, 5, '�')
+  VALUES ('user005', 5, 'strongpass111', '영민', '최', TO_DATE('1993-01-25', 'YYYY-MM-DD'), 'youngmin.choi@example.com', '010-5678-9012', '대구시 중구 동성로 12-34', 'BRONZE', TO_DATE('2022-09-10', 'YYYY-MM-DD'), 2200, 1000000, 5, '대전')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user006', 6, 'mypassword222', '', '', TO_DATE('2000-07-30', 'YYYY-MM-DD'), 'haneul.hong@example.com', '010-6789-0123', '� 援 媛留 345-67', 'BRONZE', TO_DATE('2023-02-05', 'YYYY-MM-DD'), 1200, 1000000, 1, '댁')
+  VALUES ('user006', 6, 'mypassword222', '하늘', '홍', TO_DATE('2000-07-30', 'YYYY-MM-DD'), 'haneul.hong@example.com', '010-6789-0123', '대전시 서구 갈마동 345-67', 'BRONZE', TO_DATE('2023-02-05', 'YYYY-MM-DD'), 1200, 1000000, 1, '이순신')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user007', 7, 'password333', '', '源', TO_DATE('1998-04-15', 'YYYY-MM-DD'), 'taehee.kim@example.com', '010-7890-1234', '寃쎄린  듦뎄 泥 567-89', 'BRONZE', TO_DATE('2021-11-22', 'YYYY-MM-DD'), 2800, 1000000, 2, '珥깊援')
+  VALUES ('user007', 7, 'password333', '태희', '김', TO_DATE('1998-04-15', 'YYYY-MM-DD'), 'taehee.kim@example.com', '010-7890-1234', '경기도 수원시 영통구 원천동 567-89', 'BRONZE', TO_DATE('2021-11-22', 'YYYY-MM-DD'), 2800, 1000000, 2, '동양초등학교')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user008', 8, 'password444', '吏', '', TO_DATE('1997-09-05', 'YYYY-MM-DD'), 'jiho.lee@example.com', '010-8901-2345', '몄 留ш뎄 ⑹ 678-90', 'BRONZE', TO_DATE('2022-03-14', 'YYYY-MM-DD'), 1100, 1000000, 3, '吏誘')
+  VALUES ('user008', 8, 'password444', '지호', '이', TO_DATE('1997-09-05', 'YYYY-MM-DD'), 'jiho.lee@example.com', '010-8901-2345', '서울시 마포구 합정동 678-90', 'BRONZE', TO_DATE('2022-03-14', 'YYYY-MM-DD'), 1100, 1000000, 3, '지민')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user009', 9, 'password555', '', '諛', TO_DATE('1989-06-12', 'YYYY-MM-DD'), 'soyeon.park@example.com', '010-9012-3456', '寃쎄린 깅⑥ 遺밴뎄 � 123-45', 'BRONZE', TO_DATE('2023-04-01', 'YYYY-MM-DD'), 2000, 1000000, 4, '吏깃뎄')
+  VALUES ('user009', 9, 'password555', '소연', '박', TO_DATE('1989-06-12', 'YYYY-MM-DD'), 'soyeon.park@example.com', '010-9012-3456', '경기도 성남시 분당구 정자동 123-45', 'BRONZE', TO_DATE('2023-04-01', 'YYYY-MM-DD'), 2000, 1000000, 4, '짱구')
   INTO member (mid, midx, mpwd, mfname, mlname, mbirth, memail, mtel, maddr, mgrade, mjoin_date, mpoint, mmoney, mquestion, manswer) 
-  VALUES ('user010', 10, 'password666', '吏誘', '媛', TO_DATE('1996-12-22', 'YYYY-MM-DD'), 'jimin.kang@example.com', '010-0123-4567', '몄 臾멸뎄 湲곕 890-12', 'BRONZE', TO_DATE('2022-07-18', 'YYYY-MM-DD'), 3300, 1000000, 5, '�')
-
+  VALUES ('user010', 10, 'password666', '지민', '강', TO_DATE('1996-12-22', 'YYYY-MM-DD'), 'jimin.kang@example.com', '010-0123-4567', '서울시 동대문구 회기동 890-12', 'BRONZE', TO_DATE('2022-07-18', 'YYYY-MM-DD'), 3300, 1000000, 5, '대전')
 SELECT * FROM dual;
+
 
 INSERT ALL
     INTO grade values('BRONZE',0,200000,0)
@@ -539,19 +538,20 @@ INSERT ALL
   VALUES (45, 'user005', '移 議곗 留댁', '議곗 ㅼ怨 留댁 留議깊댁.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 140, 95, 0, 5, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (46, 'user006', '媛깅 醫', '媛寃⑹ 鍮 ㅼ대 鍮ㅺ 愿李�댁.', TO_DATE('2025-05-02', 'YYYY-MM-DD'), 120, 70, 0, 4, 20)
+  VALUES (46, 'user001', '편안한 숙박이었어요', '전체적으로 만족스러웠고 조용했어요.', TO_DATE('2024-03-15', 'YYYY-MM-DD'), 120, 88, 0, 5, 11)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (47, 'user007', '源 媛', '�   댁 湲곕 醫寃 吏댁.', TO_DATE('2025-05-18', 'YYYY-MM-DD'), 100, 60, 0, 5, 21)
+  VALUES (47, 'user002', '깔끔한 방, 아쉬운 조식', '숙소는 좋았는데 조식이 단조로웠어요.', TO_DATE('2025-02-19', 'YYYY-MM-DD'), 140, 72, 0, 4, 16)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (48, 'user008', '諛  쇱', 'щ泥 諛 寃  吏듬.', TO_DATE('2025-06-07', 'YYYY-MM-DD'), 110, 50, 0, 4, 22)
+  VALUES (48, 'user003', '침대가 너무 푹신했어요', '꿀잠 잤습니다. 다시 오고 싶어요.', TO_DATE('2025-03-09', 'YYYY-MM-DD'), 98, 65, 0, 5, 17)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (49, 'user009', '媛蹂대 議곗⑺댁', ' 洹쇱몃곕 議곗⑺댁 醫댁.', TO_DATE('2025-06-23', 'YYYY-MM-DD'), 145, 90, 0, 5, 23)
+  VALUES (49, 'user005', '시설 좋았지만 직원이 부족했어요', '문의할 때 응대가 좀 느렸어요.', TO_DATE('2025-04-22', 'YYYY-MM-DD'), 110, 55, 0, 3, 19)
 
   INTO review (vidx, vid, vtitle, vcontent, vdate, vreadnum, vrecommend, vcomment, vtotal, vridx)
-  VALUES (50, 'user010', '�諛�쇰 留議', 'ш ъ �  명寃 ъ댁.', TO_DATE('2025-07-12', 'YYYY-MM-DD'), 135, 88, 0, 4, 24)
+  VALUES (50, 'user007', '가성비 최고 숙소', '가격 대비 정말 훌륭했어요!', TO_DATE('2023-11-06', 'YYYY-MM-DD'), 135, 99, 0, 5, 7)
+
 
 SELECT * FROM dual;
 
@@ -609,3 +609,62 @@ INSERT ALL
   VALUES (12, 2, 'user013', '� ш린媛 臾 醫 異泥由쎈!', TO_DATE('2025-02-22 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 0, 1, 2, 2)
 
 SELECT * FROM dual;  
+
+
+INSERT ALL
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (1, 1, '1-1.jpg', '1-2.jpg', '1-3.jpg')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (2, 2, '2-1.jpg', '2-2.jpg', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (3, 3, '3-1.jpg', '3-2.jpg', '3-3.jpg')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (4, 4, '4-1.jpg', '4-2.jpg', '4-3.jpg')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (5, 5, '5-1.jpg', '5-2.jpg', '5-3.jpg')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (6, 6, '6-1.jpg', '6-2.jpg', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (7, 7, '7-1.jpg', '7-2.jpg', '7-3.jpg')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (8, 8, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (9, 9, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (10, 10, 'none', 'none', 'none')
+
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (11, 11, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (12, 12, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (13, 13, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (14, 14, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (15, 15, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (16, 16, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (17, 17, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (18, 18, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (19, 19, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (20, 20, 'none', 'none', 'none')
+
+
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (21, 21, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (22, 22, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (23, 23, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (24, 24, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (25, 25, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (26, 26, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (27, 27, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (28, 28, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (29, 29, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (30, 30, 'none', 'none', 'none')
+
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (31, 31, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (32, 32, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (33, 33, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (34, 34, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (35, 35, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (36, 36, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (37, 37, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (38, 38, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (39, 39, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (40, 40, 'none', 'none', 'none')
+
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (41, 41, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (42, 42, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (43, 43, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (44, 44, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (45, 45, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (46, 46, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (47, 47, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (48, 48, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (49, 49, 'none', 'none', 'none')
+    INTO photo (pidx, pnum, pname1, pname2, pname3) VALUES (50, 50, 'none', 'none', 'none')
+SELECT * FROM dual;
