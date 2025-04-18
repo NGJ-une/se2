@@ -72,6 +72,7 @@
    		color: red;
 	    font-size: 14px;
 	    margin-top: 10px;
+	    padding-bottom: 5px;
    }
     
 

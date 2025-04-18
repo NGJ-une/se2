@@ -66,7 +66,7 @@
 
 <div class="Ulsanimg">
 
-  <img src="/se2/main/hotelInfo/img/Helia2.png" alt="HELIA Ulsan" class="hotelimg">
+  <img src="/se2/gallery/img/ulsan/other/U_Other1.png" alt="HELIA Ulsan" class="hotelimg">
 </div>
 
 <label><h3>HELIA 호텔 울산 지점</h3></label>

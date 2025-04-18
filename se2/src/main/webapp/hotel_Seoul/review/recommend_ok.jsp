@@ -27,7 +27,6 @@ if(result > 0) {
 	response.addCookie(ck2);
 	%>
 	<script>
-		window.alert('리뷰를 추천 하셨습니다.');
 		location.href = 'content.jsp?vidx=<%= idx %>';
 	</script>
 	<%

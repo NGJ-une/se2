@@ -88,7 +88,7 @@
         <table>
           <tr>
          	 <td class="tr1">
-         	 	<img src="/se2/main/hotelInfo/img/U_Other1.png" alt="front">
+         	 	<img src="/se2/gallery/img/seoul/other/hotel_Lobby.png" alt="front">
          	 </td>
        	  </tr>
        	  <tr>

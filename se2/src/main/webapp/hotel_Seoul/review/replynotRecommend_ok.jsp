@@ -27,7 +27,6 @@ if(result > 0) {
 	response.addCookie(ck2);
 	%>
 	<script>
-		window.alert('댓글을 비추천 하셨습니다.');
 		location.href = 'content.jsp?vidx=<%=vidx%>';
 	</script>
 	<%

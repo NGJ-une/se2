@@ -12,7 +12,6 @@ if(ck != null) {
 		if(("crecommend"+cidx).equals(ck[i].getName())) {
 			%>
 			<script>
-				window.alert('이미 추천하신 댓글입니다.');
 				location.href = 'content.jsp?vidx=<%=vidx%>';
 			</script>
 			<%
@@ -27,7 +26,6 @@ if(result > 0) {
 	response.addCookie(ck2);
 	%>
 	<script>
-		window.alert('댓글을 추천 하셨습니다.');
 		location.href = 'content.jsp?vidx=<%=vidx%>';
 	</script>
 	<%
