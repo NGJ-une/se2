@@ -124,20 +124,20 @@
         background-color: #ebd4b4;
     }
 
-    input[type="submit"], input[type="reset"] {
-        padding: 10px 20px;
-        margin: 10px;
-        background-color: #f0b675;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+.actionBut {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #f0b675;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-    input[type="submit"]:hover, input[type="reset"]:hover {
-        background-color: #e3a55c;
-    }
+.action-But:hover {
+    background-color: #e3a55c;
+}
 </style>
 
 <script>
@@ -283,8 +283,8 @@ if(arr2 != null & arr2.size() != 0) {
 
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="수정 하기">
-                    <input type="button" value="취소">
+                    <input type="submit" class="actionBut" value="수정 하기">
+                    <input type="button" class = "actionBut" value="취소" onclick="history.back();">
                 </td>
             </tr>
   
