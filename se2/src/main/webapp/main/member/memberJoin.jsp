@@ -8,56 +8,73 @@
 <head>
 <meta charset="UTF-8">
 <title>HELIA HOTEL : 회원가입</title>
-    <style>
+  <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* 패딩과 테두리를 크기 계산에 포함 */
+            box-sizing: border-box;
         }
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
-        
-        form { 
-            width: 650px; 
-            padding: 20px; 
-            margin: 0 auto; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
         }
-        
-        h2 { margin-bottom: 20px; font-size: 24px;  color: #6b4c2f;}
-        
-        label { display: block; margin-bottom: 5px; text-align: left; font-size: 14px; color: #333; }
-        
-        input, select { 
-            width: 100%; 
-            padding: 10px; 
-            margin-bottom: 15px; 
-            font-size: 14px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
+
+        form {
+            width: 650px;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        input[type="submit"], input[type="reset"] { 
-            background-color: #eee; 
-            border: none; 
-            cursor: pointer; 
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #6b4c2f;
         }
-        
-        input[type="submit"]:hover, input[type="reset"]:hover { 
-            background-color: #eee; 
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #eee;
         }
 
         input[type="reset"]:hover {
             background-color: #E4D9C7;
-        } 
-        
-        .email-group { 
-            display: flex; 
-            justify-content: space-between; 
         }
-        
-        .email-group input { width: 48%; }
-        
+
+        .email-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .email-group input {
+            width: 48%;
+        }
+
         hr {
             width: 100%;
             border: none;
@@ -66,32 +83,30 @@
         }
 
         .idCheck {
-            width: 500px; /* 원하는 너비 */
-            padding: 10px; 
-            margin-bottom: 15px; 
-            font-size: 14px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
+            width: 500px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        input[type="button"]{ 
-            width: 17%; 
-            background-color: #eeeeeec0; 
-            border: none; 
-            cursor: pointer; 
+        input[type="button"] {
+            width: 17%;
+            background-color: #eeeeeec0;
+            border: none;
+            cursor: pointer;
         }
 
         input[type="button"]:hover {
             background-color: #E4D9C7;
-        } 
+        }
 
         a {
             text-decoration: none;
             color: #b58143;
             margin: 0 10px;
         }
-        
-        
 
         input[type="submit"] {
             border: none;
@@ -100,15 +115,13 @@
 
         input[type="submit"]:hover {
             background-color: #E4D9C7;
-        }    
+        }
 
-		a:hover {
-    		color: #f0b675; /* 호버 시 색상을 변경 */
-    		text-decoration: underline; /* 호버 시 밑줄을 추가 */
-}
+        a:hover {
+            color: #f0b675;
+            text-decoration: underline;
+        }
 
-		
-        /** 비밀번호 눈 확인 */
         .password-wrapper {
             position: relative;
             width: 100%;
@@ -116,7 +129,7 @@
 
         .password-wrapper input {
             width: 100%;
-            padding-right: 40px; /* 아이콘 공간 확보 */
+            padding-right: 40px;
         }
 
         .toggle-password {
@@ -126,260 +139,391 @@
             transform: translateY(-50%);
             cursor: pointer;
             font-size: 18px;
-            padding-bottom : 15px;
+            padding-bottom: 15px;
         }
-        
+
         .pwdMissMatch {
-	        color: red;
-		    font-size: 14px;
-		    margin-top: 10px;
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
-        
-     
-     /** 약관동의 / 회원정보 입력 / 가입완료 */   
-        
-     .step-wrapper {
-        display: flex;
-        justify-content: center; /* wrapper 안에서 가운데 정렬 */
-    }
 
-    .step-container {
-        display: flex;
-        gap: 2rem;
-    }
+        .step-wrapper {
+            display: flex;
+            justify-content: center;
+        }
 
-    .step {
-        text-align: center;
-        padding: 1rem;
-        border-bottom: 3px solid #ccc;
-        color: #888;
-        font-weight: bold;
-        min-width: 120px;
-    }
+        .step-container {
+            display: flex;
+            gap: 2rem;
+        }
 
-    .step.active {
-        border-bottom: 4px solid #825517;
-        color: #000;
-       
-       }
-        
+        .step {
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 3px solid #ccc;
+            color: #888;
+            font-weight: bold;
+            min-width: 120px;
+        }
 
+        .step.active {
+            border-bottom: 4px solid #825517;
+            color: #000;
+        }
+
+      /* 기존 스타일 수정 */
 .error-msg {
     color: red;
     font-size: 12px;
-    display: none; /* 기본적으로 숨김 */
-    margin-top: 5px;
+    display: none;
 }
 
+input.invalid ~ .error-msg {
+    display: block;
+}
+#birthError {
+    color: red;
+    display: none; /* 기본적으로 숨기기 */
+}
 .invalid {
-    border: 1px solid red;
+    border: 1px solid red; /* 잘못된 입력일 경우 빨간 테두리 */
 }
-
-/* 빨간색 테두리 추가 */
-input:invalid {
-    border: 1px solid black;
-}
-
-/* 오류 메시지가 보일 때 */
-input.invalid + .error-msg {
-    display: inline-block; 
-}
-        
     </style>
 
-    <script>
-    // 아이디 중복체크
-    function openIdCheck() {
-        var popupWidth = 600;
-        var popupHeight = 300;
-        var popupX = Math.ceil(( window.screen.width - popupWidth ) / 2);
-        var popupY = Math.ceil(( window.screen.height - popupHeight ) / 2); 
 
-        window.open('idCheck.jsp', 'idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ',top=' + popupY)
+<script>
+const form = document.forms['memberJoin'];
+const fnameInput = form['fname'];
+const lnameInput = form['lname'];
+const email1Input = form['email1'];
+const email2Input = form['email2'];
+const pwdInput = form['pwd'];
+const confirmPwdInput = form['pwdcheck'];
+const telInput = form['tel'];
+const birthInput = form['birth'];
+const answerInput = form['answer'];
+
+const fnameError = document.getElementById("fnameError");
+const lnameError = document.getElementById("lnameError");
+const email1Error = document.getElementById("email1Error");
+const email2Error = document.getElementById("email2Error");
+const pwdError = document.getElementById("pwdError");
+const confirmPwdError = document.getElementById("confirmPwdError");
+const telError = document.getElementById("telError");
+const birthError = document.getElementById("birthError");
+const answerError = document.getElementById("answerError");
+
+// ID 중복 체크
+function openIdCheck() {
+    var popupWidth = 600;
+    var popupHeight = 300;
+    var popupX = Math.ceil(( window.screen.width - popupWidth ) / 2);
+    var popupY = Math.ceil(( window.screen.height - popupHeight ) / 2); 
+    window.open('idCheck.jsp', 'idCheck', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ',top=' + popupY);
+}
+
+// 비밀번호 보이기/숨기기
+function togglePwd(id) {
+    const input = document.getElementById(id);
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
     }
+}
 
-    // 비밀번호 확인
-    function pwdCheck() {
-        let pwd = document.memberJoin.pwd.value;
-        let pwdcheck = document.memberJoin.pwdcheck.value;
-        var errorMsg = document.getElementById("pwdErrorMsg");
+// 이름은 한글과 영어만 허용
+function blockName(input, errorElementId) {
+    const regex = /^[가-힣a-zA-Z]+$/; // 한글 또는 영어
+    const errorElement = document.getElementById(errorElementId);
 
-        if (pwd !== pwdcheck) {
-            errorMsg.textContent = "비밀번호가 일치하지 않습니다.";
-            document.memberJoin.pwd.focus();
-            return false;
-        }
-        errorMsg.textContent = "";
+    if (!regex.test(input.value)) {
+        input.classList.add("invalid");
+        if (errorElement) errorElement.style.display = "block";
+    } else {
+        input.classList.remove("invalid");
+        if (errorElement) errorElement.style.display = "none";
+    }
+}
+
+// 비밀번호: 영어, 숫자, 특수문자만 허용
+function blockPwd(input) {
+    const regex = /^[A-Za-z0-9@$!%*#?&]+$/; // 영문, 숫자, 특수문자만 허용
+    const hangulRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글 체크용 정규식
+    if (hangulRegex.test(input.value)) {
+        pwdError.style.display = "block";
+        input.classList.add("invalid");
+    } else if (!regex.test(input.value)) {
+        pwdError.style.display = "block";
+        input.classList.add("invalid");
+    } else {
+        pwdError.style.display = "none";
+        input.classList.remove("invalid");
+    }
+}
+
+// 비밀번호 일치 여부
+function checkPwdMatch() {
+    const pwd = pwdInput.value.trim();
+    const confirmPwd = confirmPwdInput.value.trim();
+
+    if (pwd !== confirmPwd || pwd === "" || confirmPwd === "") {
+        confirmPwdError.style.display = "block";
+        confirmPwdInput.classList.add("invalid");
+        return false;
+    } else {
+        confirmPwdError.style.display = "none";
+        confirmPwdInput.classList.remove("invalid");
         return true;
     }
+}
 
-    // 비밀번호 입력 확인하는 코드
-    function togglePwd(id) {
-        const input = document.getElementById(id);
-        if (input.type === "password") {
-            input.type = "text";  // 비밀번호를 텍스트로 변경
-        } else {
-            input.type = "password";  // 비밀번호를 다시 숨김
-        }
+// 이메일 유효성 체크: 한글 포함 안됨
+function blockEmail1(input) {
+    const error = document.getElementById("emailError1");
+    const hangulRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    if (hangulRegex.test(input.value)) {
+        error.style.display = "block";
+        input.classList.add("invalid");
+    } else {
+        error.style.display = "none";
+        input.classList.remove("invalid");
     }
-    
-    function emailChange() {
-        var setlmail = document.getElementById("email2");
-        var getemail = document.getElementById("emailSel").value;
-        if (getemail != "type") {
-            setlmail.value = getemail;
-        } else {
-            setlmail.value = ""; 
-        }
+}
+
+// 이메일 2
+function blockEmail2(input) {
+    const error = document.getElementById("emailError2");
+    const hangulRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    if (hangulRegex.test(input.value)) {
+        error.style.display = "block";
+        input.classList.add("invalid");
+    } else {
+        error.style.display = "none";
+        input.classList.remove("invalid");
     }
-    
-    // 19세 미만 가입 불가
-    document.addEventListener("DOMContentLoaded", function () {
-        const birthInput = document.querySelector('input[name="birth"]');
-        const errorMsg = document.getElementById("birthError");
+}
+
+// 이메일 자동 채우기 셀렉트문
+function emailChange() {
+    const select = document.getElementById("emailSel");
+    const email2 = document.getElementById("email2");
+
+    if (select.value !== "type") {
+        email2.value = select.value;
+        email2.readOnly = true;
+    } else {
+        email2.value = "";
+        email2.readOnly = false;
+    }
+}
+
+// 주소 입력 필드 유효성 검사
+function blockAddr(input) {
+    const error = document.getElementById("addrError");
+    if (input.value.trim() === "") {
+        input.classList.add("invalid");
+        error.style.display = "block";
+    } else {
+        input.classList.remove("invalid");
+        error.style.display = "none";
+    }
+}
+
+// 질문 답변 입력 필드 유효성 검사
+function blockAnswer(input) {
+    const regex = /^[A-Za-z0-9가-힣\s]+$/;
+    if (!regex.test(input.value)) {
+        input.classList.add("invalid");
+        answerError.style.display = "block";
+        return false;
+    } else {
+        input.classList.remove("invalid");
+        answerError.style.display = "none";
+        return true;
+    }
+}
+
+// 이메일 한글 넣었는지 확인하는 것
+function checkEmailMatch() {
+    const email1 = document.getElementById("email1");
+    const email2 = document.getElementById("email2");
+    const error1 = document.getElementById("emailError1");
+    const error2 = document.getElementById("emailError2");
+
+    const hangulRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+    let valid = true;
+
+    if (hangulRegex.test(email1.value)) {
+        error1.style.display = "block";
+        email1.classList.add("invalid");
+        valid = false;
+    } else {
+        error1.style.display = "none";
+        email1.classList.remove("invalid");
+    }
+
+    if (hangulRegex.test(email2.value)) {
+        error2.style.display = "block";
+        email2.classList.add("invalid");
+        valid = false;
+    } else {
+        error2.style.display = "none";
+        email2.classList.remove("invalid");
+    }
+
+    return valid;
+}
+
+// 전화번호: 숫자와 하이픈만 허용
+function blockTel(input) {
+    // 한글/영어 제거
+    input.value = input.value.replace(/[^0-9-]/g, '');
+
+    // 최종 유효성 검사
+    const regex = /^[0-9-]+$/;
+    if (!regex.test(input.value)) {
+        telError.style.display = "block";
+        input.classList.add("invalid");
+        return false;
+    } else {
+        telError.style.display = "none";
+        input.classList.remove("invalid");
+        return true;
+    }
+}
+
+
+// 생년월일: 19세 미만 가입 불가
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const birthInput = document.querySelector('input[name="birth"]');
+    const birthError = document.getElementById("birthError");
+
+    // 생년월일 최대 날짜 설정 (20살 이상만 선택 가능하도록)
+    function setMaxBirthDate() {
         const today = new Date();
-        const adultYear = today.getFullYear() - 19;
-        const maxDate = new Date(adultYear, 11, 31); // 12월 31일
+        const adultYear = today.getFullYear() - 20;
+        const maxDate = new Date(adultYear, today.getMonth(), today.getDate());
 
         const yyyy = maxDate.getFullYear();
         const mm = String(maxDate.getMonth() + 1).padStart(2, '0');
         const dd = String(maxDate.getDate()).padStart(2, '0');
 
-        // 최대 날짜 제한
         birthInput.max = `${yyyy}-${mm}-${dd}`;
-
-        // 가입 폼 전송 전에 19세 미만 체크
-        document.forms['memberJoin'].onsubmit = function(event) {
-            const birthDate = new Date(birthInput.value);
-
-            if (birthDate > maxDate) {
-                errorMsg.style.display = "inline";  
-                event.preventDefault(); 
-                return false;
-            } else {
-                errorMsg.style.display = "none";  
-            }
-        };
-    });
-
-    // 이름 숫자 포함 시
-    function blockName(input) {
-        const regex = /[0-9]/g;
-        const error = document.getElementById("nameError");
-
-        if (regex.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
-        }
     }
 
-    // 전화번호 유효성: 숫자, 하이픈만 허용
-    function blockTel(input) {
-        const error = document.getElementById("telError");
-        input.value = input.value.replace(/[^0-9\-]/g, "");
+    setMaxBirthDate();
 
-        if (/[^0-9\-]/.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
+    // 폼 제출 시 유효성 검사 (서버에서 최종적으로 생년월일을 확인)
+    form.onsubmit = function (event) {
+        let valid = true;
+
+        if (!checkPwdMatch()) valid = false;
+        if (!checkEmailMatch()) valid = false;
+        if (!blockTel(telInput)) valid = false;
+
+        if (!valid) {
+            event.preventDefault(); // 폼 제출 막기
         }
-    }
-    
-    // 주소 유효성 검사: 특수문자 제외
-    function blockAddr(input) {
-        const error = document.getElementById("addrError");
-        if (/[^가-힣a-zA-Z0-9\s\-]/.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
-        }
-    }
-
-    // 이메일 앞부분: 영문 숫자만
-    function blockEmail1(input) {
-        const error = document.getElementById("emailError1");
-        if (/[^a-zA-Z0-9]/.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
-        }
-    }
-
-    // 이메일 도메인: 영문 + 점(.)만
-    function blockEmail2(input) {
-        const error = document.getElementById("emailError2");
-        if (/[^a-zA-Z.]/.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
-        }
-    }
-
-    // 비밀번호: 영문, 숫자, !@#만 허용 / 한글 금지
-    function blockPwd(input) {
-        const error = document.getElementById("pwdError");
-        if (/[ㄱ-ㅎ가-힣]/.test(input.value)) {
-            error.style.display = "block";
-            input.classList.add("invalid");
-        } else {
-            error.style.display = "none";
-            input.classList.remove("invalid");
-        }
-    }
-
-    // 전체 폼 유효성 검사
-    document.forms['memberJoin'].onsubmit = function(event) {
-        const fname = document.getElementsByName("fname")[0];
-        const lname = document.getElementsByName("lname")[0];
-        const pwd = document.getElementById("pwd");
-        const pwdcheck = document.getElementById("pwdcheck");
-        const tel = document.getElementById("tel");
-        const addr = document.getElementById("addr");
-        const email1 = document.getElementsByName("email1")[0];
-        const email2 = document.getElementsByName("email2")[0];
-        const emailSel = document.getElementById("emailSel");
-
-        // 이름이 비어있거나 숫자를 포함한 경우
-        if (fname.value.trim() === "" || lname.value.trim() === "") {
-            alert("이름을 입력해주세요.");
-            event.preventDefault();
-            return false;
-        }
-
-        // 비밀번호 확인이 맞지 않을 경우
-        if (!pwdCheck()) {
-            event.preventDefault();
-            return false;
-        }
-
-        // 전화번호와 주소 유효성 검사
-        if (!tel.value || !addr.value) {
-            alert("전화번호와 주소를 모두 입력해주세요.");
-            event.preventDefault();
-            return false;
-        }
-
-        // 이메일 유효성 검사
-        if (!email1.value || !email2.value) {
-            alert("이메일을 올바르게 입력해주세요.");
-            event.preventDefault();
-            return false;
-        }
-
-        return true;
     };
+});
+
+
+
+// 비밀번호 입력값의 유효성을 체크
+function validatePwd() {
+    blockPwd(pwdInput);
+    checkPwdMatch();
+}
+
+//a비밀번호 확인 유효성 검사 함수 (validatePwd):
+function validatePwd() {
+    var pwd = document.getElementById("pwd").value;
+    var pwdcheck = document.getElementById("pwdcheck").value;
+    var pwdError = document.getElementById("pwdError");
+
+    if (pwd !== pwdcheck) {
+        pwdError.style.display = "block";
+    } else {
+        pwdError.style.display = "none";
+    }
+}
+
+//생년월일 마지막 유효성 ㄱ머사임
+
+function validateBirthdate() {
+    var birthdate = document.querySelector('input[name="birth"]').value;
+    var birthError = document.getElementById("birthError");
+    var birthdateError = document.getElementById("birthdateError");
+
+    var today = new Date();
+    var birthDate = new Date(birthdate);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var month = today.getMonth() - birthDate.getMonth();
+    
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    if (age < 19) {
+        birthError.style.display = "block";
+        birthdateError.style.display = "none";
+    } else {
+        birthError.style.display = "none";
+        birthdateError.style.display = "block";
+    }
+}
+
+//실시간 체크
+fnameInput.oninput = () => blockName(fnameInput, fnameError);
+lnameInput.oninput = () => blockName(lnameInput, lnameError);
+email1Input.oninput = () => blockEmail1(email1Input);
+email2Input.oninput = () => checkEmailMatch();
+pwdInput.oninput = () => {
+    blockPwd(pwdInput);
+    checkPwdMatch(); // <- 여기 추가해서 즉시 확인
+};
+confirmPwdInput.oninput = () => checkPwdMatch();
+telInput.oninput = () => blockTel(telInput);
+birthInput.oninput = () => {
+    setMaxBirthDate(); // <- 입력 즉시 갱신
+    isAdult(birthInput); // <- 나이 확인 즉시
+};
+
+// form 제출 시
+form.onsubmit = function(event) {
+    let valid = true; // <-- 제일 위로 이동!
+
+    if (!checkPwdMatch()) valid = false;
+    if (!checkEmailMatch()) valid = false;
+    if (!blockTel(telInput)) valid = false;
+    if (!isAdult(birthInput)) valid = false;
+
+    if (!valid) event.preventDefault();
+};
+
+function validateForm() {
+    let valid = true; // 폼이 유효한지 확인
+
+    // 각 입력에 대한 유효성 검사
+    if (!checkPwdMatch()) valid = false;
+    if (!checkEmailMatch()) valid = false;
+    if (!blockTel(telInput)) valid = false;
+    if (!isAdult(birthInput)) valid = false; // 나이 확인도 추가
+
+    // 유효성 검사에서 실패한 경우, 폼 제출을 막음
+    if (!valid) {
+        event.preventDefault(); // 폼 제출 막기
+    }
+    return valid; // 유효성 검사 결과 반환
+}
 </script>
+<script src="validation.js"></script>
+<script src="togglePassword.js"></script>
 
  
     
@@ -397,51 +541,54 @@ input.invalid + .error-msg {
 </div>
 <br><br>
     
-    <form name="memberJoin" action="memberJoin_ok.jsp" method="post" onsubmit="return pwdCheck();">
+    <form name="memberJoin" action="memberJoin_ok.jsp" method="post" onsubmit="return validateForm()">
         <h2>회원가입</h2>
         <hr>
+ 
 
 
 
+    <label>이름</label>
+    <input type="text" name="fname" placeholder="First Name" required
+           value="${requestScope.fname != null ? requestScope.fname : ''}" oninput="blockName(this, 'fnameError')">
+    <div id="fnameError" style="display:none; color:red;">이름을 제대로 입력해주세요.</div>
 
-		<label>이름</label>
-    	<input type="text" name="fname" placeholder="First Name" required oninput="blockName(this)">
-		<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
-
-		<input type="text" name="lname" placeholder="Last Name" required oninput="blockName(this)">
-		<small id="nameError" class="error-msg">이름에는 숫자를 입력할 수 없습니다.</small>
-
-
+    <input type="text" name="lname" placeholder="Last Name" required
+           value="${requestScope.lname != null ? requestScope.lname : ''}" oninput="blockName(this, 'lnameError')">
+    <div id="lnameError" style="display:none; color:red;">이름을 제대로 입력해주세요.</div>
 
     <label>생년월일</label>
-    <input type="date" name="birth" required>
-    <small id="birthError" class="error-msg">19세 이상만 가입 가능합니다.</small>
-
+    <input type="date" name="birth" required value="${requestScope.birth != null ? requestScope.birth : ''}">
+    <div id="birthError" style="display:none; color:red;">19세 미만은 가입할 수 없습니다.</div>
 
     <label>아이디</label>
-    <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required>
+    <input class="idCheck" type="text" name="id" placeholder="아이디" readonly required
+           value="${requestScope.id != null ? requestScope.id : ''}">
     <input type="button" value="중복검사" onclick="openIdCheck();">
 
     <label>비밀번호</label>
     <div class="password-wrapper">
-        <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="blockPwd(this)">
+        <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="validatePwd()"
+               value="${requestScope.pwd != null ? requestScope.pwd : ''}">
         <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
-        <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
+        <div id="pwdError" style="display:none; color:red;">비밀번호를 정확하게 입력해주세요.</div>
     </div>
 
     <label>비밀번호 확인</label>
     <div class="password-wrapper">
-        <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="blockPwd(this)">
+        <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="validatePwd()"
+               value="${requestScope.pwdcheck != null ? requestScope.pwdcheck : ''}">
         <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
-        <small id="pwdError" class="error-msg">비밀번호에 한글은 사용할 수 없습니다.</small>
+        <div id="confirmPwdError" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</div>
     </div>
-    <p id="pwdErrorMsg" class="pwdMissMatch"></p>
 
-   
     <label for="email1">E-mail</label>
     <div class="email-group">
-        <input type="text" name="email1" id="email1" placeholder="E-mail" required oninput="blockEmail1(this)"> @
-        <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)">
+        <input type="text" name="email1" id="email1" placeholder="E-mail" required oninput="blockEmail1(this)"
+               value="${requestScope.email1 != null ? requestScope.email1 : ''}"> @
+        <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
+        <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)"
+               value="${requestScope.email2 != null ? requestScope.email2 : ''}">
         <select id="emailSel" onchange="emailChange()">
             <option value="type">직접입력</option>
             <option value="naver.com">naver.com</option>
@@ -449,32 +596,32 @@ input.invalid + .error-msg {
             <option value="nate.com">nate.com</option>
             <option value="daum.net">daum.net</option>
         </select>
+        <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
     </div>
-    <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-    <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-
 
     <label>전화번호 (000 - 0000 - 0000)</label>
-    <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)">
+    <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)"
+           value="${requestScope.tel != null ? requestScope.tel : ''}">
     <small id="telError" class="error-msg">숫자와 하이픈(-)만 입력 가능합니다.</small>
 
-
     <label>주소</label>
-    <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)">
-    <small id="addrError" class="error-msg">주소에는 특수문자를 사용할 수 없습니다.</small>
-
+    <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)"
+           value="${requestScope.addr != null ? requestScope.addr : ''}">
+    <small id="addrError" class="error-msg">주소를 정확하게 입력해주세요.</small>
 
     <label>질문</label>
     <select name="question" required>
-        <option value="1">질문 1: 보물 1호는?</option>
-        <option value="2">질문 2: 내가 다닌 초등학교 이름은?</option>
-        <option value="3">질문 3: 짝사랑했던 이성친구 이름은?</option>
-        <option value="4">질문 4: 어렸을 적 별명은?</option>
-        <option value="5">질문 5: 내가 살던 고향은?</option>
+        <option value="1" ${requestScope.question == '1' ? 'selected' : ''}>질문 1: 보물 1호는?</option>
+        <option value="2" ${requestScope.question == '2' ? 'selected' : ''}>질문 2: 내가 다닌 초등학교 이름은?</option>
+        <option value="3" ${requestScope.question == '3' ? 'selected' : ''}>질문 3: 짝사랑했던 이성친구 이름은?</option>
+        <option value="4" ${requestScope.question == '4' ? 'selected' : ''}>질문 4: 어렸을 적 별명은?</option>
+        <option value="5" ${requestScope.question == '5' ? 'selected' : ''}>질문 5: 내가 살던 고향은?</option>
     </select>
 
     <label>답변</label>
-    <input type="text" name="answer" placeholder="답변" required>
+    <input type="text" name="answer" placeholder="답변" required oninput="blockAnswer(this)"
+           value="${requestScope.answer != null ? requestScope.answer : ''}">
+    <small id="answerError" class="error-msg">답변은 특수문자를 사용할 수 없습니다.</small>
 
     <input type="submit" value="가입신청">
     <input type="reset" value="다시작성">
@@ -485,4 +632,3 @@ input.invalid + .error-msg {
         <a href="pwdFind.jsp">비밀번호 찾기</a>
     </p>
 </form>
-
