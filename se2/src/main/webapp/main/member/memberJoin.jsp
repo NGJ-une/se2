@@ -322,7 +322,9 @@ function emailChange() {
 // 주소 입력 필드 유효성 검사
 function blockAddr(input) {
     const error = document.getElementById("addrError");
-    if (input.value.trim() === "") {
+    const regex = /^[A-Za-z0-9가-힣\s\-\_\.\(\)\[\]]+$/;
+
+    if (!regex.test(input.value)) {
         input.classList.add("invalid");
         error.style.display = "block";
     } else {
@@ -332,8 +334,11 @@ function blockAddr(input) {
 }
 
 // 질문 답변 입력 필드 유효성 검사
+
+
 function blockAnswer(input) {
-    const regex = /^[A-Za-z0-9가-힣\s]+$/;
+    const answerError = document.getElementById("answerError"); 
+    const regex = /^[^\W_]+$/u; // 밑줄과 특수문자 제외, 유니코드 지원
     if (!regex.test(input.value)) {
         input.classList.add("invalid");
         answerError.style.display = "block";
@@ -344,6 +349,7 @@ function blockAnswer(input) {
         return true;
     }
 }
+
 
 // 이메일 한글 넣었는지 확인하는 것
 function checkEmailMatch() {
@@ -545,18 +551,24 @@ function validateForm() {
         <h2>회원가입</h2>
         <hr>
  
+	<label>성</label>
+	<input type="text" name="fname" placeholder="First Name" required
+    	   value="${requestScope.fname != null ? requestScope.fname : ''}" oninput="blockName(this, 'fnameError')">
+	<div id="fnameError" style="display:none; color:red;">이름을 제대로 입력해주세요.</div>
+	<% if (request.getAttribute("fnameError") != null) { %>
+    <div style="color:red;"><%= request.getAttribute("fnameError") %></div>
+		<% } %>
+		
+		
 
-
-
-    <label>이름</label>
-    <input type="text" name="fname" placeholder="First Name" required
-           value="${requestScope.fname != null ? requestScope.fname : ''}" oninput="blockName(this, 'fnameError')">
-    <div id="fnameError" style="display:none; color:red;">이름을 제대로 입력해주세요.</div>
-
-    <input type="text" name="lname" placeholder="Last Name" required
+	<label>이름</label>
+	<input type="text" name="lname" placeholder="Last Name" required
            value="${requestScope.lname != null ? requestScope.lname : ''}" oninput="blockName(this, 'lnameError')">
     <div id="lnameError" style="display:none; color:red;">이름을 제대로 입력해주세요.</div>
-
+	<% if (request.getAttribute("lnameError") != null) { %>
+    <div style="color:red;"><%= request.getAttribute("lnameError") %></div>
+		<% } %>
+		
     <label>생년월일</label>
     <input type="date" name="birth" required value="${requestScope.birth != null ? requestScope.birth : ''}">
     <div id="birthError" style="display:none; color:red;">19세 미만은 가입할 수 없습니다.</div>
@@ -566,28 +578,40 @@ function validateForm() {
            value="${requestScope.id != null ? requestScope.id : ''}">
     <input type="button" value="중복검사" onclick="openIdCheck();">
 
-    <label>비밀번호</label>
-    <div class="password-wrapper">
-        <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="validatePwd()"
-               value="${requestScope.pwd != null ? requestScope.pwd : ''}">
-        <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
-        <div id="pwdError" style="display:none; color:red;">비밀번호를 정확하게 입력해주세요.</div>
-    </div>
 
+	<label>비밀번호</label>
+   	<div class="password-wrapper">
+	<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required oninput="validatePwd()"
+        value="${requestScope.pwd != null ? requestScope.pwd : ''}">
+    <span class="toggle-password" onclick="togglePwd('pwd')">👁️‍🗨️</span>
+	<!-- JS 전용 에러 -->
+	
+	<!-- 서버 전용 에러 -->
+	<% if (request.getAttribute("pwdError") != null) { %>
+  	<div style="color:red;" class="server-error"><%= request.getAttribute("pwdError") %></div>
+	<% } %>
+	</div>
+		
     <label>비밀번호 확인</label>
     <div class="password-wrapper">
-        <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="validatePwd()"
-               value="${requestScope.pwdcheck != null ? requestScope.pwdcheck : ''}">
-        <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
-        <div id="confirmPwdError" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</div>
+    <input type="password" name="pwdcheck" id="pwdcheck" placeholder="비밀번호 확인" required oninput="validatePwd()"
+          value="${requestScope.pwdcheck != null ? requestScope.pwdcheck : ''}">
+    <span class="toggle-password" onclick="togglePwd('pwdcheck')">👁️‍🗨️</span>
+    <div id="pwdError" style="display:none; color:red;">비밀번호를 정확하게 입력해주세요.</div>
+    <div id="confirmPwdError" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</div>
     </div>
+
 
     <label for="email1">E-mail</label>
     <div class="email-group">
-        <input type="text" name="email1" id="email1" placeholder="E-mail" required oninput="blockEmail1(this)"
-               value="${requestScope.email1 != null ? requestScope.email1 : ''}"> @
-        <small id="emailError1" class="error-msg">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-        <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)"
+     <input type="text" name="email1" id="email1" placeholder="E-mail" required oninput="blockEmail1(this)"
+           value="${requestScope.email1 != null ? requestScope.email1 : ''}"> @
+    
+         <small id="emailError1" class="error-msg" style="display:none;">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</small>
+     	   <% if (request.getAttribute("email1Error") != null) { %>
+        <div style="color:red;"><%= request.getAttribute("email1Error") %></div>
+    		<% } %>
+     <input type="text" name="email2" id="email2" placeholder="Domain" required oninput="blockEmail2(this)"
                value="${requestScope.email2 != null ? requestScope.email2 : ''}">
         <select id="emailSel" onchange="emailChange()">
             <option value="type">직접입력</option>
@@ -596,19 +620,35 @@ function validateForm() {
             <option value="nate.com">nate.com</option>
             <option value="daum.net">daum.net</option>
         </select>
-        <small id="emailError2" class="error-msg">도메인에는 한글이나 특수문자를 사용할 수 없습니다.</small>
-    </div>
+       <div id="emailError2" class="error-msg" style="display:none;">이메일 앞부분에는 한글이나 특수문자를 사용할 수 없습니다.</div>
+         <% if (request.getAttribute("email2Error") != null) { %>
+        <div style="color:red;"><%= request.getAttribute("email2Error") %></div>
+    	<% } %>
+    	</div>
 
-    <label>전화번호 (000 - 0000 - 0000)</label>
-    <input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)"
+	<label>전화번호 (000 - 0000 - 0000)</label>
+	<input type="text" name="tel" placeholder="전화번호" required oninput="blockTel(this)"
            value="${requestScope.tel != null ? requestScope.tel : ''}">
-    <small id="telError" class="error-msg">숫자와 하이픈(-)만 입력 가능합니다.</small>
+	<!-- 클라이언트 전용 오류 메시지 -->
+	<div id="telError" style="display:none; color:red;">숫자와 하이픈(-)만 입력 가능합니다.</div>
+	<!-- 서버 전용 오류 메시지 -->
+	<% if (request.getAttribute("telError") != null) { %>
+    <div style="color:red;" class="server-error"><%= request.getAttribute("telError") %></div>
+		<% } %>
 
-    <label>주소</label>
-    <input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)"
-           value="${requestScope.addr != null ? requestScope.addr : ''}">
-    <small id="addrError" class="error-msg">주소를 정확하게 입력해주세요.</small>
-
+	<label>주소</label>
+	<input type="text" name="addr" placeholder="주소" required oninput="blockAddr(this)"
+       value="${requestScope.addr != null ? requestScope.addr : ''}">
+	<!-- js 실시간-->
+	<small id="addrError" class="error-msg" style="display:none;">
+    주소에는 특수문자 (- _ . ( ) [ ]) 외에는 사용할 수 없습니다.
+	</small>
+	
+	<!-- 서버 -->
+	<% if (request.getAttribute("addrError") != null) { %>
+  	<div class="server-error" style="color:red;"><%= request.getAttribute("addrError") %></div>
+		<% } %>
+	
     <label>질문</label>
     <select name="question" required>
         <option value="1" ${requestScope.question == '1' ? 'selected' : ''}>질문 1: 보물 1호는?</option>
@@ -618,10 +658,14 @@ function validateForm() {
         <option value="5" ${requestScope.question == '5' ? 'selected' : ''}>질문 5: 내가 살던 고향은?</option>
     </select>
 
-    <label>답변</label>
-    <input type="text" name="answer" placeholder="답변" required oninput="blockAnswer(this)"
+
+	<label>답변</label>
+	<input type="text" name="answer" placeholder="답변" required oninput="blockAnswer(this)"
            value="${requestScope.answer != null ? requestScope.answer : ''}">
-    <small id="answerError" class="error-msg">답변은 특수문자를 사용할 수 없습니다.</small>
+	<div id="answerError" class="error-msg" style="display:none; color:red;">답변은 특수문자를 사용할 수 없습니다.</div>
+	<% if (request.getAttribute("answerError") != null) { %>
+    <div style="color:red;" class="server-error"><%= request.getAttribute("answerError") %></div>
+	<% } %>
 
     <input type="submit" value="가입신청">
     <input type="reset" value="다시작성">
