@@ -338,7 +338,7 @@ function blockAddr(input) {
 
 function blockAnswer(input) {
     const answerError = document.getElementById("answerError"); 
-    const regex = /^[^\W_]+$/u; // 밑줄과 특수문자 제외, 유니코드 지원
+    const regex = /^[A-Za-z0-9가-힣\s]+$/;
     if (!regex.test(input.value)) {
         input.classList.add("invalid");
         answerError.style.display = "block";
@@ -666,7 +666,7 @@ function validateForm() {
 	<% if (request.getAttribute("answerError") != null) { %>
     <div style="color:red;" class="server-error"><%= request.getAttribute("answerError") %></div>
 	<% } %>
-
+<br>
     <input type="submit" value="가입신청">
     <input type="reset" value="다시작성">
 
