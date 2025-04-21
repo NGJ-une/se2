@@ -48,313 +48,78 @@
     margin-top: 5px;
     margin-bottom: 30px;
   }
+  /* 전체 컨테이너 정렬 */
 .payment-container {
-	margin: 0px auto;
-	height: auto;
-	display:flex;
-}
-/*.roomInfo {
-	padding: 10px;
-}
-
-.roomInfo fieldset {
-	margin: 10px;
-	border-radius: 12px;
-	border-color: #c34a36;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  
+  border-radius: 15px;
+  margin-bottom:10px;
 }
 
-.roomInfo legend {
-	color: #c34a36;
+/* 테이블 디자인 */
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  overflow: hidden;
 }
 
-.roomInfo input {
-	border: 0px;
-	font-size: 18px;
-	margin: 10px;
-	padding: 10px;
-	background-color: #fffdfb;
+.payment-table th {
+  background-color: whitesmoke;
+  color: black;
+  padding:15px;
+  padding-left: 30px;
+  font-size: 13;
+  text-align: left;
+  border: 2px solid #ddd;
 }
 
-.roomInfo input[type=number]{
-	width: 80px;
+.payment-table td {
+  padding: 12px 10px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.roomInfo label {
-	font-size: 15px;
-	color: #6b4c2f;
-	margin: 10px;
-	font-weight: bold;
+.payment-table label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
 }
 
-.roomInfo fieldset img {
-	width: 220px;
-	height: 170px;
-	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
+.payment-table input[type="text"],
+.payment-table input[type="number"],
+.payment-table input[type="date"] {
+  padding: 5px 8px;
+  border: none; /* 테두리 제거 */
+  outline: none; /* 포커스 외곽선 제거 */
+  padding: 10px; /* 내부 여백 추가 */
+  text-align:center;
+  border-radius: 6px;
+  width: 90%;
+  background-color: #fdfdfd;
 }
 
-.payment-notice {
-	width: 900px;
-	height: auto;
-	margin-left: 30px;
-}
-.payment-notice p {
-	margin: 10px;
-}*/
-.roomInfo {
-	padding: 30px 40px;
-	margin-left: 30px;
-	font-family: 'Noto Sans KR', sans-serif;
-	background-color: #fffdfb;
-	color: #3b2f2f;
-	display: flex;
-	justify-content: center;
-}
-
-.roomInfo fieldset {
-	width: 900px;
-	border: 1px solid #e0d8d3;
-	border-radius: 16px;
-	background-color: #fff;
-	padding: 20px 30px;
-}
-
-.roomInfo legend {
-	color: #7a5034;
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
-.room-content {
-	display: flex;
-	gap: 20px;
-}
-
-.room-content img {
-	width: 180px;
-	height: 140px;
-	border-radius: 10px;
-	object-fit: cover;
-}
-
-.room-details {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.field {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.field.double input{
-	width:150px;
-}
-.field.triple input {
-	width: 50px;
-}
-
-.field.double,
-.field.triple {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px 20px;
-}
-
-.room-details label {
-	width: 60px;
-	font-weight: bold;
-	color: #5d4332;
-	font-size: 15px;
-}
-
-.room-details input {
-	padding: 6px 10px;
-	border: none;
-    outline: none;
-	background-color: #fcf9f6;
-	color: #333;
-}
-.room-details input[readonly] {
-	background-color: #f5f2ef;
-}
-
-.payment-notice {
-	width: 900px;
-    background-color: #fffdfb;
-    border-radius: 14px;
-    padding: 30px 40px;
-    margin: auto; /* 수평 중앙 정렬 */
-    border: 1px solid #fffdfb;
-    color: #403630;
-    line-height: 1.8;
-    font-size: 15px;
-    font-family: 'Noto Sans KR', sans-serif;
-    display: flex; /* flex 레이아웃으로 변경 */
+.payment-table img {
 	
+  height:170px;
+  width:auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding:3px;
 }
 
-.payment-notice p {
-	margin: 0;
-	white-space: pre-line;
+/* 등급 및 할인 */
+.grade-vip,
+.grade-gold,
+.grade-silver {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
 }
-
-/*.payment-info {
-	width: 300px;
-	text-align: left;
-	padding: 10px;
-	background-color: white;
-	height : 700px;;
-	position: sticky;
-	top: 220px;
-	border: 2px dashed #c34a36;
-}
-
-.payment-info-list ul {
-	list-style-type: none;
-	font-size: 18px;
-}
-.payment-info-list-bold{
-	font-weight: bold;
-}
-.grade-diamond { color: #8e44ad; font-weight: bold; }
-.grade-gold { color: #f39c12; font-weight: bold; }
-.grade-silver { color: #3498db; font-weight: bold; }
-.grade-bronze { color: #795548; font-weight: bold; }
-
-@keyframes golden-glow{
-	0% {
-		text-shadow: 0 0 10px #ffd700,
-					 0 0 20px #ffd700,
-					 0 0 30px #ffc400,
-					 0 0 40px #ffa500,
-					 0 0 50px #ff8c00,
-					 0 0 75px #ff4500;
-	}
-	25%{
-		text-shadow: 0 0 20px #ffd700,
-					 0 0 30px #ffc400,
-					 0 0 40px #ffa500,
-					 0 0 50px #ff8c00,
-					 0 0 75px #ff4500,
-					 0 0 100px #ff0000;
-	}
-	50% {
-		text-shadow: 0 0 30px #ffd700,
-					 0 0 50px #ffc400,
-					 0 0 70px #ffa500,
-					 0 0 100px #ff8c00,
-					 0 0 120px #ff4500,
-					 0 0 150px #ff0000;
-	}
-	75%{
-		text-shadow: 0 0 20px #ffd700,
-					 0 0 30px #ffc400,
-					 0 0 40px #ffa500,
-					 0 0 50px #ff8c00,
-					 0 0 75px #ff4500,
-					 0 0 100px #ff0000;
-	}
-	100% {
-		text-shadow: 0 0 10px #ffd700,
-					 0 0 20px #ffd700,
-					 0 0 30px #ffc400,
-					 0 0 40px #ffa500,
-					 0 0 50px #ff8c00,
-					 0 0 75px #ff4500;
-	}
-}
-
-.user-id {
-	color: #f85df8;
-	font-weight: bolder;
-}
-
-.balance {
-	color: white;
-	background: linear-gradient(90deg, #ffd700, #ffa500, #ff4500);
-	border-radius: 5px;
-	font-weight: bold;
-	animation: golden-glow 2s infinite;
-	padding: 5px;
-}
-
-.dcRate {
-	color: red;
-	font-style: italic;
-}
-
-.total-price {
-	font-weight: bold;
-}
-
-.payment-confirm{
-	display: inline-block;
-	margin-top: 20px;
-	padding: 10px;
-	font-size: 18px;
-	border-top: 1px solid black;
-	width: 240px;
-}
-
-.payment-confirm input {
-	margin: 5px;
-	padding: 5px;
-	font-size: 15px;
-}
-
-.icons {
-	font-size: 28px;
-}*/
- .payment-info {
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 400px;
-    background: #fff;
-    font-family: 'Noto Sans KR', sans-serif;
-    margin: 20px auto;
-    height: 700px;
-  }
-
-  .payment-info .payment-info-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 15px;
-    color: #333;
-  }
-
-  .payment-info-list li {
-    margin: 6px 0;
-  }
-
-  .user-id {
-    font-size: 17px;
-    font-weight: bold;
-    color: #8b572a;
-  }
-
-  .balance {
-    font-weight: bold;
-    background: #ffe8b3;
-    padding: 5px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    color: #5a3e15;
-  }
-
-  .payment-info-list-bold {
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 15px;
-    color: #555;
-  }
 
   .grade-silver {
     color: #3f82e0;
@@ -371,47 +136,68 @@
     font-weight: bold;
   }
 
-  .dcRate {
-    color: red;
-    font-weight: bold;
-  }
+.dcRate {
+  font-weight: bold;
+  color: #388e3c;
+}
 
-  .total-price {
-    font-size: 17px;
-    font-weight: bold;
-    color: #d75d0c;
-    margin-top: 10px;
-  }
+/* 버튼 스타일 */
+.payment-table input[type="submit"],
+.payment-table input[type="button"] {
+  background-color: #6b4c2f;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px auto;
+  
+  transition: background-color 0.3s ease;
+}
 
-  .payment-confirm {
-    margin-top: 20px;
-    border-top: 1px dashed #ccc;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #555;
-  }
+.payment-table input[type="submit"]:hover,
+.payment-table input[type="button"]:hover {
+  background-color: #b58143;
+}
 
-  .payment-confirm input[type=submit],
-  .payment-confirm input[type=button] {
-    padding: 8px 16px;
-    margin-top: 8px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 5px;
-  }
+/* 아이콘 자리 */
+.icons {
+  display: inline-block;
+  margin-right: 5px;
+  color: #f57c00;
+}
 
-  .payment-confirm input[type=submit] {
-    background-color: #8b572a;
-    color: white;
-  }
+.notice-accordion {
+  width: 1000px;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 20px auto;
+  margin-top: 0px;
+  padding: 20px;
+}
 
-  .payment-confirm input[type=button] {
-    background-color: #eee;
-    color: #333;
-  }
+.notice-header {
+  background-color: #f5f5f5;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+}
 
-  .icons {
-    margin-right: 6px;
-  }
+.notice-header:hover {
+  background-color: #eaeaea;
+}
+
+.notice-body {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+  display: block; /* 초기에는 보이게 */
+  background-color: white;
+}
