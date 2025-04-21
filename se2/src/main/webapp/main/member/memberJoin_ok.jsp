@@ -83,7 +83,7 @@
             questionInt = 0;
         }
 
-        mdto.setQuestion(questionInt); // 🔥 이걸로 바꿔!
+        mdto.setQuestion(questionInt); 
         mdto.setAnswer(answer);
 
         int result = mdao.memberJoin(mdto);
@@ -91,14 +91,13 @@
         if (result > 0) {
 %>
 <script>
-    alert('회원가입이 완료되었습니다.');
-    location.href = 'login.jsp';
+    location.href = 'register.jsp';
 </script>
 <%
         } else {
 %>
 <script>
-    alert('회원가입 중 오류가 발생했습니다.');
+
     history.back();
 </script>
 <%
