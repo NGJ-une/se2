@@ -4,7 +4,6 @@
 <%
 request.setCharacterEncoding("utf-8");
 
-System.out.println(request.getParameter("checkInStr"));
 Date checkIn = Date.valueOf(request.getParameter("checkInStr"));
 Date checkOut = Date.valueOf(request.getParameter("checkOutStr"));
 int orgPrice = Integer.parseInt(request.getParameter("orgPrice"));
