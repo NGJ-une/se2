@@ -56,37 +56,36 @@ String imgSrc = request.getParameter("img");
 					<h1 class="payment-title">결제하기</h1>
 					<div class="payment-container">
 						<div>
-						  <div class="roomInfo">
-							<fieldset>
-								<legend>예약 정보 확인</legend>
-								<div class="room-content">
-									<img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
-									<div class="room-details">
-										<div class="field">
+							<table>
+						  		
+								<tr>
+								<th colspan="3">예약 정보 확인</th>
+								<th colspan="3">결제 정보 확인</th>
+								</tr>
+								<tr>
+									<td><img alt="<%= imgSrc %>" src="/se2/room_img/<%= imgSrc %>">
+									
 											<label>방 종류</label>
 											<input type="text" value="<%= selectedType.substring(2) %>" readonly>
-										</div>
-										<div class="field double">
+										
+										
 											<label>체크인</label>
 											<input type="date" value="<%= checkInStr %>" readonly>
 											<label>체크아웃</label>
 											<input type="date" value="<%= checkOutStr %>" readonly>
-										</div>
-										<div class="field triple">
+										
 											<label>성인</label>
 											<input type="number" value="<%= reserDTO.getAdult() %>" readonly>
 											<label>어린이</label>
 											<input type="number" value="<%= reserDTO.getKid() %>" readonly>
 											<label>유아</label>
 											<input type="number" value="<%= reserDTO.getBaby() %>" readonly>
-										</div>
-										<div class="field">
+										
 											<label>총원</label>
 											<input type="text" value="<%= reserDTO.getAdult() + reserDTO.getKid() + reserDTO.getBaby() %> 명" readonly>
-										</div>
-									</div>
-								</div>
-							</fieldset>
+										
+								<tr>
+							</table>
 						</div>
 						
 						  <div class="payment-notice">

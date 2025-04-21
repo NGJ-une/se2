@@ -1,0 +1,417 @@
+@charset "UTF-8";
+
+/*.payment-title {
+	font-size: 45px;
+	margin-left: 10%;
+	color: #6b4c2f;
+	margin-top: 20px;
+}*/
+	  .step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    gap: 15px;
+  }
+
+  .step-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #cfc6bb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cfc6bb;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: white;
+  }
+
+  .step-circle.active {
+    background-color: #7c6147;
+    color: white;
+    border-color: #7c6147;
+  }
+
+  .step-line {
+    width: 30px;
+    height: 2px;
+    background-color: #e0d7cd;
+  }
+  .payment-title {
+    text-align: center;
+    font-size: 20px;
+    color: #7c6147;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+.payment-container {
+	margin: 0px auto;
+	height: auto;
+	display:flex;
+}
+/*.roomInfo {
+	padding: 10px;
+}
+
+.roomInfo fieldset {
+	margin: 10px;
+	border-radius: 12px;
+	border-color: #c34a36;
+}
+
+.roomInfo legend {
+	color: #c34a36;
+}
+
+.roomInfo input {
+	border: 0px;
+	font-size: 18px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #fffdfb;
+}
+
+.roomInfo input[type=number]{
+	width: 80px;
+}
+
+.roomInfo label {
+	font-size: 15px;
+	color: #6b4c2f;
+	margin: 10px;
+	font-weight: bold;
+}
+
+.roomInfo fieldset img {
+	width: 220px;
+	height: 170px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.payment-notice {
+	width: 900px;
+	height: auto;
+	margin-left: 30px;
+}
+.payment-notice p {
+	margin: 10px;
+}*/
+.roomInfo {
+	padding: 30px 40px;
+	margin-left: 30px;
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: #fffdfb;
+	color: #3b2f2f;
+	display: flex;
+	justify-content: center;
+}
+
+.roomInfo fieldset {
+	width: 900px;
+	border: 1px solid #e0d8d3;
+	border-radius: 16px;
+	background-color: #fff;
+	padding: 20px 30px;
+}
+
+.roomInfo legend {
+	color: #7a5034;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.room-content {
+	display: flex;
+	gap: 20px;
+}
+
+.room-content img {
+	width: 180px;
+	height: 140px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.room-details {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.field {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.field.double input{
+	width:150px;
+}
+.field.triple input {
+	width: 50px;
+}
+
+.field.double,
+.field.triple {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 20px;
+}
+
+.room-details label {
+	width: 60px;
+	font-weight: bold;
+	color: #5d4332;
+	font-size: 15px;
+}
+
+.room-details input {
+	padding: 6px 10px;
+	border: none;
+    outline: none;
+	background-color: #fcf9f6;
+	color: #333;
+}
+.room-details input[readonly] {
+	background-color: #f5f2ef;
+}
+
+.payment-notice {
+	width: 900px;
+    background-color: #fffdfb;
+    border-radius: 14px;
+    padding: 30px 40px;
+    margin: auto; /* 수평 중앙 정렬 */
+    border: 1px solid #fffdfb;
+    color: #403630;
+    line-height: 1.8;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex; /* flex 레이아웃으로 변경 */
+	
+}
+
+.payment-notice p {
+	margin: 0;
+	white-space: pre-line;
+}
+
+/*.payment-info {
+	width: 300px;
+	text-align: left;
+	padding: 10px;
+	background-color: white;
+	height : 700px;;
+	position: sticky;
+	top: 220px;
+	border: 2px dashed #c34a36;
+}
+
+.payment-info-list ul {
+	list-style-type: none;
+	font-size: 18px;
+}
+.payment-info-list-bold{
+	font-weight: bold;
+}
+.grade-diamond { color: #8e44ad; font-weight: bold; }
+.grade-gold { color: #f39c12; font-weight: bold; }
+.grade-silver { color: #3498db; font-weight: bold; }
+.grade-bronze { color: #795548; font-weight: bold; }
+
+@keyframes golden-glow{
+	0% {
+		text-shadow: 0 0 10px #ffd700,
+					 0 0 20px #ffd700,
+					 0 0 30px #ffc400,
+					 0 0 40px #ffa500,
+					 0 0 50px #ff8c00,
+					 0 0 75px #ff4500;
+	}
+	25%{
+		text-shadow: 0 0 20px #ffd700,
+					 0 0 30px #ffc400,
+					 0 0 40px #ffa500,
+					 0 0 50px #ff8c00,
+					 0 0 75px #ff4500,
+					 0 0 100px #ff0000;
+	}
+	50% {
+		text-shadow: 0 0 30px #ffd700,
+					 0 0 50px #ffc400,
+					 0 0 70px #ffa500,
+					 0 0 100px #ff8c00,
+					 0 0 120px #ff4500,
+					 0 0 150px #ff0000;
+	}
+	75%{
+		text-shadow: 0 0 20px #ffd700,
+					 0 0 30px #ffc400,
+					 0 0 40px #ffa500,
+					 0 0 50px #ff8c00,
+					 0 0 75px #ff4500,
+					 0 0 100px #ff0000;
+	}
+	100% {
+		text-shadow: 0 0 10px #ffd700,
+					 0 0 20px #ffd700,
+					 0 0 30px #ffc400,
+					 0 0 40px #ffa500,
+					 0 0 50px #ff8c00,
+					 0 0 75px #ff4500;
+	}
+}
+
+.user-id {
+	color: #f85df8;
+	font-weight: bolder;
+}
+
+.balance {
+	color: white;
+	background: linear-gradient(90deg, #ffd700, #ffa500, #ff4500);
+	border-radius: 5px;
+	font-weight: bold;
+	animation: golden-glow 2s infinite;
+	padding: 5px;
+}
+
+.dcRate {
+	color: red;
+	font-style: italic;
+}
+
+.total-price {
+	font-weight: bold;
+}
+
+.payment-confirm{
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 18px;
+	border-top: 1px solid black;
+	width: 240px;
+}
+
+.payment-confirm input {
+	margin: 5px;
+	padding: 5px;
+	font-size: 15px;
+}
+
+.icons {
+	font-size: 28px;
+}*/
+ .payment-info {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    background: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 20px auto;
+    height: 700px;
+  }
+
+  .payment-info .payment-info-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .payment-info-list li {
+    margin: 6px 0;
+  }
+
+  .user-id {
+    font-size: 17px;
+    font-weight: bold;
+    color: #8b572a;
+  }
+
+  .balance {
+    font-weight: bold;
+    background: #ffe8b3;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    color: #5a3e15;
+  }
+
+  .payment-info-list-bold {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #555;
+  }
+
+  .grade-silver {
+    color: #3f82e0;
+    font-weight: bold;
+  }
+
+  .grade-gold {
+    color: #d4af37;
+    font-weight: bold;
+  }
+
+  .grade-vip {
+    color: #e63946;
+    font-weight: bold;
+  }
+
+  .dcRate {
+    color: red;
+    font-weight: bold;
+  }
+
+  .total-price {
+    font-size: 17px;
+    font-weight: bold;
+    color: #d75d0c;
+    margin-top: 10px;
+  }
+
+  .payment-confirm {
+    margin-top: 20px;
+    border-top: 1px dashed #ccc;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .payment-confirm input[type=submit],
+  .payment-confirm input[type=button] {
+    padding: 8px 16px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .payment-confirm input[type=submit] {
+    background-color: #8b572a;
+    color: white;
+  }
+
+  .payment-confirm input[type=button] {
+    background-color: #eee;
+    color: #333;
+  }
+
+  .icons {
+    margin-right: 6px;
+  }
