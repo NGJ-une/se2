@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	<div class="box" style="padding-top: 1rem;">
 	
 
-	<h1 style="color:#56340c;">신라리워즈 가입</h1>  
+	<h1 style="color:#56340c;">헬리아리워즈 가입</h1>  
 	<div class="step-wrapper">
     <div class="step-container">
         <div class="step active">약관동의</div>

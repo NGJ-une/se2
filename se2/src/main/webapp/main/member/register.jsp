@@ -190,6 +190,8 @@ if (mdto != null ) {
 <%@ include file="/header.jsp" %>
 
     <section class="container">
+      <h1 style="color:#56340c;">헬리아리워즈 가입</h1>
+      <div><Br></div>  
       <div class="step-wrapper">
    		 <div class="step-container">
            <div class="step">약관동의</div>
