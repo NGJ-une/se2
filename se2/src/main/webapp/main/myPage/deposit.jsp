@@ -140,7 +140,7 @@
         <label class="currentMoney">현재 보유 금액 : <%=money %> 원</label>
 
         <label for="money">충전할 금액 입력</label>
-        <input type="number" id="money" name="money" placeholder="예: 10000" required>
+        <input type="number" id="money" name="money" placeholder="예: 10000" required ="required" min="1" max ="1000000000">
 		<%
 		    String errorMsg = (String) session.getAttribute("errorMsg");
 		    if (errorMsg != null) {
