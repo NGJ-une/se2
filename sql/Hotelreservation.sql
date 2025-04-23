@@ -150,11 +150,11 @@ commit
 
 --시퀀스 생성  
 CREATE SEQUENCE sq_member_idx START WITH 11  --로그인/회원가입 테이블  회원번호 시퀀스  
-CREATE SEQUENCE sq_reser_idx start with 26 -- 예약 테이블 예약번호 시퀀스
+CREATE SEQUENCE sq_reser_idx start with 27 -- 예약 테이블 예약번호 시퀀스
 CREATE SEQUENCE sq_room_idx -- 객실 테이블 객실번호 시퀀스 
 CREATE SEQUENCE sq_hotel_idx -- 호텔 테이블 호텔번호 시퀀스 
 CREATE SEQUENCE sq_refund_idx -- 환불 테이블 환불 번호 시퀀스
-CREATE SEQUENCE sq_inquiry_idx START WITH 11 -- 문의 테이블 문의 번호 시퀀스 
+CREATE SEQUENCE sq_inquiry_idx START WITH 21 -- 문의 테이블 문의 번호 시퀀스 
 CREATE SEQUENCE sq_review_idx START WITH 51 -- 후기 테이블 후기 번호 시퀀스
 CREATE SEQUENCE sq_reply_idx START WITH 13 -- 댓글 테이블 댓글 번호 시퀀스
 CREATE SEQUENCE sq_photo_num START WITH 51 -- 사진 고유번호 시퀀스 
@@ -344,6 +344,9 @@ INSERT ALL
 
   INTO reser (ridx, rid, rname, rtype, rcheckin, rcheckout, radult, rkid, rbaby, rmoney)
   VALUES (25, 'user001', 'h_seoul', 'u_deluxe', TO_DATE('2025-07-15', 'YYYY-MM-DD'), TO_DATE('2025-07-17', 'YYYY-MM-DD'), 3, 0, 0, 350000)
+
+  INTO reser (ridx, rid, rname, rtype, rcheckin, rcheckout, radult, rkid, rbaby, rmoney)
+  VALUES (26, 'user002', 'h_seoul', 's_deluxe', TO_DATE('2025-04-17', 'YYYY-MM-DD'), TO_DATE('2025-04-20', 'YYYY-MM-DD'), 3, 0, 0, 1200000)
 SELECT * FROM dual;
 
 
@@ -370,6 +373,26 @@ INSERT ALL
   VALUES (9, 'user001', '결제/환불', '결제 오류', '결제가 안됩니다. 카드 문제가 아닌 것 같아요.', TO_DATE('2024-10-28', 'YYYY-MM-DD'))
   INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
   VALUES (10, 'user001', '예약', '예약 취소 요청', '사정상 예약을 취소해야 합니다. 가능할까요?', TO_DATE('2024-11-05', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (11, 'user002', '예약', '예약 확인 요청', '예약 내역이 이메일로 오지 않았습니다. 확인 부탁드립니다.', TO_DATE('2025-04-15', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (12, 'user002', '결제/환불', '환불 요청', '결제가 중복으로 된 것 같아요. 환불 요청합니다.', TO_DATE('2025-04-02', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (13, 'user002', '회원 정보', '회원 정보 수정', '전화번호가 바뀌었습니다. 수정 부탁드립니다.', TO_DATE('2025-03-10', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (14, 'user002', '기타', '기타 문의', '사이트 이용 중 오류가 발생했습니다. 문의드립니다.', TO_DATE('2025-02-28', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (15, 'user002', '예약', '예약 날짜 변경', '예약한 날짜를 변경하고 싶습니다. 절차를 알려주세요.', TO_DATE('2025-01-15', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (16, 'user002', '결제/환불', '영수증 재발행 요청', '회사 제출용으로 영수증이 필요합니다.', TO_DATE('2025-01-30', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (17, 'user002', '회원 정보', '비밀번호 변경 문의', '비밀번호를 잊어버렸어요. 어떻게 바꾸나요?', TO_DATE('2024-12-05', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (18, 'user002', '기타', '사이트 개선 요청', '모바일 UI가 불편해요. 개선해주세요.', TO_DATE('2024-11-20', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (19, 'user002', '결제/환불', '결제 오류', '결제가 안됩니다. 카드 문제가 아닌 것 같아요.', TO_DATE('2024-10-28', 'YYYY-MM-DD'))
+  INTO inquiry (iidx, iid, itype, ititle, icontent, idate)
+  VALUES (20, 'user002', '예약', '예약 취소 요청', '사정상 예약을 취소해야 합니다. 가능할까요?', TO_DATE('2024-11-05', 'YYYY-MM-DD'))
 SELECT * FROM dual;
 
 
